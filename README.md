@@ -82,3 +82,24 @@ To render locally instead of through ElevenLabs: `~/Work/AI_server/scripts/voice
 The copies served at **www.hishamabuella.com/projects/bedtime-stories/** live in the
 `home` website repo. This repo is the place to author and keep them; copy a finished
 story across when it is ready.
+
+## Printed editions
+
+`print/*.pdf` are print-ready: A5 portrait, one story page per sheet, artwork
+large with the English and Arabic text together so a single copy serves both.
+The cover carries a QR code that opens the narrated version on a phone.
+
+Rebuild after changing a story — the pages are lifted straight out of the book's
+own `ART` and `BOOK` data, so the print edition cannot drift from the screen one:
+
+```sh
+node tools/make-print.js susu.html print/susu-print.html \
+  --url https://www.hishamabuella.com/projects/bedtime-stories/susu.html \
+  --qr print/qr-susu.svg
+"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
+  --no-pdf-header-footer --print-to-pdf=print/susu.pdf file://$PWD/print/susu-print.html
+```
+
+**The QR points at the live site, not this repo** — this repo is private, so
+GitHub cannot serve the pages to a phone. If the books ever move, regenerate the
+QR codes (`segno`) against the new URL.
