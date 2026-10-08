@@ -22,9 +22,17 @@
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
     page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
   }
+  /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.dense h2{font-size:20pt}
+  .sheet.dense h2.ar{font-size:17pt}
+  .sheet.dense .line{font-size:11pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:11.5pt;line-height:1.5}
+  .sheet.dense .sound{font-size:12.5pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
   .sheet:last-child{page-break-after:auto;break-after:auto}
 
-  .art{width:112mm;height:112mm;display:flex;align-items:center;justify-content:center;flex:none}
+  .art{width:108mm;height:108mm;display:flex;align-items:center;justify-content:center;flex:none}
   .art svg{width:100%;height:100%;display:block}
   .art svg.breathe{animation:none!important}
 
@@ -47,12 +55,12 @@
     margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
     border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
   }
-  .qr{width:26mm;height:26mm;flex:none}
+  .qr{width:30mm;height:30mm;flex:none}
   .qr svg{width:100%;height:100%;display:block}
   .listen-text{display:flex;flex-direction:column;gap:1mm;text-align:left}
   .listen-text b{font-size:11pt}
   .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
-  .listen-text .url{font-size:7pt;color:var(--quiet);word-break:break-all}
+  .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -110,12 +118,12 @@
       <div class="listen-text">
         <b>Scan to listen</b>
         <span>Every page read aloud, in English and Arabic.</span>
-        <span class="url">https://www.hishamabuella.com/projects/bedtime-stories/susu.html</span>
+        <span class="url">www.hishamabuella.com</span>
       </div>
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#C7643F">
+  <section class="sheet dense" style="--accent:#C7643F">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="Susu as a kitten beside a stack of books, snow outside">
   <rect x="18" y="20" width="150" height="150" rx="8" fill="#BFD4DE" stroke="#111010" stroke-width="8"/>
   <path d="M93 20 v150 M18 95 h150" stroke="#111010" stroke-width="7"/>
@@ -325,7 +333,7 @@
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#C7643F">
+  <section class="sheet dense" style="--accent:#C7643F">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="Susu beside a teapot and two cups">
   <g stroke="#111010" stroke-width="8" stroke-linejoin="round">
     <path d="M250 150 q60 0 60 50 q0 50 -60 50 q-60 0 -60 -50 q0 -50 60 -50 z" fill="#E0919E"/>
@@ -446,7 +454,7 @@
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#C7643F">
+  <section class="sheet dense" style="--accent:#C7643F">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A very happy Susu in the sunshine">
   <circle cx="330" cy="74" r="44" fill="#E8C27A" stroke="#111010" stroke-width="8"/>
   <g stroke="#111010" stroke-width="8" stroke-linecap="round">
@@ -503,7 +511,7 @@
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#C7643F">
+  <section class="sheet dense" style="--accent:#C7643F">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="Susu with a full food bowl and a full water bowl">
   <g fill="#E0919E" stroke="#111010" stroke-width="6" opacity=".9">
     <path d="M296 54 q0 -24 22 -24 q15 0 18 15 q3 -15 18 -15 q22 0 22 24 q0 28 -40 50 q-40 -22 -40 -50 z"/>
@@ -562,7 +570,7 @@
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#C7643F">
+  <section class="sheet dense" style="--accent:#C7643F">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="Susu asleep at the end of the bed under a moon">
   <circle cx="318" cy="76" r="60" fill="#111010"/>
   <circle cx="344" cy="58" r="50" fill="#E8C27A"/>

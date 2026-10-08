@@ -69,13 +69,17 @@ for (const key of Object.keys(BOOK)) {
       <div class="listen-text">
         <b>Scan to listen</b>
         <span>Every page read aloud, in English and Arabic.</span>
-        <span class="url">${esc(listenUrl)}</span>
+        <span class="url">${esc(listenUrl.replace(/^https?:\/\//, "").split("/")[0])}</span>
       </div>
     </div>` : ''}
   </section>`);
         } else {
+            // the longest pages (the hadith page) overflow A5 at full size:
+            // give them a smaller stage and tighter type rather than clipping
+            const load = (page.en.line + page.en.sound + page.ar.line + page.ar.sound).length;
+            const dense = load > 260 ? ' dense' : '';
             sheets.push(`
-  <section class="sheet" style="--accent:${accent}">
+  <section class="sheet${dense}" style="--accent:${accent}">
     <div class="art">${page.art}</div>
     <div class="words">
       <h2>${plain(page.en.name)}</h2>
@@ -117,9 +121,17 @@ fs.writeFileSync(outPath, `<!DOCTYPE html>
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
     page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
   }
+  /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.dense h2{font-size:20pt}
+  .sheet.dense h2.ar{font-size:17pt}
+  .sheet.dense .line{font-size:11pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:11.5pt;line-height:1.5}
+  .sheet.dense .sound{font-size:12.5pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
   .sheet:last-child{page-break-after:auto;break-after:auto}
 
-  .art{width:112mm;height:112mm;display:flex;align-items:center;justify-content:center;flex:none}
+  .art{width:108mm;height:108mm;display:flex;align-items:center;justify-content:center;flex:none}
   .art svg{width:100%;height:100%;display:block}
   .art svg.breathe{animation:none!important}
 
@@ -142,12 +154,12 @@ fs.writeFileSync(outPath, `<!DOCTYPE html>
     margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
     border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
   }
-  .qr{width:26mm;height:26mm;flex:none}
+  .qr{width:30mm;height:30mm;flex:none}
   .qr svg{width:100%;height:100%;display:block}
   .listen-text{display:flex;flex-direction:column;gap:1mm;text-align:left}
   .listen-text b{font-size:11pt}
   .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
-  .listen-text .url{font-size:7pt;color:var(--quiet);word-break:break-all}
+  .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
 </style>
 </head>
 <body>
