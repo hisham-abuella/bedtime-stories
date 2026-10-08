@@ -1,0 +1,51 @@
+{
+ "title": "Sounds EN",
+ "language": "en",
+ "slides": [
+  {
+   "id": "s1",
+   "title": "Zebra",
+   "transcript": "[playfully] The zebra goes clip clop, clip clop!"
+  },
+  {
+   "id": "s2",
+   "title": "Panda",
+   "transcript": "[playfully] The panda goes munch, munch, munch."
+  },
+  {
+   "id": "s3",
+   "title": "Cow",
+   "transcript": "[playfully] The cow says moo! Mooo!"
+  },
+  {
+   "id": "s4",
+   "title": "Penguin",
+   "transcript": "[playfully] The penguin goes waddle, waddle, splash!"
+  },
+  {
+   "id": "s5",
+   "title": "Owl",
+   "transcript": "[playfully] The owl says hoo! Hoo, hoo!"
+  },
+  {
+   "id": "s6",
+   "title": "Orca",
+   "transcript": "[playfully] The orca goes whoosh! Splash!"
+  },
+  {
+   "id": "s7",
+   "title": "Sheep",
+   "transcript": "[playfully] The sheep says baa! Baa!"
+  },
+  {
+   "id": "s8",
+   "title": "Puppy",
+   "transcript": "[playfully] The puppy says woof! Woof, woof!"
+  },
+  {
+   "id": "s9",
+   "title": "Cat",
+   "transcript": "[playfully] The cat says meow! Meow, meow!"
+  }
+ ]
+}

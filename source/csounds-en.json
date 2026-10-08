@@ -1,0 +1,51 @@
+{
+ "title": "Colour sounds EN",
+ "language": "en",
+ "slides": [
+  {
+   "id": "s1",
+   "title": "Ladybug",
+   "transcript": "[playfully] The ladybug has spots. Spot, spot, spot!"
+  },
+  {
+   "id": "s2",
+   "title": "Duckling",
+   "transcript": "[playfully] The duckling says peep! Peep, peep!"
+  },
+  {
+   "id": "s3",
+   "title": "Whale",
+   "transcript": "[playfully] The whale goes splash! Whoosh!"
+  },
+  {
+   "id": "s4",
+   "title": "Frog",
+   "transcript": "[playfully] The frog says ribbit! Ribbit, ribbit!"
+  },
+  {
+   "id": "s5",
+   "title": "Tiger",
+   "transcript": "[playfully] The tiger says roar! Roar!"
+  },
+  {
+   "id": "s6",
+   "title": "Butterfly",
+   "transcript": "[playfully] The butterfly goes flutter, flutter, flutter."
+  },
+  {
+   "id": "s7",
+   "title": "Pig",
+   "transcript": "[playfully] The pig says oink! Oink, oink!"
+  },
+  {
+   "id": "s8",
+   "title": "Bear",
+   "transcript": "[playfully] The bear says grr! Grr, grumble."
+  },
+  {
+   "id": "s9",
+   "title": "Grey cat",
+   "transcript": "[softly] The sleepy cat goes purr, purr, purr."
+  }
+ ]
+}

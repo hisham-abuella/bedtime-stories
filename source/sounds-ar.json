@@ -1,0 +1,51 @@
+{
+ "title": "أصوات",
+ "language": "ar",
+ "slides": [
+  {
+   "id": "s1",
+   "title": "Zebra",
+   "transcript": "[warmly] الحِمارُ الوحشيُّ يقول: <break time=\"0.3s\" /> [playfully] طَقْ طَقْ، طَقْ طَقْ!"
+  },
+  {
+   "id": "s2",
+   "title": "Panda",
+   "transcript": "[warmly] الباندا تأكُل: <break time=\"0.3s\" /> [playfully] مَضْغ، مَضْغ، مَضْغ."
+  },
+  {
+   "id": "s3",
+   "title": "Cow",
+   "transcript": "[warmly] البقرةُ تقول: <break time=\"0.3s\" /> [playfully] مُوو! مُووو!"
+  },
+  {
+   "id": "s4",
+   "title": "Penguin",
+   "transcript": "[warmly] البِطريقُ يتمايَل، ثمّ يقفِز: <break time=\"0.3s\" /> [playfully] طُشاش!"
+  },
+  {
+   "id": "s5",
+   "title": "Owl",
+   "transcript": "[warmly] البومةُ تقول: <break time=\"0.3s\" /> [playfully] هُوو! هُوو، هُوو!"
+  },
+  {
+   "id": "s6",
+   "title": "Orca",
+   "transcript": "[warmly] الأوركا تقفِز: <break time=\"0.3s\" /> [playfully] ووش! طُشاش!"
+  },
+  {
+   "id": "s7",
+   "title": "Sheep",
+   "transcript": "[warmly] الخَروفُ يقول: <break time=\"0.3s\" /> [playfully] ماااع! ماااع!"
+  },
+  {
+   "id": "s8",
+   "title": "Puppy",
+   "transcript": "[warmly] الجَرْوُ الصغيرُ يقول: <break time=\"0.3s\" /> [playfully] هاو! هاو! هاو!"
+  },
+  {
+   "id": "s9",
+   "title": "Cat",
+   "transcript": "[warmly] القِطّةُ تقول: <break time=\"0.3s\" /> [playfully] مياو! مياو!"
+  }
+ ]
+}
