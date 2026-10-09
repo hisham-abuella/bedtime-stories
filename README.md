@@ -79,9 +79,17 @@ To render locally instead of through ElevenLabs: `~/Work/AI_server/scripts/voice
 
 ## Where these are published
 
-The copies served at **www.hishamabuella.com/projects/bedtime-stories/** live in the
-`home` website repo. This repo is the place to author and keep them; copy a finished
-story across when it is ready.
+This repo publishes itself through GitHub Pages:
+
+**https://hisham-abuella.github.io/bedtime-stories/**
+
+The shelf is `index.html`; the books, their audio and their artwork are served
+from the same place, which is what the printed QR codes point at. Pushing to
+`main` republishes.
+
+A second set of copies is served at **www.hishamabuella.com/projects/bedtime-stories/**
+from the `home` website repo, alongside the article about how they were made.
+Copy a finished story across when it is ready.
 
 ## Printed editions
 
@@ -136,13 +144,26 @@ marks.
 
 ### The QR code
 
-The cover carries a QR that opens the narrated version on a phone, so whoever is
-holding the printed book can play the same voice reading it.
+Every chapter cover carries a QR that opens the narrated version on a phone, so
+whoever is holding the printed book can play the same voice reading it.
 
-**It points at the live site, not this repo** — this repo is private, and GitHub
-will not serve pages from a private repo, so a QR aimed here would hit a login
-wall. If the books move, regenerate the codes (`segno`) against the new URL and
-rebuild.
+| Cover | Opens |
+|---|---|
+| The Black and White Zoo | `.../black-white-zoo.html` |
+| Nine Bright Colours (chapter two) | `.../black-white-zoo.html#color` |
+| Susu the Cat | `.../susu.html` |
+
+They point at this repo's own GitHub Pages site,
+`https://hisham-abuella.github.io/bedtime-stories/`, which serves the html, the
+audio and the artwork. The chapter codes work because the book now keeps its
+chapter in the address: `#bw` and `#color` open that chapter directly, and
+switching chapters updates the address.
+
+`tools/make-print.js` picks the code per chapter — `print/qr-zoo-<chapter>.svg`
+if it exists, otherwise `print/qr-zoo.svg`. Regenerate with `segno`, at
+quartile correction, **and add a `viewBox`**: segno writes `width`/`height` but
+no `viewBox`, so without one the symbol renders at natural size and the page
+clips it into something that will not scan.
 
 ### Generated artwork in print
 

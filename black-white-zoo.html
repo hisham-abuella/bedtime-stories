@@ -1011,16 +1011,24 @@ document.addEventListener('fullscreenchange', function () {
   }
 });
 
-document.getElementById('chapters').addEventListener('click', function (e) {
-  var b = e.target.closest('button');
-  if (!b) return;
-  ch = b.dataset.ch;
-  Array.prototype.forEach.call(this.children, function (x) {
-    x.setAttribute('aria-pressed', String(x === b));
+function setChapter(which) {
+  if (!BOOK[which]) return;
+  ch = which;
+  Array.prototype.forEach.call(document.getElementById('chapters').children, function (x) {
+    x.setAttribute('aria-pressed', String(x.dataset.ch === which));
   });
   at = 0;
   buildDots();
   render();
+}
+
+document.getElementById('chapters').addEventListener('click', function (e) {
+  var b = e.target.closest('button');
+  if (!b) return;
+  setChapter(b.dataset.ch);
+  // the chapter goes in the address so it can be linked to, which is how the
+  // printed colour chapter's QR opens the colour chapter and not the cover
+  if (history.replaceState) history.replaceState(null, '', '#' + ch);
 });
 
 document.getElementById('langs').addEventListener('click', function (e) {
@@ -1055,8 +1063,17 @@ try {
   useImages = localStorage.getItem('bwzoo-art') === 'photo';
 } catch (e) {}
 
-buildDots();
-render();
+var fromHash = (location.hash || '').replace('#', '');
+if (BOOK[fromHash]) {
+  setChapter(fromHash);
+} else {
+  buildDots();
+  render();
+}
+window.addEventListener('hashchange', function () {
+  var h = (location.hash || '').replace('#', '');
+  if (BOOK[h] && h !== ch) setChapter(h);
+});
 </script>
 </body>
 </html>

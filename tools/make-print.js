@@ -63,7 +63,15 @@ vm.createContext(sandbox);
 vm.runInContext(html.slice(from, to), sandbox);
 const BOOK = sandbox.BOOK;
 
-const qr = qrPath && fs.existsSync(qrPath) ? fs.readFileSync(qrPath, 'utf8') : '';
+// A book with more than one chapter gets a code per chapter cover, so the
+// colour zoo opens the colour chapter rather than the front of the book. The
+// per-chapter file sits beside the default one as <name>-<chapter>.svg.
+function qrFor(chapter) {
+    if (!qrPath) return '';
+    const perChapter = qrPath.replace(/\.svg$/, `-${chapter}.svg`);
+    const file = fs.existsSync(perChapter) ? perChapter : qrPath;
+    return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+}
 
 // The book stores generated artwork as a path relative to itself; the print
 // file usually lives a directory down, so re-base it. Missing files fall back
@@ -101,6 +109,7 @@ for (const key of Object.keys(BOOK)) {
         const accent = page.tint || BOOK[key].accent || '#D7263D';
         n += 1;
         if (page.cover) {
+            const qr = qrFor(key);
             sheets.push(`
   <section class="sheet cover">${marks(n)}
     <div class="art">${artworkOf(page)}</div>
@@ -115,7 +124,7 @@ for (const key of Object.keys(BOOK)) {
       <div class="listen-text">
         <b>Scan to listen</b>
         <span>Every page read aloud, in English and Arabic.</span>
-        <span class="url">${esc(listenUrl.replace(/^https?:\/\//, "").split("/")[0])}</span>
+        <span class="url">${esc(listenUrl.replace(/^https?:\/\//, "").split("/").slice(0, 2).join("/"))}</span>
       </div>
     </div>` : ''}
   </section>`);
@@ -173,10 +182,15 @@ const geometry = board ? `
   .sheet.dense .line.ar{font-size:12pt;line-height:1.5}
   .sheet.dense .sound{font-size:13pt}
   .sheet.dense .words{margin-top:4mm;gap:1.5mm}
-  .cover .art{width:92mm;height:92mm}
-  .cover h1{font-size:38pt}
+  /* the cover also carries the title block and the 34mm QR panel: at a full
+     stage the panel ran off the bottom of the square page and the QR was
+     clipped to the point where it would not scan */
+  .cover .art{width:74mm;height:74mm}
+  .cover h1{font-size:34pt}
 
   /* crop marks and folio sit in the bleed — the trim removes them */
+  .qr{width:34mm;height:34mm}
+  .listen-text b{font-size:12pt}
   .mark{position:absolute;width:${bleed}mm;height:${bleed}mm;border:0 solid rgba(17,16,16,.55)}
   .mark.tl{top:0;left:0;border-top-width:.25mm;border-left-width:.25mm}
   .mark.tr{top:0;right:0;border-top-width:.25mm;border-right-width:.25mm}

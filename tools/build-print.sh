@@ -9,7 +9,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BASE="https://www.hishamabuella.com/projects/bedtime-stories"
+BASE="https://hisham-abuella.github.io/bedtime-stories"
 
 # Print-weight copies of the generated artwork. The books ship 1024px PNGs,
 # which Chrome embeds whole: four illustrated editions came to 52MB. At 1024px
