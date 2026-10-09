@@ -18,39 +18,29 @@
   html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
 
   .sheet{
-    width:148mm; height:210mm; padding:12mm 12mm 10mm;
     display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
     page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
   }
-  /* text-heavy pages: the artwork yields, the words stay whole */
-  .sheet.dense .art{width:74mm;height:74mm}
-  .sheet.dense h2{font-size:20pt}
-  .sheet.dense h2.ar{font-size:17pt}
-  .sheet.dense .line{font-size:11pt;line-height:1.3}
-  .sheet.dense .line.ar{font-size:11.5pt;line-height:1.5}
-  .sheet.dense .sound{font-size:12.5pt}
-  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
   .sheet:last-child{page-break-after:auto;break-after:auto}
 
-  .art{width:108mm;height:108mm;display:flex;align-items:center;justify-content:center;flex:none}
-  .art svg{width:100%;height:100%;display:block}
+  .art{display:flex;align-items:center;justify-content:center;flex:none}
+  .art svg,.art img{width:100%;height:100%;display:block;object-fit:contain}
+  .art img{border-radius:3mm}
   .art svg.breathe{animation:none!important}
 
-  .words{margin-top:6mm;text-align:center;width:100%;display:flex;flex-direction:column;gap:2mm}
-  h1{font-family:var(--display);font-weight:900;font-size:30pt;line-height:1;margin:0}
+  .words{text-align:center;width:100%;display:flex;flex-direction:column;gap:2mm}
+  h1{font-family:var(--display);font-weight:900;line-height:1;margin:0}
   h1 em{font-style:normal;color:var(--accent)}
-  h2{font-family:var(--display);font-weight:900;font-size:26pt;line-height:1;margin:0;
+  h2{font-family:var(--display);font-weight:900;line-height:1;margin:0;
      text-transform:uppercase;letter-spacing:.02em;color:var(--accent)}
-  h2.ar{font-family:var(--ar);text-transform:none;letter-spacing:0;font-size:22pt;line-height:1.3}
-  .line{font-size:13pt;line-height:1.35;margin:0}
-  .line.ar{font-family:var(--ar);font-size:13pt;line-height:1.6}
-  .sound{font-family:var(--display);font-style:italic;font-weight:600;font-size:15pt;margin:0;color:var(--accent)}
+  h2.ar{font-family:var(--ar);text-transform:none;letter-spacing:0;line-height:1.3}
+  .line{margin:0}
+  .line.ar{font-family:var(--ar)}
+  .sound{font-family:var(--display);font-style:italic;font-weight:600;margin:0;color:var(--accent)}
   .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
   .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
   hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
 
-  .cover .art{width:96mm;height:96mm}
-  .cover h1{font-size:34pt}
   .listen{
     margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
     border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
@@ -61,6 +51,29 @@
   .listen-text b{font-size:11pt}
   .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
   .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
+
+  .sheet{
+    width:148mm; height:210mm; padding:12mm 12mm 10mm;
+  }
+  .art{width:108mm;height:108mm}
+  /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.dense h2{font-size:20pt}
+  .sheet.dense h2.ar{font-size:17pt}
+  .sheet.dense .line{font-size:11pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:11.5pt;line-height:1.5}
+  .sheet.dense .sound{font-size:12.5pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
+  .words{margin-top:6mm}
+  h1{font-size:30pt}
+  h2{font-size:26pt}
+  h2.ar{font-size:22pt}
+  .line{font-size:13pt;line-height:1.35}
+  .line.ar{font-size:13pt;line-height:1.6}
+  .sound{font-size:15pt}
+  .cover .art{width:96mm;height:96mm}
+  .cover h1{font-size:34pt}
+
 </style>
 </head>
 <body>

@@ -85,21 +85,68 @@ story across when it is ready.
 
 ## Printed editions
 
-`print/*.pdf` are print-ready: A5 portrait, one story page per sheet, artwork
-large with the English and Arabic text together so a single copy serves both.
-The cover carries a QR code that opens the narrated version on a phone.
+Four editions per story, all built from the book itself — the artwork and both
+languages are lifted out of its own `ART` and `BOOK` data, so a printed copy
+cannot drift from the screen one.
 
-Rebuild after changing a story — the pages are lifted straight out of the book's
-own `ART` and `BOOK` data, so the print edition cannot drift from the screen one:
+| File | Format | Artwork |
+|---|---|---|
+| `<book>-print.pdf` | A5 portrait | hand-drawn |
+| `<book>-print-illustrated.pdf` | A5 portrait | generated |
+| `<book>-board.pdf` | 180mm square + 3mm bleed | hand-drawn |
+| `<book>-board-illustrated.pdf` | 180mm square + 3mm bleed | generated |
+
+Rebuild all eight after changing a story:
 
 ```sh
-node tools/make-print.js susu.html print/susu-print.html \
-  --url https://www.hishamabuella.com/projects/bedtime-stories/susu.html \
-  --qr print/qr-susu.svg
-"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
-  --no-pdf-header-footer --print-to-pdf=print/susu.pdf file://$PWD/print/susu-print.html
+tools/build-print.sh
 ```
 
-**The QR points at the live site, not this repo** — this repo is private, so
-GitHub cannot serve the pages to a phone. If the books ever move, regenerate the
-QR codes (`segno`) against the new URL.
+### Printing a board book
+
+A three-month-old reads with his hands and his mouth. Paper tears, creases and
+goes soft; the board edition is the one to make if the book is going to be
+handled rather than held up. **Print the `-board` PDF, never the A5 one** — it
+carries the bleed and crop marks the rest of this depends on.
+
+| | |
+|---|---|
+| Stock | **300–350gsm** card, matte or silk. Below 250gsm it will not feel like a board book; above 400gsm most home printers jam. |
+| Sides | **Single-sided.** Each leaf is two sheets glued back to back, which is what makes it stiff. |
+| Finish | **Matte laminate or self-adhesive laminating pouches.** This is the part that matters most: it is what survives being chewed, and it keeps ink out of his mouth. |
+| Corners | **Round every corner, 10mm radius**, with a corner punch after trimming. Square card corners on a 350gsm board are genuinely sharp at eye height. |
+| Ink | Any inkjet or laser. Laminate regardless — unlaminated inkjet ink lifts when wet. |
+
+Assembly:
+
+1. Print single-sided on card. One page per sheet, any paper size that holds
+   186mm square — A4 works.
+2. Trim to the crop marks: 180mm square. The folio in the bleed is the page
+   number, so a stack of loose sheets stays in order; trimming removes it.
+3. Laminate each sheet.
+4. Glue back to back **in printed order** — 1+2, 3+4, 5+6 — so each leaf is one
+   board with the right page on each face. The zoo makes eleven leaves, Susu five.
+5. Round the corners.
+6. Bind along the left edge: book-binding tape, or two holes and a ring. Rings
+   let a chewed page be replaced without rebuilding the book.
+
+A commercial printer will take the same PDF — ask for 180mm square, single-sided
+on 350gsm, matte laminate both sides, 10mm rounded corners, trimmed to the crop
+marks.
+
+### The QR code
+
+The cover carries a QR that opens the narrated version on a phone, so whoever is
+holding the printed book can play the same voice reading it.
+
+**It points at the live site, not this repo** — this repo is private, and GitHub
+will not serve pages from a private repo, so a QR aimed here would hit a login
+wall. If the books move, regenerate the codes (`segno`) against the new URL and
+rebuild.
+
+### Generated artwork in print
+
+The books ship 1024px PNGs. At 180mm that is 232dpi, which is fine for these
+flat illustrations but below the 300dpi a printer will ask for. `build-print.sh`
+writes print-weight JPEGs into `print/img/` first, which takes the illustrated
+editions from 14MB to 2.5MB without a visible change at this size.
