@@ -45,4 +45,7 @@ for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg" \
   one "$book" "$qr" "-print-illustrated" --art images
   one "$book" "$qr" "-board" --board
   one "$book" "$qr" "-board-illustrated" --board --art images
+  # the same pages with the Egyptian column instead of the fusha one
+  one "$book" "$qr" "-board-eg" --board --dialect eg
+  one "$book" "$qr" "-board-illustrated-eg" --board --art images --dialect eg
 done

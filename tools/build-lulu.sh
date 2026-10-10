@@ -67,4 +67,9 @@ for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg" \
   one "$book" "$qr" "-lulu-cover"              --cover
   one "$book" "$qr" "-lulu-interior-illustrated" --art images
   one "$book" "$qr" "-lulu-cover-illustrated"  --cover --art images
+  # Egyptian editions: same pictures, the مصري column under the English
+  one "$book" "$qr" "-lulu-interior-eg"             --dialect eg
+  one "$book" "$qr" "-lulu-cover-eg"                --cover --dialect eg
+  one "$book" "$qr" "-lulu-interior-illustrated-eg" --art images --dialect eg
+  one "$book" "$qr" "-lulu-cover-illustrated-eg"    --cover --art images --dialect eg
 done

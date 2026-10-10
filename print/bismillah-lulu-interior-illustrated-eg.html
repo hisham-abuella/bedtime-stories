@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Bismillah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Fredoka:wght@400..600&family=Noto+Kufi+Arabic:wght@400..900&display=swap">
+<style>
+  @page { size: 196.85mm 196.85mm; margin: 0; }   /* 190.5mm square trim + 3.175mm bleed */
+  :root{
+    --ink:#111010; --paper:#FCFBF6; --quiet:#7E7A6E; --accent:#D7263D;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --body:"Fredoka","Avenir Next Rounded",system-ui,sans-serif;
+    --ar:"Baloo Bhaijaan 2","Noto Kufi Arabic",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+
+  .sheet{
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
+  }
+  .sheet:last-child{page-break-after:auto;break-after:auto}
+
+  .art{display:flex;align-items:center;justify-content:center;flex:none}
+  .art svg,.art img{width:100%;height:100%;display:block;object-fit:contain}
+  .art img{border-radius:3mm}
+  .art svg.breathe{animation:none!important}
+
+  .words{text-align:center;width:100%;display:flex;flex-direction:column;gap:2mm}
+  h1{font-family:var(--display);font-weight:900;line-height:1;margin:0}
+  h1 em{font-style:normal;color:var(--accent)}
+  h2{font-family:var(--display);font-weight:900;line-height:1;margin:0;
+     text-transform:uppercase;letter-spacing:.02em;color:var(--accent)}
+  h2.ar{font-family:var(--ar);text-transform:none;letter-spacing:0;line-height:1.3}
+  .line{margin:0}
+  .line.ar{font-family:var(--ar)}
+  .sound{font-family:var(--display);font-style:italic;font-weight:600;margin:0;color:var(--accent)}
+  .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
+  .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
+  hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
+
+  .listen{
+    margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
+    border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
+  }
+  .qr{width:30mm;height:30mm;flex:none}
+  .qr svg{width:100%;height:100%;display:block}
+  .listen-text{display:flex;flex-direction:column;gap:1mm;text-align:left}
+  .listen-text b{font-size:11pt}
+  .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
+  .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
+
+  .sheet{
+    width:196.85mm; height:196.85mm; padding:15.875mm;
+    position:relative;
+  }
+  /* a baby is looking at the picture, not the words: give it the page */
+  .sheet:not(.cover){justify-content:center}
+  .art{width:108mm;height:108mm}
+  .sheet.snug .art{width:82mm;height:82mm}
+  .sheet.dense .art{width:72mm;height:72mm}
+  .words{margin-top:5mm}
+  h1{font-size:34pt}
+  h2{font-size:27pt}
+  h2.ar{font-size:23pt}
+  .line{font-size:14pt;line-height:1.35}
+  .line.ar{font-size:14pt;line-height:1.6}
+  .sound{font-size:16pt}
+  .sheet.dense h2{font-size:21pt}
+  .sheet.dense h2.ar{font-size:18pt}
+  .sheet.dense .line{font-size:11.5pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:12pt;line-height:1.5}
+  .sheet.dense .sound{font-size:13pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
+  /* the cover also carries the title block and the 34mm QR panel: at a full
+     stage the panel ran off the bottom of the square page and the QR was
+     clipped to the point where it would not scan */
+  .cover .art{width:66mm;height:66mm}
+  .cover h1{font-size:34pt}
+
+  /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
+     edition's 8mm, so every stage comes down to match. Measured, not guessed. */
+  
+  .art{width:92mm;height:92mm}
+  .sheet.snug .art{width:74mm;height:74mm}
+  .sheet.dense .art{width:64mm;height:64mm}
+  .cover .art{width:62mm;height:62mm}
+  .words{margin-top:4mm}
+  .sheet.blank{background:var(--paper)}
+  
+
+  /* crop marks and folio sit in the bleed — the trim removes them */
+  .qr{width:34mm;height:34mm}
+  .listen-text b{font-size:12pt}
+  .mark{position:absolute;width:3.175mm;height:3.175mm;border:0 solid rgba(17,16,16,.55)}
+  .mark.tl{top:0;left:0;border-top-width:.25mm;border-left-width:.25mm}
+  .mark.tr{top:0;right:0;border-top-width:.25mm;border-right-width:.25mm}
+  .mark.bl{bottom:0;left:0;border-bottom-width:.25mm;border-left-width:.25mm}
+  .mark.br{bottom:0;right:0;border-bottom-width:.25mm;border-right-width:.25mm}
+  .folio{
+    position:absolute;bottom:.4mm;left:50%;transform:translateX(-50%);
+    font-family:var(--body);font-style:normal;font-size:5pt;color:rgba(17,16,16,.5);
+  }
+
+
+</style>
+</head>
+<body>
+
+  <section class="sheet snug" style="--accent:#E8C27A">
+    <div class="art"><img src="../print/img-hi/images-bismillah/waking.jpg" alt=""></div>
+    <div class="words">
+      <h2>When You Wake</h2>
+      <p class="line">The light comes in at the window. You open your eyes, and the whole day is still in front of you.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">لمّا تصحى</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">النور داخل من الشبّاك. بتفتح عينيك، واليوم كلّه لسّه قدّامك.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#9CC4D8">
+    <div class="art"><img src="../print/img-hi/images-bismillah/water.jpg" alt=""></div>
+    <div class="words">
+      <h2>Clean Hands</h2>
+      <p class="line">Cool water runs over your fingers, and over mine. Wash them well, little one.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">إيدين نضيفة</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">الميّة الساقعة بتجري على صوابعك، وعلى صوابعي. اغسلهم كويّس يا حبيبي.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet" style="--accent:#C97B4A">
+    <div class="art"><img src="../print/img-hi/images-bismillah/eating.jpg" alt=""></div>
+    <div class="words">
+      <h2>Before You Eat</h2>
+      <p class="line">Warm bread. Sweet dates. A small bowl that is yours and nobody else's.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">قبل ما تاكل</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">عيش سخن. وتمر حلو. وطبق صغيّر ليك لوحدك.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#9CC4D8">
+    <div class="art"><img src="../print/img-hi/images-bismillah/drinking.jpg" alt=""></div>
+    <div class="words">
+      <h2>A Drink of Water</h2>
+      <p class="line">Small sips, and a rest in between. Nothing in the world is better than water when you are thirsty.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">شويّة ميّة</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">بُقّ صغيّر، ونرتاح بين كل بُقّ والتاني. مفيش حاجة في الدنيا أحلى من الميّة وإنت عطشان.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet" style="--accent:#8FB58A">
+    <div class="art"><img src="../print/img-hi/images-bismillah/door.jpg" alt=""></div>
+    <div class="words">
+      <h2>Out the Door</h2>
+      <p class="line">Little shoes on. The door swings open. The air outside smells like morning.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">عند الباب</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">جزمة صغيّرة في رجليك. والباب بيتفتح. وريحة الصبح برّه.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C9842E">
+    <div class="art"><img src="../print/img-hi/images-bismillah/home.jpg" alt=""></div>
+    <div class="words">
+      <h2>Home Again</h2>
+      <p class="line">Back through the same door, into the same warm room, where everyone was waiting for you.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">ورجعنا البيت</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">بنرجع من نفس الباب، لنفس الأوضة الدافية، اللي الكل كان مستنّيك فيها.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C7643F">
+    <div class="art"><img src="../print/img-hi/images-bismillah/bowl.jpg" alt=""></div>
+    <div class="words">
+      <h2>Susu's Bowl</h2>
+      <p class="line">You fill the bowl, and the cat comes running. A small kindness is still a kindness.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">طبق سوسو</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">بتملا الطبق، والقطّة تيجي جري. والمعروف الصغيّر برضه معروف.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#6E7FA8">
+    <div class="art"><img src="../print/img-hi/images-bismillah/sleep.jpg" alt=""></div>
+    <div class="words">
+      <h2>Time to Sleep</h2>
+      <p class="line">The lamp goes low. The blanket comes up. Your eyes are closing already, and that is allowed.</p>
+      <p class="sound">Bismillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">وقت النوم</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">النور بيوطى. والغطا بيتشدّ. وعينيك بتغمّض من دلوقتي، ومفيش مشكلة.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#6E7FA8">
+    <div class="art"><img src="../print/img-hi/images-bismillah/goodnight.jpg" alt=""></div>
+    <div class="words">
+      <h2>Goodnight</h2>
+      <p class="line">Every day begins with one word, and every day ends with it too.</p>
+      <p class="sound">Bismillah. Goodnight, Yusuf.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar-EG">تصبح على خير</h2>
+      <p class="line ar" dir="rtl" lang="ar-EG">كل يوم بيبدأ بكلمة واحدة، وبيها بيخلص برضه.</p>
+      <p class="sound ar" dir="rtl" lang="ar-EG">بِسمِ الله. تصبح على خير، يا يوسف.</p>
+    </div>
+  </section>
+
+  <section class="sheet blank"></section>
+
+  <section class="sheet blank"></section>
+
+  <section class="sheet blank"></section>
+</body>
+</html>

@@ -50,6 +50,11 @@ const board = has('--board');
 // Lulu's Small Square, saddle stitched. Their numbers, in inches, because the
 // trim is specified in inches and rounding it through mm moves the cut line.
 const lulu = has('--lulu');
+// Which Arabic sits under the English: the fusha the books are written in, or
+// the Egyptian of the مصري switch. Same page, same picture, different column.
+const dialect = arg('--dialect', 'ar') === 'eg' ? 'eg' : 'ar';
+const arOf = (p) => (dialect === 'eg' && p.eg) ? p.eg : p.ar;
+const arLang = dialect === 'eg' ? 'ar-EG' : 'ar';
 const coverSpread = has('--cover');
 // which artwork: the hand-drawn SVG the book opens with, or the generated
 // illustrations behind the book's own artwork toggle
@@ -149,7 +154,7 @@ for (const key of Object.keys(BOOK)) {
       <p class="eyebrow">${plain(page.en.eyebrow)}</p>
       <h1>${plain(page.en.title).replace(/<em>/g, '<em>')}</h1>
       <p class="line">${plain(page.en.line)}</p>
-      <p class="line ar" dir="rtl" lang="ar">${plain(page.ar.line)}</p>
+      <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(page).line)}</p>
     </div>
     ${qr ? `<div class="listen">
       <div class="qr">${qr}</div>
@@ -163,7 +168,7 @@ for (const key of Object.keys(BOOK)) {
         } else {
             // the longest pages (the hadith page) overflow at full size:
             // give them a smaller stage and tighter type rather than clipping
-            const load = (page.en.line + page.en.sound + page.ar.line + page.ar.sound).length;
+            const load = (page.en.line + page.en.sound + arOf(page).line + arOf(page).sound).length;
             // the square board page has less height to spare than A5, so it
             // needs a middle setting between a full stage and a cramped one
             // thresholds are measured, not guessed: on the square page a full
@@ -178,9 +183,9 @@ for (const key of Object.keys(BOOK)) {
       <p class="line">${plain(page.en.line)}</p>
       <p class="sound">${plain(page.en.sound)}</p>
       <hr>
-      <h2 class="ar" dir="rtl" lang="ar">${plain(page.ar.name)}</h2>
-      <p class="line ar" dir="rtl" lang="ar">${plain(page.ar.line)}</p>
-      <p class="sound ar" dir="rtl" lang="ar">${plain(page.ar.sound)}</p>
+      <h2 class="ar" dir="rtl" lang="${arLang}">${plain(arOf(page).name)}</h2>
+      <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(page).line)}</p>
+      <p class="sound ar" dir="rtl" lang="${arLang}">${plain(arOf(page).sound)}</p>
     </div>
   </section>`);
         }
@@ -208,7 +213,7 @@ if (coverSpread) {
         <p class="eyebrow">${plain(c.en.eyebrow)}</p>
         <h2 class="back-title">${plain(c.en.title).replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()}</h2>
         <p class="line">${plain(c.en.line)}</p>
-        <p class="line ar" dir="rtl" lang="ar">${plain(c.ar.line)}</p>
+        <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(c).line)}</p>
       </div>
       ${qr ? `<div class="listen">
         <div class="qr">${qr}</div>
@@ -225,7 +230,7 @@ if (coverSpread) {
         <p class="eyebrow">${plain(c.en.eyebrow)}</p>
         <h1>${plain(c.en.title)}</h1>
         <p class="line">${plain(c.en.line)}</p>
-        <p class="line ar" dir="rtl" lang="ar">${plain(c.ar.line)}</p>
+        <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(c).line)}</p>
       </div>
     </div>
   </section>`);
