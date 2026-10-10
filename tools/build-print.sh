@@ -18,9 +18,9 @@ jpegs() {
   local src
   for src in images-v1 images-susu images-bismillah images-alhamdulillah images-khalaqa images-nabina; do
     [[ -d $src ]] || continue
-    mkdir -p "print/img/$src"
+    mkdir -p "input/img/$src"
     for png in "$src"/*.png; do
-      local out="print/img/$src/$(basename "${png%.png}").jpg"
+      local out="input/img/$src/$(basename "${png%.png}").jpg"
       [[ -f $out && $out -nt $png ]] && continue
       sips -s format jpeg -s formatOptions 88 "$png" --out "$out" >/dev/null
     done
@@ -28,24 +28,27 @@ jpegs() {
 }
 jpegs
 
+# print/ holds finished PDFs only, split by which Arabic is on the page.
+# The HTML Chrome renders from is scratch, so it goes in build/.
+mkdir -p build print/arabic print/egyptian
+
 one() {           # one <book> <qr> <suffix> [extra flags...]
   local book=$1 qr=$2 suffix=$3; shift 3
-  node tools/make-print.js "$book.html" "print/$book$suffix.html" \
-       --url "$BASE/$book.html" --qr "print/$qr" "$@"
+  local dest=print/arabic; case " $* " in *" --dialect eg "*) dest=print/egyptian ;; esac
+  node tools/make-print.js "books/$book.html" "build/$book$suffix.html" \
+       --url "$BASE/books/$book.html" --qr "input/qr/$qr" "$@"
   "$CHROME" --headless --no-pdf-header-footer \
-       --print-to-pdf="print/$book$suffix.pdf" "file://$PWD/print/$book$suffix.html" 2>/dev/null
-  printf '  %-44s %s\n' "print/$book$suffix.pdf" "$(du -h "print/$book$suffix.pdf" | cut -f1)"
+       --print-to-pdf="$dest/$book$suffix.pdf" "file://$PWD/build/$book$suffix.html" 2>/dev/null
+  printf '  %-50s %s\n' "$dest/$book$suffix.pdf" "$(du -h "$dest/$book$suffix.pdf" | cut -f1)"
 }
 
 for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg" \
             "bismillah qr-bismillah.svg" "alhamdulillah qr-alhamdulillah.svg" \
             "khalaqa qr-khalaqa.svg" "nabina qr-nabina.svg"; do
   set -- $pair; book=$1; qr=$2
-  one "$book" "$qr" "-print"
-  one "$book" "$qr" "-print-illustrated" --art images
-  one "$book" "$qr" "-board" --board
-  one "$book" "$qr" "-board-illustrated" --board --art images
+  one "$book" "$qr" "-print" --art images
+  one "$book" "$qr" "-board" --board --art images
   # the same pages with the Egyptian column instead of the fusha one
-  one "$book" "$qr" "-board-eg" --board --dialect eg
-  one "$book" "$qr" "-board-illustrated-eg" --board --art images --dialect eg
+  one "$book" "$qr" "-board-eg" --board --art images --dialect eg
+  one "$book" "$qr" "-print-eg" --art images --dialect eg
 done

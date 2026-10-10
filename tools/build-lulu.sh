@@ -24,17 +24,17 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 BASE="https://hisham-abuella.github.io/bedtime-stories"
 
 # Print-weight JPEGs from the 1536px re-renders.
-mkdir -p print/img-hi
+mkdir -p input/img-hi
 missing=0
 for src in images-v1 images-susu images-bismillah images-alhamdulillah images-khalaqa images-nabina; do
   [[ -d $src ]] || continue
-  mkdir -p "print/img-hi/$src"
+  mkdir -p "input/img-hi/$src"
   for png in "$src"/*.png; do
     hi="art-hi/$src/$(basename "$png")"
     if [[ ! -f $hi ]]; then
       echo "  missing 1536px: $hi" >&2; missing=$((missing + 1)); continue
     fi
-    out="print/img-hi/$src/$(basename "${png%.png}").jpg"
+    out="input/img-hi/$src/$(basename "${png%.png}").jpg"
     [[ -f $out && $out -nt $hi ]] && continue
     # Lulu wants 300-600ppi, a ceiling as well as a floor. The 1536px master is
     # 387ppi in the 92mm stage but 629ppi in the 62mm cover box, so it is
@@ -50,26 +50,26 @@ if (( missing )); then
   exit 1
 fi
 
+# print/ holds finished PDFs only, split by which Arabic is on the page.
+mkdir -p build print/arabic print/egyptian
+
 one() {           # one <book> <qr> <suffix> [extra flags...]
   local book=$1 qr=$2 suffix=$3; shift 3
-  node tools/make-print.js "$book.html" "print/$book$suffix.html" \
-       --url "$BASE/$book.html" --qr "print/$qr" --lulu "$@"
+  local dest=print/arabic; case " $* " in *" --dialect eg "*) dest=print/egyptian ;; esac
+  node tools/make-print.js "books/$book.html" "build/$book$suffix.html" \
+       --url "$BASE/books/$book.html" --qr "input/qr/$qr" --lulu "$@"
   "$CHROME" --headless --no-pdf-header-footer \
-       --print-to-pdf="print/$book$suffix.pdf" "file://$PWD/print/$book$suffix.html" 2>/dev/null
-  printf '  %-46s %s\n' "print/$book$suffix.pdf" "$(du -h "print/$book$suffix.pdf" | cut -f1)"
+       --print-to-pdf="$dest/$book$suffix.pdf" "file://$PWD/build/$book$suffix.html" 2>/dev/null
+  printf '  %-52s %s\n' "$dest/$book$suffix.pdf" "$(du -h "$dest/$book$suffix.pdf" | cut -f1)"
 }
 
 for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg" \
             "bismillah qr-bismillah.svg" "alhamdulillah qr-alhamdulillah.svg" \
             "khalaqa qr-khalaqa.svg" "nabina qr-nabina.svg"; do
   set -- $pair; book=$1; qr=$2
-  one "$book" "$qr" "-lulu-interior"
-  one "$book" "$qr" "-lulu-cover"              --cover
-  one "$book" "$qr" "-lulu-interior-illustrated" --art images
-  one "$book" "$qr" "-lulu-cover-illustrated"  --cover --art images
+  one "$book" "$qr" "-lulu-interior" --art images
+  one "$book" "$qr" "-lulu-cover"    --cover --art images
   # Egyptian editions: same pictures, the مصري column under the English
-  one "$book" "$qr" "-lulu-interior-eg"             --dialect eg
-  one "$book" "$qr" "-lulu-cover-eg"                --cover --dialect eg
-  one "$book" "$qr" "-lulu-interior-illustrated-eg" --art images --dialect eg
-  one "$book" "$qr" "-lulu-cover-illustrated-eg"    --cover --art images --dialect eg
+  one "$book" "$qr" "-lulu-interior-eg" --art images --dialect eg
+  one "$book" "$qr" "-lulu-cover-eg"    --cover --art images --dialect eg
 done

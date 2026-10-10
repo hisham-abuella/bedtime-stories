@@ -15,7 +15,7 @@ fail=0
 note() { printf '    %-18s %s\n' "$1" "$2"; }
 bad()  { fail=$((fail + 1)); printf '    %-18s \033[31m%s\033[0m\n' "$1" "$2"; }
 
-for f in print/*-lulu-*.pdf; do
+for f in print/*/*-lulu-*.pdf; do
   [[ -e $f ]] || { echo "no Lulu PDFs built yet — run tools/build-lulu.sh"; exit 1; }
   echo "$(basename "$f")"
   info=$(pdfinfo "$f")
@@ -57,7 +57,7 @@ for f in print/*-lulu-*.pdf; do
   grep -q '^Encrypted: *no' <<<"$info" && note "encryption" "none" || bad "encryption" "file is protected"
 
   # 6. no trim, bleed or margin lines — checked in the source, where they'd come from
-  src=${f%.pdf}.html
+  src=build/$(basename "${f%.pdf}").html
   if [[ -f $src ]]; then
     marks=$(grep -c 'class="mark\|class="folio"' "$src" || true)
     (( marks )) && bad "marks" "$marks crop/folio marks present" || note "marks" "none"

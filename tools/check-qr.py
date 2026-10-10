@@ -17,13 +17,13 @@ TMP.mkdir(exist_ok=True)
 
 # what each book's codes are allowed to point at
 ALLOWED = {
-    'black-white-zoo': {f'{BASE}/black-white-zoo.html', f'{BASE}/black-white-zoo.html#bw',
-                        f'{BASE}/black-white-zoo.html#color'},
-    'susu':          {f'{BASE}/susu.html'},
-    'bismillah':     {f'{BASE}/bismillah.html'},
-    'alhamdulillah': {f'{BASE}/alhamdulillah.html'},
-    'khalaqa':       {f'{BASE}/khalaqa.html'},
-    'nabina':        {f'{BASE}/nabina.html'},
+    'black-white-zoo': {f'{BASE}/books/black-white-zoo.html', f'{BASE}/books/black-white-zoo.html#bw',
+                        f'{BASE}/books/black-white-zoo.html#color'},
+    'susu':          {f'{BASE}/books/susu.html'},
+    'bismillah':     {f'{BASE}/books/bismillah.html'},
+    'alhamdulillah': {f'{BASE}/books/alhamdulillah.html'},
+    'khalaqa':       {f'{BASE}/books/khalaqa.html'},
+    'nabina':        {f'{BASE}/books/nabina.html'},
 }
 
 def book_of(name):
@@ -33,7 +33,7 @@ def book_of(name):
     return None
 
 rows, bad, total_codes = [], [], 0
-pdfs = sorted(glob.glob(str(REPO / 'print' / '*.pdf')))
+pdfs = sorted(glob.glob(str(REPO / 'print' / '*' / '*.pdf')))
 for pdf in pdfs:
     name = Path(pdf).stem
     book = book_of(name)

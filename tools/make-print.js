@@ -96,25 +96,32 @@ function qrFor(chapter) {
 // The book stores generated artwork as a path relative to itself; the print
 // file usually lives a directory down, so re-base it. Missing files fall back
 // to the drawing rather than printing a hole.
-const rebase = path.relative(path.dirname(path.resolve(outPath)), path.dirname(path.resolve(bookPath)));
-const bookDir = path.dirname(bookPath);
+// Everything is resolved against the repo root and then made relative to
+// wherever the print file is being written. The books moved into books/ and
+// the artwork into input/, so the two are no longer siblings and the old
+// "rebase onto the book's directory" shortcut quietly produced paths that
+// pointed inside books/.
+const outDir = path.dirname(path.resolve(outPath));
+const bookDir = path.dirname(path.resolve(bookPath));
+const fromOut = (repoRel) => path.relative(outDir, path.resolve(repoRel));
+
 function artworkOf(page) {
     if (useImages && page.img) {
+        // page.img is written relative to the book ("../images-susu/x.png"),
+        // so normalise it back to a repo-relative path first.
+        const asset = path.relative(process.cwd(), path.resolve(bookDir, page.img));
         // prefer a JPEG made for print: the same picture at a twentieth of the
         // bytes, which is the difference between a mailable PDF and a 14MB one
-        const jpg = path.join('print', 'img', page.img.replace(/\.png$/, '.jpg'));
+        const jpg = path.join('input', 'img', asset.replace(/\.png$/, '.jpg'));
         // Lulu wants 300ppi minimum. The shipped art is 1024px, which is 241ppi
         // inside a 108mm box, so the print build looks first for the 1536px
-        // re-render in print/img-hi. Falling through to the 1024px copy would
+        // re-render in input/img-hi. Falling through to the 1024px copy would
         // pass preflight on the small stages and fail on the large ones, so
         // build-lulu.sh refuses to run until the hi-res set is complete.
-        const hi = path.join('print', 'img-hi', page.img.replace(/\.png$/, '.jpg'));
-        const order = lulu
-            ? [hi, jpg, page.img]
-            : [fs.existsSync(path.join(bookDir, jpg)) ? jpg : null, page.img];
-        for (const rel of order) {
-            if (rel && fs.existsSync(path.join(bookDir, rel))) {
-                return `<img src="${path.join(rebase, rel)}" alt="">`;
+        const hi = path.join('input', 'img-hi', asset.replace(/\.png$/, '.jpg'));
+        for (const rel of (lulu ? [hi, jpg, asset] : [jpg, asset])) {
+            if (fs.existsSync(rel)) {
+                return `<img src="${fromOut(rel)}" alt="">`;
             }
         }
     }

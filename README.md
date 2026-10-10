@@ -6,12 +6,28 @@ no framework, no build step. Open `index.html` for the shelf.
 
 | Story | File | What it is |
 | --- | --- | --- |
-| The Black and White Zoo | `black-white-zoo.html` | Contrast, then colour |
-| Susu the Cat | `susu.html` | A true family story |
-| Bismillah | `bismillah.html` | One word, every page |
-| Alhamdulillah, Little One | `alhamdulillah.html` | Eight plain gifts |
-| Allah Made It | `khalaqa.html` | Eight pieces of the world |
-| The Prophet Loved | `nabina.html` | Eight things he loved |
+| The Black and White Zoo | `books/black-white-zoo.html` | Contrast, then colour |
+| Susu the Cat | `books/susu.html` | A true family story |
+| Bismillah | `books/bismillah.html` | One word, every page |
+| Alhamdulillah, Little One | `books/alhamdulillah.html` | Eight plain gifts |
+| Allah Made It | `books/khalaqa.html` | Eight pieces of the world |
+| The Prophet Loved | `books/nabina.html` | Eight things he loved |
+
+## Where things live
+
+```
+index.html     the shelf, and the only page at the root
+books/         the six stories, one self-contained HTML file each
+audio*/        narration, one folder per book per language
+images*/       the generated artwork the pages load
+input/         what the print build reads: qr codes and print-weight JPEGs
+build/         scratch HTML the PDF renderer runs on; nothing to keep
+print/arabic/     finished PDFs, fusha
+print/egyptian/   finished PDFs, مصري
+```
+
+The books sit a directory down, so they reach their audio and artwork as
+`../audio-susu/en/`. Only `index.html` is at the root.
 
 ## The Black and White Zoo
 
