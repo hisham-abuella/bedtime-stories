@@ -4,7 +4,7 @@
  *
  *   node tools/make-transcripts.js stories/<slug>.json
  *
- * Writes source/<slug>-en.json and source/<slug>-ar.json in the format
+ * Writes source/<slug>-{en,ar,eg}.json in the format
  * generate.js expects. The words come from the spec, so the narration cannot
  * drift from the printed page; the delivery is added here as v4 audio tags.
  *
@@ -29,7 +29,8 @@ const plain = (s) => String(s || '')
 
 function build(lang) {
     const slides = spec.pages.map((p, i) => {
-        const c = p[lang];
+        // eg gives only the story words; the rest comes from the فصحى page
+        const c = lang === 'eg' ? { ...p.ar, ...p.eg } : p[lang];
         const last = i === spec.pages.length - 1;
         const open = p.tag || (last ? '[softly]' : '[warmly]');
         let body;
@@ -38,8 +39,8 @@ function build(lang) {
             // give its own opening line in the spec
             if (c.say) return { id: `p${i}`, title: plain(c.eyebrow), transcript: c.say };
             const title = plain(c.title);
-            const forWhom = lang === 'ar' ? 'ليوسف' : 'for Yusuf';
-            const comma = lang === 'ar' ? '،' : ',';   // Arabic takes its own comma
+            const forWhom = { en: 'for Yusuf', ar: 'ليوسف', eg: 'عشان يوسف' }[lang];
+            const comma = lang === 'en' ? ',' : '،';   // Arabic takes its own comma
             body = `${open} ${title}. ${plain(c.eyebrow)}${comma} ${forWhom}. <break time="0.5s" /> [gently] ${plain(c.line)}`;
         } else {
             const refrain = plain(c.sound);
@@ -51,7 +52,7 @@ function build(lang) {
     return { title: `${spec.title} ${lang.toUpperCase()}`, language: lang, slides };
 }
 
-for (const lang of ['en', 'ar']) {
+for (const lang of ['en', 'ar', 'eg']) {
     const out = path.join(root, 'source', `${spec.slug}-${lang}.json`);
     fs.writeFileSync(out, JSON.stringify(build(lang), null, 1) + '\n');
     const chars = build(lang).slides.reduce((n, s) => n + s.transcript.length, 0);

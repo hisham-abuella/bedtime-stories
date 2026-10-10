@@ -36,7 +36,11 @@ for src in images-v1 images-susu images-bismillah images-alhamdulillah images-kh
     fi
     out="print/img-hi/$src/$(basename "${png%.png}").jpg"
     [[ -f $out && $out -nt $hi ]] && continue
-    sips -s format jpeg -s formatOptions 90 "$hi" --out "$out" >/dev/null
+    # Lulu wants 300-600ppi, a ceiling as well as a floor. The 1536px master is
+    # 387ppi in the 92mm stage but 629ppi in the 62mm cover box, so it is
+    # resampled once to a width that lands inside the band for every box this
+    # format uses: 62mm -> 574ppi, 96mm -> 370ppi.
+    sips -Z 1400 -s format jpeg -s formatOptions 90 "$hi" --out "$out" >/dev/null
   done
 done
 if (( missing )); then

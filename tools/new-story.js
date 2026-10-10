@@ -58,7 +58,21 @@ ${pages.join(',\n\n')}
 };`;
 
 // ---- where the audio and the generated artwork live -------------------------
-const WIRING = `var AUDIO_DIR = { ${slug}:{ en:'audio-${slug}/en/', ar:'audio-${slug}/ar/' } };
+// Egyptian Arabic: only the story words are given in the spec; anything else
+// (the grown-up notes) falls back to the فصحى page in the book itself.
+const eg = spec.pages.map((p) => {
+    const { say, ...words } = p.eg || {};
+    return words;
+});
+
+const WIRING = `// Egyptian Arabic: the story words in مصري. Anything not given here (the
+// grown-up notes) falls back to the فصحى page.
+var EG = { ${slug}: ${JSON.stringify(eg, null, 1)} };
+Object.keys(EG).forEach(function (k) {
+  BOOK[k].pages.forEach(function (pg, i) { pg.eg = Object.assign({}, pg.ar, EG[k][i]); });
+});
+
+var AUDIO_DIR = { ${slug}:{ en:'audio-${slug}/en/', ar:'audio-${slug}/ar/', eg:'audio-${slug}/eg/' } };
 var SFX_DIR   = {};
 
 var IMG_V1 = {

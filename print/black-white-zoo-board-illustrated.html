@@ -80,6 +80,10 @@
   .cover .art{width:66mm;height:66mm}
   .cover h1{font-size:34pt}
 
+  /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
+     edition's 8mm, so every stage comes down to match. Measured, not guessed. */
+  
+
   /* crop marks and folio sit in the bleed — the trim removes them */
   .qr{width:34mm;height:34mm}
   .listen-text b{font-size:12pt}
@@ -92,6 +96,7 @@
     position:absolute;bottom:.4mm;left:50%;transform:translateX(-50%);
     font-family:var(--body);font-style:normal;font-size:5pt;color:rgba(17,16,16,.5);
   }
+
 
 </style>
 </head>

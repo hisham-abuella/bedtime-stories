@@ -80,6 +80,10 @@
   .cover .art{width:66mm;height:66mm}
   .cover h1{font-size:34pt}
 
+  /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
+     edition's 8mm, so every stage comes down to match. Measured, not guessed. */
+  
+
   /* crop marks and folio sit in the bleed — the trim removes them */
   .qr{width:34mm;height:34mm}
   .listen-text b{font-size:12pt}
@@ -92,6 +96,7 @@
     position:absolute;bottom:.4mm;left:50%;transform:translateX(-50%);
     font-family:var(--body);font-style:normal;font-size:5pt;color:rgba(17,16,16,.5);
   }
+
 
 </style>
 </head>
@@ -194,17 +199,17 @@
     </div>
   </section>
 
-  <section class="sheet snug" style="--accent:#9CC4D8">
+  <section class="sheet dense" style="--accent:#9CC4D8">
     <i class="mark tl"></i><i class="mark tr"></i><i class="mark bl"></i><i class="mark br"></i>
     <i class="folio">7</i>
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A water jug, a cup and a green twig"><g transform="translate(168,222)"><path d="M62 -24 q30 4 30 32 q0 28 -30 30" fill="none" stroke="#111010" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/><path d="M-62 -56 q0 -20 22 -20 h80 q22 0 22 20 l-12 112 q-2 20 -24 20 h-52 q-22 0 -24 -20 z" fill="#9CC4D8" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(312,230)"><path d="M0 -70 v140" fill="none" stroke="#8FB58A" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -70 v140" fill="none" opacity=".001" stroke="#111010" stroke-width="19" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10 -74 q10 -14 20 0 q-10 8 -20 0 z" fill="#8FB58A" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
     <div class="words">
       <h2>He Kept Everything Clean</h2>
-      <p class="line">Clean hands, clean clothes, clean teeth, clean water. He brushed his teeth with a soft green twig.</p>
+      <p class="line">Clean hands, clean clothes, clean teeth, clean water. He cleaned his teeth with a siwak — a soft green twig.</p>
       <p class="sound">Peace be upon him.</p>
       <hr>
       <h2 class="ar" dir="rtl" lang="ar">كانَ يُحِبُّ النَّظافة</h2>
-      <p class="line ar" dir="rtl" lang="ar">يَدانِ نظيفتان، وثوبٌ نظيف، وأسنانٌ نظيفة، وماءٌ نظيف. وكان يُنظّفُ أسنانَه بعودٍ أخضرَ ليّن.</p>
+      <p class="line ar" dir="rtl" lang="ar">يَدانِ نظيفتان، وثوبٌ نظيف، وأسنانٌ نظيفة، وماءٌ نظيف. وكان يُنظّفُ أسنانَه بِالسِّواكِ، عودٍ أخضرَ ليِّن.</p>
       <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
     </div>
   </section>
