@@ -57,7 +57,13 @@
   }
   .art{width:108mm;height:108mm}
   /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.snug .art{width:88mm;height:88mm}
   .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.snug h2{font-size:23pt}
+  .sheet.snug h2.ar{font-size:19pt}
+  .sheet.snug .line{font-size:12pt;line-height:1.32}
+  .sheet.snug .line.ar{font-size:12.5pt;line-height:1.55}
+  .sheet.snug .sound{font-size:14pt}
   .sheet.dense h2{font-size:20pt}
   .sheet.dense h2.ar{font-size:17pt}
   .sheet.dense .line{font-size:11pt;line-height:1.3}
@@ -353,7 +359,7 @@
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#D7263D">
+  <section class="sheet snug" style="--accent:#D7263D">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A sleeping moon with a little red bird">
   <circle cx="200" cy="196" r="140" fill="#111010"/><circle cx="248" cy="166" r="118" fill="#FCFBF6"/>
   <path d="M118 176 q18 -16 36 0" fill="none" stroke="#FCFBF6" stroke-width="9" stroke-linecap="round"/>
@@ -631,7 +637,7 @@
     </div>
   </section>
 
-  <section class="sheet" style="--accent:#F6F1E6">
+  <section class="sheet snug" style="--accent:#F6F1E6">
     <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A rainbow of eight colours">
   <g fill="none" stroke-width="26" stroke-linecap="round">
     <path d="M38 330 a162 162 0 0 1 324 0" stroke="#E02020"/>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Allah Made It</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Fredoka:wght@400..600&family=Noto+Kufi+Arabic:wght@400..900&display=swap">
+<style>
+  @page { size: 148mm 210mm; margin: 0; }   /* A5 portrait — two to a sheet of A4 */
+  :root{
+    --ink:#111010; --paper:#FCFBF6; --quiet:#7E7A6E; --accent:#D7263D;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --body:"Fredoka","Avenir Next Rounded",system-ui,sans-serif;
+    --ar:"Baloo Bhaijaan 2","Noto Kufi Arabic",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+
+  .sheet{
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
+  }
+  .sheet:last-child{page-break-after:auto;break-after:auto}
+
+  .art{display:flex;align-items:center;justify-content:center;flex:none}
+  .art svg,.art img{width:100%;height:100%;display:block;object-fit:contain}
+  .art img{border-radius:3mm}
+  .art svg.breathe{animation:none!important}
+
+  .words{text-align:center;width:100%;display:flex;flex-direction:column;gap:2mm}
+  h1{font-family:var(--display);font-weight:900;line-height:1;margin:0}
+  h1 em{font-style:normal;color:var(--accent)}
+  h2{font-family:var(--display);font-weight:900;line-height:1;margin:0;
+     text-transform:uppercase;letter-spacing:.02em;color:var(--accent)}
+  h2.ar{font-family:var(--ar);text-transform:none;letter-spacing:0;line-height:1.3}
+  .line{margin:0}
+  .line.ar{font-family:var(--ar)}
+  .sound{font-family:var(--display);font-style:italic;font-weight:600;margin:0;color:var(--accent)}
+  .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
+  .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
+  hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
+
+  .listen{
+    margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
+    border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
+  }
+  .qr{width:30mm;height:30mm;flex:none}
+  .qr svg{width:100%;height:100%;display:block}
+  .listen-text{display:flex;flex-direction:column;gap:1mm;text-align:left}
+  .listen-text b{font-size:11pt}
+  .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
+  .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
+
+  .sheet{
+    width:148mm; height:210mm; padding:12mm 12mm 10mm;
+  }
+  .art{width:108mm;height:108mm}
+  /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.snug .art{width:88mm;height:88mm}
+  .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.snug h2{font-size:23pt}
+  .sheet.snug h2.ar{font-size:19pt}
+  .sheet.snug .line{font-size:12pt;line-height:1.32}
+  .sheet.snug .line.ar{font-size:12.5pt;line-height:1.55}
+  .sheet.snug .sound{font-size:14pt}
+  .sheet.dense h2{font-size:20pt}
+  .sheet.dense h2.ar{font-size:17pt}
+  .sheet.dense .line{font-size:11pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:11.5pt;line-height:1.5}
+  .sheet.dense .sound{font-size:12.5pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
+  .words{margin-top:6mm}
+  h1{font-size:30pt}
+  h2{font-size:26pt}
+  h2.ar{font-size:22pt}
+  .line{font-size:13pt;line-height:1.35}
+  .line.ar{font-size:13pt;line-height:1.6}
+  .sound{font-size:15pt}
+  .cover .art{width:96mm;height:96mm}
+  .cover h1{font-size:34pt}
+
+</style>
+</head>
+<body>
+
+  <section class="sheet cover">
+    <div class="art"><img src="../print/img/images-khalaqa/cover.jpg" alt=""></div>
+    <div class="words">
+      <p class="eyebrow">A first book of the world</p>
+      <h1><em>Allah</em><br>Made It</h1>
+      <p class="line">Eight things you can see from where you are lying.</p>
+      <p class="line ar" dir="rtl" lang="ar">ثمانيةُ أشياءَ تراها من مكانِك هذا.</p>
+    </div>
+    <div class="listen">
+      <div class="qr"><?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 450 450" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="450" height="450" class="segno"><path transform="scale(10)" class="qrline" stroke="#111010" d="M2 2.5h7m4 0h1m1 0h1m6 0h3m5 0h5m1 0h7m-41 1h1m5 0h1m1 0h10m1 0h1m1 0h2m1 0h1m1 0h1m3 0h1m3 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h2m1 0h1m2 0h1m1 0h1m3 0h3m1 0h2m1 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h3m2 0h2m4 0h2m6 0h2m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h2m1 0h3m1 0h3m4 0h1m1 0h1m1 0h1m3 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m2 0h1m1 0h2m3 0h2m3 0h3m1 0h2m4 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-32 1h2m1 0h4m1 0h1m1 0h1m1 0h2m4 0h3m2 0h1m-32 1h3m1 0h2m2 0h3m1 0h1m2 0h1m2 0h1m2 0h3m2 0h4m7 0h2m-39 1h1m2 0h2m1 0h1m1 0h3m2 0h1m2 0h2m1 0h2m1 0h1m1 0h1m2 0h1m1 0h3m1 0h3m1 0h3m-38 1h2m1 0h1m1 0h2m2 0h2m4 0h1m6 0h1m2 0h3m2 0h2m1 0h1m1 0h2m-39 1h1m2 0h2m3 0h3m2 0h2m1 0h1m5 0h1m1 0h2m1 0h1m1 0h1m1 0h1m1 0h1m-35 1h2m1 0h6m3 0h4m1 0h3m1 0h1m3 0h3m1 0h1m1 0h3m3 0h2m1 0h1m-41 1h1m2 0h1m3 0h4m8 0h2m2 0h1m2 0h1m1 0h2m2 0h1m4 0h1m2 0h1m-41 1h3m2 0h2m2 0h1m2 0h1m3 0h2m1 0h4m1 0h2m1 0h2m1 0h3m1 0h1m1 0h2m1 0h2m-41 1h1m2 0h2m3 0h2m1 0h1m3 0h1m6 0h1m1 0h1m1 0h1m1 0h1m5 0h2m1 0h1m-37 1h2m1 0h1m1 0h5m1 0h4m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m1 0h1m3 0h1m3 0h1m-41 1h2m3 0h1m2 0h1m1 0h4m1 0h2m4 0h4m2 0h1m2 0h1m1 0h2m1 0h1m2 0h1m-37 1h1m3 0h1m1 0h1m2 0h2m2 0h1m9 0h4m1 0h1m5 0h2m-34 1h2m4 0h3m1 0h7m1 0h2m1 0h3m1 0h7m1 0h3m-40 1h1m1 0h7m2 0h1m2 0h1m2 0h2m1 0h1m1 0h1m1 0h5m2 0h1m1 0h2m1 0h5m-41 1h3m1 0h2m1 0h2m2 0h1m1 0h1m1 0h2m2 0h5m1 0h1m2 0h2m1 0h6m1 0h3m-41 1h5m1 0h1m3 0h1m1 0h3m2 0h1m1 0h1m1 0h3m4 0h2m2 0h2m4 0h2m-40 1h3m4 0h4m2 0h4m2 0h1m1 0h2m1 0h3m1 0h1m1 0h3m1 0h3m2 0h2m-41 1h10m2 0h1m1 0h2m1 0h2m2 0h1m3 0h2m2 0h1m5 0h1m1 0h2m1 0h1m-40 1h5m4 0h3m1 0h4m4 0h1m1 0h1m1 0h7m1 0h1m2 0h2m1 0h1m-41 1h1m3 0h1m1 0h1m6 0h2m1 0h1m5 0h1m5 0h2m1 0h2m1 0h2m1 0h1m2 0h1m-41 1h2m2 0h2m3 0h1m1 0h1m4 0h1m2 0h2m2 0h2m2 0h1m2 0h4m1 0h1m1 0h1m-37 1h1m2 0h1m1 0h1m2 0h1m2 0h4m1 0h2m3 0h2m1 0h1m1 0h2m2 0h2m2 0h3m-36 1h1m1 0h1m5 0h1m1 0h1m1 0h2m1 0h1m1 0h1m1 0h1m2 0h1m3 0h1m2 0h2m1 0h1m3 0h1m-39 1h1m2 0h5m6 0h2m2 0h4m1 0h2m1 0h6m1 0h4m-33 1h2m1 0h1m1 0h1m1 0h1m1 0h4m1 0h1m5 0h1m1 0h1m2 0h3m2 0h2m1 0h2m-38 1h1m4 0h4m1 0h2m1 0h1m1 0h1m3 0h1m2 0h2m1 0h1m1 0h2m2 0h9m-33 1h1m4 0h3m1 0h3m1 0h1m1 0h1m4 0h5m3 0h2m1 0h2m-41 1h7m2 0h6m2 0h2m2 0h4m1 0h1m1 0h1m1 0h3m1 0h1m1 0h4m-40 1h1m5 0h1m1 0h1m1 0h1m1 0h1m1 0h3m3 0h2m3 0h3m1 0h1m2 0h1m3 0h2m1 0h2m-41 1h1m1 0h3m1 0h1m5 0h1m2 0h3m1 0h1m2 0h1m1 0h1m7 0h5m1 0h1m-39 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m2 0h1m5 0h1m2 0h3m1 0h1m4 0h5m-41 1h1m1 0h3m1 0h1m1 0h4m2 0h1m4 0h3m2 0h2m2 0h2m2 0h1m2 0h1m1 0h1m2 0h1m-41 1h1m5 0h1m1 0h12m2 0h1m3 0h1m1 0h1m2 0h4m1 0h2m1 0h1m-40 1h7m3 0h1m2 0h2m1 0h3m1 0h2m1 0h1m1 0h1m1 0h1m2 0h4m5 0h1"/></svg>
+</div>
+      <div class="listen-text">
+        <b>Scan to listen</b>
+        <span>Every page read aloud, in English and Arabic.</span>
+        <span class="url">hisham-abuella.github.io/bedtime-stories</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#7FA6C9">
+    <div class="art"><img src="../print/img/images-khalaqa/sky.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Sky</h2>
+      <p class="line">Wide and blue and nothing holding it up. It is there every single morning when you look.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">السَّماء</h2>
+      <p class="line ar" dir="rtl" lang="ar">واسعةٌ زرقاء، ولا شيءَ يُمسِكُها. وهي هناك كلَّ صباحٍ حينَ تنظُر.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#2F6FA8">
+    <div class="art"><img src="../print/img/images-khalaqa/sea.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Sea</h2>
+      <p class="line">It comes up the sand and goes back again, all day and all night, and never once forgets.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">البَحر</h2>
+      <p class="line ar" dir="rtl" lang="ar">يصعَدُ على الرَّمْلِ ثمّ يعود، طَوالَ النهارِ وطَوالَ الليل، ولا ينسى مرّةً واحدة.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#8FB58A">
+    <div class="art"><img src="../print/img/images-khalaqa/palm.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Date Palm</h2>
+      <p class="line">Tall, with its feet in the sand, holding up a hundred sweet dates for whoever walks past.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">النَّخْلَة</h2>
+      <p class="line ar" dir="rtl" lang="ar">طويلةٌ، قدَماها في الرَّمْل، تحمِلُ مِئةَ تمرةٍ حُلوةٍ لمن يمُرُّ بها.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#E8C27A">
+    <div class="art"><img src="../print/img/images-khalaqa/bee.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Bee</h2>
+      <p class="line">Smaller than your thumb, and it knows the way to every flower and the way home again.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">النَّحْلَة</h2>
+      <p class="line ar" dir="rtl" lang="ar">أصغرُ من إبهامِك، وتعرِفُ طريقَها إلى كلِّ زهرة، وطريقَ العودةِ إلى بيتِها.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C7643F">
+    <div class="art"><img src="../print/img/images-khalaqa/bird.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Bird</h2>
+      <p class="line">It leaves the branch with nothing underneath it at all, and the air holds it up anyway.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">الطَّائِر</h2>
+      <p class="line ar" dir="rtl" lang="ar">يترُكُ الغُصنَ ولا شيءَ تحتَه أبداً، ومع ذلك يحمِلُه الهواء.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C97B4A">
+    <div class="art"><img src="../print/img/images-khalaqa/cat.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Cat</h2>
+      <p class="line">Four soft feet that make no sound at all, and eyes that can see in the dark better than yours.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">القِطَّة</h2>
+      <p class="line ar" dir="rtl" lang="ar">أربعُ أقدامٍ ناعمةٍ لا تُصدِرُ صوتاً، وعَينانِ تُبصِرانِ في الظلامِ أفضلَ من عينَيك.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#6E7FA8">
+    <div class="art"><img src="../print/img/images-khalaqa/moon.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Moon and the Stars</h2>
+      <p class="line">A thin white curve, and behind it more stars than anyone has ever finished counting.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">القَمَرُ والنُّجوم</h2>
+      <p class="line ar" dir="rtl" lang="ar">قَوسٌ أبيضُ رفيع، ومن ورائِه نُجومٌ أكثرُ ممّا أتمَّ أحدٌ عدَّه.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#7FA6C9">
+    <div class="art"><img src="../print/img/images-khalaqa/rain.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Rain</h2>
+      <p class="line">It goes up without anyone seeing, and comes down again on the dry ground, and the ground turns green.</p>
+      <p class="sound">Allah is the Maker of everything.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">المَطَر</h2>
+      <p class="line ar" dir="rtl" lang="ar">يصعَدُ دونَ أن يراه أحد، ثمّ ينزِلُ على الأرضِ اليابسة، فتُصبِحُ الأرضُ خَضراء.</p>
+      <p class="sound ar" dir="rtl" lang="ar">اللهُ خالِقُ كُلِّ شيء.</p>
+    </div>
+  </section>
+
+  <section class="sheet dense" style="--accent:#6E7FA8">
+    <div class="art"><img src="../print/img/images-khalaqa/goodnight.jpg" alt=""></div>
+    <div class="words">
+      <h2>And You</h2>
+      <p class="line">The sky, the sea, the palm, the bee, the bird, the cat, the moon, the rain — and one small boy in a blanket.</p>
+      <p class="sound">Goodnight, Yusuf.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">وأنتَ أيضاً</h2>
+      <p class="line ar" dir="rtl" lang="ar">السماءُ، والبحرُ، والنخلةُ، والنحلةُ، والطائرُ، والقِطّةُ، والقمرُ، والمطر — وطفلٌ صغيرٌ في غِطائِه.</p>
+      <p class="sound ar" dir="rtl" lang="ar">تُصبِحُ على خير، يا يوسف.</p>
+    </div>
+  </section>
+</body>
+</html>

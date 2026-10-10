@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Alhamdulillah, Little One</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Fredoka:wght@400..600&family=Noto+Kufi+Arabic:wght@400..900&display=swap">
+<style>
+  @page { size: 148mm 210mm; margin: 0; }   /* A5 portrait — two to a sheet of A4 */
+  :root{
+    --ink:#111010; --paper:#FCFBF6; --quiet:#7E7A6E; --accent:#D7263D;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --body:"Fredoka","Avenir Next Rounded",system-ui,sans-serif;
+    --ar:"Baloo Bhaijaan 2","Noto Kufi Arabic",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+
+  .sheet{
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
+  }
+  .sheet:last-child{page-break-after:auto;break-after:auto}
+
+  .art{display:flex;align-items:center;justify-content:center;flex:none}
+  .art svg,.art img{width:100%;height:100%;display:block;object-fit:contain}
+  .art img{border-radius:3mm}
+  .art svg.breathe{animation:none!important}
+
+  .words{text-align:center;width:100%;display:flex;flex-direction:column;gap:2mm}
+  h1{font-family:var(--display);font-weight:900;line-height:1;margin:0}
+  h1 em{font-style:normal;color:var(--accent)}
+  h2{font-family:var(--display);font-weight:900;line-height:1;margin:0;
+     text-transform:uppercase;letter-spacing:.02em;color:var(--accent)}
+  h2.ar{font-family:var(--ar);text-transform:none;letter-spacing:0;line-height:1.3}
+  .line{margin:0}
+  .line.ar{font-family:var(--ar)}
+  .sound{font-family:var(--display);font-style:italic;font-weight:600;margin:0;color:var(--accent)}
+  .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
+  .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
+  hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
+
+  .listen{
+    margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
+    border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
+  }
+  .qr{width:30mm;height:30mm;flex:none}
+  .qr svg{width:100%;height:100%;display:block}
+  .listen-text{display:flex;flex-direction:column;gap:1mm;text-align:left}
+  .listen-text b{font-size:11pt}
+  .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
+  .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
+
+  .sheet{
+    width:148mm; height:210mm; padding:12mm 12mm 10mm;
+  }
+  .art{width:108mm;height:108mm}
+  /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.snug .art{width:88mm;height:88mm}
+  .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.snug h2{font-size:23pt}
+  .sheet.snug h2.ar{font-size:19pt}
+  .sheet.snug .line{font-size:12pt;line-height:1.32}
+  .sheet.snug .line.ar{font-size:12.5pt;line-height:1.55}
+  .sheet.snug .sound{font-size:14pt}
+  .sheet.dense h2{font-size:20pt}
+  .sheet.dense h2.ar{font-size:17pt}
+  .sheet.dense .line{font-size:11pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:11.5pt;line-height:1.5}
+  .sheet.dense .sound{font-size:12.5pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
+  .words{margin-top:6mm}
+  h1{font-size:30pt}
+  h2{font-size:26pt}
+  h2.ar{font-size:22pt}
+  .line{font-size:13pt;line-height:1.35}
+  .line.ar{font-size:13pt;line-height:1.6}
+  .sound{font-size:15pt}
+  .cover .art{width:96mm;height:96mm}
+  .cover h1{font-size:34pt}
+
+</style>
+</head>
+<body>
+
+  <section class="sheet cover">
+    <div class="art"><img src="../print/img/images-alhamdulillah/cover.jpg" alt=""></div>
+    <div class="words">
+      <p class="eyebrow">A book of thank-you</p>
+      <h1><em>Alhamdulillah</em>,<br>Little One</h1>
+      <p class="line">For the small things nobody thinks to be glad about.</p>
+      <p class="line ar" dir="rtl" lang="ar">على الأشياءِ الصغيرةِ التي لا يتذكّرُ أحدٌ أن يفرَحَ بها.</p>
+    </div>
+    <div class="listen">
+      <div class="qr"><?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 450 450" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" width="450" height="450" class="segno"><path transform="scale(10)" class="qrline" stroke="#111010" d="M2 2.5h7m2 0h1m1 0h4m1 0h1m1 0h1m4 0h1m4 0h1m1 0h3m1 0h7m-41 1h1m5 0h1m1 0h1m2 0h1m1 0h2m5 0h1m2 0h1m2 0h1m2 0h2m3 0h1m5 0h1m-41 1h1m1 0h3m1 0h1m1 0h1m2 0h2m2 0h2m4 0h1m1 0h4m4 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h2m5 0h1m1 0h2m1 0h1m4 0h1m1 0h2m1 0h1m1 0h3m1 0h1m-41 1h1m1 0h3m1 0h1m2 0h1m2 0h1m1 0h1m1 0h3m3 0h2m1 0h1m1 0h1m3 0h1m2 0h1m1 0h3m1 0h1m-41 1h1m5 0h1m3 0h3m3 0h3m3 0h2m1 0h2m4 0h1m2 0h1m5 0h1m-41 1h7m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h1m1 0h7m-29 1h1m2 0h1m2 0h2m1 0h2m4 0h3m2 0h1m-32 1h3m1 0h2m2 0h1m1 0h2m1 0h1m1 0h6m1 0h1m3 0h4m7 0h2m-38 1h3m2 0h3m4 0h2m1 0h2m1 0h2m1 0h3m2 0h1m1 0h3m1 0h3m1 0h3m-39 1h3m1 0h1m2 0h1m1 0h1m1 0h1m1 0h2m1 0h1m6 0h1m2 0h3m5 0h1m1 0h2m-40 1h3m1 0h2m2 0h3m1 0h1m1 0h1m2 0h1m2 0h1m4 0h2m1 0h1m1 0h1m1 0h3m5 0h1m-39 1h2m1 0h2m1 0h1m2 0h1m1 0h6m2 0h1m1 0h1m1 0h3m1 0h1m1 0h2m4 0h2m1 0h1m-41 1h1m2 0h3m1 0h5m1 0h1m3 0h1m2 0h2m1 0h1m1 0h2m1 0h2m1 0h1m2 0h1m2 0h1m2 0h1m-40 1h2m1 0h3m3 0h1m2 0h2m1 0h1m1 0h4m2 0h2m1 0h2m1 0h2m2 0h1m1 0h2m1 0h2m-40 1h1m1 0h1m4 0h1m1 0h2m2 0h2m1 0h1m1 0h1m2 0h1m1 0h1m3 0h1m5 0h2m1 0h1m-36 1h2m1 0h3m1 0h2m1 0h2m4 0h3m2 0h3m1 0h1m2 0h3m3 0h1m3 0h1m-41 1h1m1 0h2m3 0h5m1 0h1m2 0h2m5 0h2m2 0h1m1 0h2m1 0h2m1 0h1m2 0h1m-37 1h2m2 0h1m2 0h3m1 0h1m2 0h2m1 0h3m2 0h5m7 0h2m-36 1h1m1 0h2m4 0h1m3 0h1m1 0h3m3 0h5m2 0h7m1 0h3m-40 1h1m1 0h1m1 0h3m7 0h1m5 0h1m3 0h3m1 0h4m1 0h2m1 0h5m-40 1h1m3 0h1m1 0h2m1 0h2m3 0h6m2 0h1m1 0h1m2 0h9m1 0h3m-39 1h5m2 0h1m2 0h1m4 0h1m1 0h1m3 0h1m4 0h2m2 0h2m1 0h1m1 0h3m-40 1h3m2 0h1m1 0h2m1 0h1m2 0h1m1 0h2m2 0h1m1 0h1m2 0h3m1 0h1m1 0h3m1 0h3m2 0h1m-40 1h2m4 0h5m1 0h1m2 0h1m4 0h2m3 0h2m2 0h1m5 0h1m2 0h2m-39 1h1m1 0h1m4 0h1m1 0h3m2 0h1m1 0h2m1 0h1m3 0h1m1 0h7m1 0h1m2 0h2m1 0h1m-40 1h3m2 0h2m3 0h4m4 0h1m2 0h1m5 0h2m1 0h2m2 0h1m1 0h1m1 0h2m-40 1h1m1 0h3m3 0h1m1 0h2m6 0h1m3 0h2m2 0h1m2 0h4m1 0h1m1 0h1m-37 1h1m3 0h2m2 0h1m1 0h1m1 0h3m1 0h4m1 0h2m1 0h1m1 0h1m3 0h2m2 0h3m1 0h1m-39 1h2m2 0h1m4 0h1m1 0h1m1 0h3m2 0h3m2 0h2m2 0h1m3 0h1m5 0h1m-39 1h1m2 0h2m1 0h2m1 0h5m1 0h1m1 0h3m3 0h2m2 0h1m1 0h2m2 0h4m-30 1h1m2 0h3m3 0h2m1 0h2m1 0h1m1 0h1m4 0h3m2 0h2m1 0h2m-38 1h1m2 0h1m1 0h2m1 0h2m1 0h4m1 0h2m1 0h1m2 0h1m2 0h1m1 0h2m2 0h9m-33 1h1m2 0h1m1 0h1m1 0h1m1 0h1m1 0h3m1 0h1m4 0h5m3 0h2m1 0h2m-41 1h7m2 0h3m3 0h2m1 0h1m1 0h1m1 0h3m1 0h1m1 0h5m1 0h1m1 0h4m-40 1h1m5 0h1m1 0h1m2 0h7m2 0h3m1 0h4m4 0h1m3 0h2m1 0h2m-41 1h1m1 0h3m1 0h1m2 0h1m1 0h6m2 0h1m3 0h2m5 0h1m1 0h5m1 0h1m-39 1h1m1 0h3m1 0h1m1 0h1m1 0h1m1 0h1m2 0h1m5 0h1m2 0h1m2 0h3m1 0h1m4 0h2m-38 1h1m1 0h3m1 0h1m1 0h1m1 0h2m2 0h1m2 0h1m1 0h3m2 0h2m2 0h2m2 0h1m2 0h1m1 0h1m1 0h2m-41 1h1m5 0h1m1 0h1m2 0h7m1 0h1m6 0h1m1 0h1m2 0h4m1 0h2m1 0h1m-40 1h7m2 0h2m2 0h1m2 0h3m1 0h4m1 0h1m1 0h1m2 0h4m5 0h1"/></svg>
+</div>
+      <div class="listen-text">
+        <b>Scan to listen</b>
+        <span>Every page read aloud, in English and Arabic.</span>
+        <span class="url">hisham-abuella.github.io/bedtime-stories</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#E8C27A">
+    <div class="art"><img src="../print/img/images-alhamdulillah/hands.jpg" alt=""></div>
+    <div class="words">
+      <h2>Two Small Hands</h2>
+      <p class="line">Ten fingers that open and close all by themselves. You did not ask for them. They came with you.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">يَدانِ صغيرتان</h2>
+      <p class="line ar" dir="rtl" lang="ar">عشرةُ أصابعَ تنفتِحُ وتنغلِقُ وحدَها. لم تطلُبها، بل جاءت معك.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#6E7FA8">
+    <div class="art"><img src="../print/img/images-alhamdulillah/eyes.jpg" alt=""></div>
+    <div class="words">
+      <h2>Two Round Eyes</h2>
+      <p class="line">They find the window. They find the lamp. Best of all, they find a face looking back.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">عَينانِ مُستديرتان</h2>
+      <p class="line ar" dir="rtl" lang="ar">تجِدانِ النافذة. وتجِدانِ المِصباح. وأجملُ ما تجِدانِه وجهٌ ينظُرُ إليهما.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C97B4A">
+    <div class="art"><img src="../print/img/images-alhamdulillah/voice.jpg" alt=""></div>
+    <div class="words">
+      <h2>Mama's Voice</h2>
+      <p class="line">You knew it before you ever saw her. Out of every sound in the world, you turn your head for that one.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">صوتُ ماما</h2>
+      <p class="line ar" dir="rtl" lang="ar">عرَفتَه قبلَ أن تراها. ومن بينِ كلِّ أصواتِ الدنيا، تلتفِتُ لهذا الصوتِ وحدَه.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C9842E">
+    <div class="art"><img src="../print/img/images-alhamdulillah/bread.jpg" alt=""></div>
+    <div class="words">
+      <h2>Warm Bread</h2>
+      <p class="line">It comes out of the oven and the whole house knows. Somebody grew the wheat. Somebody carried it here.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">خُبزٌ دافئ</h2>
+      <p class="line ar" dir="rtl" lang="ar">يخرُجُ من الفُرنِ فيعرِفُ البيتُ كلُّه. أحدٌ ما زرَعَ القمح. وأحدٌ ما حمَلَه إلى هنا.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#9CC4D8">
+    <div class="art"><img src="../print/img/images-alhamdulillah/cool-water.jpg" alt=""></div>
+    <div class="words">
+      <h2>Cool Water</h2>
+      <p class="line">Clear, and cold, and there whenever you want it. That is not a small thing anywhere in the world.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">ماءٌ بارد</h2>
+      <p class="line ar" dir="rtl" lang="ar">صافٍ، وباردٌ، وحاضرٌ متى أردتَه. وهذا ليس أمراً هيّناً في أيِّ مكانٍ من الأرض.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#7FA6C9">
+    <div class="art"><img src="../print/img/images-alhamdulillah/rain.jpg" alt=""></div>
+    <div class="words">
+      <h2>The Rain</h2>
+      <p class="line">It taps on the glass all night and makes everything green by morning. Nobody had to ask it to come.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">المَطَر</h2>
+      <p class="line ar" dir="rtl" lang="ar">يُنقِرُ الزُّجاجَ طَوالَ الليل، فيُصبِحُ كلُّ شيءٍ أخضرَ في الصباح. ولم يطلُب أحدٌ منه أن يأتي.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C7643F">
+    <div class="art"><img src="../print/img/images-alhamdulillah/susu.jpg" alt=""></div>
+    <div class="words">
+      <h2>A Cat Called Susu</h2>
+      <p class="line">She was here before you were. She sleeps at the end of the bed and keeps an eye on everybody.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">قِطّةٌ اسمُها سوسو</h2>
+      <p class="line ar" dir="rtl" lang="ar">كانت هنا قبلَك. تنامُ عندَ طَرَفِ السرير، وتُراقِبُ الجميع.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#8FCBB8">
+    <div class="art"><img src="../print/img/images-alhamdulillah/bed.jpg" alt=""></div>
+    <div class="words">
+      <h2>A Warm Bed</h2>
+      <p class="line">A roof over it, and walls around it, and people in the next room who would come if you called.</p>
+      <p class="sound">Alhamdulillah.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">سريرٌ دافئ</h2>
+      <p class="line ar" dir="rtl" lang="ar">فوقَه سقف، وحولَه جُدران، وفي الغرفةِ المُجاورةِ من يأتي إن نادَيت.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#6E7FA8">
+    <div class="art"><img src="../print/img/images-alhamdulillah/goodnight.jpg" alt=""></div>
+    <div class="words">
+      <h2>And For You</h2>
+      <p class="line">Eight good things, and then one more, who is lying right here listening.</p>
+      <p class="sound">Alhamdulillah for you, Yusuf.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">وعليك أنت</h2>
+      <p class="line ar" dir="rtl" lang="ar">ثمانيةُ أشياءَ طيّبة، ثمّ واحدٌ زيادة، مُستلقٍ هنا يُنصِت.</p>
+      <p class="sound ar" dir="rtl" lang="ar">الحمدُ لله عليك، يا يوسف.</p>
+    </div>
+  </section>
+</body>
+</html>

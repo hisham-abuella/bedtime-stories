@@ -16,7 +16,7 @@ BASE="https://hisham-abuella.github.io/bedtime-stories"
 # a picture is 232dpi on a 112mm page, so nothing is lost by storing it as JPEG.
 jpegs() {
   local src
-  for src in images-v1 images-susu; do
+  for src in images-v1 images-susu images-bismillah images-alhamdulillah images-khalaqa images-nabina; do
     [[ -d $src ]] || continue
     mkdir -p "print/img/$src"
     for png in "$src"/*.png; do
@@ -37,7 +37,9 @@ one() {           # one <book> <qr> <suffix> [extra flags...]
   printf '  %-44s %s\n' "print/$book$suffix.pdf" "$(du -h "print/$book$suffix.pdf" | cut -f1)"
 }
 
-for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg"; do
+for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg" \
+            "bismillah qr-bismillah.svg" "alhamdulillah qr-alhamdulillah.svg" \
+            "khalaqa qr-khalaqa.svg" "nabina qr-nabina.svg"; do
   set -- $pair; book=$1; qr=$2
   one "$book" "$qr" "-print"
   one "$book" "$qr" "-print-illustrated" --art images

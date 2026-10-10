@@ -134,7 +134,10 @@ for (const key of Object.keys(BOOK)) {
             const load = (page.en.line + page.en.sound + page.ar.line + page.ar.sound).length;
             // the square board page has less height to spare than A5, so it
             // needs a middle setting between a full stage and a cramped one
-            const dense = load > 260 ? ' dense' : (board && load > 190 ? ' snug' : '');
+            // thresholds are measured, not guessed: on the square page a full
+            // stage starts pushing the last line off at about 150 characters,
+            // and a snug stage at about 245
+            const dense = load > 245 ? ' dense' : (load > 150 ? ' snug' : '');
             sheets.push(`
   <section class="sheet${dense}" style="--accent:${accent}">${marks(n)}
     <div class="art">${artworkOf(page)}</div>
@@ -166,9 +169,9 @@ const geometry = board ? `
   }
   /* a baby is looking at the picture, not the words: give it the page */
   .sheet:not(.cover){justify-content:center}
-  .art{width:112mm;height:112mm}
-  .sheet.snug .art{width:92mm;height:92mm}
-  .sheet.dense .art{width:76mm;height:76mm}
+  .art{width:108mm;height:108mm}
+  .sheet.snug .art{width:82mm;height:82mm}
+  .sheet.dense .art{width:72mm;height:72mm}
   .words{margin-top:5mm}
   h1{font-size:34pt}
   h2{font-size:27pt}
@@ -185,7 +188,7 @@ const geometry = board ? `
   /* the cover also carries the title block and the 34mm QR panel: at a full
      stage the panel ran off the bottom of the square page and the QR was
      clipped to the point where it would not scan */
-  .cover .art{width:74mm;height:74mm}
+  .cover .art{width:66mm;height:66mm}
   .cover h1{font-size:34pt}
 
   /* crop marks and folio sit in the bleed — the trim removes them */
@@ -206,7 +209,13 @@ const geometry = board ? `
   }
   .art{width:108mm;height:108mm}
   /* text-heavy pages: the artwork yields, the words stay whole */
+  .sheet.snug .art{width:88mm;height:88mm}
   .sheet.dense .art{width:74mm;height:74mm}
+  .sheet.snug h2{font-size:23pt}
+  .sheet.snug h2.ar{font-size:19pt}
+  .sheet.snug .line{font-size:12pt;line-height:1.32}
+  .sheet.snug .line.ar{font-size:12.5pt;line-height:1.55}
+  .sheet.snug .sound{font-size:14pt}
   .sheet.dense h2{font-size:20pt}
   .sheet.dense h2.ar{font-size:17pt}
   .sheet.dense .line{font-size:11pt;line-height:1.3}
