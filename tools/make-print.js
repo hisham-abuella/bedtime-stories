@@ -12,13 +12,21 @@
  * One story page per sheet, artwork large, English and Arabic together, so a
  * single printed copy serves both. A QR on the cover opens the narrated version.
  *
- * Two formats:
+ * Three formats:
  *   default   A5 portrait, no bleed — for printing at home on card and stapling.
  *   --board   180mm square trim with 3mm bleed, crop marks and a folio in the
  *             bleed, for printing single-sided on heavy card, laminating, and
  *             gluing back-to-back into a board book a baby can chew on. The
  *             square shape is what board books are: it sits open on its own and
  *             small hands can grip an edge without covering the picture.
+ *   --lulu    Lulu's Small Square (7.5in trim, 0.125in bleed, 0.5in safety),
+ *             saddle stitched. Their preflight rejects what the board edition
+ *             depends on, so this format differs in four ways: no crop marks or
+ *             folio ("do NOT include trim, bleed, or margin lines"), a 0.5in
+ *             safety margin instead of 8mm, the front cover lifted out into its
+ *             own spread (--cover), and the interior padded with blanks to a
+ *             multiple of four, because a saddle-stitched sheet folds into four
+ *             pages and Lulu would otherwise choose where the blanks land.
  */
 'use strict';
 const fs = require('fs');
@@ -39,13 +47,20 @@ if (!bookPath || !outPath) {
 const listenUrl = arg('--url', '');
 const qrPath = arg('--qr', '');
 const board = has('--board');
+// Lulu's Small Square, saddle stitched. Their numbers, in inches, because the
+// trim is specified in inches and rounding it through mm moves the cut line.
+const lulu = has('--lulu');
+const coverSpread = has('--cover');
 // which artwork: the hand-drawn SVG the book opens with, or the generated
 // illustrations behind the book's own artwork toggle
 const useImages = arg('--art', 'drawn') === 'images';
-const trim = Number(arg('--trim', 180));   // finished page, mm square
-const bleed = Number(arg('--bleed', 3));   // trimmed off; artwork runs into it
-const safe = Number(arg('--safe', 8));     // keep words this far inside the trim
+const IN = 25.4;
+const trim = Number(arg('--trim', lulu ? 7.5 * IN : 180));        // finished page, mm square
+const bleed = Number(arg('--bleed', lulu ? 0.125 * IN : 3));      // trimmed off; artwork runs into it
+const safe = Number(arg('--safe', lulu ? 0.5 * IN : 8));          // keep words this far inside the trim
 const sheet = trim + bleed * 2;
+// both square formats share a geometry; only the numbers and the marks differ
+const square = board || lulu;
 
 // ---- lift the data out of the book ------------------------------------------
 // Everything from the colour constants to the UI strings is pure data: template
@@ -83,7 +98,16 @@ function artworkOf(page) {
         // prefer a JPEG made for print: the same picture at a twentieth of the
         // bytes, which is the difference between a mailable PDF and a 14MB one
         const jpg = path.join('print', 'img', page.img.replace(/\.png$/, '.jpg'));
-        for (const rel of [fs.existsSync(path.join(bookDir, jpg)) ? jpg : null, page.img]) {
+        // Lulu wants 300ppi minimum. The shipped art is 1024px, which is 241ppi
+        // inside a 108mm box, so the print build looks first for the 1536px
+        // re-render in print/img-hi. Falling through to the 1024px copy would
+        // pass preflight on the small stages and fail on the large ones, so
+        // build-lulu.sh refuses to run until the hi-res set is complete.
+        const hi = path.join('print', 'img-hi', page.img.replace(/\.png$/, '.jpg'));
+        const order = lulu
+            ? [hi, jpg, page.img]
+            : [fs.existsSync(path.join(bookDir, jpg)) ? jpg : null, page.img];
+        for (const rel of order) {
             if (rel && fs.existsSync(path.join(bookDir, rel))) {
                 return `<img src="${path.join(rebase, rel)}" alt="">`;
             }
@@ -104,12 +128,20 @@ const marks = (n) => !board ? '' : `
 
 const sheets = [];
 let n = 0;
+// The front cover is the book's first cover page. A multi-chapter book has
+// more than one — the colour zoo's second chapter opens with its own — and
+// those stay in the interior, where they belong.
+let front = null;
 for (const key of Object.keys(BOOK)) {
     for (const page of BOOK[key].pages) {
         const accent = page.tint || BOOK[key].accent || '#D7263D';
         n += 1;
         if (page.cover) {
             const qr = qrFor(key);
+            if (!front) front = { page, qr };
+            // Lulu takes the cover as its own spread file, so it must not also
+            // appear as interior page one.
+            if (lulu && front.page === page) continue;
             sheets.push(`
   <section class="sheet cover">${marks(n)}
     <div class="art">${artworkOf(page)}</div>
@@ -157,12 +189,66 @@ for (const key of Object.keys(BOOK)) {
 
 const title = (html.match(/<title>([^<]*)<\/title>/) || [, 'Story'])[1];
 
-// ---- geometry ---------------------------------------------------------------
-const page = board
-    ? `@page { size: ${sheet}mm ${sheet}mm; margin: 0; }   /* ${trim}mm square trim + ${bleed}mm bleed */`
-    : `@page { size: 148mm 210mm; margin: 0; }   /* A5 portrait — two to a sheet of A4 */`;
+// ---- the cover spread -------------------------------------------------------
+// Lulu wants one page holding back cover, spine and front cover. Saddle stitch
+// has no spine — the sheets fold rather than stack against a flat edge — so the
+// spread is simply two trims side by side. The QR moves to the back, which is
+// where a reader looks for it anyway.
+if (coverSpread) {
+    if (!front) {
+        console.error('no cover page found in', bookPath);
+        process.exit(1);
+    }
+    const { page: c, qr } = front;
+    sheets.length = 0;
+    sheets.push(`
+  <section class="spread">
+    <div class="half back">
+      <div class="back-top">
+        <p class="eyebrow">${plain(c.en.eyebrow)}</p>
+        <h2 class="back-title">${plain(c.en.title).replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()}</h2>
+        <p class="line">${plain(c.en.line)}</p>
+        <p class="line ar" dir="rtl" lang="ar">${plain(c.ar.line)}</p>
+      </div>
+      ${qr ? `<div class="listen">
+        <div class="qr">${qr}</div>
+        <div class="listen-text">
+          <b>Scan to listen</b>
+          <span>Every page read aloud, in English and Arabic.</span>
+          <span class="url">${esc(listenUrl.replace(/^https?:\/\//, "").split("/").slice(0, 2).join("/"))}</span>
+        </div>
+      </div>` : ''}
+    </div>
+    <div class="half front">
+      <div class="art">${artworkOf(c)}</div>
+      <div class="words">
+        <p class="eyebrow">${plain(c.en.eyebrow)}</p>
+        <h1>${plain(c.en.title)}</h1>
+        <p class="line">${plain(c.en.line)}</p>
+        <p class="line ar" dir="rtl" lang="ar">${plain(c.ar.line)}</p>
+      </div>
+    </div>
+  </section>`);
+}
 
-const geometry = board ? `
+// ---- blanks to a multiple of four -------------------------------------------
+// A saddle-stitched sheet folds into four pages, so the interior count has to
+// be a multiple of four. Lulu will add the blanks itself if we don't, but then
+// they land wherever its imposition puts them; added here they land at the end.
+let padded = 0;
+if (lulu && !coverSpread) {
+    while (sheets.length % 4) { sheets.push('\n  <section class="sheet blank"></section>'); padded += 1; }
+}
+
+// ---- geometry ---------------------------------------------------------------
+const spreadW = trim * 2 + bleed * 2;   // two trims side by side, one bleed each outer edge
+const page = coverSpread
+    ? `@page { size: ${spreadW}mm ${sheet}mm; margin: 0; }   /* back + front spread, no spine: saddle stitch has none */`
+    : square
+        ? `@page { size: ${sheet}mm ${sheet}mm; margin: 0; }   /* ${trim}mm square trim + ${bleed}mm bleed */`
+        : `@page { size: 148mm 210mm; margin: 0; }   /* A5 portrait — two to a sheet of A4 */`;
+
+const geometry = square ? `
   .sheet{
     width:${sheet}mm; height:${sheet}mm; padding:${bleed + safe}mm;
     position:relative;
@@ -190,6 +276,17 @@ const geometry = board ? `
      clipped to the point where it would not scan */
   .cover .art{width:66mm;height:66mm}
   .cover h1{font-size:34pt}
+
+  /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
+     edition's 8mm, so every stage comes down to match. Measured, not guessed. */
+  ${lulu ? `
+  .art{width:92mm;height:92mm}
+  .sheet.snug .art{width:74mm;height:74mm}
+  .sheet.dense .art{width:64mm;height:64mm}
+  .cover .art{width:62mm;height:62mm}
+  .words{margin-top:4mm}
+  .sheet.blank{background:var(--paper)}
+  ` : ''}
 
   /* crop marks and folio sit in the bleed — the trim removes them */
   .qr{width:34mm;height:34mm}
@@ -287,6 +384,33 @@ fs.writeFileSync(outPath, `<!DOCTYPE html>
   .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
   .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
 ${geometry}
+${coverSpread ? `
+  /* The spread is two trims wide. Content keeps the full safety margin from
+     every trimmed edge and from the fold, because Lulu's trimming tolerance is
+     0.125in toward either cover and a saddle-stitch fold wanders a little. */
+  .spread{
+    width:${spreadW}mm; height:${sheet}mm; display:flex; overflow:hidden;
+    background:var(--paper);
+  }
+  .half{
+    flex:1 1 0; min-width:0; display:flex; flex-direction:column;
+    align-items:center; padding:${bleed + safe}mm ${safe}mm;
+  }
+  .half.back{padding-left:${bleed + safe}mm; justify-content:flex-start}
+  .half.front{padding-right:${bleed + safe}mm; justify-content:flex-start}
+  .front .art{width:96mm;height:96mm}
+  .front .words{margin-top:5mm}
+  .front h1{font-size:34pt}
+  .back{text-align:center}
+  .back-top{display:flex;flex-direction:column;gap:3mm;width:100%}
+  .back-title{
+    font-family:var(--display);font-weight:900;font-size:19pt;line-height:1.05;
+    margin:0;text-transform:none;letter-spacing:0;color:var(--ink);
+  }
+  .back .line{font-size:13pt;line-height:1.4}
+  .back .line.ar{font-size:13pt;line-height:1.6}
+  .back .listen{margin-top:auto}
+` : ''}
 </style>
 </head>
 <body>
@@ -295,5 +419,10 @@ ${sheets.join('\n')}
 </html>
 `);
 
-console.log(`${path.basename(outPath)} — ${sheets.length} sheets from ${path.basename(bookPath)}`
-    + (board ? `, ${trim}mm square + ${bleed}mm bleed` : ', A5'));
+const fmt = (mm) => `${(mm / IN).toFixed(3).replace(/0+$/, '').replace(/\.$/, '')}in`;
+console.log(`${path.basename(outPath)} — ${sheets.length} ${coverSpread ? 'spread' : 'sheets'}`
+    + ` from ${path.basename(bookPath)}`
+    + (coverSpread ? `, ${fmt(spreadW)} x ${fmt(sheet)} (2 x ${fmt(trim)} trim + ${fmt(bleed)} bleed, no spine)`
+        : lulu ? `, ${fmt(trim)} square trim + ${fmt(bleed)} bleed, ${fmt(safe)} safety`
+            + (padded ? `, ${padded} blank${padded > 1 ? 's' : ''} to reach a multiple of 4` : '')
+        : board ? `, ${trim}mm square + ${bleed}mm bleed` : ', A5'));

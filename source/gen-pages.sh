@@ -1,5 +1,7 @@
 #!/bin/zsh
-DEST=/Users/hishamabuella/Work/personal_website/home/projects/bedtime-stories/images-v1
+DEST=${DEST:-/Users/hishamabuella/Work/personal_website/home/projects/bedtime-stories/images-v1}
+SIZE=${SIZE:-1024}
+mkdir -p "$DEST"
 CLI=/opt/homebrew/bin/draw-things-cli
 BW="flat vector children's book illustration, bold simple geometric shapes, pure black and white only, thick solid shapes, centered, plain off-white paper background, very high contrast, minimal, generous negative space"
 CO="flat vector children's book illustration, bold simple shapes with thick black outlines, centered, plain off-white paper background, cheerful, minimal, generous negative space"
@@ -9,7 +11,7 @@ gen () {  # name, prompt, seed
   [[ -f "$DEST/$1.png" ]] && { echo "skip $1"; return; }
   $CLI generate --model z_image_turbo_1.0_q8p.ckpt \
     --prompt "$2" --negative-prompt "$NEG" \
-    --width 1024 --height 1024 --seed "$3" \
+    --width $SIZE --height $SIZE --seed "$3" \
     --output "$DEST/$1.png" >/dev/null 2>&1 && echo "done $1" || echo "FAIL $1"
 }
 

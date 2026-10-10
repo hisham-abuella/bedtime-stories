@@ -12,17 +12,19 @@
 
 CLI=/opt/homebrew/bin/draw-things-cli
 REPO=$(cd "$(dirname "$0")/.." && pwd)
+ART_ROOT=${ART_ROOT:-$REPO}
+SIZE=${SIZE:-1024}
 
 WARM="warm children's picture book illustration, soft gouache, gentle rounded shapes, cosy, generous negative space, muted warm palette"
 NEG="text, letters, words, numbers, arabic script, calligraphy, writing, watermark, signature, photorealistic, cluttered, busy, deformed, extra limbs, extra fingers, blurry, cross, church, statue, idol, shrine, pig, dog, alcohol, wine, bottle, musical instruments, revealing clothing, bare shoulders, adult face, crowd"
 
 gen () {  # book, name, prompt, seed
-  local dest="$REPO/images-$1"
+  local dest="$ART_ROOT/images-$1"
   mkdir -p "$dest"
   [[ -f "$dest/$2.png" ]] && { echo "skip  $1/$2"; return; }
   $CLI generate --model z_image_turbo_1.0_q8p.ckpt \
     --prompt "$3, $WARM" --negative-prompt "$NEG" \
-    --width 1024 --height 1024 --seed "$4" \
+    --width $SIZE --height $SIZE --seed "$4" \
     --output "$dest/$2.png" >/dev/null 2>&1 && echo "done  $1/$2" || echo "FAIL  $1/$2"
 }
 

@@ -1,3 +1,9 @@
 .DS_Store
 .playwright-mcp/
 *.bak
+
+# 1536px artwork masters for print — ~170MB of PNG, and every one of them is
+# reproducible from a fixed seed with tools/regen-print-art.sh. The print-weight
+# JPEGs derived from them (print/img-hi) are committed, so a rebuild of the
+# Lulu PDFs needs no GPU.
+art-hi/

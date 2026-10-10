@@ -236,6 +236,45 @@ Anything it reports is text that will not be on the paper. The size tiers
 (`snug` at 150 characters, `dense` at 245) were set by running this until all
 twelve editions came back clean, not by eye.
 
+### Ordering from a print-on-demand printer (Lulu)
+
+The board edition is built for a kitchen table: crop marks to cut to, a folio to
+keep loose sheets in order, 180mm square because that is a nice size for a book.
+Every one of those decisions is wrong for Lulu, whose preflight wants the
+opposite, so there is a separate format rather than a tweak to the old one.
+
+```sh
+tools/regen-print-art.sh   # once: 1536px artwork, ~2 hours on the Mac Studio
+tools/build-lulu.sh        # 24 PDFs: interior + cover, drawn and illustrated
+tools/check-lulu.sh        # verifies all of it against the spec below
+```
+
+| Lulu requires | Board edition | `--lulu` |
+|---|---|---|
+| Small Square: 7.5in trim, 0.125in bleed | 180mm + 3mm | 7.5in + 0.125in |
+| Safety margin 0.5in / 12.7mm | 8mm | 12.7mm |
+| No trim, bleed or margin lines | crop marks + folio | none |
+| Cover as its own back+front spread | cover is interior page 1 | separate 15.25 x 7.75in file |
+| Images 300-600ppi | 1024px art, 241ppi at full size | 1536px art, 318-395ppi |
+| Saddle stitch 4-48 pages | 10 and 22 | padded to 12 and 24 |
+
+Two of those are worth explaining.
+
+**Why the artwork had to be regenerated.** A 1024px picture inside a 108mm box
+is 241ppi, and no amount of re-exporting adds pixels. `regen-print-art.sh` runs
+the same prompts at the same seeds at 1536px, so the pictures come back in the
+same composition with enough resolution. `build-lulu.sh` refuses to run if any
+are missing rather than quietly falling back to the small ones.
+
+**Why the blanks.** A saddle-stitched sheet folds into four pages, so the
+interior has to be a multiple of four. Lulu will insert the blanks itself, but
+then they land wherever its imposition decides; added here they land at the end.
+
+A warning worth repeating: **this is not a board book.** Lulu does not make
+them. Saddle stitch is two staples through the fold, and a three-month-old will
+get through it. For something he can chew, print the `-board` PDFs at home on
+350gsm and laminate them. The Lulu route is for sending a copy to someone else.
+
 ### Generated artwork in print
 
 The books ship 1024px PNGs. At 180mm that is 232dpi, which is fine for these

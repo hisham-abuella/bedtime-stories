@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Prophet Loved</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..700&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Fredoka:wght@400..600&family=Noto+Kufi+Arabic:wght@400..900&display=swap">
+<style>
+  @page { size: 196.85mm 196.85mm; margin: 0; }   /* 190.5mm square trim + 3.175mm bleed */
+  :root{
+    --ink:#111010; --paper:#FCFBF6; --quiet:#7E7A6E; --accent:#D7263D;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --body:"Fredoka","Avenir Next Rounded",system-ui,sans-serif;
+    --ar:"Baloo Bhaijaan 2","Noto Kufi Arabic",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+
+  .sheet{
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
+    page-break-after:always; break-after:page; overflow:hidden; background:var(--paper);
+  }
+  .sheet:last-child{page-break-after:auto;break-after:auto}
+
+  .art{display:flex;align-items:center;justify-content:center;flex:none}
+  .art svg,.art img{width:100%;height:100%;display:block;object-fit:contain}
+  .art img{border-radius:3mm}
+  .art svg.breathe{animation:none!important}
+
+  .words{text-align:center;width:100%;display:flex;flex-direction:column;gap:2mm}
+  h1{font-family:var(--display);font-weight:900;line-height:1;margin:0}
+  h1 em{font-style:normal;color:var(--accent)}
+  h2{font-family:var(--display);font-weight:900;line-height:1;margin:0;
+     text-transform:uppercase;letter-spacing:.02em;color:var(--accent)}
+  h2.ar{font-family:var(--ar);text-transform:none;letter-spacing:0;line-height:1.3}
+  .line{margin:0}
+  .line.ar{font-family:var(--ar)}
+  .sound{font-family:var(--display);font-style:italic;font-weight:600;margin:0;color:var(--accent)}
+  .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
+  .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
+  hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
+
+  .listen{
+    margin-top:auto;display:flex;align-items:center;gap:5mm;width:100%;
+    border-top:.4mm solid rgba(17,16,16,.16);padding-top:5mm;
+  }
+  .qr{width:30mm;height:30mm;flex:none}
+  .qr svg{width:100%;height:100%;display:block}
+  .listen-text{display:flex;flex-direction:column;gap:1mm;text-align:left}
+  .listen-text b{font-size:11pt}
+  .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
+  .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
+
+  .sheet{
+    width:196.85mm; height:196.85mm; padding:15.875mm;
+    position:relative;
+  }
+  /* a baby is looking at the picture, not the words: give it the page */
+  .sheet:not(.cover){justify-content:center}
+  .art{width:108mm;height:108mm}
+  .sheet.snug .art{width:82mm;height:82mm}
+  .sheet.dense .art{width:72mm;height:72mm}
+  .words{margin-top:5mm}
+  h1{font-size:34pt}
+  h2{font-size:27pt}
+  h2.ar{font-size:23pt}
+  .line{font-size:14pt;line-height:1.35}
+  .line.ar{font-size:14pt;line-height:1.6}
+  .sound{font-size:16pt}
+  .sheet.dense h2{font-size:21pt}
+  .sheet.dense h2.ar{font-size:18pt}
+  .sheet.dense .line{font-size:11.5pt;line-height:1.3}
+  .sheet.dense .line.ar{font-size:12pt;line-height:1.5}
+  .sheet.dense .sound{font-size:13pt}
+  .sheet.dense .words{margin-top:4mm;gap:1.5mm}
+  /* the cover also carries the title block and the 34mm QR panel: at a full
+     stage the panel ran off the bottom of the square page and the QR was
+     clipped to the point where it would not scan */
+  .cover .art{width:66mm;height:66mm}
+  .cover h1{font-size:34pt}
+
+  /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
+     edition's 8mm, so every stage comes down to match. Measured, not guessed. */
+  
+  .art{width:92mm;height:92mm}
+  .sheet.snug .art{width:74mm;height:74mm}
+  .sheet.dense .art{width:64mm;height:64mm}
+  .cover .art{width:62mm;height:62mm}
+  .words{margin-top:4mm}
+  .sheet.blank{background:var(--paper)}
+  
+
+  /* crop marks and folio sit in the bleed — the trim removes them */
+  .qr{width:34mm;height:34mm}
+  .listen-text b{font-size:12pt}
+  .mark{position:absolute;width:3.175mm;height:3.175mm;border:0 solid rgba(17,16,16,.55)}
+  .mark.tl{top:0;left:0;border-top-width:.25mm;border-left-width:.25mm}
+  .mark.tr{top:0;right:0;border-top-width:.25mm;border-right-width:.25mm}
+  .mark.bl{bottom:0;left:0;border-bottom-width:.25mm;border-left-width:.25mm}
+  .mark.br{bottom:0;right:0;border-bottom-width:.25mm;border-right-width:.25mm}
+  .folio{
+    position:absolute;bottom:.4mm;left:50%;transform:translateX(-50%);
+    font-family:var(--body);font-style:normal;font-size:5pt;color:rgba(17,16,16,.5);
+  }
+
+
+</style>
+</head>
+<body>
+
+  <section class="sheet snug" style="--accent:#E8C27A">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="Two small children side by side"><g transform="translate(142,206) scale(1.25)"><path d="M-38 86 q0 -62 38 -62 q38 0 38 62 z" fill="#C97B4A" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="-24" r="40" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="-14" cy="-28" r="5" fill="#111010"/><circle cx="14" cy="-28" r="5" fill="#111010"/><path d="M-13 -6 q13 12 26 0" fill="none" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(262,216) scale(1.1)"><path d="M-38 86 q0 -62 38 -62 q38 0 38 62 z" fill="#2E8B74" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="-24" r="40" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="-14" cy="-28" r="5" fill="#111010"/><circle cx="14" cy="-28" r="5" fill="#111010"/><path d="M-13 -6 q13 12 26 0" fill="none" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Loved Children</h2>
+      <p class="line">He stopped for them in the street. He let them climb on his back. He never once told a child to go away.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ يُحِبُّ الأطفال</h2>
+      <p class="line ar" dir="rtl" lang="ar">كان يقِفُ لهم في الطريق. ويدَعُهم يصعَدونَ على ظهرِه. ولم يقُل لطفلٍ قطُّ: ابتعِد.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#8FCBB8">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A child with an open hand raised in greeting"><g transform="translate(166,220) scale(1.3)"><path d="M-38 86 q0 -62 38 -62 q38 0 38 62 z" fill="#8FCBB8" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="-24" r="40" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="-14" cy="-28" r="5" fill="#111010"/><circle cx="14" cy="-28" r="5" fill="#111010"/><path d="M-13 -6 q13 12 26 0" fill="none" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(286,196) scale(1.15,1.15)"><path d="M-26 40 q-6 -34 -4 -56 q2 -12 10 -11 q8 1 8 13 l0 26 l0 -46 q0 -12 9 -12 q9 0 9 12 l0 44 l0 -38 q0 -12 9 -12 q9 0 9 12 l0 40 l2 -26 q2 -11 10 -10 q8 2 7 13 l-6 44 q-4 24 -28 24 q-26 0 -35 -17 z" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Said Salam First</h2>
+      <p class="line">To the old and the young, to people he knew and people he did not. He liked to be the one who said it first.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ يبدأُ بالسَّلام</h2>
+      <p class="line ar" dir="rtl" lang="ar">على الكبيرِ والصغير، وعلى من يعرِفُه ومن لا يعرِفُه. وكان يُحِبُّ أن يكونَ هو البادئَ بالسلام.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet dense" style="--accent:#C9842E">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A smiling child"><g transform="translate(200,194)"><circle cx="0" cy="0" r="96" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="-34" cy="-14" r="11" fill="#111010"/><circle cx="34" cy="-14" r="11" fill="#111010"/><path d="M-44 26 q44 44 88 0" fill="none" stroke="#111010" stroke-width="10" stroke-linejoin="round" stroke-linecap="round"/></g><path d="M332.0 63.0 L335.9 72.7 L346.3 73.4 L338.3 80.0 L340.8 90.1 L332.0 84.6 L323.2 90.1 L325.7 80.0 L317.7 73.4 L328.1 72.7 z" fill="#E8C27A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M70.0 84.0 L73.1 91.7 L81.4 92.3 L75.0 97.6 L77.1 105.7 L70.0 101.3 L62.9 105.7 L65.0 97.6 L58.6 92.3 L66.9 91.7 z" fill="#E8C27A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></svg></div>
+    <div class="words">
+      <h2>He Smiled a Lot</h2>
+      <p class="line">People said they had never met anyone who smiled more. A smile costs nothing, and it still counts as a good deed.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ كثيرَ الابتِسام</h2>
+      <p class="line ar" dir="rtl" lang="ar">قال أصحابُه: ما رأينا أحداً أكثرَ ابتساماً منه. والابتسامةُ لا تُكلِّفُ شيئاً، ومع ذلك تُكتَبُ حَسَنة.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet dense" style="--accent:#C7643F">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A cat drinking from a bowl of water"><g transform="translate(178,176) scale(1.15)"><path d="M48 44 q44 4 40 -34 q-2 -18 -18 -15 q-13 3 -10 17" fill="none" stroke="#111010" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="0" cy="34" rx="50" ry="54" fill="#A89079" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -12 q24 22 24 60 q0 24 -24 26 q-24 -2 -24 -26 q0 -38 24 -60 z" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-42 -40 l4 -40 l34 24 z" fill="#A89079" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M42 -40 l-4 -40 l-34 24 z" fill="#A89079" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="0" cy="-26" rx="44" ry="38" fill="#A89079" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="-16" cy="-32" r="7" fill="#111010"/><circle cx="16" cy="-32" r="7" fill="#111010"/><path d="M0 -10 l-8 -7 h16 z" fill="#E0919E" stroke="#111010" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><path d="M-44 -16 h-22 M-44 -6 h-20 M44 -16 h22 M44 -6 h20" fill="none" stroke="#111010" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(200,318) scale(0.9)"><path d="M-56 -8 h112 a56 56 0 0 1 -112 0 z" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-44 -8 q44 -18 88 0 z" fill="#9CC4D8" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Was Gentle with Animals</h2>
+      <p class="line">A cat could drink from the same water he was about to use, and he would let her finish, and say she was not dirty at all.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ رفيقاً بالحيوان</h2>
+      <p class="line ar" dir="rtl" lang="ar">كانت القِطّةُ تشرَبُ من الماءِ الذي يهُمُّ بالوضوءِ منه، فيدَعُها تُكمِل، ويقولُ إنّها ليست نَجِسة.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#C97B4A">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A plate of dates and a cup of milk"><g transform="translate(156,244) scale(1.05)"><path d="M-78 0 h156 a78 42 0 0 1 -156 0 z" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="-34" cy="-12" rx="20" ry="13" fill="#C97B4A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="2" cy="-20" rx="20" ry="13" fill="#C97B4A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="38" cy="-12" rx="20" ry="13" fill="#C97B4A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="-14" cy="-32" rx="20" ry="13" fill="#C97B4A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><ellipse cx="22" cy="-36" rx="20" ry="13" fill="#C97B4A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(300,232) scale(0.92)"><path d="M44 -16 q26 0 26 22 q0 22 -26 22" fill="none" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-44 -30 h88 l-8 72 q-2 14 -16 14 h-40 q-14 0 -16 -14 z" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Loved Dates and Milk</h2>
+      <p class="line">Plain food, and not very much of it. A few dates and a cup of milk, and he was glad.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ يُحِبُّ التمرَ واللبَن</h2>
+      <p class="line ar" dir="rtl" lang="ar">طعامٌ بسيط، وقليلٌ منه. تمراتٌ وقَدَحُ لبَن، فيَرضى ويَحمَد.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#9CC4D8">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A water jug, a cup and a green twig"><g transform="translate(168,222)"><path d="M62 -24 q30 4 30 32 q0 28 -30 30" fill="none" stroke="#111010" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/><path d="M-62 -56 q0 -20 22 -20 h80 q22 0 22 20 l-12 112 q-2 20 -24 20 h-52 q-22 0 -24 -20 z" fill="#9CC4D8" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(312,230)"><path d="M0 -70 v140" fill="none" stroke="#8FB58A" stroke-width="13" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -70 v140" fill="none" opacity=".001" stroke="#111010" stroke-width="19" stroke-linejoin="round" stroke-linecap="round"/><path d="M-10 -74 q10 -14 20 0 q-10 8 -20 0 z" fill="#8FB58A" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Kept Everything Clean</h2>
+      <p class="line">Clean hands, clean clothes, clean teeth, clean water. He brushed his teeth with a soft green twig.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ يُحِبُّ النَّظافة</h2>
+      <p class="line ar" dir="rtl" lang="ar">يَدانِ نظيفتان، وثوبٌ نظيف، وأسنانٌ نظيفة، وماءٌ نظيف. وكان يُنظّفُ أسنانَه بعودٍ أخضرَ ليّن.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet dense" style="--accent:#C9842E">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A loaf of bread held out in two hands"><g transform="translate(200,168) scale(1.1)"><path d="M-82 34 q-8 -72 82 -72 q90 0 82 72 z" fill="#C9842E" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-44 -16 l16 -16 M-6 -22 l16 -16 M32 -16 l16 -16" fill="none" stroke="#111010" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(142,300) scale(1.05,1.05)"><path d="M-26 40 q-6 -34 -4 -56 q2 -12 10 -11 q8 1 8 13 l0 26 l0 -46 q0 -12 9 -12 q9 0 9 12 l0 44 l0 -38 q0 -12 9 -12 q9 0 9 12 l0 40 l2 -26 q2 -11 10 -10 q8 2 7 13 l-6 44 q-4 24 -28 24 q-26 0 -35 -17 z" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g><g transform="translate(258,300) scale(-1.05,1.05)"><path d="M-26 40 q-6 -34 -4 -56 q2 -12 10 -11 q8 1 8 13 l0 26 l0 -46 q0 -12 9 -12 q9 0 9 12 l0 44 l0 -38 q0 -12 9 -12 q9 0 9 12 l0 40 l2 -26 q2 -11 10 -10 q8 2 7 13 l-6 44 q-4 24 -28 24 q-26 0 -35 -17 z" fill="#E3B894" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Fed Whoever Was Hungry</h2>
+      <p class="line">If there was food, it was shared. If there was little, it was shared more carefully. Nobody at his door was sent away empty.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ يُطعِمُ الجائع</h2>
+      <p class="line ar" dir="rtl" lang="ar">إن وُجِدَ الطعامُ قُسِم. وإن قلَّ قُسِمَ بعنايةٍ أكثر. ولم يرجِع أحدٌ من بابِه خاليَ اليدَين.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet snug" style="--accent:#8FB58A">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A lamp, a folded cloak and a broom at home"><path d="M60 318 h280" fill="none" stroke="#111010" stroke-width="9" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(122,316)"><path d="M-30 -4 q0 -44 30 -44 q30 0 30 44 z" fill="#C9842E" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-18 -4 h36 l8 4 h-52 z" fill="#C97B4A" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="-62" r="11" fill="#E8C27A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/></g><rect x="196" y="238" width="104" height="32" rx="8" fill="#8FCBB8" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><rect x="206" y="268" width="84" height="26" rx="8" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(324,290)"><path d="M0 -96 v70" fill="none" stroke="#111010" stroke-width="11" stroke-linejoin="round" stroke-linecap="round"/><path d="M-24 -26 h48 l12 52 h-72 z" fill="#E8C27A" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>He Helped at Home</h2>
+      <p class="line">He mended his own sandals. He swept. He sat with his family, and he was easy to live with.</p>
+      <p class="sound">Peace be upon him.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">كانَ يُعينُ في البَيت</h2>
+      <p class="line ar" dir="rtl" lang="ar">كان يخصِفُ نعلَه بيدِه. ويكنُسُ البيت. ويجلِسُ مع أهلِه، وكان هيّناً ليّناً في عِشرتِه.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم.</p>
+    </div>
+  </section>
+
+  <section class="sheet dense" style="--accent:#6E7FA8">
+    <div class="art"><svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="A mosque at night under a crescent and stars"><circle cx="316" cy="84" r="42" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="331.12" cy="74.76" r="36.12" fill="#FCFBF6"/><path d="M80.0 53.0 L84.4 63.9 L96.2 64.7 L87.1 72.3 L90.0 83.8 L80.0 77.5 L70.0 83.8 L72.9 72.3 L63.8 64.7 L75.6 63.9 z" fill="#E8C27A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M140.0 117.0 L142.8 124.1 L150.5 124.6 L144.6 129.5 L146.5 136.9 L140.0 132.8 L133.5 136.9 L135.4 129.5 L129.5 124.6 L137.2 124.1 z" fill="#E8C27A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M252.0 46.0 L255.1 53.7 L263.4 54.3 L257.0 59.6 L259.1 67.7 L252.0 63.3 L244.9 67.7 L247.0 59.6 L240.6 54.3 L248.9 53.7 z" fill="#E8C27A" stroke="#111010" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><g transform="translate(196,288) scale(0.84)"><rect x="-110" y="-20" width="220" height="110" rx="10" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-78 -20 q0 -78 78 -82 q78 4 78 82 z" fill="#2E8B74" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M0 -102 v-26" fill="none" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="0" cy="-142" r="18" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><circle cx="6.4799999999999995" cy="-145.96" r="15.48" fill="#FCFBF6"/><rect x="-104" y="-96" width="20" height="76" rx="8" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><rect x="84" y="-96" width="20" height="76" rx="8" fill="#FCFBF6" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-94 -96 q0 -22 10 -22 q10 0 10 22 z" fill="#2E8B74" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M94 -96 q0 -22 10 -22 q10 0 10 22 z" fill="#2E8B74" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/><path d="M-34 90 v-44 q0 -34 34 -34 q34 0 34 34 v44 z" fill="#C9842E" stroke="#111010" stroke-width="8" stroke-linejoin="round" stroke-linecap="round"/></g></svg></div>
+    <div class="words">
+      <h2>And So We Say</h2>
+      <p class="line">Kind to children, kind to animals, kind to whoever was hungry. When we hear his name, we say one thing.</p>
+      <p class="sound">Peace be upon him. Goodnight, Yusuf.</p>
+      <hr>
+      <h2 class="ar" dir="rtl" lang="ar">ولذلك نقول</h2>
+      <p class="line ar" dir="rtl" lang="ar">رفيقٌ بالأطفال، رفيقٌ بالحيوان، رفيقٌ بكلِّ جائع. وإذا سمِعنا اسمَه قُلنا كلمةً واحدة.</p>
+      <p class="sound ar" dir="rtl" lang="ar">صلّى اللهُ عليه وسلّم. تُصبِحُ على خير، يا يوسف.</p>
+    </div>
+  </section>
+
+  <section class="sheet blank"></section>
+
+  <section class="sheet blank"></section>
+
+  <section class="sheet blank"></section>
+</body>
+</html>
