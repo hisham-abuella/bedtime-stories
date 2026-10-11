@@ -602,7 +602,15 @@ ${coverSpread ? `
   }
   .back .line{font-size:13pt;line-height:1.4}
   .back .line.ar{font-size:13pt;line-height:1.6}
-  .back .listen{margin-top:auto}
+  /* Lulu reserves 92 x 32mm at the bottom-right of the back cover for a
+     barcode, 0.5in in from the trim. It is optional — a family book has no
+     ISBN — but the listen panel used to run straight through it, which would
+     have put a barcode over the QR the moment this book was ever distributed.
+     The panel is held to the left of that zone instead. */
+  .back .listen{margin-top:auto; max-width:${(trim - 92 - safe * 2).toFixed(1)}mm; margin-right:auto}
+  .back .qr{width:30mm;height:30mm}
+  .back .listen-text b{font-size:11pt}
+  .back .listen-text span{font-size:8pt}
 ` : ''}
 </style>
 </head>

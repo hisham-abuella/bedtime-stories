@@ -290,11 +290,17 @@ Bound as two volumes they are 40 pages each, which clears the 32-page
 perfect-bound minimum and the 24-page hardcover one — so these can be a real
 hardcover instead of a stapled pamphlet.
 
-Checked against Lulu's own Square template pack: their interior template is
+Checked against Lulu's own Square template pack (`Downloads/lulu-book-template-all-square`): their interior template is
 630 x 630 pts and ours matches exactly. Their generic cover template carries a
 0.1321in spine, which is their formula (`pages / 444 + 0.06`) at the 32-page
 minimum — at 40 pages that is wrong, so the spine is computed from the real
 page count instead and comes out 3.81mm.
+
+Their template also reserves **92 x 32mm at the bottom-right of the back
+cover** for a barcode, 0.5in in from the trim. It is optional and a family book
+has no ISBN, but the listen panel used to run straight through it — so the
+panel is held to the left of that rectangle. If this is ever distributed, the
+barcode lands on empty paper instead of over the QR code.
 
 | Volume | Chapters | Pages |
 |---|---|---|
