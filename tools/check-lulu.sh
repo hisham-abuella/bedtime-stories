@@ -23,7 +23,7 @@ bad()  { fail=$((fail + 1)); printf '    %-18s \033[31m%s\033[0m\n' "$1" "$2"; }
 
 # Noah's set sits a level deeper, in print/noah/<arabic|egyptian>/
 shopt -s nullglob
-vols=(print/*/vol-*.pdf print/*/*/vol-*.pdf)
+vols=(print/*/vol-*.pdf print/*/*/vol-*.pdf print/*/*-lulu-*.pdf)   # single-book Lulu editions too
 (( ${#vols[@]} )) || { echo "no volume PDFs built yet — run tools/build-volumes.sh"; exit 1; }
 for f in "${vols[@]}"; do
   echo "$(basename "$f")"

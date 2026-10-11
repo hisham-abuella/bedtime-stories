@@ -90,4 +90,8 @@ gen ourtime    "$YASEEN $PJS, snuggled in bed reading a picture book, a soccer b
 gen whisper    "$YASEEN $PJS, standing beside a crib with a finger on his lips singing softly, $BABY sleeping in the crib, little music notes floating, $TROLLEY" 642
 gen promise    "$YASEEN $TEE, lying on his tummy on a play mat next to $BABY, showing her a soccer ball and a toy train, $TROLLEY" 643
 gen goodnight  "$ASLEEP, very short cropped boy's hair with ears showing, $PJS, lying in his bed with his head on the pillow and a blanket pulled up to his chest, a soccer ball and a small red toy trolley on the shelf, dark blue night sky with a crescent moon and stars over the ocean through the window, dim cosy night-time room" 9445
+# Print only: the back cover of the Lulu edition, Yaseen waving goodbye.
+# Drawn at 1536px; the book's own pages are 1024px enlarged for print, so the
+# approved pictures stay exactly as they are.
+SIZE=1536 gen print-back "$YASEEN $TEE, waving goodbye with one hand and holding his soccer ball under the other arm, the red trolley rolling away behind him, palm trees and blue sky" 652
 echo "YASEEN IMAGES DONE"

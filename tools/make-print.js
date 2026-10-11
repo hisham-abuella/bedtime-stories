@@ -50,6 +50,12 @@ if (!bookPath || !outPath) {
 const bookPaths = bookPath.split(',').map(function (b) { return b.trim(); }).filter(Boolean);
 const volumeTitle = arg('--volume', '');
 const volumeTitleAr = arg('--volume-ar', '');
+// A volume's cover can carry its own pictures instead of the first story's:
+// Yusuf's Animals and Colours puts Susu in with the zoo on the front and has
+// her waving goodbye on the back.
+const frontArt = arg('--front-art', '');
+const longPages = has('--long');
+const backArt = arg('--back-art', '');
 // Perfect bound needs a spine; saddle stitch folds and has none. Lulu's own
 // generic template ships a 0.1321in spine, which is their formula at the
 // 32-page minimum — at 40 pages it is wrong, so it is computed here instead.
@@ -145,6 +151,7 @@ const outDir = path.dirname(path.resolve(outPath));
 // and dirname() of the comma-joined list silently landed a level too deep.
 const dirOf = (bk) => path.dirname(path.resolve((bk && bk.file) || bookPaths[0]));
 const fromOut = (repoRel) => path.relative(outDir, path.resolve(repoRel));
+const ownArt = (rel) => `<img src="${fromOut(rel)}" alt="">`;
 
 function artworkOf(page, bk) {
     if (useImages && page.img) {
@@ -253,7 +260,13 @@ for (const bk of volume) {
             // stage starts pushing the last line off at about 115 characters once
             // the type was enlarged,
             // and a snug stage at about 245
-            const dense = load > 245 ? ' dense' : (load > 115 ? ' snug' : '');
+            // and a dense one at about 330. A book written long (--long: a
+            // 4-year-old's book runs 40-70 words a side) gets one more tier
+            // past that, "long", which gives the words the page: a smaller
+            // picture so the type stays at 14pt English / 15pt Arabic, the floor
+            // for reading aloud from print. Opt-in, because Susu's hadith page
+            // is longer than Yaseen's shortest and its layout is already right.
+            const dense = (longPages && load > 330) ? ' dense long' : load > 245 ? ' dense' : (load > 115 ? ' snug' : '');
             const pale = isPale(accent) ? ' pale' : '';
             sheets.push(`
   <section class="sheet${dense}${pale}" style="--accent:${accent}">${marks(n)}
@@ -336,6 +349,7 @@ if (coverSpread) {
         <p class="line">${plain(c.en.line)}</p>
         <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(c).line)}</p>`}
       </div>
+      ${backArt ? `<div class="art back-art">${ownArt(backArt)}</div>` : ''}
       ${qr ? `<div class="listen">
         <div class="qr">${qr}</div>
         <div class="listen-text">
@@ -348,7 +362,7 @@ if (coverSpread) {
     ${spineMm ? '<div class="spine" aria-hidden="true"></div>' : ''}
     <div class="half front">
       ${volumeTitle ? `
-      <div class="art">${artworkOf(c, front.book)}</div>
+      <div class="art">${frontArt ? ownArt(frontArt) : artworkOf(c, front.book)}</div>
       <div class="words">
         <p class="eyebrow">${esc(chapters.length)} stories in one book</p>
         <h1>${esc(volumeTitle)}</h1>
@@ -371,7 +385,7 @@ if (coverSpread) {
 if (volumeTitle && !coverSpread && !lulu) {
     sheets.unshift(`
   <section class="sheet cover volume-cover">
-    <div class="art">${artworkOf(front.page, front.book)}</div>
+    <div class="art">${frontArt ? ownArt(frontArt) : artworkOf(front.page, front.book)}</div>
     <div class="words">
       <p class="eyebrow">${esc(chapters.length)} stories in one book</p>
       <h1>${esc(volumeTitle)}</h1>
@@ -425,6 +439,13 @@ const geometry = square ? `
   .sheet.dense .line.ar{font-size:14pt;line-height:1.52}
   .sheet.dense .sound{font-size:15pt}
   .sheet.dense .words{margin-top:4mm;gap:1.5mm}
+  .sheet.long .art{width:56mm;height:56mm}
+  .sheet.long h2{font-size:20pt}
+  .sheet.long h2.ar{font-size:19pt}
+  .sheet.long .line{font-size:14pt;line-height:1.3}
+  .sheet.long .line.ar{font-size:15pt;line-height:1.45}
+  .sheet.long .sound{font-size:14pt}
+  .sheet.long .words{margin-top:3mm;gap:1.2mm}
   /* the cover also carries the title block and the 34mm QR panel: at a full
      stage the panel ran off the bottom of the square page and the QR was
      clipped to the point where it would not scan */
@@ -458,6 +479,10 @@ const geometry = square ? `
   .art{width:98mm;height:98mm}
   .sheet.snug .art{width:93mm;height:93mm}
   .sheet.dense .art{width:88mm;height:88mm}
+  .sheet.long .art{width:66mm;height:66mm}
+  .sheet.long .line{font-size:16pt;line-height:1.32}
+  .sheet.long .line.ar{font-size:17pt;line-height:1.48}
+  .sheet.long .sound{font-size:16pt}
   .cover .art{width:76mm;height:76mm}
   .words{margin-top:5mm}
   .sheet.blank{background:var(--paper)}
@@ -620,6 +645,7 @@ ${coverSpread ? `
      The panel is held to the left of that zone instead. */
   .back .listen{margin-top:auto; max-width:${(trim - 92 - safe * 2).toFixed(1)}mm; margin-right:auto}
   .back .qr{width:30mm;height:30mm}
+  .back .back-art{width:80mm;height:80mm;margin:10mm auto 0}
   .back .listen-text b{font-size:11pt}
   .back .listen-text span{font-size:8pt}
 ` : ''}

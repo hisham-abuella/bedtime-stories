@@ -33,11 +33,16 @@ one() {   # one <slug> <books> <title-en> <title-ar> <suffix> [flags...]
   printf '  %-54s %s\n' "$dest/$slug$suffix.pdf" "$(du -h "$dest/$slug$suffix.pdf" | cut -f1)"
 }
 
-for v in "vol-first-words|$ISLAMIC|First Words|أوّلُ الكلمات" \
-         "vol-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان"; do
-  IFS='|' read -r slug books ten tar <<< "$v"
-  one "$slug" "$books" "$ten" "$tar" "-interior"
-  one "$slug" "$books" "$ten" "$tar" "-cover"    --cover
-  one "$slug" "$books" "$ten" "$tar" "-interior-eg" --dialect eg
-  one "$slug" "$books" "$ten" "$tar" "-cover-eg"    --cover --dialect eg
+# Animals and Colours has covers of its own: Susu with the zoo on the front,
+# Susu waving goodbye on the back (source/gen-susu.sh, vol-front / vol-back).
+SUSU_COVER="--front-art input/img-hi/images-susu/vol-front.jpg --back-art input/img-hi/images-susu/vol-back.jpg"
+
+for v in "vol-first-words|$ISLAMIC|First Words|أوّلُ الكلمات|" \
+         "vol-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|$SUSU_COVER"; do
+  IFS='|' read -r slug books ten tar art <<< "$v"
+  read -r -a art <<< "$art"
+  one "$slug" "$books" "$ten" "$tar" "-interior"    ${art[@]+"${art[@]}"}
+  one "$slug" "$books" "$ten" "$tar" "-cover"       --cover ${art[@]+"${art[@]}"}
+  one "$slug" "$books" "$ten" "$tar" "-interior-eg" --dialect eg ${art[@]+"${art[@]}"}
+  one "$slug" "$books" "$ten" "$tar" "-cover-eg"    --cover --dialect eg ${art[@]+"${art[@]}"}
 done
