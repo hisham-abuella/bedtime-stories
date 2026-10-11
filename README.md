@@ -98,7 +98,27 @@ never drawn at all — arms and laps came out mangled, so they live in the words
 hides on every page, the way the red bird hides in the zoo. The chapter name
 sits above the heading on each chapter's first page (`chapter` in the spec).
 
-No narration yet: the listen button has nothing to play until `audio-yaseen/` exists.
+Narration, ElevenLabs `eleven_v4`, stability 0.5, similarity 0.8: English in
+Hisham's cloned voice (`pusofH2Ro5Ny4RH6qBEO`), Egyptian by **Haytham EG
+narrator** (`IES4nrmZdUBHByLBde0P`), the voice the other books' Egyptian is
+being re-cut in. Egyptian p44 (Goodnight) is still to make: the quota ran out
+12 credits short, and it resets on 17 October.
+
+```sh
+node tools/make-transcripts.js stories/yaseen.json   # source/yaseen-{en,eg}.json (drop -ar)
+node ~/Work/Elevenlabs-voice/generate.js source/yaseen-eg.json audio-yaseen/eg \
+  --voice IES4nrmZdUBHByLBde0P --model eleven_v4 --stability 0.5 --similarity 0.8
+```
+
+```sh
+tools/build-yaseen-print.sh   # board PDF + Lulu interior and cover, Egyptian only
+```
+
+The Lulu edition is 8.5in square, perfect bound, 44 pages, with Yaseen waving
+goodbye on the back (`print-back`, the last line of `source/gen-yaseen.sh`).
+Its pages are the approved 1024px pictures enlarged to 1400px, not redrawn at
+1536px, because a new size gives a new picture. `--long` keeps the type at 14pt
+or more; `tools/check-print-text.py` checks that, and that no words are clipped.
 
 ### Noah's printed set
 
@@ -372,6 +392,13 @@ Each volume gets a cover of its own listing what is inside, in both languages,
 and every book keeps its own cover as a section divider. The volume cover's QR
 opens the shelf rather than whichever story happens to be first; the dividers
 inside keep their own per-story codes.
+
+*Animals and Colours* has pictures of its own on the cover (`--front-art`,
+`--back-art`): Susu with the zebra, panda and penguin on the front, and Susu
+waving goodbye on the back. Both are flat vector, so she sits with the zoo's
+animals as one picture, drawn at 1536px by the end of `source/gen-susu.sh`.
+That script's `DEST` defaults to the website repo, so run it with
+`DEST=$PWD/images-susu`.
 
 `print/` now holds only what you would upload or print:
 

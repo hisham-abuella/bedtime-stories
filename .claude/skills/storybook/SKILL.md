@@ -114,7 +114,7 @@ zsh source/gen-<slug>.sh            # run_in_background; skips existing PNGs
 - **Review with contact sheets** (a 4-column grid, PIL, 300px tiles, the key
   above each). Check every page for: same face, same hair colour and cut,
   right outfit, baby smaller than the sibling, the hidden object there, no
-  text, no adults, the picture matches the words.
+  text, no adults, the picture matches the words, and **count the limbs** at full size, not on a thumbnail. Asked to "wave", the model keeps both front paws down and adds a third in the air: a waving, sitting cat shows three paws on the ground, not four. Ask for it outright: "lifts her right front leg, so only her left front paw stays on the ground".
 - **To redraw a page**: move its PNG to `build/<slug>-old/`, change that
   line's seed or prompt, and rerun the script (it only draws what's missing).
 - After a change to the character description, **redraw everything**, or the
@@ -154,24 +154,66 @@ mkdir -p input/img/images-<slug>
 for p in images-<slug>/*.png; do sips -s format jpeg -s formatOptions 88 "$p" --out input/img/images-<slug>/$(basename ${p%.png}).jpg; done
 node tools/make-print.js books/<slug>.html build/<slug>-board-eg.html \
   --url https://hisham-abuella.github.io/bedtime-stories/books/<slug>.html \
-  --qr input/qr/qr-<slug>.svg --board --art images --dialect eg
+  --qr input/qr/qr-<slug>.svg --board --art images --dialect eg --long
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless --no-pdf-header-footer \
   --print-to-pdf=print/egyptian/<slug>-board-eg.pdf "file://$PWD/build/<slug>-board-eg.html"
 ```
 
-**Lulu** (8.5in square, perfect bound, 32+ pages and a multiple of 4): this
-needs 1536px artwork first, `DEST=$PWD/art-hi/images-<slug> SIZE=1536 zsh source/gen-<slug>.sh`,
-about 1 hour. Same seeds give the same compositions. Then follow
-`tools/build-noah.sh` for the `--lulu` interior plus the `--cover` spread, and
-run `tools/check-lulu.sh` and `tools/check-qr.py`. Run the overflow check from
-the README on every edition, because long pages get clipped without warning.
+`--long` is for books written long (40+ words a page). Their pages get a
+smaller picture so the type never drops below the floor. Leave it off for the
+baby books.
 
-## 8. Narration (optional)
+### Font check (run on every PDF before calling it done)
 
-`node tools/make-transcripts.js stories/<slug>.json` writes
-`source/<slug>-{en,ar,eg}.json`; then follow "Adding a story" in the README
-(ElevenLabs, or `~/Work/AI_server/scripts/voiceover.py` locally). Until
-`audio-<slug>/` exists, "Read to me" has nothing to play.
+Type must be **at least 14pt English / 15pt Arabic in print** and **at least
+18px on screen**, and no page may lose words off the bottom (overflow is
+clipped without warning).
+
+```sh
+python3 tools/check-print-text.py build/<slug>-board-eg.html print/egyptian/<slug>-board-eg.pdf
+```
+
+It must print `clean`. It reports `clipped: …last words` when the end of a
+line or refrain isn't on the page, and `small: median Npt` when a page's
+story type is under 14pt. Don't trust a small preview: a 30–60dpi render
+makes 13.5pt look like 9pt. On screen, check that the `.line` font-size at
+390px wide is at least 18px; `build-yaseen.sh` sets
+`clamp(1.15rem,4.4vw,1.45rem)` for this.
+
+**Lulu** (8.5in square, perfect bound, 32+ pages and a multiple of 4): copy
+`tools/build-yaseen-print.sh`, which builds the board PDF, the Lulu interior
+and the Lulu cover in one go and runs the text check. Lulu needs 300ppi, so
+**enlarge the approved 1024px pictures** to 1400px (`sips -Z 1400`) into
+`input/img-hi/images-<slug>/`. Don't redraw them at 1536: a new size gives a
+new picture, and the character drifts again. Draw a waving-goodbye picture for
+the back cover at 1536 and pass it with `--back-art` (`--front-art` exists too).
+Then run `tools/check-lulu.sh`, which now also picks up `*-lulu-*.pdf`.
+
+## 8. Narration
+
+```sh
+node tools/make-transcripts.js stories/<slug>.json          # source/<slug>-{en,ar,eg}.json
+node ~/Work/Elevenlabs-voice/lint-transcript.js --pair source/<slug>-en.json source/<slug>-eg.json
+node ~/Work/Elevenlabs-voice/generate.js source/<slug>-en.json audio-<slug>/en \
+  --voice pusofH2Ro5Ny4RH6qBEO --model eleven_v4 --stability 0.5 --similarity 0.8
+node ~/Work/Elevenlabs-voice/generate.js source/<slug>-eg.json audio-<slug>/eg \
+  --voice IES4nrmZdUBHByLBde0P --model eleven_v4 --stability 0.5 --similarity 0.8
+python3 ~/Work/Elevenlabs-voice/qa-audio.py source/<slug>-en.json audio-<slug>/en
+```
+
+- **Voices** (the house ones): English is Hisham's clone `pusofH2Ro5Ny4RH6qBEO`.
+  Egyptian is **Haytham EG narrator** `IES4nrmZdUBHByLBde0P`. Sarah
+  (`EXAVITQu4vr4xnSDxMaL`) is fusha.
+- **Give the cover a `say`** in the spec, or make-transcripts writes "for Yusuf".
+- **Quota**: check `generate.js --usage` first. `eleven_v4` billed Yaseen's
+  16k English characters at about 1.7k credits, so a whole book can fit in what
+  looks too small. The usage counter lags; the API's refusal message gives the
+  real balance. The starter plan can't overrun, so running until it refuses is
+  safe. The generator skips clips that already exist, so rerun after the reset
+  to finish.
+- lint's "missing space after comma" before a closing quote (`Yasso,” said`)
+  is a false alarm.
+- QA medians: English 0.068–0.085, Arabic 0.089–0.104 seconds per character.
 
 ## Checklist
 
@@ -181,4 +223,5 @@ the README on every edition, because long pages get clipped without warning.
 - [ ] All pages rendered and reviewed on contact sheets; off-model pages redrawn
 - [ ] Built, on the shelf, in the README; checked on desktop and phone
 - [ ] QR code, board PDF; Lulu PDFs if wanted (1536px art)
-- [ ] Narration, if wanted
+- [ ] Font check: `check-print-text.py` prints clean (14pt+ print, no clipping); 18px+ on a phone
+- [ ] Narration in the house voices, QA clean, every page present

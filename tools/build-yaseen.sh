@@ -32,6 +32,8 @@ swap("document.getElementById('dialects').hidden = lang === 'en';", "")
 # the picture in a 32ch column that runs far below the fold, so on a wide
 # screen the picture and the words sit side by side.
 s = s.replace('</style>', '''
+  /* 18px is the floor for the story text on a phone */
+  .spread:not(.cover) .line{font-size:clamp(1.15rem,4.4vw,1.45rem)}
   @media (min-width:900px){
     .book{width:min(1120px,100%)}
     .spread:not(.cover){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);

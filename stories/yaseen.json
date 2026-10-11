@@ -15,19 +15,22 @@
         "eyebrow": "Six little stories",
         "title": "Yaseen’s<br>Big <em>Year</em>",
         "line": "Preschool, soccer, trains by the sea — and a little sister on the way.",
-        "note": "Six short chapters — read one or two a night. A little red trolley hides on every page: let him find it before you turn."
+        "note": "Six short chapters — read one or two a night. A little red trolley hides on every page: let him find it before you turn.",
+        "say": "[warmly] Yaseen’s Big Year. Six little stories, for Yaseen. <break time=\"0.5s\" /> [gently] Preschool, soccer, trains by the sea — and a little sister on the way."
       },
       "ar": {
         "eyebrow": "ست حكايات صغيّرين",
         "title": "سنة ياسين<br><em>الكبيرة</em>",
         "line": "الحضانة، والكورة، والقطورات جنب البحر — وأخت صغيّرة جاية في السكّة.",
-        "note": "ست فصول قصيّرين — اقرا فصل ولا اتنين كل ليلة. وفي كل صفحة ترام أحمر صغيّر مستخبّي: سيبه يلاقيه قبل ما تقلب الصفحة."
+        "note": "ست فصول قصيّرين — اقرا فصل ولا اتنين كل ليلة. وفي كل صفحة ترام أحمر صغيّر مستخبّي: سيبه يلاقيه قبل ما تقلب الصفحة.",
+        "say": "[warmly] سنة ياسين الكبيرة. ست حكايات صغيّرين، عشان ياسين. <break time=\"0.5s\" /> [gently] الحضانة، والكورة، والقطورات جنب البحر — وأخت صغيّرة جاية في السكّة."
       },
       "eg": {
         "eyebrow": "ست حكايات صغيّرين",
         "title": "سنة ياسين<br><em>الكبيرة</em>",
         "line": "الحضانة، والكورة، والقطورات جنب البحر — وأخت صغيّرة جاية في السكّة.",
-        "note": "ست فصول قصيّرين — اقرا فصل ولا اتنين كل ليلة. وفي كل صفحة ترام أحمر صغيّر مستخبّي: سيبه يلاقيه قبل ما تقلب الصفحة."
+        "note": "ست فصول قصيّرين — اقرا فصل ولا اتنين كل ليلة. وفي كل صفحة ترام أحمر صغيّر مستخبّي: سيبه يلاقيه قبل ما تقلب الصفحة.",
+        "say": "[warmly] سنة ياسين الكبيرة. ست حكايات صغيّرين، عشان ياسين. <break time=\"0.5s\" /> [gently] الحضانة، والكورة، والقطورات جنب البحر — وأخت صغيّرة جاية في السكّة."
       }
     },
     {

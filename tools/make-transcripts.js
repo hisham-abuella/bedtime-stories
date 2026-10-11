@@ -45,7 +45,9 @@ function build(lang) {
         } else {
             const refrain = plain(c.sound);
             const close = last ? '[whispers]' : '[softly]';
-            body = `${open} ${plain(c.name)}. <break time="0.4s" /> ${plain(c.line)} <break time="0.5s" /> ${close} ${refrain}`;
+            // a heading that already ends in ! or ? keeps its own punctuation
+            const name = plain(c.name), stop = /[.!?…؟]$/.test(name) ? '' : '.';
+            body = `${open} ${name}${stop} <break time="0.4s" /> ${plain(c.line)} <break time="0.5s" /> ${close} ${refrain}`;
         }
         return { id: `p${i}`, title: plain(c.name || c.eyebrow), transcript: body };
     });
