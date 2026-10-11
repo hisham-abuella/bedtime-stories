@@ -12,6 +12,8 @@ REF=${REF:-$REPO/images/loza-photo.jpg}
 CLI=/opt/homebrew/bin/draw-things-cli
 LOZA="a round-faced white cartoon cat with a fluffy white coat, odd eyes — her right eye pale blue and her left eye green — a small dark grey smudge on the very top of her head between the ears, pink inner ears and a small pink nose"
 KITTEN="the same cat as a small young kitten: $LOZA"
+# asleep: the eye colours are left out, or the model paints one open
+SLEEPING="a round-faced white cartoon cat with a fluffy white coat, a small dark grey smudge on the very top of her head between the ears, pink inner ears and a small pink nose, fast asleep with both eyes shut as two curved lines"
 STYLE="warm children's picture book illustration, soft gouache, gentle rounded shapes, cosy, generous negative space, muted warm palette"
 NEG="text, letters, words, numbers, arabic script, writing, signs, watermark, signature, people, human faces, human hands, photorealistic, cluttered, deformed, extra limbs, extra tails, blurry, tabby stripes, black cat, photograph, photo, 3d render, realistic fur"
 
@@ -36,5 +38,5 @@ gen noah      "$LOZA sitting calmly beside a baby's wooden crib, keeping watch, 
 gen play      "$LOZA batting at a ball of yellow yarn on a soft rug, toy blocks nearby, $STYLE" 407
 gen eyes      "close portrait of $LOZA, one eye blue like the sea and one eye green like a leaf, $STYLE" 408
 gen days      "$LOZA stretching happily in a warm sunbeam on a rug, $STYLE" 409
-gen goodnight "$LOZA asleep curled at the end of a bed, a crescent moon and stars in the window, $STYLE" 410
+gen goodnight "$SLEEPING, curled at the end of a bed, a crescent moon and stars in the window, $STYLE" 420
 echo "LOZA IMAGES DONE"

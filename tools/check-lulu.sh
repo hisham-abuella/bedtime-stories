@@ -21,8 +21,11 @@ fail=0
 note() { printf '    %-18s %s\n' "$1" "$2"; }
 bad()  { fail=$((fail + 1)); printf '    %-18s \033[31m%s\033[0m\n' "$1" "$2"; }
 
-for f in print/*/vol-*.pdf; do
-  [[ -e $f ]] || { echo "no volume PDFs built yet — run tools/build-volumes.sh"; exit 1; }
+# Noah's set sits a level deeper, in print/noah/<arabic|egyptian>/
+shopt -s nullglob
+vols=(print/*/vol-*.pdf print/*/*/vol-*.pdf)
+(( ${#vols[@]} )) || { echo "no volume PDFs built yet — run tools/build-volumes.sh"; exit 1; }
+for f in "${vols[@]}"; do
   echo "$(basename "$f")"
   info=$(pdfinfo "$f")
   pages=$(awk '/^Pages:/{print $2}' <<<"$info")

@@ -8,6 +8,8 @@ no framework, no build step. Open `index.html` for the shelf.
 | --- | --- | --- |
 | The Black and White Zoo | `books/black-white-zoo.html` | Contrast, then colour |
 | Susu the Cat | `books/susu.html` | A true family story |
+| Loza the Cat | `books/loza.html` | A true family story, for Noah |
+| Yaseen’s Big Year | `books/yaseen.html` | Six chapters, for Yaseen |
 | Bismillah | `books/bismillah.html` | One word, every page |
 | Alhamdulillah, Little One | `books/alhamdulillah.html` | Eight plain gifts |
 | Allah Made It | `books/khalaqa.html` | Eight pieces of the world |
@@ -53,6 +55,61 @@ One page carries the hadith of the woman punished over a cat she imprisoned with
 food or water (Bukhari 3318, Muslim 2242). The child-facing wording is gentle; the full
 narration and its sources sit in the grown-up note on that page, beside the hadith of
 the thirsty dog.
+
+## Loza the Cat
+
+Made for Noah, the son of a friend. The true story of Loza — a white kitten with
+one blue eye and one green eye, found alone in a Cairo street by Gedo, flown to
+California, then taken home to San Diego by Baba Ahmed and Mama, and then Noah.
+Ten pages, built from `stories/loza.json` like the Muslim books.
+
+Her artwork is `source/gen-loza.sh`. One fixed character description is used on
+every page so she stays the same cat from pose to pose; the sleeping page uses a
+second one without the eye colours, because naming them makes the model paint an
+eye open. The cover was tried as img2img from her photograph, as Susu's is, but
+Z-Image kept the photo's realism at every strength that kept her likeness, so it
+is drawn from the description like the rest. Her photographs are in `images/`.
+
+No person is drawn: Gedo, Baba, Mama and Noah are in the words, and the pictures
+show only Loza and what is around her.
+
+## Yaseen's Big Year
+
+Made for Yaseen, four, in San Diego, with a little sister on the way. 44 pages
+in six chapters, a chapter or two a night: Hello, Yaseen · Starting Preschool ·
+Soccer Star · The Trip to Del Mar · A Baby Is Coming · Big Brother Yaseen.
+English and Egyptian Arabic only — no فصحى, so the Arabic button opens مصري.
+
+```sh
+tools/build-yaseen.sh   # stories/yaseen.json -> books/yaseen.html
+source/gen-yaseen.sh    # images-yaseen/, ~40s a page
+```
+
+Two threads run through it. *Strong feet for the ball, gentle hands for the
+baby* — the soccer chapter's practice pays off when he holds his sister the way
+he practised with his teddy. And *new things feel big at first* — he knows how
+to be kind to someone new because preschool was new for him. Baba calls him
+**Yasso**, and *Yasso is gamed gedan* (جامد جدًا) comes back at every big moment.
+
+Unlike Loza and Susu, the boy is drawn on every page, in a bright cartoon style
+rather than gouache. He comes from one fixed description and three fixed outfits
+(red t-shirt, blue soccer kit, light blue pyjamas); Mama, Baba and Coach are
+never given faces — an arm, a lap, a hand to hold. A little red toy trolley
+hides on every page, the way the red bird hides in the zoo. The chapter name
+sits above the heading on each chapter's first page (`chapter` in the spec).
+
+No narration yet: the listen button has nothing to play until `audio-yaseen/` exists.
+
+### Noah's printed set
+
+```sh
+tools/build-noah.sh    # print/noah/{arabic,egyptian}
+```
+
+The same two Lulu volumes as Yusuf's, with **Noah** printed wherever the name
+appears (`make-print.js --name Noah --name-ar نوح`), and Loza in the place Susu
+takes in *Animals and Colours* — Susu's book is Yusuf's own story. Plus Loza's
+board edition for printing at home.
 
 ## The four Muslim books
 
