@@ -15,8 +15,8 @@ fail=0
 note() { printf '    %-18s %s\n' "$1" "$2"; }
 bad()  { fail=$((fail + 1)); printf '    %-18s \033[31m%s\033[0m\n' "$1" "$2"; }
 
-for f in print/*/*-lulu-*.pdf; do
-  [[ -e $f ]] || { echo "no Lulu PDFs built yet — run tools/build-lulu.sh"; exit 1; }
+for f in print/*/vol-*.pdf; do
+  [[ -e $f ]] || { echo "no volume PDFs built yet — run tools/build-volumes.sh"; exit 1; }
   echo "$(basename "$f")"
   info=$(pdfinfo "$f")
   pages=$(awk '/^Pages:/{print $2}' <<<"$info")
@@ -31,7 +31,8 @@ for f in print/*/*-lulu-*.pdf; do
     [[ $pages == 1 ]] && note "pages" "1 spread" || bad "pages" "$pages (a cover is one page)"
   else
     if (( pages % 4 )); then bad "pages" "$pages (not a multiple of 4)"
-    elif (( pages < 4 || pages > 48 )); then bad "pages" "$pages (saddle stitch takes 4-48)"
+    elif (( pages < 32 )); then bad "pages" "$pages (perfect bound needs 32+)"
+    elif (( pages > 800 )); then bad "pages" "$pages (perfect bound tops out at 800)"
     else note "pages" "$pages"; fi
   fi
 

@@ -12,6 +12,7 @@ import segno
 BASE = 'https://hisham-abuella.github.io/bedtime-stories'
 OUT = Path(__file__).resolve().parent.parent / 'input' / 'qr'
 CODES = {
+    'qr-shelf':         f'{BASE}/',
     'qr-zoo':           f'{BASE}/books/black-white-zoo.html',
     'qr-zoo-bw':        f'{BASE}/books/black-white-zoo.html#bw',
     'qr-zoo-color':     f'{BASE}/books/black-white-zoo.html#color',

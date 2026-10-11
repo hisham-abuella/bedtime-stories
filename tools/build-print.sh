@@ -46,9 +46,8 @@ for pair in "black-white-zoo qr-zoo.svg" "susu qr-susu.svg" \
             "bismillah qr-bismillah.svg" "alhamdulillah qr-alhamdulillah.svg" \
             "khalaqa qr-khalaqa.svg" "nabina qr-nabina.svg"; do
   set -- $pair; book=$1; qr=$2
-  one "$book" "$qr" "-print" --art images
+  # Home printing only: 180mm square on card, laminated and glued. The
+  # print-on-demand editions are the two volumes, built by build-volumes.sh.
   one "$book" "$qr" "-board" --board --art images
-  # the same pages with the Egyptian column instead of the fusha one
   one "$book" "$qr" "-board-eg" --board --art images --dialect eg
-  one "$book" "$qr" "-print-eg" --art images --dialect eg
 done

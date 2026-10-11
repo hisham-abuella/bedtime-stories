@@ -26,7 +26,16 @@ ALLOWED = {
     'nabina':        {f'{BASE}/books/nabina.html'},
 }
 
+# A bound volume carries one code per chapter, so its allowed set is the union
+# of the books inside it.
+VOLUMES = {
+    'vol-first-words': ['bismillah', 'alhamdulillah', 'khalaqa', 'nabina'],
+    'vol-animals-colours': ['black-white-zoo', 'susu'],
+}
 def book_of(name):
+    for v, books in VOLUMES.items():
+        if name.startswith(v):
+            return v
     for b in sorted(ALLOWED, key=len, reverse=True):
         if name.startswith(b):
             return b
@@ -53,7 +62,13 @@ for pdf in pdfs:
     # How many codes this file should carry. A Lulu interior has no front
     # cover -- it moved to the cover spread -- so only the zoo, whose second
     # chapter opens with its own cover inside the book, has one there.
-    if '-lulu-interior' in name:
+    if book in VOLUMES:
+        # every chapter cover is inside the volume; the volume's own cover is
+        # a separate file and carries one code
+        chapters = {'black-white-zoo': 2}
+        inside = sum(chapters.get(b, 1) for b in VOLUMES[book])
+        want = 1 if name.endswith('-cover') or name.endswith('-cover-eg') else inside
+    elif '-lulu-interior' in name:
         want = 1 if book == 'black-white-zoo' else 0
     elif '-lulu-cover' in name:
         want = 1
@@ -62,7 +77,10 @@ for pdf in pdfs:
     if len(found) != want:
         bad.append((name, f'expected {want} QR, found {len(found)}'))
     for page, text in found:
-        if text not in ALLOWED[book]:
+        allowed = {f'{BASE}/'}          # a volume cover opens the shelf
+        for b in VOLUMES.get(book, [book]):
+            allowed |= ALLOWED[b]
+        if text not in allowed:
             bad.append((name, f'{page}: {text!r} is not a {book} link'))
     rows.append((name, len(found), sorted({t for _, t in found})))
 

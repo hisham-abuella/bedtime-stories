@@ -31,13 +31,14 @@ The books sit a directory down, so they reach their audio and artwork as
 
 ## The Black and White Zoo
 
-Two chapters, 11 pages each, English and Arabic.
+Two chapters, 28 pages, in English, fusha and Egyptian.
 
-- **Black & White** — zebra, panda, cow, penguin, owl, orca, sheep, puppy, cat,
-  goodnight moon. Maximum contrast, because that is what a newborn resolves best.
-- **Colours** — red, yellow, blue, green, orange, purple, pink, brown, grey, rainbow.
-  Introduced in the order infant colour vision develops; heavy black outlines keep the
-  contrast working.
+- **Black & White** — 11 pages: zebra, panda, cow, penguin, owl, orca, sheep, puppy,
+  cat, goodnight moon. Maximum contrast, because that is what a newborn resolves best.
+- **Colours** — 17 pages: red, yellow, blue, green, orange, purple, pink, brown, grey,
+  then white, black, turquoise, gold, sand and light green, then a rainbow. The first
+  nine come in the order infant colour vision develops; the six after them widen the
+  vocabulary once the basics are in. Heavy black outlines keep the contrast working.
 
 A red bird hides in a different corner of every animal page — red is the first colour
 a baby can pick out. Nine hiding places.
@@ -212,9 +213,9 @@ whoever is holding the printed book can play the same voice reading it.
 
 | Cover | Opens |
 |---|---|
-| The Black and White Zoo | `.../black-white-zoo.html` |
-| Nine Bright Colours (chapter two) | `.../black-white-zoo.html#color` |
-| Susu the Cat | `.../susu.html` |
+| The Black and White Zoo | `.../books/black-white-zoo.html` |
+| Fifteen Bright Colours (chapter two) | `.../books/black-white-zoo.html#color` |
+| Susu the Cat | `.../books/susu.html` |
 
 They point at this repo's own GitHub Pages site,
 `https://hisham-abuella.github.io/bedtime-stories/`, which serves the html, the
@@ -282,6 +283,34 @@ Anything it reports is text that will not be on the paper. The size tiers
 (`snug` at 150 characters, `dense` at 245) were set by running this until all
 twelve editions came back clean, not by eye.
 
+### Two bound volumes
+
+Six separate 10-page books are below every binding Lulu offers except staples.
+Bound as two volumes they are 40 pages each, which clears the 32-page
+perfect-bound minimum and the 24-page hardcover one — so these can be a real
+hardcover instead of a stapled pamphlet.
+
+| Volume | Chapters | Pages |
+|---|---|---|
+| **First Words** · أوّلُ الكلمات | Bismillah · Alhamdulillah · Allah Made It · The Prophet Loved | 40 |
+| **Animals and Colours** · الحيوانات والألوان | Black & White · Fifteen Colours · Susu the Cat | 40 |
+
+```sh
+tools/build-volumes.sh     # 8 PDFs: interior + cover, each in both Arabics
+```
+
+Each volume gets a cover of its own listing what is inside, in both languages,
+and every book keeps its own cover as a section divider. The volume cover's QR
+opens the shelf rather than whichever story happens to be first; the dividers
+inside keep their own per-story codes.
+
+`print/` now holds only what you would upload or print:
+
+```
+print/arabic/     fusha    — 2 volumes (interior + cover) + 6 board editions
+print/egyptian/   مصري     — the same again
+```
+
 ### Ordering from a print-on-demand printer (Lulu)
 
 The board edition is built for a kitchen table: crop marks to cut to, a folio to
@@ -291,8 +320,11 @@ opposite, so there is a separate format rather than a tweak to the old one.
 
 ```sh
 tools/regen-print-art.sh   # once: 1536px artwork, ~2 hours on the Mac Studio
-tools/build-lulu.sh        # 24 PDFs: interior + cover, drawn and illustrated
-tools/check-lulu.sh        # verifies all of it against the spec below
+tools/make-qr.py           # the printed codes, whenever a URL changes
+tools/build-volumes.sh     # the two bound volumes
+tools/build-print.sh       # the home board editions
+tools/check-lulu.sh        # trim, page count, resolution, fonts, stray marks
+tools/check-qr.py          # decodes every code back out of every PDF
 ```
 
 | Lulu requires | Board edition | `--lulu` |

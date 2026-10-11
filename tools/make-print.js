@@ -41,9 +41,15 @@ const has = (flag) => process.argv.indexOf(flag) > -1;
 
 const [, , bookPath, outPath] = process.argv;
 if (!bookPath || !outPath) {
-    console.error('usage: make-print.js <book.html> <out.html> --url <listen-url> --qr <qr.svg> [--board]');
+    console.error('usage: make-print.js <book.html>[,<book2.html>...] <out.html> --url <url> --qr <qr.svg> [--board|--lulu] [--volume "Title"]');
     process.exit(1);
 }
+// Several books can be bound as one volume: pass them comma separated. Each
+// book keeps its own cover as a section divider, and the volume gets a cover
+// of its own that lists what is inside.
+const bookPaths = bookPath.split(',').map(function (b) { return b.trim(); }).filter(Boolean);
+const volumeTitle = arg('--volume', '');
+const volumeTitleAr = arg('--volume-ar', '');
 const listenUrl = arg('--url', '');
 const qrPath = arg('--qr', '');
 const board = has('--board');
@@ -71,26 +77,44 @@ const square = board || lulu;
 // Everything from the colour constants to the UI strings is pure data: template
 // literals and object literals, no DOM. Evaluating just that slice gives us the
 // real artwork and text without duplicating either.
-const html = fs.readFileSync(bookPath, 'utf8');
+const html = fs.readFileSync(bookPaths[0], 'utf8');
 const from = html.indexOf('var INK =');
 const to = html.indexOf('var UI = {');
 if (from < 0 || to < 0) {
     console.error('could not find the data section in', bookPath);
     process.exit(1);
 }
-const sandbox = { console };
-vm.createContext(sandbox);
-vm.runInContext(html.slice(from, to), sandbox);
-const BOOK = sandbox.BOOK;
+function readBook(file) {
+    const h = fs.readFileSync(file, 'utf8');
+    const a = h.indexOf('var INK ='), b = h.indexOf('var UI = {');
+    if (a < 0 || b < 0) {
+        console.error('could not find the data section in', file);
+        process.exit(1);
+    }
+    const box = { console };
+    vm.createContext(box);
+    vm.runInContext(h.slice(a, b), box);
+    return { file: file, BOOK: box.BOOK,
+             title: (h.match(/<title>([^<]*)<\/title>/) || [, 'Story'])[1] };
+}
+const volume = bookPaths.map(readBook);
+const BOOK = volume[0].BOOK;
 
 // A book with more than one chapter gets a code per chapter cover, so the
 // colour zoo opens the colour chapter rather than the front of the book. The
 // per-chapter file sits beside the default one as <name>-<chapter>.svg.
-function qrFor(chapter) {
-    if (!qrPath) return '';
-    const perChapter = qrPath.replace(/\.svg$/, `-${chapter}.svg`);
-    const file = fs.existsSync(perChapter) ? perChapter : qrPath;
-    return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : '';
+// In a volume each book carries its own code, so the file is derived from the
+// book rather than taken from one --qr flag. The zoo's is named for the story,
+// not the file, and its two chapters each have their own.
+const QR_NAME = { 'black-white-zoo': 'qr-zoo' };
+function qrFor(chapter, bk) {
+    const dir = qrPath ? path.dirname(qrPath) : path.join('input', 'qr');
+    const slug = path.basename((bk && bk.file) || bookPaths[0], '.html');
+    const base = QR_NAME[slug] || ('qr-' + slug);
+    for (const f of [path.join(dir, `${base}-${chapter}.svg`), path.join(dir, `${base}.svg`), qrPath]) {
+        if (f && fs.existsSync(f)) return fs.readFileSync(f, 'utf8');
+    }
+    return '';
 }
 
 // The book stores generated artwork as a path relative to itself; the print
@@ -102,14 +126,16 @@ function qrFor(chapter) {
 // "rebase onto the book's directory" shortcut quietly produced paths that
 // pointed inside books/.
 const outDir = path.dirname(path.resolve(outPath));
-const bookDir = path.dirname(path.resolve(bookPath));
+// Per book, not per run: a volume's books could live in different folders,
+// and dirname() of the comma-joined list silently landed a level too deep.
+const dirOf = (bk) => path.dirname(path.resolve((bk && bk.file) || bookPaths[0]));
 const fromOut = (repoRel) => path.relative(outDir, path.resolve(repoRel));
 
-function artworkOf(page) {
+function artworkOf(page, bk) {
     if (useImages && page.img) {
         // page.img is written relative to the book ("../images-susu/x.png"),
         // so normalise it back to a repo-relative path first.
-        const asset = path.relative(process.cwd(), path.resolve(bookDir, page.img));
+        const asset = path.relative(process.cwd(), path.resolve(dirOf(bk), page.img));
         // prefer a JPEG made for print: the same picture at a twentieth of the
         // bytes, which is the difference between a mailable PDF and a 14MB one
         const jpg = path.join('input', 'img', asset.replace(/\.png$/, '.jpg'));
@@ -144,19 +170,32 @@ let n = 0;
 // more than one — the colour zoo's second chapter opens with its own — and
 // those stay in the interior, where they belong.
 let front = null;
-for (const key of Object.keys(BOOK)) {
+// Every chapter cover across the whole volume, for the contents list on the
+// volume cover: the zoo alone contributes two, Susu one, and so on.
+const chapters = [];
+for (const bk of volume) {
+  for (const key of Object.keys(bk.BOOK)) {
+    for (const page of bk.BOOK[key].pages) {
+        if (page.cover) chapters.push({ page: page, book: bk, key: key });
+    }
+  }
+}
+for (const bk of volume) {
+  const BOOK = bk.BOOK;
+  for (const key of Object.keys(BOOK)) {
     for (const page of BOOK[key].pages) {
         const accent = page.tint || BOOK[key].accent || '#D7263D';
         n += 1;
         if (page.cover) {
-            const qr = qrFor(key);
-            if (!front) front = { page, qr };
+            const qr = qrFor(key, bk);
+            if (!front) front = { page, qr, book: bk };
             // Lulu takes the cover as its own spread file, so it must not also
-            // appear as interior page one.
-            if (lulu && front.page === page) continue;
+            // appear as interior page one. A volume has a cover of its own, so
+            // every chapter cover stays inside as a divider.
+            if (lulu && !volumeTitle && front.page === page) continue;
             sheets.push(`
   <section class="sheet cover">${marks(n)}
-    <div class="art">${artworkOf(page)}</div>
+    <div class="art">${artworkOf(page, bk)}</div>
     <div class="words">
       <p class="eyebrow">${plain(page.en.eyebrow)}</p>
       <h1>${plain(page.en.title).replace(/<em>/g, '<em>')}</h1>
@@ -179,12 +218,13 @@ for (const key of Object.keys(BOOK)) {
             // the square board page has less height to spare than A5, so it
             // needs a middle setting between a full stage and a cramped one
             // thresholds are measured, not guessed: on the square page a full
-            // stage starts pushing the last line off at about 150 characters,
+            // stage starts pushing the last line off at about 115 characters once
+            // the type was enlarged,
             // and a snug stage at about 245
-            const dense = load > 245 ? ' dense' : (load > 150 ? ' snug' : '');
+            const dense = load > 245 ? ' dense' : (load > 115 ? ' snug' : '');
             sheets.push(`
   <section class="sheet${dense}" style="--accent:${accent}">${marks(n)}
-    <div class="art">${artworkOf(page)}</div>
+    <div class="art">${artworkOf(page, bk)}</div>
     <div class="words">
       <h2>${plain(page.en.name)}</h2>
       <p class="line">${plain(page.en.line)}</p>
@@ -197,30 +237,52 @@ for (const key of Object.keys(BOOK)) {
   </section>`);
         }
     }
+  }
 }
 
-const title = (html.match(/<title>([^<]*)<\/title>/) || [, 'Story'])[1];
+const title = volumeTitle || (html.match(/<title>([^<]*)<\/title>/) || [, 'Story'])[1];
 
 // ---- the cover spread -------------------------------------------------------
 // Lulu wants one page holding back cover, spine and front cover. Saddle stitch
 // has no spine — the sheets fold rather than stack against a flat edge — so the
 // spread is simply two trims side by side. The QR moves to the back, which is
 // where a reader looks for it anyway.
+// The contents list: every chapter in the volume, in reading order, in both
+// languages. This is what makes a bound volume legible from the outside —
+// "Animals and Colours" means nothing until it says Black & White, Fifteen
+// Colours, Susu the Cat underneath it.
+const stripTags = (t) => plain(esc(t)).replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+const contentsList = () => chapters.map(function (c) {
+    return `<li><span class="ch-en">${stripTags(c.page.en.title)}</span>` +
+           `<span class="ch-ar" dir="rtl" lang="${arLang}">${stripTags(arOf(c.page).title)}</span></li>`;
+}).join('');
+
 if (coverSpread) {
     if (!front) {
-        console.error('no cover page found in', bookPath);
+        console.error('no cover page found in', bookPaths.join(','));
         process.exit(1);
     }
-    const { page: c, qr } = front;
+    const { page: c } = front;
+    // A volume holds several stories, so its cover opens the shelf rather than
+    // dropping the reader into whichever one happens to be first.
+    const shelfQr = path.join(qrPath ? path.dirname(qrPath) : path.join('input', 'qr'), 'qr-shelf.svg');
+    const qr = (volumeTitle && fs.existsSync(shelfQr))
+        ? fs.readFileSync(shelfQr, 'utf8') : front.qr;
     sheets.length = 0;
     sheets.push(`
   <section class="spread">
     <div class="half back">
       <div class="back-top">
+        ${volumeTitle ? `
+        <p class="eyebrow">${esc(chapters.length)} stories in one book</p>
+        <h2 class="back-title">${esc(volumeTitle)}</h2>
+        ${volumeTitleAr ? `<p class="line ar" dir="rtl" lang="${arLang}">${esc(volumeTitleAr)}</p>` : ''}
+        <p class="line">Every page in English and Arabic, with a voice reading each one aloud.</p>` : `
         <p class="eyebrow">${plain(c.en.eyebrow)}</p>
-        <h2 class="back-title">${plain(c.en.title).replace(/<br\s*\/?>/gi, ' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim()}</h2>
+        <h2 class="back-title">${stripTags(c.en.title)}</h2>
         <p class="line">${plain(c.en.line)}</p>
-        <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(c).line)}</p>
+        <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(c).line)}</p>`}
       </div>
       ${qr ? `<div class="listen">
         <div class="qr">${qr}</div>
@@ -232,13 +294,36 @@ if (coverSpread) {
       </div>` : ''}
     </div>
     <div class="half front">
-      <div class="art">${artworkOf(c)}</div>
+      ${volumeTitle ? `
+      <div class="art">${artworkOf(c, front.book)}</div>
+      <div class="words">
+        <p class="eyebrow">${esc(chapters.length)} stories in one book</p>
+        <h1>${esc(volumeTitle)}</h1>
+        ${volumeTitleAr ? `<h1 class="ar" dir="rtl" lang="${arLang}">${esc(volumeTitleAr)}</h1>` : ''}
+        <ul class="contents">${contentsList()}</ul>
+      </div>` : `
+      <div class="art">${artworkOf(c, front.book)}</div>
       <div class="words">
         <p class="eyebrow">${plain(c.en.eyebrow)}</p>
         <h1>${plain(c.en.title)}</h1>
         <p class="line">${plain(c.en.line)}</p>
         <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(c).line)}</p>
-      </div>
+      </div>`}
+    </div>
+  </section>`);
+}
+
+// A bound volume opens on its own cover, not on the first story's. Lulu takes
+// that cover as a separate file; everything else wants it as page one.
+if (volumeTitle && !coverSpread && !lulu) {
+    sheets.unshift(`
+  <section class="sheet cover volume-cover">
+    <div class="art">${artworkOf(front.page, front.book)}</div>
+    <div class="words">
+      <p class="eyebrow">${esc(chapters.length)} stories in one book</p>
+      <h1>${esc(volumeTitle)}</h1>
+      ${volumeTitleAr ? `<h1 class="ar" dir="rtl" lang="${arLang}">${esc(volumeTitleAr)}</h1>` : ''}
+      <ul class="contents">${contentsList()}</ul>
     </div>
   </section>`);
 }
@@ -269,19 +354,24 @@ const geometry = square ? `
   .sheet:not(.cover){justify-content:center}
   .art{width:108mm;height:108mm}
   .sheet.snug .art{width:82mm;height:82mm}
+  .sheet.snug h2{font-size:27pt}
+  .sheet.snug h2.ar{font-size:24pt}
+  .sheet.snug .line{font-size:15pt;line-height:1.34}
+  .sheet.snug .line.ar{font-size:15pt;line-height:1.56}
+  .sheet.snug .sound{font-size:17pt}
   .sheet.dense .art{width:72mm;height:72mm}
   .words{margin-top:5mm}
-  h1{font-size:34pt}
-  h2{font-size:27pt}
-  h2.ar{font-size:23pt}
-  .line{font-size:14pt;line-height:1.35}
-  .line.ar{font-size:14pt;line-height:1.6}
-  .sound{font-size:16pt}
-  .sheet.dense h2{font-size:21pt}
-  .sheet.dense h2.ar{font-size:18pt}
-  .sheet.dense .line{font-size:11.5pt;line-height:1.3}
-  .sheet.dense .line.ar{font-size:12pt;line-height:1.5}
-  .sheet.dense .sound{font-size:13pt}
+  h1{font-size:38pt}
+  h2{font-size:31pt}
+  h2.ar{font-size:27pt}
+  .line{font-size:17pt;line-height:1.38}
+  .line.ar{font-size:17pt;line-height:1.62}
+  .sound{font-size:19pt}
+  .sheet.dense h2{font-size:24pt}
+  .sheet.dense h2.ar{font-size:21pt}
+  .sheet.dense .line{font-size:13.5pt;line-height:1.32}
+  .sheet.dense .line.ar{font-size:14pt;line-height:1.52}
+  .sheet.dense .sound{font-size:15pt}
   .sheet.dense .words{margin-top:4mm;gap:1.5mm}
   /* the cover also carries the title block and the 34mm QR panel: at a full
      stage the panel ran off the bottom of the square page and the QR was
@@ -292,9 +382,12 @@ const geometry = square ? `
   /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
      edition's 8mm, so every stage comes down to match. Measured, not guessed. */
   ${lulu ? `
-  .art{width:92mm;height:92mm}
-  .sheet.snug .art{width:74mm;height:74mm}
-  .sheet.dense .art{width:64mm;height:64mm}
+  /* These three are measured, not chosen: the type was enlarged first, then
+     each stage grown back until the tightest page in either volume had only a
+     few millimetres to spare. */
+  .art{width:81mm;height:81mm}
+  .sheet.snug .art{width:73mm;height:73mm}
+  .sheet.dense .art{width:68mm;height:68mm}
   .cover .art{width:62mm;height:62mm}
   .words{margin-top:4mm}
   .sheet.blank{background:var(--paper)}
@@ -395,6 +488,18 @@ fs.writeFileSync(outPath, `<!DOCTYPE html>
   .listen-text b{font-size:11pt}
   .listen-text span{font-size:8.5pt;color:#4A463D;line-height:1.35}
   .listen-text .url{font-size:7.5pt;color:var(--quiet);letter-spacing:.04em}
+
+  /* the contents list on a volume cover */
+  .contents{list-style:none;margin:4mm 0 0;padding:0;display:flex;flex-direction:column;gap:2mm;width:100%}
+  .contents li{
+    display:flex;align-items:baseline;justify-content:space-between;gap:4mm;
+    border-top:.3mm solid rgba(17,16,16,.16);padding-top:1.6mm;
+  }
+  .contents li:first-child{border-top:none}
+  .ch-en{font-family:var(--display);font-weight:600;font-size:13pt;text-align:left}
+  .ch-ar{font-family:var(--ar);font-size:13pt;text-align:right}
+  .volume-cover .art{width:58mm;height:58mm}
+  .front .contents{margin-top:3mm}
 ${geometry}
 ${coverSpread ? `
   /* The spread is two trims wide. Content keeps the full safety margin from
@@ -433,7 +538,7 @@ ${sheets.join('\n')}
 
 const fmt = (mm) => `${(mm / IN).toFixed(3).replace(/0+$/, '').replace(/\.$/, '')}in`;
 console.log(`${path.basename(outPath)} — ${sheets.length} ${coverSpread ? 'spread' : 'sheets'}`
-    + ` from ${path.basename(bookPath)}`
+    + ` from ${volumeTitle ? volumeTitle + ' (' + bookPaths.length + ' books)' : path.basename(bookPaths[0])}`
     + (coverSpread ? `, ${fmt(spreadW)} x ${fmt(sheet)} (2 x ${fmt(trim)} trim + ${fmt(bleed)} bleed, no spine)`
         : lulu ? `, ${fmt(trim)} square trim + ${fmt(bleed)} bleed, ${fmt(safe)} safety`
             + (padded ? `, ${padded} blank${padded > 1 ? 's' : ''} to reach a multiple of 4` : '')

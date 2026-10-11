@@ -34,8 +34,15 @@ gen whale    "a big blue whale swimming, $CO, dominant blue" 204
 gen frog     "a little green frog sitting on a leaf, $CO, dominant green" 205
 gen tiger    "an orange tiger face with black stripes, $CO, dominant orange" 206
 gen butterfly "a purple butterfly with open wings, $CO, dominant purple" 207
-gen pig      "a round pink pig face with a snout, $CO, dominant pink" 208
+gen flamingo "a pink flamingo standing on one leg in shallow water, long curved neck, $CO, dominant pink" 208
 gen bear     "a big friendly brown bear face, $CO, dominant brown" 209
 gen greycat  "a soft grey cat curled up asleep, $CO, dominant grey" 210
+gen dove     "a white dove bird standing, orange beak, $CO, dominant white" 211
+gen crow     "a black crow bird standing, yellow beak, $CO, dominant black" 212
+gen peacock  "a turquoise peacock with its tail fanned open showing eye spots, $CO, dominant turquoise" 213
+gen lion     "a golden lion face with a big mane, friendly, $CO, dominant gold yellow" 214
+gen camel    "a single sand coloured camel with one hump standing, side view, plain off-white background, no desert, no dunes, no sky, $CO, dominant sand beige" 217
+gen parrot   "a light green parrot perched, curved orange beak, $CO, dominant light green" 216
+gen swatches "a neat grid of fifteen round paint colour swatches, evenly spaced, flat solid colours, $CO" 218
 gen rainbow  "a bright rainbow arc with soft clouds, red orange yellow green blue purple, $CO" 211
 echo "ALL DONE"
