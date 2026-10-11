@@ -136,6 +136,8 @@
     color:var(--quiet);margin:0;
   }
   [lang|="ar"] .eyebrow{letter-spacing:0;font-size:.85rem}
+  /* the first page of a chapter carries its name above the page heading */
+  .eyebrow.chapter{color:var(--accent);font-weight:700}
 .dedication{
     font-family:var(--display);font-style:italic;font-weight:600;
     font-size:clamp(1.05rem,3.6vw,1.3rem);color:var(--accent);margin:0;
@@ -429,6 +431,7 @@ function render(){
     '</div>';
   } else {
     html += '<div class="words">' +
+      (copy.chapter ? '<p class="eyebrow chapter">' + copy.chapter + '</p>' : '') +
       '<h2 class="animal' + (ch === 'bw' ? ' plain' : '') + '"' +
         (ch === 'color' && page.tint ? ' style="color:' + page.tint + '"' : '') + '>' + copy.name + '</h2>' +
       '<p class="line">' + copy.line + '</p>' +

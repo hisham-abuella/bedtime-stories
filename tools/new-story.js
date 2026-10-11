@@ -40,7 +40,8 @@ const pages = spec.pages.map((p, i) => {
         const c = p[lang];
         const bits = p.cover
             ? [`eyebrow:${q(c.eyebrow)}`, `title:${q(c.title)}`, `line:${q(c.line)}`, `note:${q(c.note)}`]
-            : [`name:${q(c.name)}`, `line:${q(c.line)}`, `sound:${q(c.sound)}`, `note:${q(c.note)}`];
+            : [`name:${q(c.name)}`, `line:${q(c.line)}`, `sound:${q(c.sound)}`, `note:${q(c.note)}`]
+                .concat(c.chapter ? [`chapter:${q(c.chapter)}`] : []);
         return `${lang}:{ ${bits.join(',\n               ')} }`;
     };
     const head = [`art:ART[${q(p.key)}]`, p.cover ? 'cover:true' : null, `audio:'p${i}'`,

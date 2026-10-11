@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Six little stories for Yaseen, four, in San Diego: starting preschool, soccer training, the trains at Del Mar, and getting ready to be a gentle big brother.">
+<meta property="og:title" content="Yaseen’s Big Year">
+<meta property="og:description" content="Preschool, soccer, trains by the sea — and a little sister on the way. A storybook for Yaseen, in English and Arabic.">
+<meta property="og:type" content="website">
+<title>Yaseen’s Big Year</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@400..800&family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..700&family=Fredoka:wght@400..700&family=Noto+Kufi+Arabic:wght@400..900&display=swap">
+<style>
+  :root{
+    --page:#FCFBF6;
+    --ink:#111010;
+    --red:#D7263D;
+    --surround:#1C1B17;
+    --surround-2:#262519;
+    --quiet:#8E8A7D;
+    --rule:rgba(17,16,16,.14);
+    --accent:var(--red);
+    --tint:transparent;
+    --display:"Fraunces","Iowan Old Style",Georgia,serif;
+    --story:"Fredoka","Avenir Next Rounded","Trebuchet MS",system-ui,sans-serif;
+  }
+  [lang|="ar"]{
+    --display:"Noto Kufi Arabic","Fraunces",Georgia,serif;
+    --story:"Baloo Bhaijaan 2","Noto Kufi Arabic",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+
+  body{
+    margin:0;
+    min-height:100vh;
+    background:radial-gradient(120% 80% at 50% 0%, var(--surround-2) 0%, var(--surround) 62%);
+    color:var(--page);
+    font-family:var(--story);
+    padding:20px 16px 36px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:14px;
+  }
+
+  /* ---------- top bar ---------- */
+  .bar{
+    width:min(820px,100%);
+    display:flex;
+    gap:10px;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .seg{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(252,251,246,.08);border:1px solid rgba(252,251,246,.14)}
+  .seg button{
+    background:transparent;border:none;color:#C9C5B4;
+    font-family:var(--display);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+    padding:7px 13px;border-radius:999px;transition:background .18s ease,color .18s ease;
+  }
+  .seg button[aria-pressed="true"]{background:var(--page);color:var(--ink);font-weight:700}
+  .seg button:hover:not([aria-pressed="true"]){color:var(--page)}
+  .seg[hidden]{display:none}
+  .seg.lang button{font-family:var(--story);letter-spacing:.04em;text-transform:none;font-size:.86rem}
+
+  /* ---------- the book ---------- */
+  .book{
+    width:min(820px,100%);
+    background:var(--page);
+    color:var(--ink);
+    border-radius:14px;
+    box-shadow:0 26px 60px -24px rgba(0,0,0,.85);
+    overflow:hidden;
+  }
+  .spread{
+    padding:28px 26px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    animation:settle .42s ease both;
+  }
+  @keyframes settle{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .stage{
+    position:relative;
+    width:100%;
+    aspect-ratio:1/1;
+    max-height:min(56vh,480px);
+    margin-inline:auto;
+    display:grid;
+    place-items:center;
+    border-radius:12px;
+    background:var(--tint);
+    overflow:hidden;
+  }
+  .stage svg.art{width:100%;height:100%;max-width:100%;display:block}
+  .stage img.art{width:100%;height:100%;max-width:100%;max-height:100%;min-width:0;min-height:0;display:block;object-fit:contain;border-radius:12px}
+  .breathe{animation:breathe 5.2s ease-in-out infinite;transform-origin:50% 62%}
+  @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.022)}}
+  .bird{position:absolute;width:14%;animation:flit 7s ease-in-out infinite}
+  @keyframes flit{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(4deg)}}
+
+  /* ---------- words ---------- */
+  .words{display:flex;flex-direction:column;gap:9px;text-align:center;max-width:32ch;margin-inline:auto}
+  .animal{
+    font-family:var(--display);
+    font-weight:900;
+    font-size:clamp(2.2rem,9.5vw,3.3rem);
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    line-height:1;
+    text-wrap:balance;
+    margin:0;
+    color:var(--accent);
+  }
+  [lang|="ar"] .animal{text-transform:none;letter-spacing:0;line-height:1.3}
+  .animal.plain{color:var(--ink)}
+  .line{font-size:clamp(1.1rem,4.2vw,1.45rem);font-weight:500;line-height:1.4;text-wrap:balance;margin:0}
+  .sound{
+    font-family:var(--display);font-style:italic;font-weight:600;
+    font-size:clamp(1.25rem,5vw,1.7rem);color:var(--accent);margin:0;
+  }
+  [lang|="ar"] .sound{font-style:normal;font-weight:700}
+
+  /* ---------- cover ---------- */
+  .cover h1{
+    font-family:var(--display);font-weight:900;
+    font-size:clamp(2.4rem,10vw,3.7rem);line-height:.95;margin:0;text-wrap:balance;
+  }
+  [lang|="ar"] .cover h1{line-height:1.25}
+  .cover h1 em{font-style:normal;color:var(--accent)}
+  .eyebrow{
+    font-family:var(--display);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;
+    color:var(--quiet);margin:0;
+  }
+  [lang|="ar"] .eyebrow{letter-spacing:0;font-size:.85rem}
+  /* the first page of a chapter carries its name above the page heading */
+  .eyebrow.chapter{color:var(--accent);font-weight:700}
+.dedication{
+    font-family:var(--display);font-style:italic;font-weight:600;
+    font-size:clamp(1.05rem,3.6vw,1.3rem);color:var(--accent);margin:0;
+  }
+  [lang|="ar"] .dedication{font-style:normal}
+  .cover-rule{height:6px;background:var(--ink);width:72px;margin:2px auto;border-radius:4px}
+  .namer{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;
+    border-top:1px solid var(--rule);padding-top:14px;
+  }
+  .namer label{font-size:.95rem;color:#3b3a35}
+  .namer input{
+    font:inherit;font-size:1rem;padding:8px 12px;width:11ch;
+    border:2px solid var(--ink);border-radius:9px;background:var(--page);color:var(--ink);text-align:center;
+  }
+  .namer input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+
+  /* ---------- listen ---------- */
+  .listen{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+  .play{
+    display:inline-flex;align-items:center;gap:10px;
+    border:2px solid var(--ink);background:var(--ink);color:var(--page);
+    border-radius:999px;padding:11px 22px;font-family:var(--story);font-size:1.02rem;font-weight:600;
+    transition:transform .14s ease;
+  }
+  .play:hover{transform:translateY(-2px)}
+  .play[data-state="playing"]{background:var(--accent);border-color:var(--accent)}
+  .play.ghost{background:transparent;color:var(--ink)}
+  .play.ghost:active{background:var(--ink);color:var(--page)}
+  .play .ico{width:15px;height:17px;flex:none}
+
+  .note{
+    border-top:1px solid var(--rule);padding-top:11px;
+    display:flex;gap:10px;align-items:flex-start;
+    font-family:var(--display);font-style:italic;font-size:.9rem;line-height:1.45;color:#4a4842;
+  }
+  [lang|="ar"] .note{font-family:var(--story);font-style:normal;font-size:.92rem}
+  .note b{
+    font-style:normal;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    font-size:.62rem;color:var(--quiet);padding-top:.3em;white-space:nowrap;flex:none;
+  }
+  [lang|="ar"] .note b{letter-spacing:0;font-size:.72rem}
+  body.notes-off .note{display:none}
+
+  /* ---------- controls ---------- */
+  .controls{width:min(820px,100%);display:flex;align-items:center;justify-content:space-between;gap:12px}
+  button{font:inherit;cursor:pointer}
+  .turn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--page);color:var(--ink);border:none;border-radius:999px;
+    padding:12px 20px;font-weight:600;font-size:1rem;
+    box-shadow:0 8px 20px -10px rgba(0,0,0,.9);transition:transform .14s ease;
+  }
+  .turn:hover{transform:translateY(-2px)}
+  .turn .arrow{font-size:1.05em;line-height:1}
+  .turn[disabled]{opacity:.3;cursor:default;transform:none}
+  :focus-visible{outline:3px solid var(--red);outline-offset:3px}
+  .dots{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+  .dots span{width:9px;height:9px;border-radius:50%;background:rgba(252,251,246,.3);transition:background .2s,transform .2s}
+  .dots span.on{background:var(--page);transform:scale(1.35)}
+
+  .footer{width:min(820px,100%);display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+  .pill{
+    background:transparent;border:1px solid rgba(252,251,246,.26);color:#C9C5B4;border-radius:999px;
+    padding:7px 14px;font-family:var(--display);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
+  }
+  [lang|="ar"] .pill{font-family:var(--story);letter-spacing:0;font-size:.82rem;text-transform:none}
+  .pill:hover{border-color:rgba(252,251,246,.6);color:var(--page)}
+  .pill[aria-pressed="true"]{border-color:var(--page);color:var(--page)}
+
+  /* ---------- full screen ---------- */
+  /* dvh, not vh: on a phone vh counts the space behind the browser's own
+     address bar, which left the page scrollable by a dozen pixels in what is
+     supposed to be a full screen. */
+  /* Full screen means one screen. The body is exactly the viewport tall and
+     nothing may push past it: the picture gives up height first, then the
+     words scroll inside their own column. dvh, not vh, because vh counts the
+     space behind a phone's address bar. */
+  body.big{
+    padding:8px 0 0;gap:8px;justify-content:flex-start;
+    height:100vh;height:100dvh;min-height:0;overflow:hidden;
+  }
+  body.big .bar{width:min(1000px,96%);flex:none}
+  body.big .book{width:100%;max-width:none;border-radius:0;box-shadow:none;
+    flex:1 1 auto;min-height:0;display:flex;align-items:center}
+  body.big .spread{width:min(1000px,100%);margin-inline:auto;padding:12px 24px 104px;gap:20px;
+    height:100%;max-height:100%;min-height:0}
+  body.big .stage{flex:0 1 auto;min-height:0;max-height:min(52dvh,820px)}
+  body.big .words{min-height:0;overflow-y:auto}
+  body.big .animal{font-size:clamp(3rem,7vw,5rem)}
+  body.big .line{font-size:clamp(1.3rem,2.6vw,2rem)}
+  body.big .sound{font-size:clamp(1.5rem,3vw,2.4rem)}
+  body.big .cover h1{font-size:clamp(3rem,7.5vw,5.4rem)}
+  body.big .words{max-width:40ch}
+  body.big .note{display:none}
+  body.big .footer{display:none}
+  body.big .controls{
+    position:fixed;bottom:16px;left:50%;transform:translateX(-50%);
+    width:min(1000px,96%);z-index:5;
+  }
+
+  /* A phone held sideways has about 390px of height, and the picture alone
+     wants most of it. Stacked, the words ended up under the floating controls
+     and 223px below the fold. Side by side, both fit. */
+  @media (orientation:landscape) and (max-height:620px){
+    /* No magic numbers: the body is exactly one screen tall and the book takes
+       whatever the top bar leaves. The zoo's bar is a row taller than the
+       others' because of its chapter switch, and subtracting a fixed height
+       left every one of its pages scrolling by 30px. */
+    body.big{padding:4px 0 0;gap:4px;height:100dvh;min-height:0;overflow:hidden}
+    body.big .book{flex:1 1 auto;min-height:0}
+    body.big .spread{
+      flex-direction:row; align-items:center; justify-content:center;
+      gap:18px; padding:6px 16px 66px;   /* clears the fixed controls: 52px tall + 6px up */
+      height:100%; max-height:100%; min-height:0;
+    }
+    body.big .stage{flex:0 0 40%; width:40%; margin:0; max-height:100%; min-height:0}
+    /* the long pages (the hadith, the covers) still outgrow a sideways phone;
+       let that one column scroll rather than push the page past the bottom */
+    body.big .words{
+      flex:1 1 0; min-width:0; max-width:36ch; margin:0;
+      max-height:100%; min-height:0; overflow-y:auto;
+    }
+    body.big .line{font-size:clamp(.95rem,2.1vw,1.3rem)}
+    body.big .sound{font-size:clamp(1.05rem,2.4vw,1.5rem)}
+    body.big .animal{font-size:clamp(1.8rem,4.5vw,3rem)}
+    body.big .cover h1{font-size:clamp(1.5rem,4.2vw,2.4rem)}
+    body.big .controls{bottom:6px}
+    body.big .bar{gap:6px}
+  }
+
+  @media (max-width:430px){
+    .turn{padding:11px 15px;font-size:.94rem}
+    .spread{padding:18px 15px 16px}
+    .controls{gap:8px}
+  }
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
+  @media (min-width:900px){
+    .book{width:min(1120px,100%)}
+    .spread:not(.cover){display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+      column-gap:34px;row-gap:16px;align-items:center;align-content:center}
+    .spread:not(.cover) .stage{grid-row:1 / span 3;max-height:min(78vh,560px)}
+    .spread:not(.cover) .words{max-width:44ch}
+    .spread:not(.cover) .line{font-size:1.24rem;line-height:1.5}
+  }
+</style>
+<style>
+  img{max-width:100%}
+  [hidden]{display:none!important}
+  .home-link{text-decoration:none;display:inline-flex;align-items:center}
+  body.big .home-link{display:none}
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="pill home-link" href="../index.html" id="shelfLink">&larr; All the stories</a>
+  <button class="pill" id="artBtn" type="button" hidden></button>
+  <button class="pill" id="fsBtn" type="button"></button>
+  <button class="pill" id="turnBtn" type="button" aria-pressed="false"></button>
+  <div class="seg lang" id="langs" role="group" aria-label="Language">
+    <button type="button" data-lang="en" aria-pressed="true">English</button>
+    <button type="button" data-lang="ar" aria-pressed="false" lang="ar-EG">مصري</button>
+  </div>
+  <div id="dialects" hidden></div>
+</div>
+
+<div class="book"><section class="spread" id="spread"></section></div>
+
+<div class="controls">
+  <button class="turn" id="prev" type="button"><span class="arrow" id="prevArrow">&larr;</span><span data-t="back">Back</span></button>
+  <div class="dots" id="dots" aria-hidden="true"></div>
+  <button class="turn" id="next" type="button"><span data-t="next">Turn the page</span><span class="arrow" id="nextArrow">&rarr;</span></button>
+</div>
+
+<div class="footer">
+  <button class="pill" id="autoBtn" type="button" aria-pressed="true"></button>
+  <button class="pill" id="notesBtn" type="button"></button>
+  <button class="pill" id="startBtn" type="button"></button>
+</div>
+
+<audio id="player" preload="none"></audio>
+<audio id="sfx" preload="none"></audio>
+
+<script>
+/* ============================================================
+   Art — every animal drawn as bold shapes on a 400x400 field
+   ============================================================ */
+var INK = '#111010', PAPER = '#FCFBF6', RED = '#D7263D';
+
+var ART = {};
+
+/* Shared drawing kit for the story books.
+   Every page is one motif on a 400x400 field: thick outlines, flat fills,
+   plenty of empty paper. A baby resolves edges long before he resolves detail,
+   so the outline is doing most of the work here. */
+
+var SKY = '#9CC4D8', SEA = '#2F6FA8', SAND = '#E8C27A', LEAF = '#8FB58A',
+    DEEP = '#2E8B74', CLAY = '#C97B4A', GOLD = '#C9842E', NIGHT = '#6E7FA8',
+    CREAM = '#FCFBF6', MINT = '#8FCBB8', SKIN = '#E3B894', FUR = '#A89079',
+    STRIPE = '#4F4136';
+
+function svg(label, body) {
+  return '<svg class="art breathe" viewBox="0 0 400 400" role="img" aria-label="' +
+    label + '">' + body + '</svg>';
+}
+function g(body, attrs) { return '<g ' + (attrs || '') + '>' + body + '</g>'; }
+function out(w) { return 'stroke="' + INK + '" stroke-width="' + (w || 8) + '" stroke-linejoin="round" stroke-linecap="round"'; }
+function circ(cx, cy, r, fill, w) { return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + fill + '" ' + out(w) + '/>'; }
+function ell(cx, cy, rx, ry, fill, w) { return '<ellipse cx="' + cx + '" cy="' + cy + '" rx="' + rx + '" ry="' + ry + '" fill="' + fill + '" ' + out(w) + '/>'; }
+function rect(x, y, w, h, r, fill, sw) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + h + '" rx="' + r + '" fill="' + fill + '" ' + out(sw) + '/>'; }
+function path(d, fill, w) { return '<path d="' + d + '" fill="' + (fill || 'none') + '" ' + out(w) + '/>'; }
+
+/* the sun, low and friendly */
+function sun(cx, cy, r) {
+  var rays = '';
+  for (var i = 0; i < 8; i++) {
+    var a = i * Math.PI / 4,
+        x1 = cx + Math.cos(a) * (r + 14), y1 = cy + Math.sin(a) * (r + 14),
+        x2 = cx + Math.cos(a) * (r + 34), y2 = cy + Math.sin(a) * (r + 34);
+    rays += '<path d="M' + x1.toFixed(1) + ' ' + y1.toFixed(1) + ' L' + x2.toFixed(1) + ' ' + y2.toFixed(1) +
+            '" stroke="' + GOLD + '" stroke-width="10" stroke-linecap="round"/>';
+  }
+  return rays + circ(cx, cy, r, SAND);
+}
+
+/* a crescent: one disc with a second disc of the page colour bitten out of it.
+   Two arcs in a single path collapse into a lens, so this does it the way the
+   zoo book's moon does — it only works on the page colour, which is what the
+   stage always is. */
+function crescent(cx, cy, r, fill) {
+  return '<circle cx="' + cx + '" cy="' + cy + '" r="' + r + '" fill="' + (fill || CREAM) + '" ' + out(8) + '/>' +
+         '<circle cx="' + (cx + r * 0.36) + '" cy="' + (cy - r * 0.22) + '" r="' + (r * 0.86) + '" fill="' + PAPER + '"/>';
+}
+
+function star(cx, cy, r, fill) {
+  var p = '';
+  for (var i = 0; i < 10; i++) {
+    var a = -Math.PI / 2 + i * Math.PI / 5, rr = i % 2 ? r * 0.44 : r;
+    p += (i ? 'L' : 'M') + (cx + Math.cos(a) * rr).toFixed(1) + ' ' + (cy + Math.sin(a) * rr).toFixed(1) + ' ';
+  }
+  return '<path d="' + p + 'z" fill="' + (fill || SAND) + '" ' + out(6) + '/>';
+}
+
+/* a child: round head, round body, no features beyond eyes and a smile */
+function child(cx, cy, s, shirt) {
+  s = s || 1;
+  var t = 'translate(' + cx + ',' + cy + ') scale(' + s + ')';
+  return g(
+    path('M-38 86 q0 -62 38 -62 q38 0 38 62 z', shirt || CLAY) +
+    circ(0, -24, 40, SKIN) +
+    '<circle cx="-14" cy="-28" r="5" fill="' + INK + '"/>' +
+    '<circle cx="14" cy="-28" r="5" fill="' + INK + '"/>' +
+    path('M-13 -6 q13 12 26 0', null, 6),
+    'transform="' + t + '"');
+}
+
+/* an open hand, fingers up */
+function hand(cx, cy, s, flip) {
+  s = s || 1;
+  return g(
+    path('M-26 40 q-6 -34 -4 -56 q2 -12 10 -11 q8 1 8 13 l0 26 l0 -46 q0 -12 9 -12 q9 0 9 12 l0 44 l0 -38 q0 -12 9 -12 q9 0 9 12 l0 40 l2 -26 q2 -11 10 -10 q8 2 7 13 l-6 44 q-4 24 -28 24 q-26 0 -35 -17 z', SKIN),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + (flip ? -s : s) + ',' + s + ')"');
+}
+
+/* a simple sitting cat, Susu-coloured: body, head, ears, tail, whiskers */
+function cat(cx, cy, s) {
+  s = s || 1;
+  return g(
+    path('M48 44 q44 4 40 -34 q-2 -18 -18 -15 q-13 3 -10 17', null, 14) +
+    ell(0, 34, 50, 54, FUR) +
+    path('M0 -12 q24 22 24 60 q0 24 -24 26 q-24 -2 -24 -26 q0 -38 24 -60 z', CREAM, 0) +
+    path('M-42 -40 l4 -40 l34 24 z', FUR) +
+    path('M42 -40 l-4 -40 l-34 24 z', FUR) +
+    ell(0, -26, 44, 38, FUR) +
+    '<circle cx="-16" cy="-32" r="7" fill="' + INK + '"/>' +
+    '<circle cx="16" cy="-32" r="7" fill="' + INK + '"/>' +
+    path('M0 -10 l-8 -7 h16 z', '#E0919E', 4) +
+    path('M-44 -16 h-22 M-44 -6 h-20 M44 -16 h22 M44 -6 h20', null, 4),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + s + ')"');
+}
+
+/* a bowl, optionally full */
+function bowl(cx, cy, s, fill) {
+  s = s || 1;
+  return g(
+    path('M-56 -8 h112 a56 56 0 0 1 -112 0 z', CREAM) +
+    (fill ? path('M-44 -8 q44 -18 88 0 z', fill, 6) : ''),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + s + ')"');
+}
+
+/* a loaf of bread, scored on top */
+function loaf(cx, cy, s) {
+  s = s || 1;
+  return g(
+    path('M-82 34 q-8 -72 82 -72 q90 0 82 72 z', GOLD) +
+    path('M-44 -16 l16 -16 M-6 -22 l16 -16 M32 -16 l16 -16', null, 7),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + s + ')"');
+}
+
+/* a cup with a handle */
+function cup(cx, cy, s, fill) {
+  s = s || 1;
+  return g(
+    path('M44 -16 q26 0 26 22 q0 22 -26 22', null, 8) +
+    path('M-44 -30 h88 l-8 72 q-2 14 -16 14 h-40 q-14 0 -16 -14 z', fill || CREAM),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + s + ')"');
+}
+
+/* a water drop */
+function drop(cx, cy, s, fill) {
+  s = s || 1;
+  return g(path('M0 -46 q34 40 34 62 a34 34 0 0 1 -68 0 q0 -22 34 -62 z', fill || SKY),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + s + ')"');
+}
+
+/* a date palm: a short thick trunk under a wide crown, so it reads as a tree
+   and not as a sprig floating above a line */
+function palmTree(cx, cy, s) {
+  s = s || 1;
+  return g(
+    path('M-13 150 q-8 -86 4 -152 l20 2 q-10 68 2 150 z', CLAY) +
+    path('M-10 90 h18 M-11 46 h20 M-10 2 h20', null, 5) +
+    g(path('M0 0 q-76 -34 -106 22 q62 22 106 -22 z', LEAF) +
+      path('M0 0 q76 -34 106 22 q-62 22 -106 -22 z', LEAF) +
+      path('M0 0 q-36 -76 22 -96 q30 58 -22 96 z', LEAF) +
+      path('M0 0 q48 -68 100 -40 q-40 52 -100 40 z', LEAF) +
+      path('M0 0 q-54 -62 -102 -26 q44 50 102 26 z', LEAF) +
+      circ(-20, 24, 12, CLAY, 5) + circ(12, 30, 12, CLAY, 5) + circ(-4, 46, 12, CLAY, 5),
+      'transform="translate(0,-4)"'),
+    'transform="translate(' + cx + ',' + cy + ') scale(' + s + ')"');
+}
+
+/* rolling hills along the bottom */
+function ground(y, fill) {
+  return path('M0 ' + y + ' q100 -34 200 0 q100 34 200 0 L400 400 L0 400 z', fill || LEAF);
+}
+
+/* ============================================================
+   The book
+   ============================================================ */
+function P(o){ return o; }
+
+var BOOK = {
+  yaseen: {
+    accent: '#2F6FA8',
+    pages: [
+      P({ art:ART['cover'], cover:true, audio:'p0', tint:'#9CC4D8',
+          en:{ eyebrow:'Six little stories',
+               title:'Yaseen’s<br>Big <em>Year</em>',
+               line:'Preschool, soccer, trains by the sea — and a little sister on the way.',
+               note:'Six short chapters — read one or two a night. A little red trolley hides on every page: let him find it before you turn.' },
+          ar:{ eyebrow:'ست حكايات صغيّرين',
+               title:'سنة ياسين<br><em>الكبيرة</em>',
+               line:'الحضانة، والكورة، والقطورات جنب البحر — وأخت صغيّرة جاية في السكّة.',
+               note:'ست فصول قصيّرين — اقرا فصل ولا اتنين كل ليلة. وفي كل صفحة ترام أحمر صغيّر مستخبّي: سيبه يلاقيه قبل ما تقلب الصفحة.' } }),
+
+      P({ art:ART['hello'], audio:'p1', tint:'#9CC4D8',
+          en:{ name:'Hello, Yaseen!',
+               line:'This is Yaseen. He lives in San Diego, where the sky is blue, the sun is warm, and the tall palm trees wave hello. Yaseen is four years old. He has black hair, rosy cheeks, and the biggest smile you ever saw.',
+               sound:'Hello, Yaseen!',
+               note:'Ask him to wave back at Yaseen. Then ask: can you see a little red trolley hiding? There is one on every page.',
+               chapter:'Chapter 1 · Hello, Yaseen' },
+          ar:{ name:'أهلاً يا ياسين!',
+               line:'ده ياسين. ساكن في سان دييجو، حيث السما زرقا، والشمس دافية، والنخل العالي بيقول أهلاً. ياسين عنده أربع سنين. شعره إسود، وخدوده وردي، وضحكته أكبر ضحكة شفتها في حياتك.',
+               sound:'أهلاً يا ياسين!',
+               note:'خلّيه يعمل باي لياسين. وبعدين اسأله: شايف الترام الأحمر الصغيّر المستخبّي؟ في واحد في كل صفحة.',
+               chapter:'الفصل الأوّل · أهلاً يا ياسين' } }),
+
+      P({ art:ART['love'], audio:'p2', tint:'#E9A3AE',
+          en:{ name:'So Much Love',
+               line:'Mama loves Yaseen so much. Baba loves Yaseen so much — and Baba has his own special name for him: Yasso! They love him when he is happy and when he is grumpy, when he is fast and when he is sleepy. Every single day, they wrap him up in the biggest, warmest hug, and Baba says, “Yasso, you’re <em>gamed gedan</em>!” — which means really, really awesome.',
+               sound:'Yasso is <em>gamed gedan</em>!',
+               note:'“Yasso” and “<em>gamed gedan</em>” — really, really awesome — are Baba’s words. Say them the way Baba does: they come back whenever Yasso does something great.' },
+          ar:{ name:'حب كبير',
+               line:'ماما بتحب ياسين أوي. وبابا بيحب ياسين أوي — وبابا عنده اسم مخصوص ليه: يَسّو! بيحبّوه وهو مبسوط وهو زعلان، وهو بيجري وهو نعسان. وكل يوم بياخدوه في أكبر وأدفى حضن، وبابا يقول: «يَسّو، انت جامد جدًا!»',
+               sound:'يَسّو جامد جدًا!',
+               note:'«يَسّو» و«جامد جدًا» دول كلام بابا. قولهم زي ما بابا بيقولهم — هيرجعوا كل ما يَسّو يعمل حاجة حلوة.' } }),
+
+      P({ art:ART['favourites'], audio:'p3', tint:'#E8C27A',
+          en:{ name:'Yaseen’s Favourite Things',
+               line:'Yaseen has favourite things. His black-and-white soccer ball. His trains — long ones, fast ones, and the red trolley that goes ding-ding. And books, lots of books, especially at bedtime. What are your favourite things?',
+               sound:'Ball! Trains! Books!',
+               note:'Let him answer the question at the end. Naming favourites is a four-year-old’s way of saying who he is.' },
+          ar:{ name:'حاجات ياسين المفضّلة',
+               line:'ياسين عنده حاجات بيحبّها أوي. الكورة البيضا والسودا بتاعته. والقطورات — الطويلة والسريعة، والترام الأحمر اللي بيقول: دينج دينج. والكتب، كتب كتير، خصوصاً قبل النوم. وانت، إيه الحاجات اللي بتحبّها؟',
+               sound:'كورة! قطر! كتاب!',
+               note:'سيبه يجاوب على السؤال اللي في الآخر. لمّا ابن الأربع سنين يقول بيحب إيه، هو بيقول هو مين.' } }),
+
+      P({ art:ART['morning'], audio:'p4', tint:'#E8C27A',
+          en:{ name:'Good Morning',
+               line:'The sun peeks through the window. Yaseen opens his eyes, stretches up high, and says, “Bismillah.” Down in the kitchen there is crunchy cereal and cold orange juice. Crunch, crunch, slurp! A big boy needs a big breakfast.',
+               sound:'Bismillah!',
+               note:'If he has a morning du‘a or routine of his own, swap it in — the more this page sounds like your house, the better.' },
+          ar:{ name:'صباح الخير',
+               line:'الشمس بتبصّ من الشبّاك. ياسين بيفتح عينيه، ويتمطّع لفوق، ويقول: «بسم الله». وفي المطبخ في سيريال مقرمش وعصير برتقان ساقع. قرمش، قرمش، شفط! الولد الكبير محتاج فطار كبير.',
+               sound:'بسم الله!',
+               note:'لو عنده دعاء أو عادة الصبح، حطّها مكانها — كل ما الصفحة تشبه بيتكم كل ما تبقى أحلى.' } }),
+
+      P({ art:ART['dressed'], audio:'p5', tint:'#D7263D',
+          en:{ name:'All By Myself',
+               line:'Now it is time to get dressed. Arm in, arm in, head through — pop! Yaseen puts on his red t-shirt all by himself. Then his jeans. Then one sock… where is the other sock? There it is! “I did it all by myself!”',
+               sound:'All by myself!',
+               note:'Four-year-olds are proud of every small independence. Praise the effort, and let him show you how he does it.' },
+          ar:{ name:'لوحدي!',
+               line:'دلوقتي وقت اللبس. إيد جوّه، وإيد جوّه، والراس تطلع — هوب! ياسين لبس التيشيرت الأحمر لوحده. وبعدين البنطلون. وبعدين شراب واحد… فين الشراب التاني؟ أهو! «لبست لوحدي!»',
+               sound:'لوحدي!',
+               note:'ابن الأربع سنين بيفتخر بكل حاجة صغيّرة بيعملها لوحده. شجّع المحاولة، وسيبه يورّيك بيعملها إزاي.' } }),
+
+      P({ art:ART['backpack'], audio:'p6', tint:'#6E7FA8',
+          en:{ name:'A New Backpack',
+               line:'One night, Mama put a brand-new blue backpack on Yaseen’s bed. “Tomorrow you start preschool!” Yaseen hugged the backpack. It was exciting… and a tiny bit scary. “What if I don’t know anyone?” Mama kissed his head. “New things feel big at first. Then they feel just right.”',
+               sound:'New things feel big at first.',
+               note:'Name the worry out loud with him. Children cope better with a feeling that has been given words.',
+               chapter:'Chapter 2 · Yaseen Starts Preschool' },
+          ar:{ name:'شنطة جديدة',
+               line:'في ليلة، ماما حطّت شنطة زرقا جديدة على سرير ياسين. «بكرة هتروح الحضانة!» ياسين حضن الشنطة. كان مبسوط… وخايف حبّة صغيّرين. «طب لو ماعرفتش حد؟» ماما باست راسه وقالت: «الحاجات الجديدة بتبان كبيرة في الأول، وبعدين بتبقى حلوة.»',
+               sound:'الجديد بيبان كبير في الأول.',
+               note:'قولوا الخوف بصوت عالي سوا. الطفل بيستحمل الإحساس أسهل لمّا يلاقي له كلام.',
+               chapter:'الفصل التاني · ياسين بيروح الحضانة' } }),
+
+      P({ art:ART['trolley'], audio:'p7', tint:'#D7263D',
+          en:{ name:'Ding-Ding!',
+               line:'In the morning, Yaseen and Baba walked to preschool. And look — what was coming down the street? The big red trolley! Ding-ding! Yaseen counted the cars: one, two, three! “Bye, trolley!” The trolley was going to work, and Yaseen was going to preschool.',
+               sound:'Ding-ding!',
+               note:'San Diego’s trolleys really are red. If he rides one, bring this page along.' },
+          ar:{ name:'دينج دينج!',
+               line:'الصبح، ياسين وبابا مشيوا للحضانة. وبُص — مين جاي في الشارع؟ الترام الأحمر الكبير! دينج دينج! ياسين عدّ العربيّات: واحد، اتنين، تلاتة! «باي باي يا ترام!» الترام رايح شغله، وياسين رايح الحضانة.',
+               sound:'دينج دينج!',
+               note:'الترام في سان دييجو أحمر بجد. ولو ركبه في يوم، خدوا الصفحة دي معاكم.' } }),
+
+      P({ art:ART['door'], audio:'p8', tint:'#8FCBB8',
+          en:{ name:'A Wiggly Tummy',
+               line:'At the preschool door, Yaseen stopped. There were so many children, and so many new faces. His tummy felt wiggly, like jelly. He held Baba’s hand very, very tight. “It’s okay to feel wiggly, Yasso,” said Baba. “Brave doesn’t mean not scared. Brave means trying anyway.”',
+               sound:'Brave means trying anyway.',
+               note:'Worth repeating at real doorways too: brave is not the absence of fear.' },
+          ar:{ name:'بطن بتترعش',
+               line:'عند باب الحضانة، ياسين وقف. عيال كتير، ووشوش جديدة كتير. حسّ إن بطنه بتترعش زي الجيلي. ومسك إيد بابا جامد، جامد خالص. بابا قال: «عادي تحسّ كده يا يَسّو. الشجاعة مش إنك ماتخافش. الشجاعة إنك تجرّب حتى لو خايف.»',
+               sound:'الشجاعة إنك تجرّب.',
+               note:'قولها كمان عند الأبواب الحقيقية: الشجاعة مش إنك ماتخافش.' } }),
+
+      P({ art:ART['brave'], audio:'p9', tint:'#9CC4D8',
+          en:{ name:'One Big Breath',
+               line:'Yaseen took one big breath in… and let it out slowly. Whoooosh. He gave Baba a hug. “I’ll come back to get you after lunch, Yasso,” said Baba. “Promise?” “Promise.” Then Yaseen walked in all by himself, and waved goodbye with a brave little smile.',
+               sound:'Whoooosh!',
+               note:'Practise the big breath together. It is a real tool he can use at the door tomorrow.' },
+          ar:{ name:'نَفَس كبير',
+               line:'ياسين أخد نَفَس كبير… وطلّعه بالراحة. فووووو. وحضن بابا. بابا قال: «هاجي آخدك بعد الغدا يا يَسّو.» «وعد؟» «وعد.» وبعدين ياسين دخل لوحده، وعمل باي باي بضحكة صغيّرة شجاعة.',
+               sound:'فووووو!',
+               note:'اتمرّنوا على النَّفَس الكبير سوا. ده حاجة حقيقية يقدر يستعملها عند الباب بكرة.' } }),
+
+      P({ art:ART['circle'], audio:'p10', tint:'#E8C27A',
+          en:{ name:'Circle Time',
+               line:'Inside, everyone sat on a big rainbow carpet in a circle. They sang a good-morning song, and they clapped, and they counted to ten. Yaseen sang the loudest when they got to four — because four is how old he is!',
+               sound:'One, two, three, FOUR!',
+               note:'Count to ten with him and let him shout the four.' },
+          ar:{ name:'وقت الدايرة',
+               line:'جوّه، الكل قعد في دايرة على سجّادة كبيرة بألوان قوس قزح. غنّوا أغنية صباح الخير، وسقّفوا، وعدّوا لحد عشرة. وياسين غنّى بأعلى صوته لمّا وصلوا لأربعة — عشان هو عنده أربع سنين!',
+               sound:'واحد، اتنين، تلاتة، أربعة!',
+               note:'عدّوا لحد عشرة سوا، وسيبه يزعّق بالأربعة.' } }),
+
+      P({ art:ART['paint'], audio:'p11', tint:'#C97B4A',
+          en:{ name:'Paint and Play',
+               line:'Then it was time to make things. Yaseen painted a long, long train with red, blue and yellow cars. He got paint on his fingers, and a little bit on his nose! He built a tall tower with blocks, and it fell down — crash! — so he built it again.',
+               sound:'Crash! Build it again!',
+               note:'The tower is a quiet rehearsal for soccer’s “fall down, get up” later on.' },
+          ar:{ name:'رسم ولعب',
+               line:'وبعدين جه وقت نعمل حاجات. ياسين رسم قطر طويل، طويل خالص، بعربيّات حمرا وزرقا وصفرا. والألوان بقت على صوابعه، وحبّة على مناخيره! وبنى برج عالي من المكعّبات، ووقع — طاخ! — فبناه تاني.',
+               sound:'طاخ! نبنيه تاني!',
+               note:'البرج ده تمرين صغيّر على «أقع وأقوم» اللي جاي في فصل الكورة.' } }),
+
+      P({ art:ART['playground'], audio:'p12', tint:'#8FB58A',
+          en:{ name:'The People Train',
+               line:'Outside on the playground, Yaseen had an idea. “Let’s be a train!” One friend held his shoulders, then another, then another. Chugga-chugga, choo-choo! The people train went round the slide, under the climbing frame, and all the way back again.',
+               sound:'Chugga-chugga, choo-choo!',
+               note:'Make a people train down the hallway on the way to bed.' },
+          ar:{ name:'قطر الصحاب',
+               line:'برّه في الملعب، ياسين جت له فكرة. «يلّا نبقى قطر!» صاحبه مسك كتافه، وبعدين واحد تاني، وواحد كمان. تشكا تشكا، توت توت! قطر الصحاب لفّ حوالين الزحليقة، ومن تحت لعبة التسلّق، ورجع تاني.',
+               sound:'تشكا تشكا، توت توت!',
+               note:'اعملوا قطر الصحاب في الطرقة وانتو رايحين تناموا.' } }),
+
+      P({ art:ART['friend'], audio:'p13', tint:'#8FCBB8',
+          en:{ name:'A New Friend',
+               line:'Then Yaseen saw a boy sitting all alone. He looked wiggly inside, just like Yaseen had felt at the door. Yaseen remembered. He walked over and said, “Want to build a train with me?” The boy smiled a tiny smile. Together they built the longest train in the whole preschool.',
+               sound:'Want to build with me?',
+               note:'This page is the seed for the end of the book: Yaseen knows what being new feels like, so he knows how to be kind to someone new.' },
+          ar:{ name:'صاحب جديد',
+               line:'وبعدين ياسين شاف ولد قاعد لوحده. كان باين عليه خايف من جوّه، زي ما ياسين حسّ عند الباب بالظبط. ياسين افتكر. راح له وقال: «تحب نبني قطر سوا؟» الولد ضحك ضحكة صغيّرة. وبنوا سوا أطول قطر في الحضانة كلّها.',
+               sound:'تحب نلعب سوا؟',
+               note:'الصفحة دي بذرة آخر الكتاب: ياسين عارف يعني إيه تبقى جديد، فعارف إزاي يبقى حنيّن على أي حد جديد.' } }),
+
+      P({ art:ART['training'], audio:'p14', tint:'#2F6FA8',
+          en:{ name:'Soccer Day!',
+               line:'Saturday morning is soccer day! Yaseen puts on his blue jersey with the number 4, his white shorts, his stripy socks and his shin guards. Then his boots — tie, tie, tight! At the field, Coach blows the whistle. Tweeeet! “Let’s play!”',
+               sound:'Tweeeet!',
+               note:'Blow the whistle with him. If his real team has a name or colours, they can go in here.',
+               chapter:'Chapter 3 · Soccer Star' },
+          ar:{ name:'يوم الكورة!',
+               line:'صباحية السبت يوم الكورة! ياسين بيلبس الفانلة الزرقا رقم ٤، والشورت الأبيض، والشرابات المقلّمة، وواقي الرجلين. وبعدين الجزمة — اربط، اربط، جامد! وفي الملعب، الكابتن بيصفّر: تيييت! «يلّا نلعب!»',
+               sound:'تيييت!',
+               note:'صفّروا سوا. ولو فريقه الحقيقي ليه اسم أو ألوان، حطّوها هنا.',
+               chapter:'الفصل التالت · نجم الكورة' } }),
+
+      P({ art:ART['warmup'], audio:'p15', tint:'#8FB58A',
+          en:{ name:'Warm Up!',
+               line:'First, everybody warms up. Reach up high to the sky! Touch your toes! Ten jumping jacks — jump, clap, jump, clap! Then a jog all the way around the field. “Warm muscles are happy muscles,” says Coach. Yaseen’s muscles are very happy.',
+               sound:'Jump, clap! Jump, clap!',
+               note:'Do the warm-up together, standing up. It is a good wiggle before the quieter half of the book.' },
+          ar:{ name:'تسخين!',
+               line:'الأوّل، الكل بيسخّن. مِدّ إيديك لفوق للسما! المس صوابع رجليك! عشر نطّات — نُط وسقّف، نُط وسقّف! وبعدين جري خفيف حوالين الملعب كله. الكابتن بيقول: «العضلات السخنة عضلات مبسوطة.» وعضلات ياسين مبسوطة أوي.',
+               sound:'نُط، سقّف!',
+               note:'اعملوا التسخين سوا وانتو واقفين. حركة حلوة قبل النص الأهدى من الكتاب.' } }),
+
+      P({ art:ART['dribble'], audio:'p16', tint:'#C9842E',
+          en:{ name:'Tap, Tap, Tap',
+               line:'Now Coach puts out a line of little orange cones. Yaseen dribbles the ball in and out, in and out — tap, tap, tap with the inside of his foot, keeping the ball close, as if it were tied to his foot with a magic string. He goes all the way to the end and doesn’t knock over a single cone!',
+               sound:'Tap, tap, tap!',
+               note:'Yaseen really is good at this. Let him tell you how he does it.' },
+          ar:{ name:'تك، تك، تك',
+               line:'دلوقتي الكابتن بيحطّ صف أقماع برتقاني صغيّرة. ياسين بيراوغ بالكورة بينهم، يمين وشمال — تك، تك، تك بجنب رجله، والكورة لازقة فيه كأنها مربوطة في رجله بخيط سحري. ويوصل للآخر من غير ما يوقّع ولا قمع!',
+               sound:'تك، تك، تك!',
+               note:'ياسين شاطر في دي بجد. سيبه يحكيلك بيعملها إزاي.' } }),
+
+      P({ art:ART['listen'], audio:'p17', tint:'#9CC4D8',
+          en:{ name:'Big Ears',
+               line:'Then Coach calls everyone over. Yaseen sits down on the grass. He listens with big ears and watching eyes. “Pass to your friends,” says Coach. “Soccer is a team game.” Good players listen first — and Yaseen is a very good listener.',
+               sound:'Good players listen first.',
+               note:'Listening is the skill under all the others. It is also why he is good at this.' },
+          ar:{ name:'ودان كبيرة',
+               line:'وبعدين الكابتن بينادي على الكل. ياسين بيقعد على النجيلة. بيسمع بودان كبيرة وعينين مركّزين. الكابتن بيقول: «باصوا لصحابكم. الكورة لعبة فريق.» اللاعب الشاطر بيسمع الأوّل — وياسين بيسمع كويس أوي.',
+               sound:'اللاعب الشاطر بيسمع الأوّل.',
+               note:'السمع هو المهارة اللي تحت كل المهارات. وهو كمان سر شطارته.' } }),
+
+      P({ art:ART['goal'], audio:'p18', tint:'#2F6FA8',
+          en:{ name:'GOAL!',
+               line:'Game time! Yaseen passes the ball to his friend. His friend passes it back. Yaseen runs, looks up, and — kick! The ball flies into the net so hard it nearly tears it — <em>ata3 el shabaka</em>! GOAL! The whole team jumps and cheers. Coach gives Yaseen a high five. “Great pass, great goal, Yaseen!” And from the side of the field, Baba shouts, “Yasso is <em>gamed gedan</em>!”',
+               sound:'Kick, kick… GOAL!',
+               note:'Notice the goal starts with a pass. Praise the teamwork as much as the score. “Ata3 el shabaka” is Egyptian for a shot so hard it tears the net.' },
+          ar:{ name:'جووون!',
+               line:'وقت الماتش! ياسين بيباصي الكورة لصاحبه. وصاحبه بيرجّعها له. ياسين بيجري، يرفع راسه، و — شوطة! الكورة تطير في الشبكة بقوّة — قطّع الشبكة! جووون! الفريق كله بينُطّ ويهتف. والكابتن بيكفّ مع ياسين: «باصة حلوة، وجون حلو يا ياسين!» ومن جنب الملعب، بابا بيزعّق: «يَسّو جامد جدًا!»',
+               sound:'شوطة… جووون!',
+               note:'خد بالك إن الجون بدأ بباصة. شجّع اللعب الجماعي زي ما بتشجّع الجون.' } }),
+
+      P({ art:ART['handshake'], audio:'p19', tint:'#E8C27A',
+          en:{ name:'Fall Down, Get Up',
+               line:'Sometimes Yaseen falls down. Bump! His knee gets grass on it, and it stings a little. But Yaseen gets right back up and keeps playing. At the end of the game, he shakes hands with the other team. “Good game!” Win or lose, that’s what a soccer star does.',
+               sound:'Good game!',
+               note:'Being good at soccer and being a good sport are taught together here, on purpose.' },
+          ar:{ name:'أقع وأقوم',
+               line:'ساعات ياسين بيقع. بُم! ركبته بتتوسّخ من النجيلة، وبتوجعه حبّة. بس ياسين بيقوم على طول ويكمّل لعب. وفي آخر الماتش، بيسلّم على الفريق التاني: «ماتش حلو!» كسب أو خسر، ده اللي بيعمله نجم الكورة.',
+               sound:'ماتش حلو!',
+               note:'الشطارة في الكورة والروح الرياضية بيتعلّموا سوا هنا، وده مقصود.' } }),
+
+      P({ art:ART['backyard'], audio:'p20', tint:'#C9842E',
+          en:{ name:'Practice With Baba',
+               line:'Why is Yaseen so good at soccer? Because he practises! In the evening, when the sky turns gold, he and Baba play in the backyard. Baba is the goalkeeper. Yaseen dribbles, aims, and — kick! Sometimes Baba catches it. Sometimes… GOAL! “Strong feet, Yasso,” says Baba, “and a strong heart. You’re <em>gamed gedan</em>!”',
+               sound:'Strong feet, strong heart!',
+               note:'The answer to “why is he good” is practice, not talent. That is the lesson worth keeping.' },
+          ar:{ name:'تمرين مع بابا',
+               line:'ليه ياسين شاطر في الكورة كده؟ عشان بيتمرّن! بالليل، لمّا السما تبقى دهبي، هو وبابا بيلعبوا في الجنينة. بابا هو حارس المرمى. ياسين بيراوغ، ويصوّب، و — شوطة! ساعات بابا يمسكها. وساعات… جووون! بابا بيقول: «رجلين قويّة يا يَسّو، وقلب قوي. انت جامد جدًا!»',
+               sound:'رجلين قويّة، وقلب قوي!',
+               note:'ليه هو شاطر؟ عشان بيتمرّن، مش موهبة بس. ده الدرس اللي يستاهل يفضل.' } }),
+
+      P({ art:ART['saturday'], audio:'p21', tint:'#E8C27A',
+          en:{ name:'Trip Day!',
+               line:'One sunny Sunday, Baba said, “Yasso! Who wants to go to Del Mar to see the trains?” “ME!” shouted Yaseen. He put on his sun hat. He packed a snack box with crackers, grapes and a cheese sandwich. “Ready!” he said — before Baba had even found the car keys.',
+               sound:'Who wants to see the trains? ME!',
+               note:'Del Mar, just north of San Diego, is where the train runs along the cliffs right beside the sea.',
+               chapter:'Chapter 4 · The Trip to Del Mar' },
+          ar:{ name:'يوم الرحلة!',
+               line:'في يوم حد مشمس، بابا قال: «يا يَسّو! مين عايز يروح دِل مار يشوف القطورات؟» «أنا!» ياسين زعّق. لبس برنيطة الشمس. وجهّز علبة أكل فيها بسكوت وعنب وساندوتش جبنة. «أنا جاهز!» قالها قبل ما بابا يلاقي مفاتيح العربيّة.',
+               sound:'مين عايز يشوف القطر؟ أنا!',
+               note:'دِل مار، شمال سان دييجو بشويّة، هي المكان اللي القطر بيمشي فيه على الصخور جنب البحر بالظبط.',
+               chapter:'الفصل الرابع · رحلة لدِل مار' } }),
+
+      P({ art:ART['drive'], audio:'p22', tint:'#9CC4D8',
+          en:{ name:'Along the Coast',
+               line:'Yaseen buckled up in his car seat — click! They drove up along the coast. Out of the window he could see the blue ocean, the white waves, and surfers riding them. “Are we there yet?” “Almost.” “Are we there yet?” “Almost!” “ARE WE THERE YET?” “…Yes!”',
+               sound:'Are we there yet?',
+               note:'Read the three questions faster and faster. It gets a laugh every time.' },
+          ar:{ name:'على الساحل',
+               line:'ياسين ربط حزام الكرسي بتاعه — كليك! وطلعوا بالعربيّة على طول الساحل. ومن الشبّاك شاف البحر الأزرق، والموج الأبيض، وناس راكبين الموج. «وصلنا؟» «قرّبنا.» «وصلنا؟» «قرّبنا!» «وصلنااا؟» «…أيوه!»',
+               sound:'وصلنا؟',
+               note:'اقرا الأسئلة التلاتة أسرع وأسرع. بتضحّكه كل مرّة.' } }),
+
+      P({ art:ART['cliffs'], audio:'p23', tint:'#2E8B74',
+          en:{ name:'Up on the Cliffs',
+               line:'At Del Mar, they walked along a path at the top of the cliffs. Far, far below was the sea. And down there, running right along the edge of the ocean, were the train tracks! “We stay behind the fence, Yasso,” said Baba, “far back from the tracks. Trains are big and fast.” Yaseen held Baba’s hand. “Far back,” he said.',
+               sound:'We stay far back!',
+               note:'The bluffs at Del Mar are a real place where people stand too close to the tracks. This page shows the safe way to watch.' },
+          ar:{ name:'فوق الصخور',
+               line:'في دِل مار، مشيوا على طريق فوق الصخور العالية. وتحت، بعيد خالص، كان البحر. وهناك تحت، على طرف البحر بالظبط، كانت قضبان القطر! بابا قال: «إحنا بنفضل ورا السور يا يَسّو، بعيد عن القضبان. القطر كبير وسريع.» ياسين مسك إيد بابا وقال: «بعيد.»',
+               sound:'بنفضل بعيد!',
+               note:'صخور دِل مار مكان حقيقي الناس ساعات بتقف فيه قريّب أوي من القضبان. الصفحة دي بتورّيه الطريقة الأمان للفرجة.' } }),
+
+      P({ art:ART['wait'], audio:'p24', tint:'#8FCBB8',
+          en:{ name:'Listen…',
+               line:'They sat down to wait. Yaseen listened very carefully. He heard the seagulls: squawk, squawk! He heard the waves: shhh, shhh. Then… he heard something else. A rumble. A rumble that got bigger, and bigger, and BIGGER. Yaseen cupped his hand to his ear. “Baba! Is it coming?”',
+               sound:'Rumble, rumble, RUMBLE…',
+               note:'Go quiet here, and build the rumble slowly. Let the next page be the loud one.' },
+          ar:{ name:'اسمع…',
+               line:'قعدوا يستنّوا. ياسين سمع كويس أوي. سمع النورس: قاق، قاق! وسمع الموج: شششش، شششش. وبعدين… سمع حاجة تانية. صوت بيزمجر. صوت بيكبر، ويكبر، ويكبر. ياسين حطّ إيده على ودنه: «بابا! هو جاي؟»',
+               sound:'رررر… رررر… رررررر…',
+               note:'وطّي صوتك هنا، وكبّر الصوت واحدة واحدة. وسيب الصفحة الجاية هي اللي فيها الدوشة.' } }),
+
+      P({ art:ART['beep'], audio:'p25', tint:'#2F6FA8',
+          en:{ name:'BEEP BEEP!',
+               line:'Here it comes! A long train came zooming along the edge of the sea, right below the cliffs. Yaseen jumped up and waved with both hands, as high as he could. And the train driver saw him, and the train went — BEEP! BEEP! Just for Yaseen!',
+               sound:'BEEP! BEEP!',
+               note:'Shout it together. This is the page he will ask for again.' },
+          ar:{ name:'بيب بيب!',
+               line:'أهو جاي! قطر طويل جه بسرعة على طرف البحر، تحت الصخور بالظبط. ياسين نطّ وعمل باي بإيديه الاتنين، لفوق على قدّ ما يقدر. وسوّاق القطر شافه، والقطر عمل — بيب! بيب! عشان ياسين بس!',
+               sound:'بيب! بيب!',
+               note:'زعّقوا بيها سوا. دي الصفحة اللي هيطلبها تاني وتالت.' } }),
+
+      P({ art:ART['count'], audio:'p26', tint:'#9CC4D8',
+          en:{ name:'Count the Cars',
+               line:'“Let’s count the cars!” said Yaseen. One, two, three, four, five! “Is it the Coaster or the Surfliner?” asked Baba. Yaseen looked carefully. “The Surfliner! It goes all the way to Los Angeles!” Then the train went round the bend and was gone. “Bye, train! Come back soon!”',
+               sound:'One, two, three, four, five!',
+               note:'Both really run past Del Mar: the Coaster up to Oceanside, the Pacific Surfliner on to Los Angeles and beyond.' },
+          ar:{ name:'عِد العربيّات',
+               line:'«يلّا نعدّ العربيّات!» ياسين قال. واحد، اتنين، تلاتة، أربعة، خمسة! بابا سأل: «ده الكوستر ولّا السيرفلاينر؟» ياسين بصّ كويس: «السيرفلاينر! ده بيروح لحد لوس أنجلوس!» وبعدين القطر لفّ مع الطريق واختفى. «باي باي يا قطر! ارجع بسرعة!»',
+               sound:'واحد، اتنين، تلاتة، أربعة، خمسة!',
+               note:'الاتنين بيعدّوا على دِل مار فعلاً: الكوستر لحد أوشنسايد، والباسيفيك سيرفلاينر لحد لوس أنجلوس وأبعد.' } }),
+
+      P({ art:ART['sunset'], audio:'p27', tint:'#C97B4A',
+          en:{ name:'Sunset Picnic',
+               line:'They spread out a blanket and ate their picnic. Crackers, crunch! Grapes, pop! The sun sank down into the sea, orange and pink and gold. Yaseen leaned on Baba. “Alhamdulillah for trains,” he said, “and for the sea, and for you, Baba.”',
+               sound:'Alhamdulillah!',
+               note:'Ask him what he would say alhamdulillah for today.' },
+          ar:{ name:'نزهة الغروب',
+               line:'فرشوا البطّانيّة وأكلوا أكلهم. بسكوت، قرمش! عنب، طق! والشمس نزلت في البحر، برتقاني وبمبي ودهبي. ياسين سند على بابا وقال: «الحمد لله على القطورات، وعلى البحر، وعليك يا بابا.»',
+               sound:'الحمد لله!',
+               note:'اسأله: هيقول الحمد لله على إيه النهارده؟' } }),
+
+      P({ art:ART['news'], audio:'p28', tint:'#E9A3AE',
+          en:{ name:'The Big News',
+               line:'One evening, Mama and Baba sat with Yaseen on the sofa. Mama took his hand and put it gently on her round tummy. “Yaseen,” she said, “there is a baby growing in here. A little sister. And you are going to be her big brother.” Yaseen’s eyes went very wide. “A sister? For ME?”',
+               sound:'A sister? For ME?',
+               note:'If this book reaches him before he knows, read this page first on its own, with the real news.',
+               chapter:'Chapter 5 · A Baby Is Coming' },
+          ar:{ name:'الخبر الكبير',
+               line:'في ليلة، ماما وبابا قعدوا مع ياسين على الكنبة. ماما مسكت إيده وحطّتها بالراحة على بطنها المدوّرة. وقالت: «يا ياسين، في نونّة بتكبر هنا. أخت صغيّرة. وانت هتبقى أخوها الكبير.» عينين ياسين وسعوا أوي: «أخت؟ ليّا أنا؟»',
+               sound:'أخت؟ ليّا أنا؟',
+               note:'لو الكتاب وصله قبل ما يعرف الخبر، اقرا الصفحة دي الأوّل لوحدها، مع الخبر الحقيقي.',
+               chapter:'الفصل الخامس · نونّة جاية في السكّة' } }),
+
+      P({ art:ART['stilllove'], audio:'p29', tint:'#D7263D',
+          en:{ name:'Will You Still Love Me?',
+               line:'Later, Yaseen got very quiet. He climbed into Mama’s lap. “When the baby comes,” he whispered, “will you still love me?” Mama and Baba hugged him tight, tight, tight. “Love doesn’t get smaller when a family gets bigger,” said Baba. “It gets BIGGER. We will always, always love you, Yasso.”',
+               sound:'Love gets bigger!',
+               note:'The question on this page is the one most children carry and few ask. Answer it again, in your own words, after you read it.' },
+          ar:{ name:'هتفضلوا تحبّوني؟',
+               line:'بعد شويّة، ياسين بقى ساكت خالص. طلع على حِجر ماما. وقال بصوت واطي: «لمّا النونّة تيجي… هتفضلوا تحبّوني؟» ماما وبابا حضنوه جامد، جامد، جامد. بابا قال: «الحب مابيصغرش لمّا العيلة تكبر. ده بيكبر أكتر. هنحبّك على طول، على طول يا يَسّو.»',
+               sound:'الحب بيكبر!',
+               note:'السؤال اللي في الصفحة دي أغلب الأطفال شايلينه وقليل اللي بيسألوه. جاوبه تاني بكلامك انت بعد ما تقراها.' } }),
+
+      P({ art:ART['small'], audio:'p30', tint:'#E8C27A',
+          en:{ name:'How Small?',
+               line:'“How big will she be?” asked Yaseen. Baba picked up Yaseen’s soccer ball. “Her whole head will be smaller than this,” he said. Then Mama showed him a pair of baby socks. They were so tiny they fit on Yaseen’s thumbs! “She’ll be very small,” said Mama, “and very, very soft.”',
+               sound:'So tiny!',
+               note:'Babies are smaller than children expect. Real baby clothes make the idea concrete.' },
+          ar:{ name:'هتبقى قد إيه؟',
+               line:'ياسين سأل: «هتبقى قد إيه؟» بابا شال كورة ياسين وقال: «راسها كلها هتبقى أصغر من دي.» وبعدين ماما ورّته شراب نونّة. كان صغيّر خالص لدرجة إنه دخل في صوابع ياسين الكبيرة! ماما قالت: «هتبقى صغنّنة أوي، وناعمة أوي أوي.»',
+               sound:'صغنّنة خالص!',
+               note:'البيبي أصغر من ما الأطفال متخيّلين. والهدوم الحقيقية بتخلّي الفكرة واضحة.' } }),
+
+      P({ art:ART['kick'], audio:'p31', tint:'#8FCBB8',
+          en:{ name:'Kick!',
+               line:'One night, Yaseen pressed his ear against Mama’s tummy to say goodnight to the baby. And then — bump! Something pushed against his cheek! “She kicked me!” laughed Yaseen. “She kicks like a soccer player! I’m going to teach her everything.”',
+               sound:'Bump! She kicked!',
+               note:'If the timing is right, let him feel a real kick. He will remember it.' },
+          ar:{ name:'شوطة!',
+               line:'في ليلة، ياسين حطّ ودنه على بطن ماما عشان يقول للنونّة تصبحي على خير. وفجأة — بُم! حاجة زقّت خدّه! ياسين ضحك: «دي شاطتني! بتشوط زي لاعيبة الكورة! أنا هعلّمها كل حاجة.»',
+               sound:'بُم! شاطت!',
+               note:'لو التوقيت مناسب، سيبه يحسّ بشوطة حقيقية. هيفتكرها.' } }),
+
+      P({ art:ART['hands'], audio:'p32', tint:'#FCFBF6',
+          en:{ name:'Gentle Hands',
+               line:'Baba sat down with Yaseen. “Your feet are strong, Yasso,” he said. “Strong feet are for kicking the ball. But babies need something different. Babies need gentle hands.” Yaseen looked at his hands. He made them soft, like a feather. “Soft hands,” said Yaseen. “Slow hands. Gentle hands.”',
+               sound:'Soft hands, slow hands, gentle hands.',
+               note:'This is the refrain for the rest of the book. Hold his hands while you say it.' },
+          ar:{ name:'إيدين حنيّنة',
+               line:'بابا قعد مع ياسين وقال: «رجليك قويّة يا يَسّو. والرجلين القويّة للكورة. بس النونّة محتاجة حاجة تانية. محتاجة إيدين حنيّنة.» ياسين بصّ على إيديه، وخلّاهم طريّين زي الريشة. ياسين قال: «إيدين طريّة. إيدين بالراحة. إيدين حنيّنة.»',
+               sound:'طريّة، بالراحة، حنيّنة.',
+               note:'دي الجملة اللي هتتكرّر في باقي الكتاب. امسك إيديه وانت بتقولها.' } }),
+
+      P({ art:ART['teddy'], audio:'p33', tint:'#C97B4A',
+          en:{ name:'Practice',
+               line:'Yaseen knows that to get good at something, you practise — just like soccer. So he practised with Teddy. He wrapped Teddy in a blanket. He held Teddy’s head in the crook of his arm. He rocked him slowly, slowly, and whispered, “Shh, shh, it’s okay.” “Great practice,” said Mama.',
+               sound:'Shh, shh, it’s okay.',
+               note:'A doll or a teddy really helps. Show him where the head goes — he will remember it later.' },
+          ar:{ name:'تمرين',
+               line:'ياسين عارف إنك عشان تبقى شاطر في حاجة لازم تتمرّن — زي الكورة بالظبط. فاتمرّن مع الدبدوب بتاعه. لفّه في بطّانيّة. وسند راسه على دراعه. وهزّه بالراحة، بالراحة، وقال بصوت واطي: «هُش، هُش، ماتخافش.» ماما قالت: «تمرين حلو أوي.»',
+               sound:'هُش، هُش، ماتخافش.',
+               note:'العروسة أو الدبدوب بيساعدوا بجد. ورّيه الراس بتتسند فين — هيفتكر بعدين.' } }),
+
+      P({ art:ART['room'], audio:'p34', tint:'#E9A3AE',
+          en:{ name:'Her Room',
+               line:'Then it was time to get the baby’s room ready. Baba built the crib. Mama hung up soft pink curtains. And Yaseen had the most important job: folding the tiny baby clothes. A tiny shirt. Tiny trousers. Tiny, tiny socks. “Everything is so small!” he said.',
+               sound:'Tiny, tiny, tiny!',
+               note:'Give him a real job before the baby arrives. Helping makes the baby partly his.' },
+          ar:{ name:'أوضتها',
+               line:'وبعدين جه وقت نجهّز أوضة النونّة. بابا ركّب السرير. وماما علّقت ستاير بمبي ناعمة. وياسين كان عنده أهم شغلانة: يطبّق هدوم النونّة الصغيّرة. تيشيرت صغيّر. بنطلون صغيّر. وشرابات صغيّرة، صغنّنة خالص. وقال: «كل حاجة صغيّرة أوي!»',
+               sound:'صغيّر، صغيّر، صغيّر!',
+               note:'اديله شغلانة حقيقية قبل ما النونّة تيجي. المساعدة بتخلّي النونّة بتاعته هو كمان.' } }),
+
+      P({ art:ART['toy'], audio:'p35', tint:'#2F6FA8',
+          en:{ name:'A Present for Her',
+               line:'“Can I give her a present?” asked Yaseen. He thought and thought. A soccer ball? Too big. A storybook? Not yet. Then he knew! He picked a soft, squishy, blue toy train and put it in her crib. “Choo-choo,” he whispered. “This is from your big brother.”',
+               sound:'From your big brother.',
+               note:'If he chooses a real gift for the baby, let it be his idea, and let him give it.' },
+          ar:{ name:'هديّة ليها',
+               line:'ياسين سأل: «ممكن أجيب لها هديّة؟» فكّر وفكّر. كورة؟ كبيرة أوي. كتاب حواديت؟ لسّه بدري. وبعدين عرف! اختار قطر أزرق طري، وحطّه في سريرها. وقال بصوت واطي: «توت توت. ده من أخوكي الكبير.»',
+               sound:'من أخوكي الكبير.',
+               note:'لو اختار هديّة حقيقية للنونّة، خلّيها فكرته هو، وسيبه يديهالها بنفسه.' } }),
+
+      P({ art:ART['time'], audio:'p36', tint:'#6E7FA8',
+          en:{ name:'It’s Time!',
+               line:'Very early one morning, while it was still a little bit dark, Baba woke Yaseen up. “It’s time!” he said. “The baby is coming today!” Mama and Baba went to the hospital, and Yaseen stayed with someone who loves him — and waited, and waited, and waited.',
+               sound:'It’s time!',
+               note:'Swap in who he will really stay with — a grandparent, an aunt, a friend — so the page matches his day.',
+               chapter:'Chapter 6 · Big Brother Yaseen' },
+          ar:{ name:'جه الوقت!',
+               line:'في يوم بدري أوي الصبح، والدنيا لسّه ضلمة شويّة، بابا صحّى ياسين. «جه الوقت! النونّة جاية النهارده!» ماما وبابا راحوا المستشفى، وياسين قعد مع حد بيحبّه — واستنّى، واستنّى، واستنّى.',
+               sound:'جه الوقت!',
+               note:'حط مكانها مين اللي هيقعد معاه بجد — تيتة، أو خالتو، أو صاحب — عشان الصفحة تشبه يومه.',
+               chapter:'الفصل السادس · ياسين الأخ الكبير' } }),
+
+      P({ art:ART['drawing'], audio:'p37', tint:'#E8C27A',
+          en:{ name:'A Picture for Her',
+               line:'While he waited, Yaseen drew a picture for his sister. He drew a big red trolley and a long train by the sea. He drew a soccer ball. And he drew himself, holding a tiny baby with very gentle hands. “This is you,” he said, “and this is me. Your big brother.”',
+               sound:'This is me. Your big brother.',
+               note:'Waiting is hard at four. Drawing for the baby gives the waiting a job.' },
+          ar:{ name:'رسمة ليها',
+               line:'وهو مستنّي، ياسين رسم رسمة لأخته. رسم ترام أحمر كبير وقطر طويل جنب البحر. ورسم كورة. ورسم نفسه شايل نونّة صغيّرة بإيدين حنيّنة أوي. وقال: «دي انتي، وده أنا. أخوكي الكبير.»',
+               sound:'ده أنا. أخوكي الكبير.',
+               note:'الاستنّى صعب في سن أربع سنين. والرسم للنونّة بيدّي الاستنّى شغلانة.' } }),
+
+      P({ art:ART['here'], audio:'p38', tint:'#E9A3AE',
+          en:{ name:'She’s Here!',
+               line:'And then, at last, Yaseen met her. His little sister. She was so tiny. Her nose was tiny, her ears were tiny, and her fingers were the tiniest of all. Yaseen held out one finger, very gently — and she wrapped her whole hand around it and held on tight. “Hello, little sister,” said Yaseen. “I’m Yaseen.”',
+               sound:'Hello, little sister.',
+               note:'Babies really do grip. If you can, let him feel it — it is the moment many big siblings fall in love.' },
+          ar:{ name:'وصلت!',
+               line:'وأخيراً، ياسين قابلها. أخته الصغيّرة. كانت صغنّنة أوي. مناخيرها صغيّرة، وودانها صغيّرة، وصوابعها أصغر حاجة خالص. ياسين مدّ صباع واحد، بالراحة أوي — وهي لفّت إيدها كلها حواليه ومسكته جامد. ياسين قال: «أهلاً يا أختي الصغيّرة. أنا ياسين.»',
+               sound:'أهلاً يا أختي الصغيّرة.',
+               note:'البيبي بيقفل إيده بجد. لو تقدر، سيبه يحسّ بيها — دي اللحظة اللي إخوات كتير بيحبّوا فيها أخواتهم.' } }),
+
+      P({ art:ART['holding'], audio:'p39', tint:'#FCFBF6',
+          en:{ name:'Holding Her',
+               line:'“Would you like to hold her?” asked Mama. Yaseen sat right back on the sofa with a big cushion under his arm. Baba laid the baby in his arms and kept a hand close by. Yaseen remembered his practice with Teddy. Head in the crook of his arm. Soft hands, slow hands, gentle hands. She yawned a tiny yawn. “I’m doing it,” whispered Yaseen. Baba smiled. “Yasso, you’re <em>gamed gedan</em>.”',
+               sound:'Soft hands, slow hands, gentle hands.',
+               note:'This is how he should really hold her: sitting down, propped with a cushion, a grown-up’s hand nearby. The book shows the safe way on purpose.' },
+          ar:{ name:'شايلها',
+               line:'ماما سألت: «تحب تشيلها؟» ياسين قعد كويس على الكنبة ومخدّة كبيرة تحت دراعه. بابا حطّ النونّة في حضنه وخلّى إيده قريّبة. ياسين افتكر التمرين مع الدبدوب. الراس على الدراع. إيدين طريّة، إيدين بالراحة، إيدين حنيّنة. وهي تاوبت تاوبة صغنّنة. وياسين قال بصوت واطي: «أنا شايلها!» وبابا ضحك وقال: «يَسّو، انت جامد جدًا.»',
+               sound:'طريّة، بالراحة، حنيّنة.',
+               note:'ده بالظبط إزاي يشيلها بجد: قاعد، ومخدّة تحت دراعه، وإيد كبير قريّبة. والكتاب بيورّي الطريقة الأمان عن قصد.' } }),
+
+      P({ art:ART['jobs'], audio:'p40', tint:'#8FB58A',
+          en:{ name:'Big Brother Jobs',
+               line:'Being a big brother is an important job. Yaseen fetches a clean nappy when Mama needs one. He brings the soft blanket. He sings to the baby while she has her milk. And he shows her his soccer ball — but he never, ever kicks it near her. “Ball games are for outside,” says Yaseen. “Babies are for gentle.”',
+               sound:'What a helper!',
+               note:'Small, real jobs help a big sibling feel needed rather than replaced.' },
+          ar:{ name:'شغل الأخ الكبير',
+               line:'إنك تبقى أخ كبير ده شغل مهم. ياسين بيجيب بامبرز نضيف لمّا ماما تحتاج. وبيجيب البطّانيّة الطريّة. وبيغنّي للنونّة وهي بتشرب اللبن بتاعها. وبيورّيها الكورة بتاعته — بس عمره، عمره ما بيشوطها جنبها. ياسين بيقول: «الكورة للعب برّه. والنونّة عايزة الحنيّة.»',
+               sound:'شاطر يا ياسين!',
+               note:'الشغلانات الصغيّرة الحقيقية بتخلّي الأخ الكبير يحسّ إنه مهم، مش إن حد خد مكانه.' } }),
+
+      P({ art:ART['ourtime'], audio:'p41', tint:'#C9842E',
+          en:{ name:'Yaseen Time',
+               line:'Babies need lots and lots of looking after. But every single night, there is still Yaseen time. A story with Mama. A tickle and a game with Baba. “You were our very first baby,” says Mama, “and you will always be our Yaseen. Our love just grew bigger — big enough for two.”',
+               sound:'Big enough for two!',
+               note:'Keep a little one-on-one time with him every day, even ten minutes, and call it by his name. It answers the question from chapter five better than words.' },
+          ar:{ name:'وقت ياسين',
+               line:'النونّة محتاجة رعاية كتير أوي. بس كل ليلة، لسّه في وقت ياسين. حدّوتة مع ماما. وزغزغة ولعبة مع بابا. ماما بتقول: «انت كنت أوّل بيبي لينا، وهتفضل على طول ياسين بتاعنا. حبّنا بس كبر — بقى كبير كفاية لاتنين.»',
+               sound:'كبير كفاية لاتنين!',
+               note:'خلّي ليه وقت لوحده معاك كل يوم، ولو عشر دقايق، وسمّيه باسمه. ده بيجاوب سؤال الفصل الخامس أحسن من أي كلام.' } }),
+
+      P({ art:ART['whisper'], audio:'p42', tint:'#6E7FA8',
+          en:{ name:'The Whisper Voice',
+               line:'One afternoon the baby started to cry. Waaah! Waaah! Yaseen didn’t shout, and he didn’t cover his ears. He tiptoed to her crib. He used his softest whisper voice, and he sang the choo-choo song, slow and quiet: “Choo… choo… little train… time to sleep…” And slowly, slowly, she stopped crying and closed her eyes.',
+               sound:'Shhh… choo… choo…',
+               note:'Make up the choo-choo song together. A tune he owns is a tune he will use.' },
+          ar:{ name:'صوت الوشوشة',
+               line:'في يوم العصر، النونّة بدأت تعيّط. واااء! واااء! ياسين ما زعّقش، وما سدّش ودانه. مشي على طراطيف صوابعه لحد سريرها. واستعمل أهدى صوت وشوشة عنده، وغنّى أغنية القطر، بالراحة وبهدوء: «توت… توت… يا قطري… يلّا ننام…» وواحدة واحدة، بطّلت عياط، وغمّضت عينيها.',
+               sound:'شششش… توت… توت…',
+               note:'ألّفوا أغنية القطر سوا. اللحن اللي بتاعه هو اللحن اللي هيستعمله.' } }),
+
+      P({ art:ART['promise'], audio:'p43', tint:'#8FCBB8',
+          en:{ name:'Promises',
+               line:'Yaseen lay down next to his sister on her play mat. “When you’re bigger,” he told her, “I’m going to teach you to dribble — tap, tap, tap. I’ll show you the paints at preschool. And Baba and I will take you to Del Mar, and we’ll stand far back behind the fence, and the train will go BEEP BEEP — just for you.”',
+               sound:'Just for you!',
+               note:'These are all callbacks — read them slowly and let him recognise each one.' },
+          ar:{ name:'وعود',
+               line:'ياسين نام جنب أخته على المفرش بتاع اللعب. وقال لها: «لمّا تكبري، هعلّمك تراوغي — تك، تك، تك. وهورّيكي الألوان في الحضانة. وأنا وبابا هناخدك دِل مار، ونقف بعيد ورا السور، والقطر هيعمل بيب بيب — عشانك انتي بس.»',
+               sound:'عشانك انتي بس!',
+               note:'كل دول رجوع لصفحات قبل كده — اقراها بالراحة وسيبه يعرف كل واحدة.' } }),
+
+      P({ art:ART['goodnight'], audio:'p44', tint:'#6E7FA8',
+          en:{ name:'Goodnight, Yaseen',
+               line:'The moon is up over the ocean. The trains are sleeping. The soccer ball is resting on the shelf. Mama and Baba tuck Yaseen in and kiss him goodnight. “Goodnight, Yasso,” whispers Baba. “You’re <em>gamed gedan</em>.” Strong feet for soccer. Happy waves for trains. Gentle hands for his little sister. And a family full of love. Goodnight, Yaseen. Goodnight, little sister.',
+               sound:'Goodnight, Yaseen.',
+               note:'Last page: slow right down, and whisper the final two lines.' },
+          ar:{ name:'تصبح على خير يا ياسين',
+               line:'القمر طالع فوق البحر. والقطورات نايمة. والكورة مرتاحة على الرف. ماما وبابا بيغطّوا ياسين وبيبوسوه بوسة النوم. «تصبح على خير يا يَسّو،» بابا بيوشوش، «انت جامد جدًا.» رجلين قويّة للكورة. وإيدين فرحانة بتعمل باي للقطورات. وإيدين حنيّنة لأخته الصغيّرة. وعيلة مليانة حب. تصبح على خير يا ياسين. وتصبحي على خير يا أخت ياسين الصغيّرة.',
+               sound:'تصبح على خير يا ياسين.',
+               note:'آخر صفحة: بالراحة خالص، ووشوش آخر سطرين.' } })
+    ]
+  }
+};
+
+// Egyptian Arabic: the story words in مصري. Anything not given here (the
+// grown-up notes) falls back to the فصحى page.
+var EG = { yaseen: [
+ {
+  "eyebrow": "ست حكايات صغيّرين",
+  "title": "سنة ياسين<br><em>الكبيرة</em>",
+  "line": "الحضانة، والكورة، والقطورات جنب البحر — وأخت صغيّرة جاية في السكّة.",
+  "note": "ست فصول قصيّرين — اقرا فصل ولا اتنين كل ليلة. وفي كل صفحة ترام أحمر صغيّر مستخبّي: سيبه يلاقيه قبل ما تقلب الصفحة."
+ },
+ {
+  "name": "أهلاً يا ياسين!",
+  "line": "ده ياسين. ساكن في سان دييجو، حيث السما زرقا، والشمس دافية، والنخل العالي بيقول أهلاً. ياسين عنده أربع سنين. شعره إسود، وخدوده وردي، وضحكته أكبر ضحكة شفتها في حياتك.",
+  "sound": "أهلاً يا ياسين!",
+  "note": "خلّيه يعمل باي لياسين. وبعدين اسأله: شايف الترام الأحمر الصغيّر المستخبّي؟ في واحد في كل صفحة.",
+  "chapter": "الفصل الأوّل · أهلاً يا ياسين"
+ },
+ {
+  "name": "حب كبير",
+  "line": "ماما بتحب ياسين أوي. وبابا بيحب ياسين أوي — وبابا عنده اسم مخصوص ليه: يَسّو! بيحبّوه وهو مبسوط وهو زعلان، وهو بيجري وهو نعسان. وكل يوم بياخدوه في أكبر وأدفى حضن، وبابا يقول: «يَسّو، انت جامد جدًا!»",
+  "sound": "يَسّو جامد جدًا!",
+  "note": "«يَسّو» و«جامد جدًا» دول كلام بابا. قولهم زي ما بابا بيقولهم — هيرجعوا كل ما يَسّو يعمل حاجة حلوة."
+ },
+ {
+  "name": "حاجات ياسين المفضّلة",
+  "line": "ياسين عنده حاجات بيحبّها أوي. الكورة البيضا والسودا بتاعته. والقطورات — الطويلة والسريعة، والترام الأحمر اللي بيقول: دينج دينج. والكتب، كتب كتير، خصوصاً قبل النوم. وانت، إيه الحاجات اللي بتحبّها؟",
+  "sound": "كورة! قطر! كتاب!",
+  "note": "سيبه يجاوب على السؤال اللي في الآخر. لمّا ابن الأربع سنين يقول بيحب إيه، هو بيقول هو مين."
+ },
+ {
+  "name": "صباح الخير",
+  "line": "الشمس بتبصّ من الشبّاك. ياسين بيفتح عينيه، ويتمطّع لفوق، ويقول: «بسم الله». وفي المطبخ في سيريال مقرمش وعصير برتقان ساقع. قرمش، قرمش، شفط! الولد الكبير محتاج فطار كبير.",
+  "sound": "بسم الله!",
+  "note": "لو عنده دعاء أو عادة الصبح، حطّها مكانها — كل ما الصفحة تشبه بيتكم كل ما تبقى أحلى."
+ },
+ {
+  "name": "لوحدي!",
+  "line": "دلوقتي وقت اللبس. إيد جوّه، وإيد جوّه، والراس تطلع — هوب! ياسين لبس التيشيرت الأحمر لوحده. وبعدين البنطلون. وبعدين شراب واحد… فين الشراب التاني؟ أهو! «لبست لوحدي!»",
+  "sound": "لوحدي!",
+  "note": "ابن الأربع سنين بيفتخر بكل حاجة صغيّرة بيعملها لوحده. شجّع المحاولة، وسيبه يورّيك بيعملها إزاي."
+ },
+ {
+  "name": "شنطة جديدة",
+  "line": "في ليلة، ماما حطّت شنطة زرقا جديدة على سرير ياسين. «بكرة هتروح الحضانة!» ياسين حضن الشنطة. كان مبسوط… وخايف حبّة صغيّرين. «طب لو ماعرفتش حد؟» ماما باست راسه وقالت: «الحاجات الجديدة بتبان كبيرة في الأول، وبعدين بتبقى حلوة.»",
+  "sound": "الجديد بيبان كبير في الأول.",
+  "note": "قولوا الخوف بصوت عالي سوا. الطفل بيستحمل الإحساس أسهل لمّا يلاقي له كلام.",
+  "chapter": "الفصل التاني · ياسين بيروح الحضانة"
+ },
+ {
+  "name": "دينج دينج!",
+  "line": "الصبح، ياسين وبابا مشيوا للحضانة. وبُص — مين جاي في الشارع؟ الترام الأحمر الكبير! دينج دينج! ياسين عدّ العربيّات: واحد، اتنين، تلاتة! «باي باي يا ترام!» الترام رايح شغله، وياسين رايح الحضانة.",
+  "sound": "دينج دينج!",
+  "note": "الترام في سان دييجو أحمر بجد. ولو ركبه في يوم، خدوا الصفحة دي معاكم."
+ },
+ {
+  "name": "بطن بتترعش",
+  "line": "عند باب الحضانة، ياسين وقف. عيال كتير، ووشوش جديدة كتير. حسّ إن بطنه بتترعش زي الجيلي. ومسك إيد بابا جامد، جامد خالص. بابا قال: «عادي تحسّ كده يا يَسّو. الشجاعة مش إنك ماتخافش. الشجاعة إنك تجرّب حتى لو خايف.»",
+  "sound": "الشجاعة إنك تجرّب.",
+  "note": "قولها كمان عند الأبواب الحقيقية: الشجاعة مش إنك ماتخافش."
+ },
+ {
+  "name": "نَفَس كبير",
+  "line": "ياسين أخد نَفَس كبير… وطلّعه بالراحة. فووووو. وحضن بابا. بابا قال: «هاجي آخدك بعد الغدا يا يَسّو.» «وعد؟» «وعد.» وبعدين ياسين دخل لوحده، وعمل باي باي بضحكة صغيّرة شجاعة.",
+  "sound": "فووووو!",
+  "note": "اتمرّنوا على النَّفَس الكبير سوا. ده حاجة حقيقية يقدر يستعملها عند الباب بكرة."
+ },
+ {
+  "name": "وقت الدايرة",
+  "line": "جوّه، الكل قعد في دايرة على سجّادة كبيرة بألوان قوس قزح. غنّوا أغنية صباح الخير، وسقّفوا، وعدّوا لحد عشرة. وياسين غنّى بأعلى صوته لمّا وصلوا لأربعة — عشان هو عنده أربع سنين!",
+  "sound": "واحد، اتنين، تلاتة، أربعة!",
+  "note": "عدّوا لحد عشرة سوا، وسيبه يزعّق بالأربعة."
+ },
+ {
+  "name": "رسم ولعب",
+  "line": "وبعدين جه وقت نعمل حاجات. ياسين رسم قطر طويل، طويل خالص، بعربيّات حمرا وزرقا وصفرا. والألوان بقت على صوابعه، وحبّة على مناخيره! وبنى برج عالي من المكعّبات، ووقع — طاخ! — فبناه تاني.",
+  "sound": "طاخ! نبنيه تاني!",
+  "note": "البرج ده تمرين صغيّر على «أقع وأقوم» اللي جاي في فصل الكورة."
+ },
+ {
+  "name": "قطر الصحاب",
+  "line": "برّه في الملعب، ياسين جت له فكرة. «يلّا نبقى قطر!» صاحبه مسك كتافه، وبعدين واحد تاني، وواحد كمان. تشكا تشكا، توت توت! قطر الصحاب لفّ حوالين الزحليقة، ومن تحت لعبة التسلّق، ورجع تاني.",
+  "sound": "تشكا تشكا، توت توت!",
+  "note": "اعملوا قطر الصحاب في الطرقة وانتو رايحين تناموا."
+ },
+ {
+  "name": "صاحب جديد",
+  "line": "وبعدين ياسين شاف ولد قاعد لوحده. كان باين عليه خايف من جوّه، زي ما ياسين حسّ عند الباب بالظبط. ياسين افتكر. راح له وقال: «تحب نبني قطر سوا؟» الولد ضحك ضحكة صغيّرة. وبنوا سوا أطول قطر في الحضانة كلّها.",
+  "sound": "تحب نلعب سوا؟",
+  "note": "الصفحة دي بذرة آخر الكتاب: ياسين عارف يعني إيه تبقى جديد، فعارف إزاي يبقى حنيّن على أي حد جديد."
+ },
+ {
+  "name": "يوم الكورة!",
+  "line": "صباحية السبت يوم الكورة! ياسين بيلبس الفانلة الزرقا رقم ٤، والشورت الأبيض، والشرابات المقلّمة، وواقي الرجلين. وبعدين الجزمة — اربط، اربط، جامد! وفي الملعب، الكابتن بيصفّر: تيييت! «يلّا نلعب!»",
+  "sound": "تيييت!",
+  "note": "صفّروا سوا. ولو فريقه الحقيقي ليه اسم أو ألوان، حطّوها هنا.",
+  "chapter": "الفصل التالت · نجم الكورة"
+ },
+ {
+  "name": "تسخين!",
+  "line": "الأوّل، الكل بيسخّن. مِدّ إيديك لفوق للسما! المس صوابع رجليك! عشر نطّات — نُط وسقّف، نُط وسقّف! وبعدين جري خفيف حوالين الملعب كله. الكابتن بيقول: «العضلات السخنة عضلات مبسوطة.» وعضلات ياسين مبسوطة أوي.",
+  "sound": "نُط، سقّف!",
+  "note": "اعملوا التسخين سوا وانتو واقفين. حركة حلوة قبل النص الأهدى من الكتاب."
+ },
+ {
+  "name": "تك، تك، تك",
+  "line": "دلوقتي الكابتن بيحطّ صف أقماع برتقاني صغيّرة. ياسين بيراوغ بالكورة بينهم، يمين وشمال — تك، تك، تك بجنب رجله، والكورة لازقة فيه كأنها مربوطة في رجله بخيط سحري. ويوصل للآخر من غير ما يوقّع ولا قمع!",
+  "sound": "تك، تك، تك!",
+  "note": "ياسين شاطر في دي بجد. سيبه يحكيلك بيعملها إزاي."
+ },
+ {
+  "name": "ودان كبيرة",
+  "line": "وبعدين الكابتن بينادي على الكل. ياسين بيقعد على النجيلة. بيسمع بودان كبيرة وعينين مركّزين. الكابتن بيقول: «باصوا لصحابكم. الكورة لعبة فريق.» اللاعب الشاطر بيسمع الأوّل — وياسين بيسمع كويس أوي.",
+  "sound": "اللاعب الشاطر بيسمع الأوّل.",
+  "note": "السمع هو المهارة اللي تحت كل المهارات. وهو كمان سر شطارته."
+ },
+ {
+  "name": "جووون!",
+  "line": "وقت الماتش! ياسين بيباصي الكورة لصاحبه. وصاحبه بيرجّعها له. ياسين بيجري، يرفع راسه، و — شوطة! الكورة تطير في الشبكة بقوّة — قطّع الشبكة! جووون! الفريق كله بينُطّ ويهتف. والكابتن بيكفّ مع ياسين: «باصة حلوة، وجون حلو يا ياسين!» ومن جنب الملعب، بابا بيزعّق: «يَسّو جامد جدًا!»",
+  "sound": "شوطة… جووون!",
+  "note": "خد بالك إن الجون بدأ بباصة. شجّع اللعب الجماعي زي ما بتشجّع الجون."
+ },
+ {
+  "name": "أقع وأقوم",
+  "line": "ساعات ياسين بيقع. بُم! ركبته بتتوسّخ من النجيلة، وبتوجعه حبّة. بس ياسين بيقوم على طول ويكمّل لعب. وفي آخر الماتش، بيسلّم على الفريق التاني: «ماتش حلو!» كسب أو خسر، ده اللي بيعمله نجم الكورة.",
+  "sound": "ماتش حلو!",
+  "note": "الشطارة في الكورة والروح الرياضية بيتعلّموا سوا هنا، وده مقصود."
+ },
+ {
+  "name": "تمرين مع بابا",
+  "line": "ليه ياسين شاطر في الكورة كده؟ عشان بيتمرّن! بالليل، لمّا السما تبقى دهبي، هو وبابا بيلعبوا في الجنينة. بابا هو حارس المرمى. ياسين بيراوغ، ويصوّب، و — شوطة! ساعات بابا يمسكها. وساعات… جووون! بابا بيقول: «رجلين قويّة يا يَسّو، وقلب قوي. انت جامد جدًا!»",
+  "sound": "رجلين قويّة، وقلب قوي!",
+  "note": "ليه هو شاطر؟ عشان بيتمرّن، مش موهبة بس. ده الدرس اللي يستاهل يفضل."
+ },
+ {
+  "name": "يوم الرحلة!",
+  "line": "في يوم حد مشمس، بابا قال: «يا يَسّو! مين عايز يروح دِل مار يشوف القطورات؟» «أنا!» ياسين زعّق. لبس برنيطة الشمس. وجهّز علبة أكل فيها بسكوت وعنب وساندوتش جبنة. «أنا جاهز!» قالها قبل ما بابا يلاقي مفاتيح العربيّة.",
+  "sound": "مين عايز يشوف القطر؟ أنا!",
+  "note": "دِل مار، شمال سان دييجو بشويّة، هي المكان اللي القطر بيمشي فيه على الصخور جنب البحر بالظبط.",
+  "chapter": "الفصل الرابع · رحلة لدِل مار"
+ },
+ {
+  "name": "على الساحل",
+  "line": "ياسين ربط حزام الكرسي بتاعه — كليك! وطلعوا بالعربيّة على طول الساحل. ومن الشبّاك شاف البحر الأزرق، والموج الأبيض، وناس راكبين الموج. «وصلنا؟» «قرّبنا.» «وصلنا؟» «قرّبنا!» «وصلنااا؟» «…أيوه!»",
+  "sound": "وصلنا؟",
+  "note": "اقرا الأسئلة التلاتة أسرع وأسرع. بتضحّكه كل مرّة."
+ },
+ {
+  "name": "فوق الصخور",
+  "line": "في دِل مار، مشيوا على طريق فوق الصخور العالية. وتحت، بعيد خالص، كان البحر. وهناك تحت، على طرف البحر بالظبط، كانت قضبان القطر! بابا قال: «إحنا بنفضل ورا السور يا يَسّو، بعيد عن القضبان. القطر كبير وسريع.» ياسين مسك إيد بابا وقال: «بعيد.»",
+  "sound": "بنفضل بعيد!",
+  "note": "صخور دِل مار مكان حقيقي الناس ساعات بتقف فيه قريّب أوي من القضبان. الصفحة دي بتورّيه الطريقة الأمان للفرجة."
+ },
+ {
+  "name": "اسمع…",
+  "line": "قعدوا يستنّوا. ياسين سمع كويس أوي. سمع النورس: قاق، قاق! وسمع الموج: شششش، شششش. وبعدين… سمع حاجة تانية. صوت بيزمجر. صوت بيكبر، ويكبر، ويكبر. ياسين حطّ إيده على ودنه: «بابا! هو جاي؟»",
+  "sound": "رررر… رررر… رررررر…",
+  "note": "وطّي صوتك هنا، وكبّر الصوت واحدة واحدة. وسيب الصفحة الجاية هي اللي فيها الدوشة."
+ },
+ {
+  "name": "بيب بيب!",
+  "line": "أهو جاي! قطر طويل جه بسرعة على طرف البحر، تحت الصخور بالظبط. ياسين نطّ وعمل باي بإيديه الاتنين، لفوق على قدّ ما يقدر. وسوّاق القطر شافه، والقطر عمل — بيب! بيب! عشان ياسين بس!",
+  "sound": "بيب! بيب!",
+  "note": "زعّقوا بيها سوا. دي الصفحة اللي هيطلبها تاني وتالت."
+ },
+ {
+  "name": "عِد العربيّات",
+  "line": "«يلّا نعدّ العربيّات!» ياسين قال. واحد، اتنين، تلاتة، أربعة، خمسة! بابا سأل: «ده الكوستر ولّا السيرفلاينر؟» ياسين بصّ كويس: «السيرفلاينر! ده بيروح لحد لوس أنجلوس!» وبعدين القطر لفّ مع الطريق واختفى. «باي باي يا قطر! ارجع بسرعة!»",
+  "sound": "واحد، اتنين، تلاتة، أربعة، خمسة!",
+  "note": "الاتنين بيعدّوا على دِل مار فعلاً: الكوستر لحد أوشنسايد، والباسيفيك سيرفلاينر لحد لوس أنجلوس وأبعد."
+ },
+ {
+  "name": "نزهة الغروب",
+  "line": "فرشوا البطّانيّة وأكلوا أكلهم. بسكوت، قرمش! عنب، طق! والشمس نزلت في البحر، برتقاني وبمبي ودهبي. ياسين سند على بابا وقال: «الحمد لله على القطورات، وعلى البحر، وعليك يا بابا.»",
+  "sound": "الحمد لله!",
+  "note": "اسأله: هيقول الحمد لله على إيه النهارده؟"
+ },
+ {
+  "name": "الخبر الكبير",
+  "line": "في ليلة، ماما وبابا قعدوا مع ياسين على الكنبة. ماما مسكت إيده وحطّتها بالراحة على بطنها المدوّرة. وقالت: «يا ياسين، في نونّة بتكبر هنا. أخت صغيّرة. وانت هتبقى أخوها الكبير.» عينين ياسين وسعوا أوي: «أخت؟ ليّا أنا؟»",
+  "sound": "أخت؟ ليّا أنا؟",
+  "note": "لو الكتاب وصله قبل ما يعرف الخبر، اقرا الصفحة دي الأوّل لوحدها، مع الخبر الحقيقي.",
+  "chapter": "الفصل الخامس · نونّة جاية في السكّة"
+ },
+ {
+  "name": "هتفضلوا تحبّوني؟",
+  "line": "بعد شويّة، ياسين بقى ساكت خالص. طلع على حِجر ماما. وقال بصوت واطي: «لمّا النونّة تيجي… هتفضلوا تحبّوني؟» ماما وبابا حضنوه جامد، جامد، جامد. بابا قال: «الحب مابيصغرش لمّا العيلة تكبر. ده بيكبر أكتر. هنحبّك على طول، على طول يا يَسّو.»",
+  "sound": "الحب بيكبر!",
+  "note": "السؤال اللي في الصفحة دي أغلب الأطفال شايلينه وقليل اللي بيسألوه. جاوبه تاني بكلامك انت بعد ما تقراها."
+ },
+ {
+  "name": "هتبقى قد إيه؟",
+  "line": "ياسين سأل: «هتبقى قد إيه؟» بابا شال كورة ياسين وقال: «راسها كلها هتبقى أصغر من دي.» وبعدين ماما ورّته شراب نونّة. كان صغيّر خالص لدرجة إنه دخل في صوابع ياسين الكبيرة! ماما قالت: «هتبقى صغنّنة أوي، وناعمة أوي أوي.»",
+  "sound": "صغنّنة خالص!",
+  "note": "البيبي أصغر من ما الأطفال متخيّلين. والهدوم الحقيقية بتخلّي الفكرة واضحة."
+ },
+ {
+  "name": "شوطة!",
+  "line": "في ليلة، ياسين حطّ ودنه على بطن ماما عشان يقول للنونّة تصبحي على خير. وفجأة — بُم! حاجة زقّت خدّه! ياسين ضحك: «دي شاطتني! بتشوط زي لاعيبة الكورة! أنا هعلّمها كل حاجة.»",
+  "sound": "بُم! شاطت!",
+  "note": "لو التوقيت مناسب، سيبه يحسّ بشوطة حقيقية. هيفتكرها."
+ },
+ {
+  "name": "إيدين حنيّنة",
+  "line": "بابا قعد مع ياسين وقال: «رجليك قويّة يا يَسّو. والرجلين القويّة للكورة. بس النونّة محتاجة حاجة تانية. محتاجة إيدين حنيّنة.» ياسين بصّ على إيديه، وخلّاهم طريّين زي الريشة. ياسين قال: «إيدين طريّة. إيدين بالراحة. إيدين حنيّنة.»",
+  "sound": "طريّة، بالراحة، حنيّنة.",
+  "note": "دي الجملة اللي هتتكرّر في باقي الكتاب. امسك إيديه وانت بتقولها."
+ },
+ {
+  "name": "تمرين",
+  "line": "ياسين عارف إنك عشان تبقى شاطر في حاجة لازم تتمرّن — زي الكورة بالظبط. فاتمرّن مع الدبدوب بتاعه. لفّه في بطّانيّة. وسند راسه على دراعه. وهزّه بالراحة، بالراحة، وقال بصوت واطي: «هُش، هُش، ماتخافش.» ماما قالت: «تمرين حلو أوي.»",
+  "sound": "هُش، هُش، ماتخافش.",
+  "note": "العروسة أو الدبدوب بيساعدوا بجد. ورّيه الراس بتتسند فين — هيفتكر بعدين."
+ },
+ {
+  "name": "أوضتها",
+  "line": "وبعدين جه وقت نجهّز أوضة النونّة. بابا ركّب السرير. وماما علّقت ستاير بمبي ناعمة. وياسين كان عنده أهم شغلانة: يطبّق هدوم النونّة الصغيّرة. تيشيرت صغيّر. بنطلون صغيّر. وشرابات صغيّرة، صغنّنة خالص. وقال: «كل حاجة صغيّرة أوي!»",
+  "sound": "صغيّر، صغيّر، صغيّر!",
+  "note": "اديله شغلانة حقيقية قبل ما النونّة تيجي. المساعدة بتخلّي النونّة بتاعته هو كمان."
+ },
+ {
+  "name": "هديّة ليها",
+  "line": "ياسين سأل: «ممكن أجيب لها هديّة؟» فكّر وفكّر. كورة؟ كبيرة أوي. كتاب حواديت؟ لسّه بدري. وبعدين عرف! اختار قطر أزرق طري، وحطّه في سريرها. وقال بصوت واطي: «توت توت. ده من أخوكي الكبير.»",
+  "sound": "من أخوكي الكبير.",
+  "note": "لو اختار هديّة حقيقية للنونّة، خلّيها فكرته هو، وسيبه يديهالها بنفسه."
+ },
+ {
+  "name": "جه الوقت!",
+  "line": "في يوم بدري أوي الصبح، والدنيا لسّه ضلمة شويّة، بابا صحّى ياسين. «جه الوقت! النونّة جاية النهارده!» ماما وبابا راحوا المستشفى، وياسين قعد مع حد بيحبّه — واستنّى، واستنّى، واستنّى.",
+  "sound": "جه الوقت!",
+  "note": "حط مكانها مين اللي هيقعد معاه بجد — تيتة، أو خالتو، أو صاحب — عشان الصفحة تشبه يومه.",
+  "chapter": "الفصل السادس · ياسين الأخ الكبير"
+ },
+ {
+  "name": "رسمة ليها",
+  "line": "وهو مستنّي، ياسين رسم رسمة لأخته. رسم ترام أحمر كبير وقطر طويل جنب البحر. ورسم كورة. ورسم نفسه شايل نونّة صغيّرة بإيدين حنيّنة أوي. وقال: «دي انتي، وده أنا. أخوكي الكبير.»",
+  "sound": "ده أنا. أخوكي الكبير.",
+  "note": "الاستنّى صعب في سن أربع سنين. والرسم للنونّة بيدّي الاستنّى شغلانة."
+ },
+ {
+  "name": "وصلت!",
+  "line": "وأخيراً، ياسين قابلها. أخته الصغيّرة. كانت صغنّنة أوي. مناخيرها صغيّرة، وودانها صغيّرة، وصوابعها أصغر حاجة خالص. ياسين مدّ صباع واحد، بالراحة أوي — وهي لفّت إيدها كلها حواليه ومسكته جامد. ياسين قال: «أهلاً يا أختي الصغيّرة. أنا ياسين.»",
+  "sound": "أهلاً يا أختي الصغيّرة.",
+  "note": "البيبي بيقفل إيده بجد. لو تقدر، سيبه يحسّ بيها — دي اللحظة اللي إخوات كتير بيحبّوا فيها أخواتهم."
+ },
+ {
+  "name": "شايلها",
+  "line": "ماما سألت: «تحب تشيلها؟» ياسين قعد كويس على الكنبة ومخدّة كبيرة تحت دراعه. بابا حطّ النونّة في حضنه وخلّى إيده قريّبة. ياسين افتكر التمرين مع الدبدوب. الراس على الدراع. إيدين طريّة، إيدين بالراحة، إيدين حنيّنة. وهي تاوبت تاوبة صغنّنة. وياسين قال بصوت واطي: «أنا شايلها!» وبابا ضحك وقال: «يَسّو، انت جامد جدًا.»",
+  "sound": "طريّة، بالراحة، حنيّنة.",
+  "note": "ده بالظبط إزاي يشيلها بجد: قاعد، ومخدّة تحت دراعه، وإيد كبير قريّبة. والكتاب بيورّي الطريقة الأمان عن قصد."
+ },
+ {
+  "name": "شغل الأخ الكبير",
+  "line": "إنك تبقى أخ كبير ده شغل مهم. ياسين بيجيب بامبرز نضيف لمّا ماما تحتاج. وبيجيب البطّانيّة الطريّة. وبيغنّي للنونّة وهي بتشرب اللبن بتاعها. وبيورّيها الكورة بتاعته — بس عمره، عمره ما بيشوطها جنبها. ياسين بيقول: «الكورة للعب برّه. والنونّة عايزة الحنيّة.»",
+  "sound": "شاطر يا ياسين!",
+  "note": "الشغلانات الصغيّرة الحقيقية بتخلّي الأخ الكبير يحسّ إنه مهم، مش إن حد خد مكانه."
+ },
+ {
+  "name": "وقت ياسين",
+  "line": "النونّة محتاجة رعاية كتير أوي. بس كل ليلة، لسّه في وقت ياسين. حدّوتة مع ماما. وزغزغة ولعبة مع بابا. ماما بتقول: «انت كنت أوّل بيبي لينا، وهتفضل على طول ياسين بتاعنا. حبّنا بس كبر — بقى كبير كفاية لاتنين.»",
+  "sound": "كبير كفاية لاتنين!",
+  "note": "خلّي ليه وقت لوحده معاك كل يوم، ولو عشر دقايق، وسمّيه باسمه. ده بيجاوب سؤال الفصل الخامس أحسن من أي كلام."
+ },
+ {
+  "name": "صوت الوشوشة",
+  "line": "في يوم العصر، النونّة بدأت تعيّط. واااء! واااء! ياسين ما زعّقش، وما سدّش ودانه. مشي على طراطيف صوابعه لحد سريرها. واستعمل أهدى صوت وشوشة عنده، وغنّى أغنية القطر، بالراحة وبهدوء: «توت… توت… يا قطري… يلّا ننام…» وواحدة واحدة، بطّلت عياط، وغمّضت عينيها.",
+  "sound": "شششش… توت… توت…",
+  "note": "ألّفوا أغنية القطر سوا. اللحن اللي بتاعه هو اللحن اللي هيستعمله."
+ },
+ {
+  "name": "وعود",
+  "line": "ياسين نام جنب أخته على المفرش بتاع اللعب. وقال لها: «لمّا تكبري، هعلّمك تراوغي — تك، تك، تك. وهورّيكي الألوان في الحضانة. وأنا وبابا هناخدك دِل مار، ونقف بعيد ورا السور، والقطر هيعمل بيب بيب — عشانك انتي بس.»",
+  "sound": "عشانك انتي بس!",
+  "note": "كل دول رجوع لصفحات قبل كده — اقراها بالراحة وسيبه يعرف كل واحدة."
+ },
+ {
+  "name": "تصبح على خير يا ياسين",
+  "line": "القمر طالع فوق البحر. والقطورات نايمة. والكورة مرتاحة على الرف. ماما وبابا بيغطّوا ياسين وبيبوسوه بوسة النوم. «تصبح على خير يا يَسّو،» بابا بيوشوش، «انت جامد جدًا.» رجلين قويّة للكورة. وإيدين فرحانة بتعمل باي للقطورات. وإيدين حنيّنة لأخته الصغيّرة. وعيلة مليانة حب. تصبح على خير يا ياسين. وتصبحي على خير يا أخت ياسين الصغيّرة.",
+  "sound": "تصبح على خير يا ياسين.",
+  "note": "آخر صفحة: بالراحة خالص، ووشوش آخر سطرين."
+ }
+] };
+Object.keys(EG).forEach(function (k) {
+  BOOK[k].pages.forEach(function (pg, i) { pg.eg = Object.assign({}, pg.ar, EG[k][i]); });
+});
+
+var AUDIO_DIR = { yaseen:{ en:'../audio-yaseen/en/', ar:'../audio-yaseen/ar/', eg:'../audio-yaseen/eg/' } };
+var SFX_DIR   = {};
+
+var IMG_V1 = {
+  yaseen: ['cover', 'hello', 'love', 'favourites', 'morning', 'dressed', 'backpack', 'trolley', 'door', 'brave', 'circle', 'paint', 'playground', 'friend', 'training', 'warmup', 'dribble', 'listen', 'goal', 'handshake', 'backyard', 'saturday', 'drive', 'cliffs', 'wait', 'beep', 'count', 'sunset', 'news', 'stilllove', 'small', 'kick', 'hands', 'teddy', 'room', 'toy', 'time', 'drawing', 'here', 'holding', 'jobs', 'ourtime', 'whisper', 'promise', 'goodnight']
+};
+['yaseen'].forEach(function (k) {
+  BOOK[k].pages.forEach(function (pg, i) {
+    pg.img = '../images-yaseen/' + IMG_V1[k][i] + '.png';
+  });
+});
+
+var UI = {
+  en: { back:'Back', next:'Turn the page', start:'Start reading', listen:'Read to me',
+        pause:'Pause', readTo:'Read it to:', placeholder:'Yaseen', grownups:'Grown-ups',
+        notesOn:'Hide grown-up notes', notesOff:'Show grown-up notes',
+        autoOn:'Auto-play: on', autoOff:'Auto-play: off',
+        turnOn:'Auto-turn: on', turnOff:'Auto-turn: off',
+        cover:'Back to the cover', dir:'ltr',
+        chBw:'Black & White', chColor:'Colours', arrowNext:'\u2192', arrowPrev:'\u2190',
+        sound:'', zoo:'', shelf:'All the stories', big:'Full screen', small:'Exit full screen',
+        artDrawn:'Artwork: drawn', artPhoto:'Artwork: illustrated' },
+  ar: { back:'رجوع', next:'اقلِب الصفحة', start:'ابدأ القراءة', listen:'اقرأ لي',
+        pause:'إيقاف', readTo:'نقرؤها لـ:', placeholder:'ياسين', grownups:'للكبار',
+        notesOn:'إخفاء ملاحظات الكبار', notesOff:'إظهار ملاحظات الكبار',
+        autoOn:'تشغيل تلقائي: نعم', autoOff:'تشغيل تلقائي: لا',
+        turnOn:'تقليب تلقائي: نعم', turnOff:'تقليب تلقائي: لا',
+        cover:'العودة للغلاف', dir:'rtl',
+        chBw:'أبيض وأسود', chColor:'ألوان', arrowNext:'\u2190', arrowPrev:'\u2192',
+        sound:'', zoo:'', shelf:'كلُّ القصص', big:'ملء الشاشة', small:'إنهاء ملء الشاشة',
+        artDrawn:'الرسم اليدوي', artPhoto:'الصور المولَّدة' }
+};
+
+// Egyptian Arabic: the same right-to-left page, in مصري
+UI.eg = Object.assign({}, UI.ar, {
+  back:'ارجع', next:'قلّب الصفحة', start:'يلّا نقرا', listen:'احكيلي',
+  pause:'استنّى', readTo:'بنقراها لـ:', notesOn:'خبّي ملاحظات الكبار', notesOff:'ورّيني ملاحظات الكبار',
+  autoOn:'تشغيل تلقائي: آه', autoOff:'تشغيل تلقائي: لأ',
+  turnOn:'تقليب لوحده: آه', turnOff:'تقليب لوحده: لأ',
+  cover:'ارجع للغلاف',
+  chBw:'أبيض وإسود', shelf:'كل الحواديت', small:'اقفل ملء الشاشة',
+  artDrawn:'الرسم باليد', artPhoto:'الصور المتولّدة'
+});
+
+var BIRD = '<svg class="bird" viewBox="0 0 100 80" aria-hidden="true">' +
+  '<ellipse cx="46" cy="44" rx="30" ry="22" fill="' + RED + '"/>' +
+  '<circle cx="70" cy="28" r="16" fill="' + RED + '"/>' +
+  '<path d="M84 26 l17 6 -17 7 z" fill="' + INK + '"/>' +
+  '<circle cx="74" cy="24" r="4" fill="' + PAPER + '"/>' +
+  '<path d="M16 38 q-14 14 2 22 q12 -2 18 -14 z" fill="' + INK + '"/>' +
+  '<path d="M22 60 v12 M62 62 v10" stroke="' + INK + '" stroke-width="5" stroke-linecap="round" fill="none"/></svg>';
+
+/* ============================================================
+   Wiring
+   ============================================================ */
+var spread  = document.getElementById('spread');
+var dots    = document.getElementById('dots');
+var prevBtn = document.getElementById('prev');
+var nextBtn = document.getElementById('next');
+var notesBtn= document.getElementById('notesBtn');
+var autoBtn = document.getElementById('autoBtn');
+var turnBtn = document.getElementById('turnBtn');
+var startBtn= document.getElementById('startBtn');
+var player  = document.getElementById('player');
+var sfx     = document.getElementById('sfx');
+var fsBtn   = document.getElementById('fsBtn');
+var artBtn  = document.getElementById('artBtn');
+
+var ch = 'yaseen', lang = 'en', at = 0, autoplay = true, unlocked = false, babyName = '', big = false, useImages = true;
+// Turn the pages by itself, for when nobody has a free hand. Off until
+// asked for: a book that starts moving on its own is startling.
+var autoturn = false, turnTimer = null;
+var TURN_PAUSE = 5000;
+
+function t(k){ return UI[lang][k]; }
+function pages(){ return BOOK[ch].pages; }
+
+function nameOr(fallback){ return babyName || fallback; }
+
+function render(){
+  var page = pages()[at];
+  var copy = page[lang];
+  var ui = UI[lang];
+
+  document.documentElement.setAttribute('lang', lang === 'eg' ? 'ar-EG' : lang);
+  document.documentElement.setAttribute('dir', ui.dir);
+  document.body.setAttribute('lang', lang === 'eg' ? 'ar-EG' : lang);
+  document.body.setAttribute('dir', ui.dir);
+
+  document.documentElement.style.setProperty('--accent', BOOK[ch].accent);
+  spread.className = 'spread' + (page.cover ? ' cover' : '');
+  spread.parentNode.style.setProperty('--tint', page.tint ? page.tint + '26' : 'transparent');
+
+  var artwork = (useImages && page.img)
+    ? '<img class="art photo breathe" id="pageArt" src="' + page.img + '" alt="">'
+    : (page.art || '');
+  var html = '<div class="stage" style="--tint:' + (page.tint ? page.tint + '26' : 'transparent') + '">' + artwork + '</div>';
+
+  if (page.cover) {
+    html += '<div class="words">' +
+      '<p class="eyebrow">' + copy.eyebrow + '</p>' +
+      '<h1>' + copy.title + '</h1>' +
+      '<div class="cover-rule"></div>' +
+      '<p class="dedication">' + (t('dir') === 'rtl' ? 'إلى ' : 'For ') + '<span class="babyname">Yaseen</span></p>' +
+      '<p class="line">' + copy.line + '</p>' +
+    '</div>';
+  } else {
+    html += '<div class="words">' +
+      (copy.chapter ? '<p class="eyebrow chapter">' + copy.chapter + '</p>' : '') +
+      '<h2 class="animal' + (ch === 'bw' ? ' plain' : '') + '"' +
+        (ch === 'color' && page.tint ? ' style="color:' + page.tint + '"' : '') + '>' + copy.name + '</h2>' +
+      '<p class="line">' + copy.line + '</p>' +
+      '<p class="sound">' + copy.sound + '</p>' +
+    '</div>';
+  }
+
+  html += '<div class="listen"><button class="play" id="playBtn" type="button">' +
+    '<svg class="ico" viewBox="0 0 15 17" aria-hidden="true"><path d="M1 1 L14 8.5 L1 16 Z" fill="currentColor"/></svg>' +
+    '<span id="playLabel">' + ui.listen + '</span></button>';
+  if (page.snd) {
+    html += '<button class="play ghost" id="sfxBtn" type="button">' +
+      '<svg class="ico" viewBox="0 0 18 17" aria-hidden="true">' +
+        '<path d="M1 6 h4 L10 1.5 v14 L5 11 H1 Z" fill="currentColor"/>' +
+        '<path d="M13 5.5 q2.6 3 0 6 M15.6 3.4 q4.4 5.1 0 10.2" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>' +
+      '</svg><span>' + ui.sound + '</span></button>';
+  }
+  html += '</div>';
+
+  if (page.cover) {
+    html += '<div class="namer"><label for="babyname">' + ui.readTo + '</label>' +
+      '<input id="babyname" type="text" autocomplete="off" maxlength="18" placeholder="' + ui.placeholder + '" value="' +
+      babyName.replace(/"/g, '&quot;') + '"></div>';
+  }
+
+  html += '<p class="note"><b>' + ui.grownups + '</b><span>' + copy.note + '</span></p>';
+
+  spread.innerHTML = html;
+
+  // an illustration that has not been generated yet falls back to the drawing
+  var photo = document.getElementById('pageArt');
+  if (photo) {
+    var toDrawing = function () {
+      var stage = photo.parentNode;
+      if (!stage) return;
+      stage.innerHTML = page.art || '';
+      if (page.perch) addBird(stage, page);
+    };
+    photo.addEventListener('error', toDrawing);
+    // the error may already have fired before this handler was attached
+    if (photo.complete && photo.naturalWidth === 0) toDrawing();
+  }
+
+  // the red bird, hiding in a different corner on every animal page
+  if (page.perch) addBird(spread.querySelector('.stage'), page);
+
+  applyName();
+
+  var input = document.getElementById('babyname');
+  if (input) {
+    input.addEventListener('input', function () {
+      babyName = input.value;
+      applyName();
+      try { localStorage.setItem('yaseen-name', babyName.trim()); } catch (e) {}
+    });
+  }
+  document.getElementById('playBtn').addEventListener('click', togglePlay);
+  var sfxBtn = document.getElementById('sfxBtn');
+  if (sfxBtn) sfxBtn.addEventListener('click', playSound);
+
+  // chrome
+  prevBtn.querySelector('[data-t]').textContent = ui.back;
+  nextBtn.querySelector('[data-t]').textContent = at === 0 ? ui.start : ui.next;
+  prevBtn.disabled = at === 0;
+  nextBtn.disabled = at === pages().length - 1;
+  notesBtn.textContent = document.body.classList.contains('notes-off') ? ui.notesOff : ui.notesOn;
+  autoBtn.textContent = autoplay ? ui.autoOn : ui.autoOff;
+  autoBtn.setAttribute('aria-pressed', String(autoplay));
+  turnBtn.textContent = autoturn ? ui.turnOn : ui.turnOff;
+  turnBtn.setAttribute('aria-pressed', String(autoturn));
+  startBtn.textContent = ui.cover;
+  fsBtn.textContent = big ? ui.small : ui.big;
+  document.getElementById('shelfLink').textContent = '\u2190 ' + ui.shelf;
+  var sibling = document.getElementById('zooLink');
+  if (sibling) sibling.textContent = ui.zoo;
+  artBtn.textContent = useImages ? ui.artPhoto : ui.artDrawn;
+  artBtn.setAttribute('aria-pressed', String(useImages));
+  document.getElementById('prevArrow').textContent = ui.arrowPrev;
+  document.getElementById('nextArrow').textContent = ui.arrowNext;
+
+  Array.prototype.forEach.call(dots.children, function (d, n) { d.classList.toggle('on', n === at); });
+
+  loadAudio();
+}
+
+function addBird(stage, page) {
+  var wrap = document.createElement('div');
+  wrap.innerHTML = BIRD;
+  var bird = wrap.firstChild;
+  bird.style.left = page.perch[0] + '%';
+  bird.style.top = page.perch[1] + '%';
+  stage.appendChild(bird);
+}
+
+function applyName() {
+  var fallback = t('dir') === 'rtl' ? 'يَسّو' : 'Yaseen';
+  Array.prototype.forEach.call(document.querySelectorAll('.babyname'), function (s) {
+    s.textContent = babyName.trim() || fallback;
+  });
+}
+
+function buildDots() {
+  dots.innerHTML = '';
+  pages().forEach(function () { dots.appendChild(document.createElement('span')); });
+}
+
+/* ---------- audio ---------- */
+function loadAudio() {
+  player.pause();
+  player.src = AUDIO_DIR[ch][lang] + pages()[at].audio + '.mp3';
+  setPlayState(false);
+}
+
+function setPlayState(playing) {
+  var btn = document.getElementById('playBtn');
+  if (!btn) return;
+  btn.dataset.state = playing ? 'playing' : 'idle';
+  document.getElementById('playLabel').textContent = playing ? t('pause') : t('listen');
+}
+
+function togglePlay() {
+  unlocked = true;
+  if (player.paused) {
+    player.play().then(function () { setPlayState(true); }).catch(function () { setPlayState(false); });
+  } else {
+    player.pause();
+    setPlayState(false);
+  }
+}
+
+function playSound() {
+  unlocked = true;
+  var page = pages()[at];
+  if (!page.snd) return;
+  sfx.src = SFX_DIR[ch][lang] + page.snd + '.mp3';
+  sfx.currentTime = 0;
+  sfx.play().catch(function () {});
+}
+
+/* ---------- turning the pages by itself ---------- */
+// The wait runs AFTER the narration, not alongside it: a five second timer
+// started at the same time as a twelve second reading would turn the page
+// mid-sentence. With no narration it is just the five seconds.
+function stopTurning() { if (turnTimer) { clearTimeout(turnTimer); turnTimer = null; } }
+function queueTurn() {
+  stopTurning();
+  if (!autoturn) return;
+  if (at >= pages().length - 1) return;              // stop at the last page
+  if (!player.paused && !player.ended) return;       // the 'ended' handler takes over
+  turnTimer = setTimeout(function () {
+    if (autoturn && at < pages().length - 1) show(at + 1);
+  }, TURN_PAUSE);
+}
+
+player.addEventListener('ended', function () { setPlayState(false); queueTurn(); });
+player.addEventListener('pause', function () { setPlayState(false); stopTurning(); });
+
+function show(i) {
+  stopTurning();
+  at = Math.max(0, Math.min(pages().length - 1, i));
+  render();
+  if (autoplay && unlocked) {
+    player.play().then(function () { setPlayState(true); })
+      .catch(function () { queueTurn(); });          // nothing to play: just wait
+  } else {
+    queueTurn();
+  }
+  document.querySelector('.book').scrollIntoView({ block: 'nearest' });
+}
+
+/* ---------- chrome events ---------- */
+nextBtn.addEventListener('click', function () { show(at + 1); });
+prevBtn.addEventListener('click', function () { show(at - 1); });
+startBtn.addEventListener('click', function () { show(0); });
+
+notesBtn.addEventListener('click', function () {
+  var off = document.body.classList.toggle('notes-off');
+  notesBtn.textContent = off ? t('notesOff') : t('notesOn');
+});
+
+autoBtn.addEventListener('click', function () {
+  autoplay = !autoplay;
+  autoBtn.textContent = autoplay ? t('autoOn') : t('autoOff');
+  autoBtn.setAttribute('aria-pressed', String(autoplay));
+});
+
+turnBtn.addEventListener('click', function () {
+  autoturn = !autoturn;
+  turnBtn.textContent = autoturn ? t('turnOn') : t('turnOff');
+  turnBtn.setAttribute('aria-pressed', String(autoturn));
+  if (autoturn) { queueTurn(); } else { stopTurning(); }
+});
+
+artBtn.addEventListener('click', function () {
+  useImages = !useImages;
+  try { localStorage.setItem('yaseen-art', useImages ? 'photo' : 'drawn'); } catch (e) {}
+  render();
+});
+
+fsBtn.addEventListener('click', function () {
+  big = !big;
+  document.body.classList.toggle('big', big);
+  if (big) {
+    var el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen().catch(function () {});
+  } else if (document.fullscreenElement && document.exitFullscreen) {
+    document.exitFullscreen().catch(function () {});
+  }
+  render();
+});
+
+document.addEventListener('fullscreenchange', function () {
+  if (!document.fullscreenElement && big) {
+    big = false;
+    document.body.classList.remove('big');
+    render();
+  }
+});
+
+// Two switches: English or Arabic, and — once in Arabic — فصحى or مصري.
+// The العربية button reopens whichever Arabic was picked last.
+var dialect = 'eg';
+function pickLang(e) {
+  var b = e.target.closest('button');
+  if (!b) return;
+  if (this.id === 'dialects') dialect = b.dataset.lang;
+  lang = b.dataset.lang === 'en' ? 'en' : dialect;
+  Array.prototype.forEach.call(document.querySelectorAll('#langs button'), function (x) {
+    x.setAttribute('aria-pressed', String((x.dataset.lang === 'en') === (lang === 'en')));
+  });
+  Array.prototype.forEach.call(document.querySelectorAll('#dialects button'), function (x) {
+    x.setAttribute('aria-pressed', String(x.dataset.lang === lang));
+  });
+  
+  render();
+}
+document.getElementById('langs').addEventListener('click', pickLang);
+document.getElementById('dialects').addEventListener('click', pickLang);
+
+document.addEventListener('keydown', function (e) {
+  if (e.target.tagName === 'INPUT') return;
+  if (e.key === 'ArrowRight') show(t('dir') === 'rtl' ? at - 1 : at + 1);
+  if (e.key === 'ArrowLeft') show(t('dir') === 'rtl' ? at + 1 : at - 1);
+});
+
+var x0 = null;
+var book = document.querySelector('.book');
+book.addEventListener('touchstart', function (e) { x0 = e.changedTouches[0].clientX; }, { passive: true });
+book.addEventListener('touchend', function (e) {
+  if (x0 === null) return;
+  var dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 50) show(at + ((dx < 0) === (t('dir') !== 'rtl') ? 1 : -1));
+  x0 = null;
+}, { passive: true });
+
+try {
+  var saved = localStorage.getItem('yaseen-name');
+  if (saved) babyName = saved;
+  var savedArt = localStorage.getItem('yaseen-art');
+  
+} catch (e) {}
+
+buildDots();
+render();
+</script>
+</body>
+</html>

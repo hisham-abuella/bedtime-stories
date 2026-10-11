@@ -94,7 +94,7 @@ to be kind to someone new because preschool was new for him. Baba calls him
 Unlike Loza and Susu, the boy is drawn on every page, in a bright cartoon style
 rather than gouache. He comes from one fixed description and three fixed outfits
 (red t-shirt, blue soccer kit, light blue pyjamas); Mama, Baba and Coach are
-never given faces — an arm, a lap, a hand to hold. A little red toy trolley
+never drawn at all — arms and laps came out mangled, so they live in the words. The baby is always described as much smaller than him. A little red toy trolley
 hides on every page, the way the red bird hides in the zoo. The chapter name
 sits above the heading on each chapter's first page (`chapter` in the spec).
 
