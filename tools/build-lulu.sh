@@ -26,7 +26,7 @@ BASE="https://hisham-abuella.github.io/bedtime-stories"
 # Print-weight JPEGs from the 1536px re-renders.
 mkdir -p input/img-hi
 missing=0
-for src in images-v1 images-susu images-bismillah images-alhamdulillah images-khalaqa images-nabina; do
+for src in images-v1 images-susu images-loza images-bismillah images-alhamdulillah images-khalaqa images-nabina; do
   [[ -d $src ]] || continue
   mkdir -p "input/img-hi/$src"
   for png in "$src"/*.png; do

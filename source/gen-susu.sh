@@ -19,12 +19,11 @@ gen () {
     --output "$DEST/$1.png" >/dev/null 2>&1 && echo "done $1" || echo "FAIL $1"
 }
 
-# the cover is drawn from her actual photograph
-$CLI generate --model z_image_turbo_1.0_q8p.ckpt \
-  --prompt "portrait of $SUSU lying in a warm patch of sunlight on a soft carpet, $STYLE" \
-  --negative-prompt "$NEG" --image "$REF" --strength 0.45 \
-  --width $SIZE --height $SIZE --seed 301 \
-  --output "$DEST/cover.png" >/dev/null 2>&1 && echo "done cover (img2img)" || echo "FAIL cover"
+# The cover is still taken from her real photograph ($REF) — the pose and the
+# light below are described from it — but drawn rather than traced. Z-Image
+# Turbo's img2img reproduces a photograph almost exactly at any strength worth
+# using, which left a photographic cover on a book of gouache illustrations.
+gen cover "portrait of $SUSU lying on her side in a warm patch of afternoon sunlight on a soft cream carpet, eyes half open, one ear lit from behind, $STYLE" 301
 
 gen oklahoma   "$SUSU as a small kitten sitting beside a stack of books, a snowy window behind, $STYLE" 302
 gen desk       "$SUSU curled asleep on a desk full of papers beside a glowing lamp at night, $STYLE" 303

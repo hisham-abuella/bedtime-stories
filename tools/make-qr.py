@@ -17,6 +17,7 @@ CODES = {
     'qr-zoo-bw':        f'{BASE}/books/black-white-zoo.html#bw',
     'qr-zoo-color':     f'{BASE}/books/black-white-zoo.html#color',
     'qr-susu':          f'{BASE}/books/susu.html',
+    'qr-loza':          f'{BASE}/books/loza.html',
     'qr-bismillah':     f'{BASE}/books/bismillah.html',
     'qr-alhamdulillah': f'{BASE}/books/alhamdulillah.html',
     'qr-khalaqa':       f'{BASE}/books/khalaqa.html',

@@ -88,6 +88,17 @@ if (from < 0 || to < 0) {
     console.error('could not find the data section in', bookPath);
     process.exit(1);
 }
+// The child the copy is printed for. On screen the name is typed in; on paper
+// it is fixed, so --name / --name-ar swap it into every babyname span. Which one
+// a span gets is decided by the script already inside it.
+const nameEn = arg('--name', ''), nameAr = arg('--name-ar', '');
+function withName(src) {
+    if (!nameEn && !nameAr) return src;
+    return src.replace(/(<span class=\\?"babyname\\?">)([^<]*)(<\/span>)/g, function (m, a, was, b) {
+        const ar = /[؀-ۿ]/.test(was);
+        return a + ((ar ? nameAr : nameEn) || was) + b;
+    });
+}
 function readBook(file) {
     const h = fs.readFileSync(file, 'utf8');
     const a = h.indexOf('var INK ='), b = h.indexOf('var UI = {');
@@ -97,7 +108,7 @@ function readBook(file) {
     }
     const box = { console };
     vm.createContext(box);
-    vm.runInContext(h.slice(a, b), box);
+    vm.runInContext(withName(h.slice(a, b)), box);
     return { file: file, BOOK: box.BOOK,
              title: (h.match(/<title>([^<]*)<\/title>/) || [, 'Story'])[1] };
 }

@@ -12,6 +12,7 @@ export SIZE=1536
 mkdir -p art-hi
 echo "== zoo"            && DEST="$PWD/art-hi/images-v1"   zsh source/gen-pages.sh
 echo "== susu"           && DEST="$PWD/art-hi/images-susu" zsh source/gen-susu.sh
+echo "== loza"           && DEST="$PWD/art-hi/images-loza" zsh source/gen-loza.sh
 echo "== muslim books"   && ART_ROOT="$PWD/art-hi"         zsh source/gen-muslim-books.sh
 echo "== done"
 find art-hi -name '*.png' | wc -l | xargs echo "images at 1536px:"

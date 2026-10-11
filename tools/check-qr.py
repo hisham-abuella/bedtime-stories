@@ -13,13 +13,14 @@ from PIL import Image
 REPO = Path('/Users/hishamabuella/Work/bedtime-stories')
 BASE = 'https://hisham-abuella.github.io/bedtime-stories'
 TMP = Path('/private/tmp/claude-501/-Users-hishamabuella-Work/00b1ad39-acac-4ee0-8191-40b45b61f32e/scratchpad/qrpages')
-TMP.mkdir(exist_ok=True)
+TMP.mkdir(parents=True, exist_ok=True)
 
 # what each book's codes are allowed to point at
 ALLOWED = {
     'black-white-zoo': {f'{BASE}/books/black-white-zoo.html', f'{BASE}/books/black-white-zoo.html#bw',
                         f'{BASE}/books/black-white-zoo.html#color'},
     'susu':          {f'{BASE}/books/susu.html'},
+    'loza':          {f'{BASE}/books/loza.html'},
     'bismillah':     {f'{BASE}/books/bismillah.html'},
     'alhamdulillah': {f'{BASE}/books/alhamdulillah.html'},
     'khalaqa':       {f'{BASE}/books/khalaqa.html'},
@@ -31,6 +32,9 @@ ALLOWED = {
 VOLUMES = {
     'vol-first-words': ['bismillah', 'alhamdulillah', 'khalaqa', 'nabina'],
     'vol-animals-colours': ['black-white-zoo', 'susu'],
+    # Noah's copies: the same First Words, and Loza in Susu's place
+    'vol-noah-first-words': ['bismillah', 'alhamdulillah', 'khalaqa', 'nabina'],
+    'vol-noah-animals-colours': ['black-white-zoo', 'loza'],
 }
 def book_of(name):
     for v, books in VOLUMES.items():
@@ -42,7 +46,7 @@ def book_of(name):
     return None
 
 rows, bad, total_codes = [], [], 0
-pdfs = sorted(glob.glob(str(REPO / 'print' / '*' / '*.pdf')))
+pdfs = sorted(glob.glob(str(REPO / 'print' / '**' / '*.pdf'), recursive=True))
 for pdf in pdfs:
     name = Path(pdf).stem
     book = book_of(name)

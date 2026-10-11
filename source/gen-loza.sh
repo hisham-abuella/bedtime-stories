@@ -10,10 +10,10 @@ mkdir -p "$DEST"
 # Her cover is drawn from her real photograph, kept in the repo.
 REF=${REF:-$REPO/images/loza-photo.jpg}
 CLI=/opt/homebrew/bin/draw-things-cli
-LOZA="a slender pure white short-haired cat with odd eyes, her right eye pale blue and her left eye green, a small smudge of dark grey fur on the top of her forehead between the ears, pink ears and a pink nose"
-KITTEN="a tiny pure white kitten with odd eyes, one pale blue and one green, a small smudge of dark grey fur on the top of her forehead, pink ears and a pink nose"
+LOZA="a round-faced white cartoon cat with a fluffy white coat, odd eyes — her right eye pale blue and her left eye green — a small dark grey smudge on the very top of her head between the ears, pink inner ears and a small pink nose"
+KITTEN="the same cat as a small young kitten: $LOZA"
 STYLE="warm children's picture book illustration, soft gouache, gentle rounded shapes, cosy, generous negative space, muted warm palette"
-NEG="text, letters, words, numbers, arabic script, writing, signs, watermark, signature, people, human faces, human hands, photorealistic, cluttered, deformed, extra limbs, extra tails, blurry, tabby stripes, black cat"
+NEG="text, letters, words, numbers, arabic script, writing, signs, watermark, signature, people, human faces, human hands, photorealistic, cluttered, deformed, extra limbs, extra tails, blurry, tabby stripes, black cat, photograph, photo, 3d render, realistic fur"
 
 gen () {
   [[ -f "$DEST/$1.png" ]] && { echo "skip $1"; return; }
@@ -26,7 +26,7 @@ gen () {
 # The cover was tried as img2img from her photo (images/loza-photo.jpg), but
 # Z-Image keeps the photo's realism at any strength that keeps her likeness, so
 # it is drawn from the description like every other page.
-gen cover     "portrait of $LOZA with a clear dark grey patch on her forehead, peeking out of a soft round grey felt cat cave bed, $STYLE" 411
+gen cover     "$LOZA sitting upright facing the viewer, peeking out from a soft round grey cat cave bed, $STYLE" 411
 
 gen cairo     "$KITTEN with a clear dark grey patch on her forehead, sitting alone on old stone steps in a quiet Cairo street at dusk, sandy buildings, a minaret and palm tree in the distance, empty street, $STYLE" 412
 gen gedo      "$KITTEN wrapped in a soft knitted wool scarf in a little basket, beside a small round saucer of milk on the floor, a window with a Cairo minaret behind, $STYLE" 413
