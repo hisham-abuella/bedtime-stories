@@ -21,8 +21,8 @@ gen () {
 
 # the cover is drawn from her actual photograph
 $CLI generate --model z_image_turbo_1.0_q8p.ckpt \
-  --prompt "portrait of $SUSU resting by a sunny window, $STYLE" \
-  --negative-prompt "$NEG" --image "$REF" --strength 0.62 \
+  --prompt "portrait of $SUSU lying in a warm patch of sunlight on a soft carpet, $STYLE" \
+  --negative-prompt "$NEG" --image "$REF" --strength 0.45 \
   --width $SIZE --height $SIZE --seed 301 \
   --output "$DEST/cover.png" >/dev/null 2>&1 && echo "done cover (img2img)" || echo "FAIL cover"
 
