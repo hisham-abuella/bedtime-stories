@@ -19,7 +19,7 @@
  *             gluing back-to-back into a board book a baby can chew on. The
  *             square shape is what board books are: it sits open on its own and
  *             small hands can grip an edge without covering the picture.
- *   --lulu    Lulu's Small Square (7.5in trim, 0.125in bleed, 0.5in safety),
+ *   --lulu    Lulu's Square (8.5in trim, 0.125in bleed, 0.5in safety),
  *             saddle stitched. Their preflight rejects what the board edition
  *             depends on, so this format differs in four ways: no crop marks or
  *             folio ("do NOT include trim, bleed, or margin lines"), a 0.5in
@@ -50,6 +50,10 @@ if (!bookPath || !outPath) {
 const bookPaths = bookPath.split(',').map(function (b) { return b.trim(); }).filter(Boolean);
 const volumeTitle = arg('--volume', '');
 const volumeTitleAr = arg('--volume-ar', '');
+// Perfect bound needs a spine; saddle stitch folds and has none. Lulu's own
+// generic template ships a 0.1321in spine, which is their formula at the
+// 32-page minimum — at 40 pages it is wrong, so it is computed here instead.
+const binding = arg('--binding', 'perfect') === 'saddle' ? 'saddle' : 'perfect';
 const listenUrl = arg('--url', '');
 const qrPath = arg('--qr', '');
 const board = has('--board');
@@ -66,7 +70,7 @@ const coverSpread = has('--cover');
 // illustrations behind the book's own artwork toggle
 const useImages = arg('--art', 'drawn') === 'images';
 const IN = 25.4;
-const trim = Number(arg('--trim', lulu ? 7.5 * IN : 180));        // finished page, mm square
+const trim = Number(arg('--trim', lulu ? 8.5 * IN : 180));        // finished page, mm square
 const bleed = Number(arg('--bleed', lulu ? 0.125 * IN : 3));      // trimmed off; artwork runs into it
 const safe = Number(arg('--safe', lulu ? 0.5 * IN : 8));          // keep words this far inside the trim
 const sheet = trim + bleed * 2;
@@ -154,6 +158,23 @@ function artworkOf(page, bk) {
     return page.art;
 }
 const esc = (s) => String(s == null ? '' : s);
+
+// A page's accent is its own colour, which is the whole point — but printed as
+// text on cream paper, pale colours vanish. White scored 1.04 against the paper
+// and yellow 1.75, so "WHITE" came out white on white. Anything under 4.5:1 gets the name
+// set in a bordered swatch of its own colour instead of as coloured text.
+function luminance(hex) {
+    const h = String(hex).replace('#', '');
+    const c = [0, 2, 4].map((i) => parseInt(h.slice(i, i + 2), 16) / 255)
+        .map((x) => (x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4)));
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+}
+function contrast(a, b) {
+    const la = luminance(a), lb = luminance(b);
+    return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+}
+const PAPER_HEX = '#FCFBF6';
+const isPale = (hex) => { try { return contrast(hex, PAPER_HEX) < 4.5; } catch (e) { return false; } };
 // the screen version marks the child's name with a span; print it plainly
 const plain = (s) => esc(s).replace(/<span class="babyname">([^<]*)<\/span>/g, '$1');
 
@@ -222,8 +243,9 @@ for (const bk of volume) {
             // the type was enlarged,
             // and a snug stage at about 245
             const dense = load > 245 ? ' dense' : (load > 115 ? ' snug' : '');
+            const pale = isPale(accent) ? ' pale' : '';
             sheets.push(`
-  <section class="sheet${dense}" style="--accent:${accent}">${marks(n)}
+  <section class="sheet${dense}${pale}" style="--accent:${accent}">${marks(n)}
     <div class="art">${artworkOf(page, bk)}</div>
     <div class="words">
       <h2>${plain(page.en.name)}</h2>
@@ -247,6 +269,25 @@ const title = volumeTitle || (html.match(/<title>([^<]*)<\/title>/) || [, 'Story
 // has no spine — the sheets fold rather than stack against a flat edge — so the
 // spread is simply two trims side by side. The QR moves to the back, which is
 // where a reader looks for it anyway.
+// How many interior pages this volume will have — needed on the cover, which
+// is built as its own file and so cannot just count its own sheets.
+function interiorPages() {
+    let n = 0;
+    for (const bk of volume) {
+        for (const key of Object.keys(bk.BOOK)) {
+            for (const page of bk.BOOK[key].pages) {
+                if (lulu && !volumeTitle && page.cover && front && front.page === page) continue;
+                n += 1;
+            }
+        }
+    }
+    while (n % 4) n += 1;        // the blanks the interior adds
+    return n;
+}
+// Lulu: spine (in) = pages / 444 + 0.06
+const spineMm = (binding === 'saddle' || !lulu) ? 0 : (interiorPages() / 444 + 0.06) * IN;
+const spreadW = trim * 2 + spineMm + bleed * 2;
+
 // The contents list: every chapter in the volume, in reading order, in both
 // languages. This is what makes a bound volume legible from the outside —
 // "Animals and Colours" means nothing until it says Black & White, Fifteen
@@ -293,6 +334,7 @@ if (coverSpread) {
         </div>
       </div>` : ''}
     </div>
+    ${spineMm ? '<div class="spine" aria-hidden="true"></div>' : ''}
     <div class="half front">
       ${volumeTitle ? `
       <div class="art">${artworkOf(c, front.book)}</div>
@@ -338,7 +380,6 @@ if (lulu && !coverSpread) {
 }
 
 // ---- geometry ---------------------------------------------------------------
-const spreadW = trim * 2 + bleed * 2;   // two trims side by side, one bleed each outer edge
 const page = coverSpread
     ? `@page { size: ${spreadW}mm ${sheet}mm; margin: 0; }   /* back + front spread, no spine: saddle stitch has none */`
     : square
@@ -382,14 +423,32 @@ const geometry = square ? `
   /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
      edition's 8mm, so every stage comes down to match. Measured, not guessed. */
   ${lulu ? `
-  /* These three are measured, not chosen: the type was enlarged first, then
-     each stage grown back until the tightest page in either volume had only a
-     few millimetres to spare. */
-  .art{width:81mm;height:81mm}
-  .sheet.snug .art{width:73mm;height:73mm}
-  .sheet.dense .art{width:68mm;height:68mm}
-  .cover .art{width:62mm;height:62mm}
-  .words{margin-top:4mm}
+  /* Lulu's Square is 8.5in, a good 25mm wider than the board edition, and this
+     block spends that room. Everything here is measured, not chosen: the type
+     was enlarged first, then each stage grown back until the tightest page in
+     either volume had a few millimetres left. The board edition keeps the
+     smaller scale above, because 180mm cannot carry this one. */
+  h1{font-size:46pt}
+  h2{font-size:36pt}
+  h2.ar{font-size:31pt}
+  .line{font-size:20pt;line-height:1.4}
+  .line.ar{font-size:20pt;line-height:1.65}
+  .sound{font-size:22pt}
+  .sheet.snug h2{font-size:32pt}
+  .sheet.snug h2.ar{font-size:28pt}
+  .sheet.snug .line{font-size:18.5pt;line-height:1.38}
+  .sheet.snug .line.ar{font-size:18.5pt;line-height:1.6}
+  .sheet.snug .sound{font-size:20pt}
+  .sheet.dense h2{font-size:28pt}
+  .sheet.dense h2.ar{font-size:25pt}
+  .sheet.dense .line{font-size:16pt;line-height:1.34}
+  .sheet.dense .line.ar{font-size:16.5pt;line-height:1.55}
+  .sheet.dense .sound{font-size:18pt}
+  .art{width:98mm;height:98mm}
+  .sheet.snug .art{width:93mm;height:93mm}
+  .sheet.dense .art{width:88mm;height:88mm}
+  .cover .art{width:76mm;height:76mm}
+  .words{margin-top:5mm}
   .sheet.blank{background:var(--paper)}
   ` : ''}
 
@@ -474,6 +533,21 @@ fs.writeFileSync(outPath, `<!DOCTYPE html>
   .line{margin:0}
   .line.ar{font-family:var(--ar)}
   .sound{font-family:var(--display);font-style:italic;font-weight:600;margin:0;color:var(--accent)}
+
+  /* Pale colours cannot be read as text on cream, so the name sits inside a
+     swatch of the colour with an ink keyline. It is more legible than coloured
+     type and it shows the colour itself, which is what the page is teaching. */
+  .pale h2{
+    color:var(--ink); background:var(--accent);
+    border:.5mm solid var(--ink); border-radius:2mm;
+    padding:.02em .4em; width:fit-content; margin-inline:auto;
+  }
+  .pale .sound{color:var(--ink)}
+  /* the keyline and padding cost a few millimetres of height, so a swatched
+     page gives them back from the picture rather than running off the bottom */
+  .sheet.pale .art{width:75mm;height:75mm}
+  .sheet.pale.snug .art{width:68mm;height:68mm}
+  .sheet.pale.dense .art{width:63mm;height:63mm}
   .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
   .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
   hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
@@ -510,9 +584,11 @@ ${coverSpread ? `
     background:var(--paper);
   }
   .half{
-    flex:1 1 0; min-width:0; display:flex; flex-direction:column;
+    flex:0 0 ${trim + bleed}mm; min-width:0; display:flex; flex-direction:column;
     align-items:center; padding:${bleed + safe}mm ${safe}mm;
   }
+  /* Too narrow for type at this page count, so it carries nothing but paper. */
+  .spine{flex:0 0 ${spineMm}mm; background:var(--paper)}
   .half.back{padding-left:${bleed + safe}mm; justify-content:flex-start}
   .half.front{padding-right:${bleed + safe}mm; justify-content:flex-start}
   .front .art{width:96mm;height:96mm}
@@ -539,7 +615,8 @@ ${sheets.join('\n')}
 const fmt = (mm) => `${(mm / IN).toFixed(3).replace(/0+$/, '').replace(/\.$/, '')}in`;
 console.log(`${path.basename(outPath)} — ${sheets.length} ${coverSpread ? 'spread' : 'sheets'}`
     + ` from ${volumeTitle ? volumeTitle + ' (' + bookPaths.length + ' books)' : path.basename(bookPaths[0])}`
-    + (coverSpread ? `, ${fmt(spreadW)} x ${fmt(sheet)} (2 x ${fmt(trim)} trim + ${fmt(bleed)} bleed, no spine)`
+    + (coverSpread ? `, ${fmt(spreadW)} x ${fmt(sheet)} (2 x ${fmt(trim)} trim + ${fmt(bleed)} bleed`
+        + (spineMm ? `, ${spineMm.toFixed(2)}mm spine for ${interiorPages()} pages)` : ', no spine)')
         : lulu ? `, ${fmt(trim)} square trim + ${fmt(bleed)} bleed, ${fmt(safe)} safety`
             + (padded ? `, ${padded} blank${padded > 1 ? 's' : ''} to reach a multiple of 4` : '')
         : board ? `, ${trim}mm square + ${bleed}mm bleed` : ', A5'));

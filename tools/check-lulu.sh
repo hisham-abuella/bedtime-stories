@@ -9,8 +9,14 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-INTERIOR_PTS="558 x 558"      # 7.75in square: 7.5in trim + 0.125in bleed
-COVER_PTS="1098 x 558"        # two trims wide, no spine (saddle stitch)
+# 8.75in square: 8.5in trim + 0.125in bleed, matching Lulu's own Square
+# interior template exactly (630 x 630 pts).
+INTERIOR_W=630
+COVER_H=630
+# The cover is two trims plus the spine, and the spine depends on the page
+# count: Lulu's spine(in) = pages/444 + 0.06. Their generic template ships the
+# 32-page spine, so it is computed here from the interior instead.
+TOL=2                         # pts; Chrome rounds, Lulu trims to 0.125in (9pt)
 fail=0
 note() { printf '    %-18s %s\n' "$1" "$2"; }
 bad()  { fail=$((fail + 1)); printf '    %-18s \033[31m%s\033[0m\n' "$1" "$2"; }
@@ -22,9 +28,19 @@ for f in print/*/vol-*.pdf; do
   pages=$(awk '/^Pages:/{print $2}' <<<"$info")
   size=$(sed -n 's/^Page size: *\([0-9.]* x [0-9.]*\).*/\1/p' <<<"$info" | head -1)
 
-  # 1. trim + bleed
-  if [[ $f == *-cover* ]]; then want=$COVER_PTS; else want=$INTERIOR_PTS; fi
-  [[ $size == "$want" ]] && note "size" "$size pts" || bad "size" "$size pts (want $want)"
+  # 1. trim + bleed, checked numerically
+  w=${size% x *}; h=${size#* x }
+  if [[ $f == *-cover* ]]; then
+    ipages=$(pdfinfo "${f/-cover/-interior}" 2>/dev/null | awk '/^Pages:/{print $2}')
+    [[ -z $ipages ]] && ipages=40
+    want=$(python3 -c "print((2*8.5 + $ipages/444 + 0.06 + 0.25) * 72)")
+    label="cover for $ipages pages"
+  else
+    want=$INTERIOR_W; label="interior"
+  fi
+  ok=$(python3 -c "print(1 if abs($w - $want) <= $TOL and abs($h - $COVER_H) <= $TOL else 0)")
+  if [[ $ok == 1 ]]; then note "size" "$size pts ($label)"
+  else bad "size" "$size pts (want ${want} x ${COVER_H}, $label)"; fi
 
   # 2. page count: cover is one spread; interiors fold in fours, 4-48 saddle stitch
   if [[ $f == *-cover* ]]; then
