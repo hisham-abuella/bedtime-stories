@@ -77,4 +77,11 @@ gen nabina bread     "two small hands sharing a round loaf of bread" 468
 gen nabina home      "a tidy simple room with a folded cloak, a small oil lamp and a broom" 469
 gen nabina goodnight "a mosque with a green dome at night, a crescent moon and many stars" 470
 
+# ---- First Words volume: the back cover --------------------------------------
+# Bismillah's sunrise house is on the front; this is the same house at night,
+# so the bound book ends on goodnight. Print only, so always 1536px.
+# Seeds 482 and 484 were also clean; 483 drew two moons.
+NEG="$NEG, people, person"
+SIZE=1536 gen bismillah vol-back "a small white cottage with a dark grey roof and one brick chimney in a quiet grassy field, one warm golden lit window, soft distant hills, a big crescent moon and many little stars in a deep blue night sky, a gentle sleepy goodnight scene" 481
+
 echo "MUSLIM BOOK IMAGES DONE"

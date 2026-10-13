@@ -36,8 +36,12 @@ one() {   # one <slug> <books> <title-en> <title-ar> <suffix> [flags...]
 # Animals and Colours has covers of its own: Susu with the zoo on the front,
 # Susu waving goodbye on the back (source/gen-susu.sh, vol-front / vol-back).
 SUSU_COVER="--front-art input/img-hi/images-susu/vol-front.jpg --back-art input/img-hi/images-susu/vol-back.jpg"
+# First Words keeps Bismillah's sunrise house on the front; the back is the same
+# house at night under a crescent moon, so the book opens on morning and closes
+# on goodnight like each story in it (source/gen-muslim-books.sh, vol-back).
+FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg"
 
-for v in "vol-first-words|$ISLAMIC|First Words|أوّلُ الكلمات|" \
+for v in "vol-first-words|$ISLAMIC|First Words|أوّلُ الكلمات|$FIRST_COVER" \
          "vol-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|$SUSU_COVER"; do
   IFS='|' read -r slug books ten tar art <<< "$v"
   read -r -a art <<< "$art"

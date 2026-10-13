@@ -63,11 +63,14 @@ vol() {    # vol <slug> <books> <title-en> <title-ar> <suffix> [flags...]
        --url "$BASE/" --lulu --art images --volume "$ten" --volume-ar "$tar" "${NAME[@]}" "$@" >/dev/null
   pdf "build/$slug$suffix.html" "$(dest "$@")/$slug$suffix.pdf"
 }
-for v in "vol-noah-first-words|$FIRST|First Words|أوّلُ الكلمات" \
-         "vol-noah-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان"; do
-  IFS='|' read -r slug books ten tar <<< "$v"
-  vol "$slug" "$books" "$ten" "$tar" "-interior"
-  vol "$slug" "$books" "$ten" "$tar" "-cover"       --cover
-  vol "$slug" "$books" "$ten" "$tar" "-interior-eg" --dialect eg
-  vol "$slug" "$books" "$ten" "$tar" "-cover-eg"    --cover --dialect eg
+# Noah's First Words is the same book as Yusuf's, so it has the same back cover.
+FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg"
+for v in "vol-noah-first-words|$FIRST|First Words|أوّلُ الكلمات|$FIRST_COVER" \
+         "vol-noah-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|"; do
+  IFS='|' read -r slug books ten tar art <<< "$v"
+  read -r -a art <<< "$art"
+  vol "$slug" "$books" "$ten" "$tar" "-interior"    ${art[@]+"${art[@]}"}
+  vol "$slug" "$books" "$ten" "$tar" "-cover"       --cover ${art[@]+"${art[@]}"}
+  vol "$slug" "$books" "$ten" "$tar" "-interior-eg" --dialect eg ${art[@]+"${art[@]}"}
+  vol "$slug" "$books" "$ten" "$tar" "-cover-eg"    --cover --dialect eg ${art[@]+"${art[@]}"}
 done
