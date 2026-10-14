@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%20100%20100'%3E%3Ctext%20y='.9em'%20font-size='90'%3E%F0%9F%90%88%3C/text%3E%3C/svg%3E">
-<meta name="description" content="The true story of Loza — a white kitten found in a Cairo street, carried to California by Gedo, and loved in San Diego by Baba, Mama and Noah.">
+<meta name="description" content="The true story of Loza — a shy white kitten Mama and Gedo brought home from a San Diego shelter, who hid for weeks until Mama said she was staying. Then Baba, then Noah.">
 <meta property="og:title" content="Loza the Cat">
-<meta property="og:description" content="One blue eye, one green eye, and a long way from Cairo. A family story for Noah, in English and Arabic.">
+<meta property="og:description" content="One blue eye, one green eye, and a very shy start. A family story for Noah, in English and Arabic.">
 <meta property="og:type" content="website">
 <title>Loza the Cat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,6 +136,8 @@
     color:var(--quiet);margin:0;
   }
   [lang|="ar"] .eyebrow{letter-spacing:0;font-size:.85rem}
+  /* the first page of a chapter carries its name above the page heading */
+  .eyebrow.chapter{color:var(--accent);font-weight:700}
 .dedication{
     font-family:var(--display);font-style:italic;font-weight:600;
     font-size:clamp(1.05rem,3.6vw,1.3rem);color:var(--accent);margin:0;
@@ -533,25 +535,22 @@ function heart(cx, cy, s, fill) {
 ART.cover = svg('Loza, a white cat with one blue eye and one green eye',
   '<circle cx="200" cy="210" r="168" fill="' + SKY + '" opacity=".22"/>' + LOZA_SIT);
 
-ART.cairo = svg('A tiny white kitten alone on a Cairo street, a minaret behind',
-  rect(28, 120, 90, 200, 6, LZ_WARM) + rect(282, 150, 90, 170, 6, SAND) +
-  rect(52, 150, 40, 44, 4, CREAM) + rect(306, 180, 40, 44, 4, CREAM) +
-  rect(186, 60, 28, 140, 4, CREAM) + path('M180 60 q20 -40 40 0 z', GOLD) + crescent(200, 22, 10, CREAM) +
-  path('M0 320 h400', null, 8) +
-  loza(116, 170, .42));
-
-ART.gedo = svg('The kitten wrapped in a warm scarf with a saucer of milk',
+ART.shelter = svg('A tiny white kitten in a blanket-lined basket at the shelter',
   path('M60 300 q0 -70 140 -70 q140 0 140 70 q0 40 -140 40 q-140 0 -140 -40 z', CLAY) +
   path('M80 290 q60 22 120 0 q60 -22 120 0', null, 6) +
-  ell(320, 340, 46, 14, CREAM) + ell(320, 336, 30, 7, '#FFFFFF', 4) +
   heart(330, 80, 1.1) +
-  loza(100, 30, .52));
+  loza(96, 72, .52));
 
-ART.flight = svg('Loza looking out of an airplane window at the clouds',
-  rect(196, 40, 170, 230, 80, SKY, 10) +
-  path('M226 170 q10 -30 40 -20 q14 -24 40 -10 q30 -6 34 22 q4 26 -24 26 h-74 q-26 0 -16 -18 z', CREAM, 6) +
-  path('M248 96 l40 -8 l40 8 l-40 8 z', CREAM, 5) +
-  loza(-30, 90, .7));
+ART.hiding = svg('Loza peeking out from under a blanket',
+  loza(66, 96, .6) +
+  path('M10 250 q190 -60 380 0 v110 h-380 z', SKY, 8) +
+  path('M60 262 q40 -12 80 -8 M260 254 q40 -4 80 8', null, 5));
+
+ART.mama = svg('The kitten in a box, with a full bowl and a toy mouse left beside her',
+  loza(90, 70, .55) +
+  rect(90, 230, 220, 110, 6, SAND) + path('M90 230 l-30 -30 M310 230 l30 -30', null, 8) +
+  ell(340, 336, 40, 12, CREAM) + ell(340, 332, 26, 6, CLAY, 4) +
+  ell(56, 334, 22, 14, LZ_PINK) + path('M34 336 q-20 4 -24 -10', null, 4));
 
 ART.home = svg('Loza on a sunny window sill with the sea and a palm tree outside',
   rect(140, 30, 240, 230, 10, SKY) +
@@ -560,6 +559,16 @@ ART.home = svg('Loza on a sunny window sill with the sea and a palm tree outside
   palmTree(200, 110, .5) +
   rect(120, 258, 280, 24, 8, CREAM) +
   loza(-24, 70, .72));
+
+ART.baba = svg("Loza sniffing Baba's shoes beside the wedding flowers",
+  path('M196 344 q0 -40 36 -40 q22 0 30 18 h44 q22 0 22 22 z', CLAY, 7) +
+  path('M216 360 q0 -40 36 -40 q22 0 30 18 h44 q22 0 22 22 z', CLAY, 7) +
+  path('M232 330 l14 -8 M246 340 l14 -8', null, 4) +
+  path('M330 300 l-24 -66 M330 300 l2 -78 M330 300 l30 -64', null, 6) +
+  circ(304, 220, 24, LZ_PINK) + circ(332, 206, 24, '#FFFFFF') + circ(362, 226, 24, LZ_PINK) +
+  circ(304, 220, 8, LZ_WARM, 4) + circ(332, 206, 8, LZ_WARM, 4) + circ(362, 226, 8, LZ_WARM, 4) +
+  heart(330, 90, 1.1) +
+  loza(-40, 40, .74));
 
 ART.noah = svg("Loza sitting beside a baby's crib",
   '<g stroke="' + INK + '" stroke-width="8" stroke-linejoin="round">' +
@@ -575,15 +584,14 @@ ART.play = svg('Loza with a ball of yellow yarn',
   circ(318, 316, 46, SAND) +
   path('M286 296 q30 -14 62 6 M280 322 q36 -16 74 8 M296 346 q24 -8 46 4', null, 5) +
   path('M276 330 q-60 40 -120 20 q-50 -16 -90 20', null, 6) +
-  rect(30, 40, 54, 54, 8, LZ_BLUE) + rect(92, 40, 54, 54, 8, LZ_GREEN) + rect(60, -12, 54, 54, 8, LZ_PINK) +
+  rect(30, 90, 54, 54, 8, LZ_BLUE) + rect(92, 90, 54, 54, 8, LZ_GREEN) + rect(60, 36, 54, 54, 8, LZ_PINK) +
   loza(60, 40, .78));
 
 ART.eyes = svg('Close up of Loza: one blue eye, one green eye',
   '<g transform="translate(-160,-160) scale(1.8)">' + LOZA_SIT + '</g>');
 
-ART.days = svg('A very happy Loza in the sunshine',
-  sun(330, 74, 40) +
-  heart(96, 110, 1.3) +
+ART.pet = svg('Loza, cross: one stroke too many',
+  path('M318 70 l18 -22 M340 92 l26 -8 M300 54 l-4 -26', null, 7) +
   loza(0, 22, .94));
 
 ART.goodnight = svg('Loza asleep at the end of the bed under a moon',
@@ -606,54 +614,64 @@ var BOOK = {
       P({ art:ART['cover'], cover:true, audio:'p0', tint:'#BFD4DE',
           en:{ eyebrow:'A true story',
                title:'Loza<br>the <em>Cat</em>',
-               line:'From a street in Cairo to a home in San Diego — and a little boy named Noah.',
-               note:'Loza is real, and so is her journey. Her name means almond in Arabic: small, pale and much loved. Read it slowly — at this age the point is not the plot, it is your voice saying the names he will grow up knowing.' },
+               line:'A shy little cat, a family who waited for her — and a little boy named Noah.',
+               note:'Loza is real, and so is her story. Her name means almond in Arabic: small, pale and much loved. Read it slowly — at this age the point is not the plot, it is your voice saying the names he will grow up knowing.' },
           ar:{ eyebrow:'قصّةٌ حقيقيّة',
                title:'لوزة<br><em>القِطّة</em>',
-               line:'من شارعٍ في القاهرة إلى بيتٍ في سان دييغو — وإلى طفلٍ صغيرٍ اسمُه نوح.',
-               note:'لوزة حقيقيّة، ورحلتُها حقيقيّةٌ أيضاً. واسمُها من اللَّوز: صغيرةٌ، بيضاءُ، ومحبوبة. اقرأها ببطء — فالمقصودُ في هذا العمرِ ليس الحكاية، بل صوتُك وهو يذكُرُ الأسماءَ التي سيكبَرُ عليها.' } }),
+               line:'قِطّةٌ خجولةٌ صغيرة، وعائلةٌ انتظرَتْها — وطفلٌ صغيرٌ اسمُه نوح.',
+               note:'لوزة حقيقيّة، وحكايتُها حقيقيّةٌ أيضاً. واسمُها من اللَّوز: صغيرةٌ، بيضاءُ، ومحبوبة. اقرأها ببطء — فالمقصودُ في هذا العمرِ ليس الحكاية، بل صوتُك وهو يذكُرُ الأسماءَ التي سيكبَرُ عليها.' } }),
 
-      P({ art:ART['cairo'], audio:'p1', tint:'#E8C27A',
-          en:{ name:'A Street in Cairo',
-               line:'Once, in a busy street in Cairo, there was a tiny white kitten with one blue eye and one green eye. She was all alone, and she was hungry.',
-               sound:'Mew… mew…',
-               note:'Cairo\'s streets are full of cats, and most of them are looked after by somebody — a shopkeeper, a doorman, a neighbour with a bowl. This one had nobody yet.' },
-          ar:{ name:'شارعٌ في القاهرة',
-               line:'في شارعٍ مُزدحِمٍ في القاهرة، كانت هناك قِطّةٌ بيضاءُ صغيرةٌ جدّاً، لها عينٌ زرقاءُ وعينٌ خضراء. وكانت وحدَها، وكانت جائعة.',
-               sound:'مِياو… مِياو…',
-               note:'شوارعُ القاهرةِ مليئةٌ بالقِطَط، وأكثرُها يرعاه أحدٌ ما — صاحبُ دُكّان، أو بوّاب، أو جارٌ معه إناء. أمّا هذه فلم يكُن لها أحدٌ بعد.' } }),
+      P({ art:ART['shelter'], audio:'p1', tint:'#8FCBB8',
+          en:{ name:'A Kitten at the Shelter',
+               line:'Once, at a shelter in San Diego, there was a tiny white kitten with one blue eye and one green eye. Mama and Gedo saw her, and took her home.',
+               sound:'Welcome home, Loza.',
+               note:'Gedo is grandpa in Egyptian Arabic — Mama\'s own baba. A shelter is a house for animals waiting for a family; Loza waited there until hers came.' },
+          ar:{ name:'قِطّةٌ في المَأوى',
+               line:'في مأوًى للحيواناتِ في سان دييغو، كانت هناك قِطّةٌ بيضاءُ صغيرةٌ جدّاً، لها عينٌ زرقاءُ وعينٌ خضراء. رآها ماما وجدّو، فأخذاها إلى البيت.',
+               sound:'أهلاً بكِ في بيتِكِ يا لوزة.',
+               note:'«جدّو» هو الجَدّ باللهجةِ المصريّة — بابا ماما. والمأوى بيتٌ للحيواناتِ التي تنتظرُ عائلة، وانتظرَت لوزة هناك حتّى جاءَت عائلتُها.' } }),
 
-      P({ art:ART['gedo'], audio:'p2', tint:'#C9842E',
-          en:{ name:'Gedo Found Her',
-               line:'Then Gedo came walking down the street. He saw the little kitten, bent down, and scooped her up in his warm hands.',
-               sound:'Don\'t be scared, little one.',
-               note:'Gedo is grandpa in Egyptian Arabic. Say it the way the family says it — this page belongs to him as much as to Loza.' },
-          ar:{ name:'جدّو وجدَها',
-               line:'ثمّ مرَّ جدّو في الشارع. رأى القِطّةَ الصغيرة، فانحنى وحمَلَها بين يدَيه الدافئتَين.',
-               sound:'لا تخافي يا صغيرتي.',
-               note:'«جدّو» هو الجَدّ باللهجةِ المصريّة. قُلها كما يقولُها أهلُه — فهذه الصفحةُ له بقدرِ ما هي للوزة.' } }),
+      P({ art:ART['hiding'], audio:'p2', tint:'#BFD4DE',
+          en:{ name:'Where Did Loza Go?',
+               line:'But Loza was shy — very, very shy. She hid under the bed. She hid behind the sofa. She hid in the cupboard.',
+               sound:'Loza? Where are you?',
+               note:'Lift the edge of a blanket as you read this. Hiding is a game to him; for a new cat it is how she feels safe.' },
+          ar:{ name:'أين ذهبَت لوزة؟',
+               line:'لكنّ لوزة كانت خجولة — خجولةً جدّاً. اختبأَت تحتَ السرير. واختبأَت خلفَ الأريكة. واختبأَت في الخِزانة.',
+               sound:'لوزة؟ أين أنتِ؟',
+               note:'ارفَعْ طرفَ غطاءٍ وأنت تقرأُ هذه الصفحة. الاختباءُ عندَه لعبة، أمّا القِطّةُ الجديدةُ فتختبئُ لتشعُرَ بالأمان.' } }),
 
-      P({ art:ART['flight'], audio:'p3', tint:'#BFD4DE',
-          en:{ name:'The Big Airplane',
-               line:'Gedo could not leave her behind. So Loza flew with him across the sea, all the way to America — all the way to California.',
-               sound:'Up, up, up in the sky!',
-               note:'A long way for a small cat. Lift your hand slowly through the air while you read this one.' },
-          ar:{ name:'الطائرةُ الكبيرة',
-               line:'لم يستطِعْ جدّو أن يترُكَها وراءَه. فطارَت لوزة معه فوقَ البحر، حتّى وصلَت إلى أمريكا — إلى كاليفورنيا.',
-               sound:'إلى فوق، إلى فوق، في السماء!',
-               note:'طريقٌ طويلٌ لقِطّةٍ صغيرة. ارفَعْ يدَك ببطءٍ في الهواءِ وأنت تقرأُ هذه الصفحة.' } }),
+      P({ art:ART['mama'], audio:'p3', tint:'#E8C27A',
+          en:{ name:'Mama Said No',
+               line:'Loza hid so much that everyone wondered if she would be happier somewhere else. But Mama said, “No. She is ours. She just needs time.”',
+               sound:'Loza stays.',
+               note:'Patience is the whole lesson of this page. Read Mama\'s words slowly, in her voice.' },
+          ar:{ name:'ماما قالَت: لا',
+               line:'اختبأَت لوزة كثيراً، حتّى تساءلَ الجميعُ: هل تكونُ أسعدَ في مكانٍ آخر؟ لكنّ ماما قالَت: «لا. إنّها لنا. هي فقط تحتاجُ إلى وقت.»',
+               sound:'لوزة باقية.',
+               note:'الصبرُ هو درسُ هذه الصفحة. اقرأْ كلماتِ ماما ببطء، بصوتِها.' } }),
 
       P({ art:ART['home'], audio:'p4', tint:'#8FCBB8',
-          en:{ name:'Baba and Mama',
-               line:'Then Baba Ahmed and Mama opened their door and their hearts. They took Loza home to San Diego, where the sea is blue and the sun is warm.',
-               sound:'Welcome home, Loza.',
-               note:'Ask him where the sea is. He cannot answer yet, but the question is how the answering starts.' },
-          ar:{ name:'بابا وماما',
-               line:'ثمّ فتحَ بابا أحمد وماما بابَهما وقلبَيهما. وأخذا لوزة إلى بيتِهما في سان دييغو، حيثُ البحرُ أزرقُ والشمسُ دافئة.',
-               sound:'أهلاً بكِ في بيتِكِ يا لوزة.',
-               note:'اسألْه أين البحر. لا يستطيعُ الإجابةَ بعد، لكنّ السؤالَ هو أوّلُ الطريقِ إلى الجواب.' } }),
+          en:{ name:'Little by Little',
+               line:'Little by little, Loza came out. One paw. Then two. Then one sunny morning she sat in the window, as if she had always lived there.',
+               sound:'Hello, home.',
+               note:'Count the paws on your fingers — one, then two. Slow is fine. It was slow for Loza too.' },
+          ar:{ name:'شيئاً فشيئاً',
+               line:'شيئاً فشيئاً، خرجَت لوزة. قدمٌ واحدة. ثمّ قدمان. ثمّ في صباحٍ مُشمِس، جلسَت في النافذة، كأنّها عاشَت هنا دائماً.',
+               sound:'أهلاً يا بيتي.',
+               note:'عُدَّ الأقدامَ على أصابعِك — واحدة، ثمّ اثنتان. لا بأسَ بالبُطء، فقد كان بطيئاً على لوزة أيضاً.' } }),
 
-      P({ art:ART['noah'], audio:'p5', tint:'#E8C27A',
+      P({ art:ART['baba'], audio:'p5', tint:'#D9A6A0',
+          en:{ name:'Mama Married Baba',
+               line:'Then one happy day, Mama married Baba Ahmed, and Loza had a bigger family. She sniffed Baba\'s shoes all over, and decided he could stay.',
+               sound:'Hello, Baba!',
+               note:'A wedding page. If there is a photograph from that day, this is the page to bring it out.' },
+          ar:{ name:'ماما تزوّجَت بابا',
+               line:'ثمّ في يومٍ سعيد، تزوّجَت ماما بابا أحمد، فصارَت للوزة عائلةٌ أكبر. شمَّت حذاءَ بابا كلَّه، وقرّرَت أن يبقى.',
+               sound:'أهلاً يا بابا!',
+               note:'صفحةُ العُرس. إن كانت عندَكم صورةٌ من ذلك اليوم، فهذه صفحتُها.' } }),
+
+      P({ art:ART['noah'], audio:'p6', tint:'#E8C27A',
           en:{ name:'And Then Noah',
                line:'Then one day a very small baby came home. Loza crept close, sniffed his tiny toes, and lay down beside him to keep watch.',
                sound:'Hello, <span class="babyname">Noah</span>.',
@@ -663,7 +681,7 @@ var BOOK = {
                sound:'أهلاً يا <span class="babyname">نوح</span>.',
                note:'هذه صفحتُه. اذكُر اسمَه مرّتين هنا، في أوّلِها وفي آخِرِها — فهو يتعلّمُ شكلَ اسمِه من الآن.' } }),
 
-      P({ art:ART['play'], audio:'p6', tint:'#C7643F',
+      P({ art:ART['play'], audio:'p7', tint:'#C7643F',
           en:{ name:'Loza and Noah Play',
                line:'Now Loza and Noah play every day. She chases the yarn. She hides in her cosy cave. Where is Loza?',
                sound:'Peekaboo!',
@@ -673,33 +691,33 @@ var BOOK = {
                sound:'ها هي!',
                note:'العَبْ «أين؟ ها هو!» بيدَيك على هذه الصفحة. إنّها أقدمُ لعبة، وأوّلُ مُزحةٍ يفهَمُها الطفل.' } }),
 
-      P({ art:ART['eyes'], audio:'p7', tint:'#8FB58A',
+      P({ art:ART['pet'], audio:'p8', tint:'#C7643F',
+          en:{ name:'Just the Right Spot',
+               line:'Now Loza is the sweetest cat. But pet her one second too long, or one inch away from her favourite spot, and…',
+               sound:'Chomp! Not there!',
+               note:'Pause before the last word, then say it with a gentle pounce of your hand on his tummy. Gentle hands with cats is a lesson worth starting early.' },
+          ar:{ name:'المكانُ المُفضَّل',
+               line:'والآنَ لوزة أحلى قِطّةٍ في الدنيا. لكن إذا داعبتَها ثانيةً زيادة، أو بعيداً عن مكانِها المُفضَّلِ بإصبعٍ واحد، فإنّها…',
+               sound:'عَضّة! ليس هنا!',
+               note:'توقّفْ قبلَ الكلمةِ الأخيرة، ثمّ قُلْها وأنت تنقُرُ بطنَه بيدِك نقرةً لطيفة. الرِّفقُ بالقِطَطِ درسٌ يحسُنُ أن يبدأَ مبكّراً.' } }),
+
+      P({ art:ART['eyes'], audio:'p9', tint:'#8FB58A',
           en:{ name:'Two Different Eyes',
-               line:'Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the palm trees in Cairo.',
+               line:'Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the grass in the park.',
                sound:'One blue, one green.',
                note:'Cats with two different eye colours are called odd-eyed, and it happens most often in white cats. Point to each eye as you say its colour — colours are words he is collecting now.' },
           ar:{ name:'عينانِ مُختلِفتان',
-               line:'للوزة عينٌ زرقاء، زرقاءُ مثلَ بحرِ سان دييغو. وعينٌ خضراء، خضراءُ مثلَ نخيلِ القاهرة.',
+               line:'للوزة عينٌ زرقاء، زرقاءُ مثلَ بحرِ سان دييغو. وعينٌ خضراء، خضراءُ مثلَ عُشبِ الحديقة.',
                sound:'واحدةٌ زرقاء، وواحدةٌ خضراء.',
                note:'القِطَطُ ذاتُ العينَينِ المُختلِفتَينِ في اللون أكثرُ ما تكونُ بين القِطَطِ البيضاء. أشِرْ إلى كلِّ عينٍ وأنت تذكُرُ لونَها — فالألوانُ كلماتٌ يجمعُها الآن.' } }),
 
-      P({ art:ART['days'], audio:'p8', tint:'#E8C27A',
-          en:{ name:'Loza’s Happy Days',
-               line:'The sunny window in the morning. Baba’s lap in the evening. Mama’s kitchen whenever something smells good. And Noah to play with all day long.',
-               sound:'A very happy cat.',
-               note:'A list page. Lists are easy to chant, and chanting is what he is listening for.' },
-          ar:{ name:'أيّامُ لوزة السعيدة',
-               line:'النافذةُ المُشمِسةُ في الصباح. وحِضنُ بابا في المساء. ومطبخُ ماما كلّما فاحَت رائحةٌ طيّبة. ونوحٌ تلعَبُ معه طَوالَ النهار.',
-               sound:'قِطّةٌ سعيدةٌ جدّاً.',
-               note:'صفحةُ تعداد. التعدادُ سهلُ الإنشاد، والإنشادُ هو ما يُنصِتُ إليه.' } }),
-
-      P({ art:ART['goodnight'], audio:'p9', tint:'#6E7FA8',
+      P({ art:ART['goodnight'], audio:'p10', tint:'#6E7FA8',
           en:{ name:'Goodnight, Loza',
-               line:'Goodnight Gedo. Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed.',
+               line:'Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed.',
                sound:'Goodnight, <span class="babyname">Noah</span>.',
                note:'The same closing shape as Susu\'s book, on purpose — a familiar ending is the part a baby learns first.' },
           ar:{ name:'تُصبِحينَ على خيرٍ يا لوزة',
-               line:'تُصبِحُ على خيرٍ يا جدّو. وتُصبِحُ على خيرٍ يا بابا. وتُصبِحينَ على خيرٍ يا ماما. وتُصبِحينَ على خيرٍ يا لوزة، وأنتِ مُتكوّرةٌ عندَ طَرَفِ السرير.',
+               line:'تُصبِحُ على خيرٍ يا بابا. وتُصبِحينَ على خيرٍ يا ماما. وتُصبِحينَ على خيرٍ يا لوزة، وأنتِ مُتكوّرةٌ عندَ طَرَفِ السرير.',
                sound:'تُصبِحُ على خير، يا <span class="babyname">نوح</span>.',
                note:'الخاتمةُ نفسُها التي في كتابِ سوسو، عن قصد — فالنهايةُ المألوفةُ هي أوّلُ ما يحفَظُه الطفل.' } })
     ]
@@ -712,27 +730,32 @@ var EG = { loza: [
  {
   "eyebrow": "حكاية حقيقية",
   "title": "لوزة<br><em>القطّة</em>",
-  "line": "من شارع في القاهرة لبيت في سان دييجو — ولولد صغيّر اسمه نوح."
+  "line": "قطّة صغيّرة مكسوفة، وعيلة استنّتها — وولد صغيّر اسمه نوح."
  },
  {
-  "name": "شارع في القاهرة",
-  "line": "في شارع زحمة في القاهرة، كان فيه قطّة بيضا صغيّرة خالص، ليها عين زرقا وعين خضرا. وكانت لوحدها، وكانت جعانة.",
-  "sound": "نياو… نياو…"
- },
- {
-  "name": "جدّو لقاها",
-  "line": "وبعدين جدّو كان ماشي في الشارع. شاف القطّة الصغيّرة، وطّى وشالها بين إيديه الدافيين.",
-  "sound": "متخافيش يا صغنّنة."
- },
- {
-  "name": "الطيّارة الكبيرة",
-  "line": "جدّو مقدرش يسيبها. فلوزة طارت معاه فوق البحر، لحدّ أمريكا — لحدّ كاليفورنيا.",
-  "sound": "فوق، فوق، فوق في السما!"
- },
- {
-  "name": "بابا وماما",
-  "line": "وبعدين بابا أحمد وماما فتحوا بابهم وقلبهم. وخدوا لوزة بيتهم في سان دييجو، مطرح ما البحر أزرق والشمس دافية.",
+  "name": "قطّة في الملجأ",
+  "line": "في ملجأ للحيوانات في سان دييجو، كان فيه قطّة بيضا صغيّرة خالص، ليها عين زرقا وعين خضرا. ماما وجدّو شافوها، وخدوها البيت.",
   "sound": "نوّرتي بيتك يا لوزة."
+ },
+ {
+  "name": "لوزة راحت فين؟",
+  "line": "بس لوزة كانت مكسوفة — مكسوفة قوي قوي. استخبّت تحت السرير. واستخبّت ورا الكنبة. واستخبّت جوّه الدولاب.",
+  "sound": "لوزة؟ إنتي فين؟"
+ },
+ {
+  "name": "ماما قالت لأ",
+  "line": "لوزة استخبّت كتير، لحدّ ما الكل سأل: يمكن تبقى أسعد في حتّة تانية؟ بس ماما قالت: «لأ. دي بتاعتنا. هي بس محتاجة وقت.»",
+  "sound": "لوزة قاعدة معانا."
+ },
+ {
+  "name": "واحدة واحدة",
+  "line": "واحدة واحدة، لوزة طلعت. رِجل واحدة. وبعدين اتنين. وفي يوم الصبح والشمس طالعة، قعدت في الشبّاك، كإنّها عايشة هنا من زمان.",
+  "sound": "أهلاً يا بيتي."
+ },
+ {
+  "name": "ماما اتجوّزت بابا",
+  "line": "وفي يوم حلو، ماما اتجوّزت بابا أحمد، ولوزة بقت عيلتها أكبر. شمّت جزمة بابا كلّها، وقرّرت إنه يقعد معاهم.",
+  "sound": "أهلاً يا بابا!"
  },
  {
   "name": "وبعدين جه نوح",
@@ -745,18 +768,18 @@ var EG = { loza: [
   "sound": "بَخ!"
  },
  {
+  "name": "المكان المفضّل",
+  "line": "ودلوقتي لوزة أحلى قطّة في الدنيا. بس لو دلّعتها ثانية زيادة، أو بعيد عن مكانها المفضّل بصباع واحد، تعمل…",
+  "sound": "هَمّ! مش هنا!"
+ },
+ {
   "name": "عينين مختلفين",
-  "line": "لوزة ليها عين زرقا، زرقا زي بحر سان دييجو. وعين خضرا، خضرا زي نخل القاهرة.",
+  "line": "لوزة ليها عين زرقا، زرقا زي بحر سان دييجو. وعين خضرا، خضرا زي الزرع في الجنينة.",
   "sound": "واحدة زرقا، وواحدة خضرا."
  },
  {
-  "name": "أيّام لوزة الحلوة",
-  "line": "الشبّاك اللي فيه شمس الصبح. وحضن بابا بالليل. ومطبخ ماما لمّا تشمّ ريحة حلوة. ونوح تلعب معاه طول النهار.",
-  "sound": "قطّة مبسوطة خالص."
- },
- {
   "name": "تصبحي على خير يا لوزة",
-  "line": "تصبح على خير يا جدّو. تصبح على خير يا بابا. تصبحي على خير يا ماما. تصبحي على خير يا لوزة، وانتي متكوّرة على طرف السرير.",
+  "line": "تصبح على خير يا بابا. تصبحي على خير يا ماما. تصبحي على خير يا لوزة، وانتي متكوّرة على طرف السرير.",
   "sound": "تصبح على خير يا <span class=\"babyname\">نوح</span>."
  }
 ] };
@@ -768,7 +791,7 @@ var AUDIO_DIR = { loza:{ en:'../audio-loza/en/', ar:'../audio-loza/ar/', eg:'../
 var SFX_DIR   = {};
 
 var IMG_V1 = {
-  loza: ['cover', 'cairo', 'gedo', 'flight', 'home', 'noah', 'play', 'eyes', 'days', 'goodnight']
+  loza: ['cover', 'shelter', 'hiding', 'mama', 'home', 'baba', 'noah', 'play', 'pet', 'eyes', 'goodnight']
 };
 ['loza'].forEach(function (k) {
   BOOK[k].pages.forEach(function (pg, i) {
@@ -872,6 +895,7 @@ function render(){
     '</div>';
   } else {
     html += '<div class="words">' +
+      (copy.chapter ? '<p class="eyebrow chapter">' + copy.chapter + '</p>' : '') +
       '<h2 class="animal' + (ch === 'bw' ? ' plain' : '') + '"' +
         (ch === 'color' && page.tint ? ' style="color:' + page.tint + '"' : '') + '>' + copy.name + '</h2>' +
       '<p class="line">' + copy.line + '</p>' +

@@ -59,9 +59,13 @@ the thirsty dog.
 ## Loza the Cat
 
 Made for Noah, the son of a friend. The true story of Loza — a white kitten with
-one blue eye and one green eye, found alone in a Cairo street by Gedo, flown to
-California, then taken home to San Diego by Baba Ahmed and Mama, and then Noah.
-Ten pages, built from `stories/loza.json` like the Muslim books.
+one blue eye and one green eye, adopted from a San Diego shelter by Mama and Gedo.
+She hid everywhere; they wondered if she would be happier somewhere else, and Mama
+said no. Little by little she came out, Mama married Baba Ahmed, then Noah came,
+and she is the sweetest cat — unless you pet her a second too long, or an inch off
+her favourite spot.
+Eleven pages, built from `stories/loza.json` by `tools/build-loza.sh`, which also
+puts the paths and Noah's name right for `books/`.
 
 Her artwork is `source/gen-loza.sh`. One fixed character description is used on
 every page so she stays the same cat from pose to pose; the sleeping page uses a
@@ -70,7 +74,7 @@ eye open. The cover was tried as img2img from her photograph, as Susu's is, but
 Z-Image kept the photo's realism at every strength that kept her likeness, so it
 is drawn from the description like the rest. Her photographs are in `images/`.
 
-No person is drawn: Gedo, Baba, Mama and Noah are in the words, and the pictures
+No person is drawn: Gedo, Mama, Baba and Noah are in the words, and the pictures
 show only Loza and what is around her.
 
 ## Yaseen's Big Year

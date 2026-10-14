@@ -30,13 +30,20 @@ gen () {
 # it is drawn from the description like every other page.
 gen cover     "$LOZA sitting upright facing the viewer, peeking out from a soft round grey cat cave bed, $STYLE" 411
 
-gen cairo     "$KITTEN with a clear dark grey patch on her forehead, sitting alone on old stone steps in a quiet Cairo street at dusk, sandy buildings, a minaret and palm tree in the distance, empty street, $STYLE" 412
-gen gedo      "$KITTEN wrapped in a soft knitted wool scarf in a little basket, beside a small round saucer of milk on the floor, a window with a Cairo minaret behind, $STYLE" 413
-gen flight    "$LOZA looking out of a soft travel carrier beside a round airplane window full of white clouds, $STYLE" 404
+# Mama and Gedo took her from a shelter in San Diego, and she hid for weeks;
+# Mama would not give her back. Mama is shown by what she left out for her — a bowl and a toy.
+gen shelter   "$KITTEN sitting shyly in a cosy blanket-lined basket inside a bright clean animal shelter room, empty soft kennels in the background, $STYLE" 422
+gen hiding    "$KITTEN peeking out shyly from under a bed, only her face and two front paws showing from the shadow beneath a hanging blue bedspread, $STYLE" 426
+gen mama      "$KITTEN curled up shyly in a soft cardboard box lined with a blanket, a full food bowl and a small knitted toy mouse placed gently beside the box, warm living room, $STYLE" 428
 gen home      "$LOZA sitting on a sunny window sill, a blue ocean and tall palm trees outside, San Diego light, $STYLE" 405
+# Mama married Baba: he is his shoes by the door, beside the wedding flowers.
+# Feet and legs are in the negative so no person grows out of the shoes.
+NEG="$NEG, legs, feet" gen baba "$LOZA curiously sniffing a pair of big brown men's leather shoes on the floor by a front door, a bouquet of white wedding flowers lying beside them, cosy hallway, $STYLE" 436
 gen noah      "$LOZA sitting calmly beside a baby's wooden crib, keeping watch, only a soft blue blanket and a small teddy bear visible through the rails, nobody visible, $STYLE" 416
 gen play      "$LOZA batting at a ball of yellow yarn on a soft rug, toy blocks nearby, $STYLE" 407
+# Pet her a second too long and she bites. Asked for a raised paw, the model
+# gave a cross face instead — which says it better for a baby anyway.
+gen pet       "$LOZA sitting on a sofa cushion looking cross and grumpy in a funny cartoon way, ears flat back, eyes narrowed, tail puffed up, one front paw raised to swat, $STYLE" 431
 gen eyes      "close portrait of $LOZA, one eye blue like the sea and one eye green like a leaf, $STYLE" 408
-gen days      "$LOZA stretching happily in a warm sunbeam on a rug, $STYLE" 409
 gen goodnight "$SLEEPING, curled at the end of a bed, a crescent moon and stars in the window, $STYLE" 420
 echo "LOZA IMAGES DONE"

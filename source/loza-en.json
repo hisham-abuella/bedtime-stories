@@ -5,52 +5,57 @@
   {
    "id": "p0",
    "title": "A true story",
-   "transcript": "[warmly] Loza the Cat. A true story, for Noah. <break time=\"0.5s\" /> [gently] From a street in Cairo, all the way to a home in San Diego."
+   "transcript": "[warmly] Loza the Cat. A true story, for Noah. <break time=\"0.5s\" /> [gently] A shy little cat, and a family who waited for her."
   },
   {
    "id": "p1",
-   "title": "A Street in Cairo",
-   "transcript": "[warmly] A Street in Cairo. <break time=\"0.4s\" /> Once, in a busy street in Cairo, there was a tiny white kitten with one blue eye and one green eye. She was all alone, and she was hungry. <break time=\"0.5s\" /> [softly] Mew… mew…"
+   "title": "A Kitten at the Shelter",
+   "transcript": "[warmly] A Kitten at the Shelter. <break time=\"0.4s\" /> Once, at a shelter in San Diego, there was a tiny white kitten with one blue eye and one green eye. Mama and Gedo saw her, and took her home. <break time=\"0.5s\" /> [softly] Welcome home, Loza."
   },
   {
    "id": "p2",
-   "title": "Gedo Found Her",
-   "transcript": "[warmly] Gedo Found Her. <break time=\"0.4s\" /> Then Gedo came walking down the street. He saw the little kitten, bent down, and scooped her up in his warm hands. <break time=\"0.5s\" /> [softly] Don't be scared, little one."
+   "title": "Where Did Loza Go?",
+   "transcript": "[warmly] Where Did Loza Go? <break time=\"0.4s\" /> But Loza was shy — very, very shy. She hid under the bed. She hid behind the sofa. She hid in the cupboard. <break time=\"0.5s\" /> [softly] Loza? Where are you?"
   },
   {
    "id": "p3",
-   "title": "The Big Airplane",
-   "transcript": "[warmly] The Big Airplane. <break time=\"0.4s\" /> Gedo could not leave her behind. So Loza flew with him across the sea, all the way to America — all the way to California. <break time=\"0.5s\" /> [softly] Up, up, up in the sky!"
+   "title": "Mama Said No",
+   "transcript": "[warmly] Mama Said No. <break time=\"0.4s\" /> Loza hid so much that everyone wondered if she would be happier somewhere else. But Mama said, “No. She is ours. She just needs time.” <break time=\"0.5s\" /> [softly] Loza stays."
   },
   {
    "id": "p4",
-   "title": "Baba and Mama",
-   "transcript": "[warmly] Baba and Mama. <break time=\"0.4s\" /> Then Baba Ahmed and Mama opened their door and their hearts. They took Loza home to San Diego, where the sea is blue and the sun is warm. <break time=\"0.5s\" /> [softly] Welcome home, Loza."
+   "title": "Little by Little",
+   "transcript": "[warmly] Little by Little. <break time=\"0.4s\" /> Little by little, Loza came out. One paw. Then two. Then one sunny morning she sat in the window, as if she had always lived there. <break time=\"0.5s\" /> [softly] Hello, home."
   },
   {
    "id": "p5",
+   "title": "Mama Married Baba",
+   "transcript": "[warmly] Mama Married Baba. <break time=\"0.4s\" /> Then one happy day, Mama married Baba Ahmed, and Loza had a bigger family. She sniffed Baba's shoes all over, and decided he could stay. <break time=\"0.5s\" /> [softly] Hello, Baba!"
+  },
+  {
+   "id": "p6",
    "title": "And Then Noah",
    "transcript": "[warmly] And Then Noah. <break time=\"0.4s\" /> Then one day a very small baby came home. Loza crept close, sniffed his tiny toes, and lay down beside him to keep watch. <break time=\"0.5s\" /> [softly] Hello, Noah."
   },
   {
-   "id": "p6",
+   "id": "p7",
    "title": "Loza and Noah Play",
    "transcript": "[warmly] Loza and Noah Play. <break time=\"0.4s\" /> Now Loza and Noah play every day. She chases the yarn. She hides in her cosy cave. Where is Loza? <break time=\"0.5s\" /> [softly] Peekaboo!"
   },
   {
-   "id": "p7",
-   "title": "Two Different Eyes",
-   "transcript": "[warmly] Two Different Eyes. <break time=\"0.4s\" /> Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the palm trees in Cairo. <break time=\"0.5s\" /> [softly] One blue, one green."
-  },
-  {
    "id": "p8",
-   "title": "Loza’s Happy Days",
-   "transcript": "[warmly] Loza’s Happy Days. <break time=\"0.4s\" /> The sunny window in the morning. Baba’s lap in the evening. Mama’s kitchen whenever something smells good. And Noah to play with all day long. <break time=\"0.5s\" /> [softly] A very happy cat."
+   "title": "Just the Right Spot",
+   "transcript": "[warmly] Just the Right Spot. <break time=\"0.4s\" /> Now Loza is the sweetest cat. But pet her one second too long, or one inch away from her favourite spot, and… <break time=\"0.5s\" /> [softly] Chomp! Not there!"
   },
   {
    "id": "p9",
+   "title": "Two Different Eyes",
+   "transcript": "[warmly] Two Different Eyes. <break time=\"0.4s\" /> Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the grass in the park. <break time=\"0.5s\" /> [softly] One blue, one green."
+  },
+  {
+   "id": "p10",
    "title": "Goodnight, Loza",
-   "transcript": "[softly] Goodnight, Loza. <break time=\"0.4s\" /> Goodnight Gedo. Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed. <break time=\"0.5s\" /> [whispers] Goodnight, Noah."
+   "transcript": "[softly] Goodnight, Loza. <break time=\"0.4s\" /> Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed. <break time=\"0.5s\" /> [whispers] Goodnight, Noah."
   }
  ]
 }

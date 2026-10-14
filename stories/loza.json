@@ -3,8 +3,8 @@
   "title": "Loza the Cat",
   "icon": "🐈",
   "accent": "#4F86A8",
-  "desc": "The true story of Loza — a white kitten found in a Cairo street, carried to California by Gedo, and loved in San Diego by Baba, Mama and Noah.",
-  "ogdesc": "One blue eye, one green eye, and a long way from Cairo. A family story for Noah, in English and Arabic.",
+  "desc": "The true story of Loza — a shy white kitten Mama and Gedo brought home from a San Diego shelter, who hid for weeks until Mama said she was staying. Then Baba, then Noah.",
+  "ogdesc": "One blue eye, one green eye, and a very shy start. A family story for Noah, in English and Arabic.",
   "pages": [
     {
       "key": "cover",
@@ -14,88 +14,88 @@
       "en": {
         "eyebrow": "A true story",
         "title": "Loza<br>the <em>Cat</em>",
-        "line": "From a street in Cairo to a home in San Diego — and a little boy named Noah.",
-        "note": "Loza is real, and so is her journey. Her name means almond in Arabic: small, pale and much loved. Read it slowly — at this age the point is not the plot, it is your voice saying the names he will grow up knowing.",
-        "say": "[warmly] Loza the Cat. A true story, for Noah. <break time=\"0.5s\" /> [gently] From a street in Cairo, all the way to a home in San Diego."
+        "line": "A shy little cat, a family who waited for her — and a little boy named Noah.",
+        "note": "Loza is real, and so is her story. Her name means almond in Arabic: small, pale and much loved. Read it slowly — at this age the point is not the plot, it is your voice saying the names he will grow up knowing.",
+        "say": "[warmly] Loza the Cat. A true story, for Noah. <break time=\"0.5s\" /> [gently] A shy little cat, and a family who waited for her."
       },
       "ar": {
         "eyebrow": "قصّةٌ حقيقيّة",
         "title": "لوزة<br><em>القِطّة</em>",
-        "line": "من شارعٍ في القاهرة إلى بيتٍ في سان دييغو — وإلى طفلٍ صغيرٍ اسمُه نوح.",
-        "note": "لوزة حقيقيّة، ورحلتُها حقيقيّةٌ أيضاً. واسمُها من اللَّوز: صغيرةٌ، بيضاءُ، ومحبوبة. اقرأها ببطء — فالمقصودُ في هذا العمرِ ليس الحكاية، بل صوتُك وهو يذكُرُ الأسماءَ التي سيكبَرُ عليها.",
-        "say": "[warmly] لوزة القِطّة. قصّةٌ حقيقيّةٌ لِنوح. <break time=\"0.5s\" /> [gently] من شارعٍ في القاهرة، إلى بيتٍ في سان دييغو."
+        "line": "قِطّةٌ خجولةٌ صغيرة، وعائلةٌ انتظرَتْها — وطفلٌ صغيرٌ اسمُه نوح.",
+        "note": "لوزة حقيقيّة، وحكايتُها حقيقيّةٌ أيضاً. واسمُها من اللَّوز: صغيرةٌ، بيضاءُ، ومحبوبة. اقرأها ببطء — فالمقصودُ في هذا العمرِ ليس الحكاية، بل صوتُك وهو يذكُرُ الأسماءَ التي سيكبَرُ عليها.",
+        "say": "[warmly] لوزة القِطّة. قصّةٌ حقيقيّةٌ لِنوح. <break time=\"0.5s\" /> [gently] قِطّةٌ خجولةٌ صغيرة، وعائلةٌ انتظرَتْها."
       },
       "eg": {
         "eyebrow": "حكاية حقيقية",
         "title": "لوزة<br><em>القطّة</em>",
-        "line": "من شارع في القاهرة لبيت في سان دييجو — ولولد صغيّر اسمه نوح.",
-        "say": "[warmly] لوزة القطّة. حكاية حقيقية عشان نوح. <break time=\"0.5s\" /> [gently] من شارع في القاهرة، لحدّ بيت في سان دييجو."
+        "line": "قطّة صغيّرة مكسوفة، وعيلة استنّتها — وولد صغيّر اسمه نوح.",
+        "say": "[warmly] لوزة القطّة. حكاية حقيقية عشان نوح. <break time=\"0.5s\" /> [gently] قطّة صغيّرة مكسوفة، وعيلة استنّتها."
       }
     },
     {
-      "key": "cairo",
-      "img": "cairo",
-      "tint": "#E8C27A",
+      "key": "shelter",
+      "img": "shelter",
+      "tint": "#8FCBB8",
       "en": {
-        "name": "A Street in Cairo",
-        "line": "Once, in a busy street in Cairo, there was a tiny white kitten with one blue eye and one green eye. She was all alone, and she was hungry.",
-        "sound": "Mew… mew…",
-        "note": "Cairo's streets are full of cats, and most of them are looked after by somebody — a shopkeeper, a doorman, a neighbour with a bowl. This one had nobody yet."
+        "name": "A Kitten at the Shelter",
+        "line": "Once, at a shelter in San Diego, there was a tiny white kitten with one blue eye and one green eye. Mama and Gedo saw her, and took her home.",
+        "sound": "Welcome home, Loza.",
+        "note": "Gedo is grandpa in Egyptian Arabic — Mama's own baba. A shelter is a house for animals waiting for a family; Loza waited there until hers came."
       },
       "ar": {
-        "name": "شارعٌ في القاهرة",
-        "line": "في شارعٍ مُزدحِمٍ في القاهرة، كانت هناك قِطّةٌ بيضاءُ صغيرةٌ جدّاً، لها عينٌ زرقاءُ وعينٌ خضراء. وكانت وحدَها، وكانت جائعة.",
-        "sound": "مِياو… مِياو…",
-        "note": "شوارعُ القاهرةِ مليئةٌ بالقِطَط، وأكثرُها يرعاه أحدٌ ما — صاحبُ دُكّان، أو بوّاب، أو جارٌ معه إناء. أمّا هذه فلم يكُن لها أحدٌ بعد."
+        "name": "قِطّةٌ في المَأوى",
+        "line": "في مأوًى للحيواناتِ في سان دييغو، كانت هناك قِطّةٌ بيضاءُ صغيرةٌ جدّاً، لها عينٌ زرقاءُ وعينٌ خضراء. رآها ماما وجدّو، فأخذاها إلى البيت.",
+        "sound": "أهلاً بكِ في بيتِكِ يا لوزة.",
+        "note": "«جدّو» هو الجَدّ باللهجةِ المصريّة — بابا ماما. والمأوى بيتٌ للحيواناتِ التي تنتظرُ عائلة، وانتظرَت لوزة هناك حتّى جاءَت عائلتُها."
       },
       "eg": {
-        "name": "شارع في القاهرة",
-        "line": "في شارع زحمة في القاهرة، كان فيه قطّة بيضا صغيّرة خالص، ليها عين زرقا وعين خضرا. وكانت لوحدها، وكانت جعانة.",
-        "sound": "نياو… نياو…"
+        "name": "قطّة في الملجأ",
+        "line": "في ملجأ للحيوانات في سان دييجو، كان فيه قطّة بيضا صغيّرة خالص، ليها عين زرقا وعين خضرا. ماما وجدّو شافوها، وخدوها البيت.",
+        "sound": "نوّرتي بيتك يا لوزة."
       }
     },
     {
-      "key": "gedo",
-      "img": "gedo",
-      "tint": "#C9842E",
-      "en": {
-        "name": "Gedo Found Her",
-        "line": "Then Gedo came walking down the street. He saw the little kitten, bent down, and scooped her up in his warm hands.",
-        "sound": "Don't be scared, little one.",
-        "note": "Gedo is grandpa in Egyptian Arabic. Say it the way the family says it — this page belongs to him as much as to Loza."
-      },
-      "ar": {
-        "name": "جدّو وجدَها",
-        "line": "ثمّ مرَّ جدّو في الشارع. رأى القِطّةَ الصغيرة، فانحنى وحمَلَها بين يدَيه الدافئتَين.",
-        "sound": "لا تخافي يا صغيرتي.",
-        "note": "«جدّو» هو الجَدّ باللهجةِ المصريّة. قُلها كما يقولُها أهلُه — فهذه الصفحةُ له بقدرِ ما هي للوزة."
-      },
-      "eg": {
-        "name": "جدّو لقاها",
-        "line": "وبعدين جدّو كان ماشي في الشارع. شاف القطّة الصغيّرة، وطّى وشالها بين إيديه الدافيين.",
-        "sound": "متخافيش يا صغنّنة."
-      }
-    },
-    {
-      "key": "flight",
-      "img": "flight",
+      "key": "hiding",
+      "img": "hiding",
       "tint": "#BFD4DE",
       "en": {
-        "name": "The Big Airplane",
-        "line": "Gedo could not leave her behind. So Loza flew with him across the sea, all the way to America — all the way to California.",
-        "sound": "Up, up, up in the sky!",
-        "note": "A long way for a small cat. Lift your hand slowly through the air while you read this one."
+        "name": "Where Did Loza Go?",
+        "line": "But Loza was shy — very, very shy. She hid under the bed. She hid behind the sofa. She hid in the cupboard.",
+        "sound": "Loza? Where are you?",
+        "note": "Lift the edge of a blanket as you read this. Hiding is a game to him; for a new cat it is how she feels safe."
       },
       "ar": {
-        "name": "الطائرةُ الكبيرة",
-        "line": "لم يستطِعْ جدّو أن يترُكَها وراءَه. فطارَت لوزة معه فوقَ البحر، حتّى وصلَت إلى أمريكا — إلى كاليفورنيا.",
-        "sound": "إلى فوق، إلى فوق، في السماء!",
-        "note": "طريقٌ طويلٌ لقِطّةٍ صغيرة. ارفَعْ يدَك ببطءٍ في الهواءِ وأنت تقرأُ هذه الصفحة."
+        "name": "أين ذهبَت لوزة؟",
+        "line": "لكنّ لوزة كانت خجولة — خجولةً جدّاً. اختبأَت تحتَ السرير. واختبأَت خلفَ الأريكة. واختبأَت في الخِزانة.",
+        "sound": "لوزة؟ أين أنتِ؟",
+        "note": "ارفَعْ طرفَ غطاءٍ وأنت تقرأُ هذه الصفحة. الاختباءُ عندَه لعبة، أمّا القِطّةُ الجديدةُ فتختبئُ لتشعُرَ بالأمان."
       },
       "eg": {
-        "name": "الطيّارة الكبيرة",
-        "line": "جدّو مقدرش يسيبها. فلوزة طارت معاه فوق البحر، لحدّ أمريكا — لحدّ كاليفورنيا.",
-        "sound": "فوق، فوق، فوق في السما!"
+        "name": "لوزة راحت فين؟",
+        "line": "بس لوزة كانت مكسوفة — مكسوفة قوي قوي. استخبّت تحت السرير. واستخبّت ورا الكنبة. واستخبّت جوّه الدولاب.",
+        "sound": "لوزة؟ إنتي فين؟"
+      }
+    },
+    {
+      "key": "mama",
+      "img": "mama",
+      "tint": "#E8C27A",
+      "en": {
+        "name": "Mama Said No",
+        "line": "Loza hid so much that everyone wondered if she would be happier somewhere else. But Mama said, “No. She is ours. She just needs time.”",
+        "sound": "Loza stays.",
+        "note": "Patience is the whole lesson of this page. Read Mama's words slowly, in her voice."
+      },
+      "ar": {
+        "name": "ماما قالَت: لا",
+        "line": "اختبأَت لوزة كثيراً، حتّى تساءلَ الجميعُ: هل تكونُ أسعدَ في مكانٍ آخر؟ لكنّ ماما قالَت: «لا. إنّها لنا. هي فقط تحتاجُ إلى وقت.»",
+        "sound": "لوزة باقية.",
+        "note": "الصبرُ هو درسُ هذه الصفحة. اقرأْ كلماتِ ماما ببطء، بصوتِها."
+      },
+      "eg": {
+        "name": "ماما قالت لأ",
+        "line": "لوزة استخبّت كتير، لحدّ ما الكل سأل: يمكن تبقى أسعد في حتّة تانية؟ بس ماما قالت: «لأ. دي بتاعتنا. هي بس محتاجة وقت.»",
+        "sound": "لوزة قاعدة معانا."
       }
     },
     {
@@ -103,21 +103,43 @@
       "img": "home",
       "tint": "#8FCBB8",
       "en": {
-        "name": "Baba and Mama",
-        "line": "Then Baba Ahmed and Mama opened their door and their hearts. They took Loza home to San Diego, where the sea is blue and the sun is warm.",
-        "sound": "Welcome home, Loza.",
-        "note": "Ask him where the sea is. He cannot answer yet, but the question is how the answering starts."
+        "name": "Little by Little",
+        "line": "Little by little, Loza came out. One paw. Then two. Then one sunny morning she sat in the window, as if she had always lived there.",
+        "sound": "Hello, home.",
+        "note": "Count the paws on your fingers — one, then two. Slow is fine. It was slow for Loza too."
       },
       "ar": {
-        "name": "بابا وماما",
-        "line": "ثمّ فتحَ بابا أحمد وماما بابَهما وقلبَيهما. وأخذا لوزة إلى بيتِهما في سان دييغو، حيثُ البحرُ أزرقُ والشمسُ دافئة.",
-        "sound": "أهلاً بكِ في بيتِكِ يا لوزة.",
-        "note": "اسألْه أين البحر. لا يستطيعُ الإجابةَ بعد، لكنّ السؤالَ هو أوّلُ الطريقِ إلى الجواب."
+        "name": "شيئاً فشيئاً",
+        "line": "شيئاً فشيئاً، خرجَت لوزة. قدمٌ واحدة. ثمّ قدمان. ثمّ في صباحٍ مُشمِس، جلسَت في النافذة، كأنّها عاشَت هنا دائماً.",
+        "sound": "أهلاً يا بيتي.",
+        "note": "عُدَّ الأقدامَ على أصابعِك — واحدة، ثمّ اثنتان. لا بأسَ بالبُطء، فقد كان بطيئاً على لوزة أيضاً."
       },
       "eg": {
-        "name": "بابا وماما",
-        "line": "وبعدين بابا أحمد وماما فتحوا بابهم وقلبهم. وخدوا لوزة بيتهم في سان دييجو، مطرح ما البحر أزرق والشمس دافية.",
-        "sound": "نوّرتي بيتك يا لوزة."
+        "name": "واحدة واحدة",
+        "line": "واحدة واحدة، لوزة طلعت. رِجل واحدة. وبعدين اتنين. وفي يوم الصبح والشمس طالعة، قعدت في الشبّاك، كإنّها عايشة هنا من زمان.",
+        "sound": "أهلاً يا بيتي."
+      }
+    },
+    {
+      "key": "baba",
+      "img": "baba",
+      "tint": "#D9A6A0",
+      "en": {
+        "name": "Mama Married Baba",
+        "line": "Then one happy day, Mama married Baba Ahmed, and Loza had a bigger family. She sniffed Baba's shoes all over, and decided he could stay.",
+        "sound": "Hello, Baba!",
+        "note": "A wedding page. If there is a photograph from that day, this is the page to bring it out."
+      },
+      "ar": {
+        "name": "ماما تزوّجَت بابا",
+        "line": "ثمّ في يومٍ سعيد، تزوّجَت ماما بابا أحمد، فصارَت للوزة عائلةٌ أكبر. شمَّت حذاءَ بابا كلَّه، وقرّرَت أن يبقى.",
+        "sound": "أهلاً يا بابا!",
+        "note": "صفحةُ العُرس. إن كانت عندَكم صورةٌ من ذلك اليوم، فهذه صفحتُها."
+      },
+      "eg": {
+        "name": "ماما اتجوّزت بابا",
+        "line": "وفي يوم حلو، ماما اتجوّزت بابا أحمد، ولوزة بقت عيلتها أكبر. شمّت جزمة بابا كلّها، وقرّرت إنه يقعد معاهم.",
+        "sound": "أهلاً يا بابا!"
       }
     },
     {
@@ -165,47 +187,47 @@
       }
     },
     {
+      "key": "pet",
+      "img": "pet",
+      "tint": "#C7643F",
+      "en": {
+        "name": "Just the Right Spot",
+        "line": "Now Loza is the sweetest cat. But pet her one second too long, or one inch away from her favourite spot, and…",
+        "sound": "Chomp! Not there!",
+        "note": "Pause before the last word, then say it with a gentle pounce of your hand on his tummy. Gentle hands with cats is a lesson worth starting early."
+      },
+      "ar": {
+        "name": "المكانُ المُفضَّل",
+        "line": "والآنَ لوزة أحلى قِطّةٍ في الدنيا. لكن إذا داعبتَها ثانيةً زيادة، أو بعيداً عن مكانِها المُفضَّلِ بإصبعٍ واحد، فإنّها…",
+        "sound": "عَضّة! ليس هنا!",
+        "note": "توقّفْ قبلَ الكلمةِ الأخيرة، ثمّ قُلْها وأنت تنقُرُ بطنَه بيدِك نقرةً لطيفة. الرِّفقُ بالقِطَطِ درسٌ يحسُنُ أن يبدأَ مبكّراً."
+      },
+      "eg": {
+        "name": "المكان المفضّل",
+        "line": "ودلوقتي لوزة أحلى قطّة في الدنيا. بس لو دلّعتها ثانية زيادة، أو بعيد عن مكانها المفضّل بصباع واحد، تعمل…",
+        "sound": "هَمّ! مش هنا!"
+      }
+    },
+    {
       "key": "eyes",
       "img": "eyes",
       "tint": "#8FB58A",
       "en": {
         "name": "Two Different Eyes",
-        "line": "Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the palm trees in Cairo.",
+        "line": "Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the grass in the park.",
         "sound": "One blue, one green.",
         "note": "Cats with two different eye colours are called odd-eyed, and it happens most often in white cats. Point to each eye as you say its colour — colours are words he is collecting now."
       },
       "ar": {
         "name": "عينانِ مُختلِفتان",
-        "line": "للوزة عينٌ زرقاء، زرقاءُ مثلَ بحرِ سان دييغو. وعينٌ خضراء، خضراءُ مثلَ نخيلِ القاهرة.",
+        "line": "للوزة عينٌ زرقاء، زرقاءُ مثلَ بحرِ سان دييغو. وعينٌ خضراء، خضراءُ مثلَ عُشبِ الحديقة.",
         "sound": "واحدةٌ زرقاء، وواحدةٌ خضراء.",
         "note": "القِطَطُ ذاتُ العينَينِ المُختلِفتَينِ في اللون أكثرُ ما تكونُ بين القِطَطِ البيضاء. أشِرْ إلى كلِّ عينٍ وأنت تذكُرُ لونَها — فالألوانُ كلماتٌ يجمعُها الآن."
       },
       "eg": {
         "name": "عينين مختلفين",
-        "line": "لوزة ليها عين زرقا، زرقا زي بحر سان دييجو. وعين خضرا، خضرا زي نخل القاهرة.",
+        "line": "لوزة ليها عين زرقا، زرقا زي بحر سان دييجو. وعين خضرا، خضرا زي الزرع في الجنينة.",
         "sound": "واحدة زرقا، وواحدة خضرا."
-      }
-    },
-    {
-      "key": "days",
-      "img": "days",
-      "tint": "#E8C27A",
-      "en": {
-        "name": "Loza’s Happy Days",
-        "line": "The sunny window in the morning. Baba’s lap in the evening. Mama’s kitchen whenever something smells good. And Noah to play with all day long.",
-        "sound": "A very happy cat.",
-        "note": "A list page. Lists are easy to chant, and chanting is what he is listening for."
-      },
-      "ar": {
-        "name": "أيّامُ لوزة السعيدة",
-        "line": "النافذةُ المُشمِسةُ في الصباح. وحِضنُ بابا في المساء. ومطبخُ ماما كلّما فاحَت رائحةٌ طيّبة. ونوحٌ تلعَبُ معه طَوالَ النهار.",
-        "sound": "قِطّةٌ سعيدةٌ جدّاً.",
-        "note": "صفحةُ تعداد. التعدادُ سهلُ الإنشاد، والإنشادُ هو ما يُنصِتُ إليه."
-      },
-      "eg": {
-        "name": "أيّام لوزة الحلوة",
-        "line": "الشبّاك اللي فيه شمس الصبح. وحضن بابا بالليل. ومطبخ ماما لمّا تشمّ ريحة حلوة. ونوح تلعب معاه طول النهار.",
-        "sound": "قطّة مبسوطة خالص."
       }
     },
     {
@@ -214,19 +236,19 @@
       "tint": "#6E7FA8",
       "en": {
         "name": "Goodnight, Loza",
-        "line": "Goodnight Gedo. Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed.",
+        "line": "Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed.",
         "sound": "Goodnight, <span class=\"babyname\">Noah</span>.",
         "note": "The same closing shape as Susu's book, on purpose — a familiar ending is the part a baby learns first."
       },
       "ar": {
         "name": "تُصبِحينَ على خيرٍ يا لوزة",
-        "line": "تُصبِحُ على خيرٍ يا جدّو. وتُصبِحُ على خيرٍ يا بابا. وتُصبِحينَ على خيرٍ يا ماما. وتُصبِحينَ على خيرٍ يا لوزة، وأنتِ مُتكوّرةٌ عندَ طَرَفِ السرير.",
+        "line": "تُصبِحُ على خيرٍ يا بابا. وتُصبِحينَ على خيرٍ يا ماما. وتُصبِحينَ على خيرٍ يا لوزة، وأنتِ مُتكوّرةٌ عندَ طَرَفِ السرير.",
         "sound": "تُصبِحُ على خير، يا <span class=\"babyname\">نوح</span>.",
         "note": "الخاتمةُ نفسُها التي في كتابِ سوسو، عن قصد — فالنهايةُ المألوفةُ هي أوّلُ ما يحفَظُه الطفل."
       },
       "eg": {
         "name": "تصبحي على خير يا لوزة",
-        "line": "تصبح على خير يا جدّو. تصبح على خير يا بابا. تصبحي على خير يا ماما. تصبحي على خير يا لوزة، وانتي متكوّرة على طرف السرير.",
+        "line": "تصبح على خير يا بابا. تصبحي على خير يا ماما. تصبحي على خير يا لوزة، وانتي متكوّرة على طرف السرير.",
         "sound": "تصبح على خير يا <span class=\"babyname\">نوح</span>."
       }
     }

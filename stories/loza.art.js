@@ -62,25 +62,22 @@ function heart(cx, cy, s, fill) {
 ART.cover = svg('Loza, a white cat with one blue eye and one green eye',
   '<circle cx="200" cy="210" r="168" fill="' + SKY + '" opacity=".22"/>' + LOZA_SIT);
 
-ART.cairo = svg('A tiny white kitten alone on a Cairo street, a minaret behind',
-  rect(28, 120, 90, 200, 6, LZ_WARM) + rect(282, 150, 90, 170, 6, SAND) +
-  rect(52, 150, 40, 44, 4, CREAM) + rect(306, 180, 40, 44, 4, CREAM) +
-  rect(186, 60, 28, 140, 4, CREAM) + path('M180 60 q20 -40 40 0 z', GOLD) + crescent(200, 22, 10, CREAM) +
-  path('M0 320 h400', null, 8) +
-  loza(116, 170, .42));
-
-ART.gedo = svg('The kitten wrapped in a warm scarf with a saucer of milk',
+ART.shelter = svg('A tiny white kitten in a blanket-lined basket at the shelter',
   path('M60 300 q0 -70 140 -70 q140 0 140 70 q0 40 -140 40 q-140 0 -140 -40 z', CLAY) +
   path('M80 290 q60 22 120 0 q60 -22 120 0', null, 6) +
-  ell(320, 340, 46, 14, CREAM) + ell(320, 336, 30, 7, '#FFFFFF', 4) +
   heart(330, 80, 1.1) +
   loza(96, 72, .52));
 
-ART.flight = svg('Loza looking out of an airplane window at the clouds',
-  rect(196, 40, 170, 230, 80, SKY, 10) +
-  path('M226 170 q10 -30 40 -20 q14 -24 40 -10 q30 -6 34 22 q4 26 -24 26 h-74 q-26 0 -16 -18 z', CREAM, 6) +
-  path('M248 96 l40 -8 l40 8 l-40 8 z', CREAM, 5) +
-  loza(-30, 90, .7));
+ART.hiding = svg('Loza peeking out from under a blanket',
+  loza(66, 96, .6) +
+  path('M10 250 q190 -60 380 0 v110 h-380 z', SKY, 8) +
+  path('M60 262 q40 -12 80 -8 M260 254 q40 -4 80 8', null, 5));
+
+ART.mama = svg('The kitten in a box, with a full bowl and a toy mouse left beside her',
+  loza(90, 70, .55) +
+  rect(90, 230, 220, 110, 6, SAND) + path('M90 230 l-30 -30 M310 230 l30 -30', null, 8) +
+  ell(340, 336, 40, 12, CREAM) + ell(340, 332, 26, 6, CLAY, 4) +
+  ell(56, 334, 22, 14, LZ_PINK) + path('M34 336 q-20 4 -24 -10', null, 4));
 
 ART.home = svg('Loza on a sunny window sill with the sea and a palm tree outside',
   rect(140, 30, 240, 230, 10, SKY) +
@@ -89,6 +86,16 @@ ART.home = svg('Loza on a sunny window sill with the sea and a palm tree outside
   palmTree(200, 110, .5) +
   rect(120, 258, 280, 24, 8, CREAM) +
   loza(-24, 70, .72));
+
+ART.baba = svg("Loza sniffing Baba's shoes beside the wedding flowers",
+  path('M196 344 q0 -40 36 -40 q22 0 30 18 h44 q22 0 22 22 z', CLAY, 7) +
+  path('M216 360 q0 -40 36 -40 q22 0 30 18 h44 q22 0 22 22 z', CLAY, 7) +
+  path('M232 330 l14 -8 M246 340 l14 -8', null, 4) +
+  path('M330 300 l-24 -66 M330 300 l2 -78 M330 300 l30 -64', null, 6) +
+  circ(304, 220, 24, LZ_PINK) + circ(332, 206, 24, '#FFFFFF') + circ(362, 226, 24, LZ_PINK) +
+  circ(304, 220, 8, LZ_WARM, 4) + circ(332, 206, 8, LZ_WARM, 4) + circ(362, 226, 8, LZ_WARM, 4) +
+  heart(330, 90, 1.1) +
+  loza(-40, 40, .74));
 
 ART.noah = svg("Loza sitting beside a baby's crib",
   '<g stroke="' + INK + '" stroke-width="8" stroke-linejoin="round">' +
@@ -108,11 +115,10 @@ ART.play = svg('Loza with a ball of yellow yarn',
   loza(60, 40, .78));
 
 ART.eyes = svg('Close up of Loza: one blue eye, one green eye',
-  '<g transform="translate(-80,-20) scale(1.4)">' + LOZA_SIT + '</g>');
+  '<g transform="translate(-160,-160) scale(1.8)">' + LOZA_SIT + '</g>');
 
-ART.days = svg('A very happy Loza in the sunshine',
-  sun(330, 74, 40) +
-  heart(96, 110, 1.3) +
+ART.pet = svg('Loza, cross: one stroke too many',
+  path('M318 70 l18 -22 M340 92 l26 -8 M300 54 l-4 -26', null, 7) +
   loza(0, 22, .94));
 
 ART.goodnight = svg('Loza asleep at the end of the bed under a moon',
