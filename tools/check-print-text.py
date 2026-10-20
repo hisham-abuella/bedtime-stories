@@ -48,9 +48,11 @@ for n, (sheet, page) in enumerate(zip(sheets, pages), 1):
     boxes = [(float(a), float(b), html.unescape(w)) for a, b, w in
              re.findall(r'yMin="([\d.]+)"[^>]*yMax="([\d.]+)">([^<]*)<', page)]
     toks = [x for _, _, w in boxes for x in re.findall(r'[\w\u0600-\u06FF]+', w.replace('’', '').replace("'", ''))]
-    # pdftotext also splits some Arabic words in two (جدًا comes back as جًد ا),
-    # so each pair of neighbouring tokens counts as a word too
-    on_page = {sig(x) for x in toks} | {sig(a + b) for a, b in zip(toks, toks[1:])}
+    # pdftotext also splits some Arabic words in two (جدًا comes back as جًد ا)
+    # or, around a shadda, in three (عَضّة comes back as َع ّض ة), so each run of
+    # two or three neighbouring tokens counts as a word too
+    on_page = ({sig(x) for x in toks} | {sig(a + b) for a, b in zip(toks, toks[1:])}
+               | {sig(a + b + c) for a, b, c in zip(toks, toks[1:], toks[2:])})
     problems = []
     for para in re.findall(r'<p class="(?:line|sound)[^"]*"[^>]*>(.*?)</p>', sheet, re.S):
         tail = [w for w in words(para)][-3:]

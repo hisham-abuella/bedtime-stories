@@ -4,16 +4,19 @@ A QR that renders still looks like a QR when it is clipped, wrong, or stale.
 The only proof is reading it back out of the finished PDF, which is what this
 does: rasterise each page, decode, compare against the URL that page should
 carry.
+
+  uvx --with zxing-cpp --with pillow python tools/check-qr.py [<slug>]
+
+With a slug, only that book's PDFs (and volumes that hold it) are read.
 """
-import subprocess, sys, glob, os, re
+import subprocess, sys, glob, os, re, tempfile
 from pathlib import Path
 import zxingcpp
 from PIL import Image
 
-REPO = Path('/Users/hishamabuella/Work/bedtime-stories')
+REPO = Path(__file__).resolve().parent.parent
 BASE = 'https://hisham-abuella.github.io/bedtime-stories'
-TMP = Path('/private/tmp/claude-501/-Users-hishamabuella-Work/00b1ad39-acac-4ee0-8191-40b45b61f32e/scratchpad/qrpages')
-TMP.mkdir(parents=True, exist_ok=True)
+TMP = Path(tempfile.mkdtemp(prefix='qrpages-'))
 
 # what each book's codes are allowed to point at
 ALLOWED = {
@@ -26,6 +29,9 @@ ALLOWED = {
     'khalaqa':       {f'{BASE}/books/khalaqa.html'},
     'nabina':        {f'{BASE}/books/nabina.html'},
 }
+# any other book in books/ may point only at itself
+for page in (REPO / 'books').glob('*.html'):
+    ALLOWED.setdefault(page.stem, {f'{BASE}/books/{page.name}'})
 
 # A bound volume carries one code per chapter, so its allowed set is the union
 # of the books inside it.
@@ -47,6 +53,10 @@ def book_of(name):
 
 rows, bad, total_codes = [], [], 0
 pdfs = sorted(glob.glob(str(REPO / 'print' / '**' / '*.pdf'), recursive=True))
+only = sys.argv[1] if len(sys.argv) > 1 else None
+if only:
+    pdfs = [p for p in pdfs if book_of(Path(p).stem) == only
+            or only in VOLUMES.get(book_of(Path(p).stem), [])]
 for pdf in pdfs:
     name = Path(pdf).stem
     book = book_of(name)

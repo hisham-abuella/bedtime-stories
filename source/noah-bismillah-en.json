@@ -1,0 +1,21 @@
+{
+ "title": "Noah Bismillah EN",
+ "language": "en",
+ "slides": [
+  {
+   "id": "p0",
+   "title": "A first word",
+   "transcript": "[warmly] Bismillah. A first word, for Noah. <break time=\"0.5s\" /> [gently] The word we say before everything. Say it with me."
+  },
+  {
+   "id": "p7",
+   "title": "Susu's Bowl",
+   "transcript": "[warmly] Loza's Bowl. <break time=\"0.4s\" /> You fill the bowl, and the cat comes running. A small kindness is still a kindness. <break time=\"0.5s\" /> [softly] Bismillah."
+  },
+  {
+   "id": "p9",
+   "title": "Goodnight",
+   "transcript": "[softly] Goodnight. <break time=\"0.4s\" /> Every day begins with one word, and every day ends with it too. <break time=\"0.5s\" /> [whispers] Bismillah. Goodnight, Noah."
+  }
+ ]
+}

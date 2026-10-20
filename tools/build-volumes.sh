@@ -35,11 +35,13 @@ one() {   # one <slug> <books> <title-en> <title-ar> <suffix> [flags...]
 
 # Animals and Colours has covers of its own: Susu with the zoo on the front,
 # Susu waving goodbye on the back (source/gen-susu.sh, vol-front / vol-back).
-SUSU_COVER="--front-art input/img-hi/images-susu/vol-front.jpg --back-art input/img-hi/images-susu/vol-back.jpg"
+SUSU_COVER="--front-art input/img-hi/images-susu/vol-front.jpg --back-art input/img-hi/images-susu/vol-back.jpg --frame mat:#8FB58A"
 # First Words keeps Bismillah's sunrise house on the front; the back is the same
 # house at night under a crescent moon, so the book opens on morning and closes
 # on goodnight like each story in it (source/gen-muslim-books.sh, vol-back).
-FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg"
+# Both covers are framed (make-print.js --frame): gold stars on teal for
+# First Words, a plain sage mat for Animals and Colours.
+FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg --frame islamic:#1F5C68"
 
 for v in "vol-first-words|$ISLAMIC|First Words|أوّلُ الكلمات|$FIRST_COVER" \
          "vol-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|$SUSU_COVER"; do

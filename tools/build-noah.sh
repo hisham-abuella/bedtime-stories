@@ -54,7 +54,10 @@ board() {  # board <suffix> [flags...]
 board "-board"
 board "-board-eg" --dialect eg
 
-FIRST="books/bismillah.html,books/alhamdulillah.html,books/khalaqa.html,books/nabina.html"
+# Noah's own copies of the four (tools/build-noah-first-words.py): read to him,
+# Loza in Susu's place, Egyptian narration re-recorded where the words changed.
+python3 tools/build-noah-first-words.py >/dev/null
+FIRST="books/noah-bismillah.html,books/noah-alhamdulillah.html,books/noah-khalaqa.html,books/noah-nabina.html"
 ANIMALS="books/black-white-zoo.html,books/loza.html"
 
 vol() {    # vol <slug> <books> <title-en> <title-ar> <suffix> [flags...]
@@ -63,10 +66,15 @@ vol() {    # vol <slug> <books> <title-en> <title-ar> <suffix> [flags...]
        --url "$BASE/" --lulu --art images --volume "$ten" --volume-ar "$tar" "${NAME[@]}" "$@" >/dev/null
   pdf "build/$slug$suffix.html" "$(dest "$@")/$slug$suffix.pdf"
 }
-# Noah's First Words is the same book as Yusuf's, so it has the same back cover.
-FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg"
+# Noah's First Words has the same back cover as Yusuf's.
+# Both volumes are framed: First Words in gold stars on teal, Animals and
+# Colours in a plain sage mat, with Loza asleep among the zoo toys on the back.
+FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg --frame islamic:#1F5C68"
+# Its back-cover code opens Noah's card on the shelf, which links all four.
+FIRST_COVER="$FIRST_COVER --cover-qr input/qr/qr-noah-first-words.svg"
+ANIMALS_COVER="--back-art input/img-hi/images-loza/vol-back.jpg --frame mat:#8FB58A"
 for v in "vol-noah-first-words|$FIRST|First Words|أوّلُ الكلمات|$FIRST_COVER" \
-         "vol-noah-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|"; do
+         "vol-noah-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|$ANIMALS_COVER"; do
   IFS='|' read -r slug books ten tar art <<< "$v"
   read -r -a art <<< "$art"
   vol "$slug" "$books" "$ten" "$tar" "-interior"    ${art[@]+"${art[@]}"}

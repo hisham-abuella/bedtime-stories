@@ -168,6 +168,16 @@ Writing a sixth 850-line HTML file by hand is how six books drift apart. Instead
 | `tools/make-transcripts.js` | drafts the narration from that same spec |
 | `stories/_shapes.js` | the shared drawing kit for the fallback artwork |
 | `stories/<slug>.art.js` | that book's own drawings |
+| `tools/new-book.sh` | starts a book: spec, 1536px art script, build script |
+| `tools/build-book.py` | builds `books/<slug>.html` with the child's name and paths right (each `tools/build-<slug>.sh` calls it) |
+| `tools/web-art.sh` | shrinks the 1536px masters in `art-hi/` to the 1024px web pictures |
+| `tools/try-seeds.sh` | draws one page with several seeds, from the book's own prompt, and lays them side by side |
+| `tools/contact-sheet.py` | puts a book's pictures on one sheet to spot a character drifting |
+| `tools/print-book.sh` | board and Lulu PDFs for one book, from the 1536px masters, with every check |
+| `tools/publish.sh` | pushes, waits for GitHub Pages, and confirms the new book is live |
+
+The whole flow, from a family's idea to a printed PDF and a shared link, is the
+`storybook` skill in `.claude/skills/storybook/SKILL.md`.
 
 ```sh
 node tools/new-story.js stories/bismillah.json        # -> bismillah.html

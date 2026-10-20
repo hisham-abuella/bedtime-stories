@@ -90,6 +90,9 @@
   }
   .open:hover{background:var(--warm)}
   .open .arr{font-size:1.1em;line-height:1}
+  /* a card that holds several books: one button each */
+  .opens{margin-top:auto;display:flex;flex-wrap:wrap;gap:8px}
+  .opens .open{margin-top:0;padding:9px 16px;font-size:.92rem}
 
   /* ---------- what's inside ---------- */
   .inside{
@@ -237,6 +240,24 @@
           <span class="fact">10 pages</span><span class="fact">20 clips</span><span class="fact">No depiction</span>
         </div>
         <a class="open" href="books/nabina.html">Open the book <span class="arr">&rarr;</span></a>
+      </div>
+    </article>
+
+    <article class="book" id="noah-first-words">
+      <img class="cover" src="images-loza/cover.png" alt="Loza, a white cat with one blue eye and one green eye">
+      <div class="book-body">
+        <h2>First Words, for Noah</h2>
+        <p class="for">Bismillah · Alhamdulillah · Allah Made It · Our Prophet</p>
+        <p>The four first-words books, read to Noah, with Loza on the pages where the cat comes in. English and مصري.</p>
+        <div class="facts">
+          <span class="fact">4 books</span><span class="fact">English &amp; مصري</span>
+        </div>
+        <div class="opens">
+          <a class="open" href="books/noah-bismillah.html">Bismillah <span class="arr">&rarr;</span></a>
+          <a class="open" href="books/noah-alhamdulillah.html">Alhamdulillah <span class="arr">&rarr;</span></a>
+          <a class="open" href="books/noah-khalaqa.html">Allah Made It <span class="arr">&rarr;</span></a>
+          <a class="open" href="books/noah-nabina.html">Our Prophet <span class="arr">&rarr;</span></a>
+        </div>
       </div>
     </article>
 

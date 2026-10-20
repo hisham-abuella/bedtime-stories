@@ -56,6 +56,11 @@ const volumeTitleAr = arg('--volume-ar', '');
 const frontArt = arg('--front-art', '');
 const longPages = has('--long');
 const backArt = arg('--back-art', '');
+// A frame around each half of the cover spread, so the cream page sits inside
+// a border instead of running bare to the trim:
+//   --frame mat:#8FB58A   a plain band of that colour, like a picture mat
+//   --frame islamic[:#hex] gold eight-point stars on night blue (or #hex)
+const frame = arg('--frame', '');
 // Perfect bound needs a spine; saddle stitch folds and has none. Lulu's own
 // generic template ships a 0.1321in spine, which is their formula at the
 // 32-page minimum — at 40 pages it is wrong, so it is computed here instead.
@@ -312,6 +317,57 @@ function interiorPages() {
 const spineMm = (binding === 'saddle' || !lulu) ? 0 : (interiorPages() / 444 + 0.06) * IN;
 const spreadW = trim * 2 + spineMm + bleed * 2;
 
+// ---- the cover frame --------------------------------------------------------
+// The band is one pattern tile wide, and the tile divides the trim exactly, so
+// a whole row of stars runs along every trimmed edge and none is cut in half
+// at a corner. Lulu may trim up to 0.125in either way, so the band can come out
+// a little uneven — a band this wide still reads as a frame when it does.
+const tile = trim / 20;
+const band = frame ? tile : 0;
+// The panel's own padding: words keep the full safety margin from the trim and
+// a clear 6mm from the panel's edge, whichever is further in.
+const pad = Math.max(safe, band + 6);
+function islamicTile() {
+    // An eight-point star (two squares, one turned 45°) in the middle, with
+    // lines out to the tile's edges that join it to its neighbours.
+    const c = 20, R = 11, r = 6;
+    const pts = [];
+    for (let i = 0; i < 16; i++) {
+        const a = Math.PI / 8 * i - Math.PI / 2, d = i % 2 ? r : R;
+        pts.push((c + d * Math.cos(a)).toFixed(2) + ' ' + (c + d * Math.sin(a)).toFixed(2));
+    }
+    const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'>` +
+        `<g fill='none' stroke='#D9B45A' stroke-width='1.1' stroke-linejoin='round'>` +
+        `<path d='M${pts.join(' L')} Z'/>` +
+        `<rect x='15' y='15' width='10' height='10' transform='rotate(45 20 20)'/>` +
+        `<path d='M20 0 V${c - R} M20 ${c + R} V40 M0 20 H${c - R} M${c + R} 20 H40'/>` +
+        // a quarter of a small diamond in each corner: four tiles make one
+        `<path d='M4 0 L0 4 M36 0 L40 4 M0 36 L4 40 M36 40 L40 36'/>` +
+        `</g></svg>`;
+    return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+}
+const frameCss = (function () {
+    if (!frame || !coverSpread) return '';
+    const islamic = frame.split(':')[0] === 'islamic';
+    const colour = frame.split(':')[1] || (islamic ? '#1F3557' : '#8FB58A');
+    const line = islamic ? '#D9B45A' : 'rgba(17,16,16,.28)';
+    const pattern = islamic ? `background-image:${islamicTile()};background-size:${tile}mm ${tile}mm;` : '';
+    return `
+  /* the frame: the band is the half's own background, the page a panel on it */
+  .spread,.spine{background:${colour}}
+  .half{position:relative;background-color:${colour};${pattern}}
+  .half.back{background-position:${bleed}mm ${bleed}mm}
+  .half.front{background-position:0 ${bleed}mm}
+  .half::before{
+    content:"";position:absolute;z-index:0;top:${bleed + band}mm;bottom:${bleed + band}mm;
+    background:var(--paper);border-radius:${islamic ? 2 : 4}mm;
+    box-shadow:inset 0 0 0 1.4mm var(--paper),inset 0 0 0 ${islamic ? 2.1 : 1.8}mm ${line}${islamic ? `,0 0 0 .6mm ${line}` : ''};
+  }
+  .half.back::before{left:${bleed + band}mm;right:${band}mm}
+  .half.front::before{left:${band}mm;right:${bleed + band}mm}
+  .half > *{position:relative;z-index:1}`;
+})();
+
 // The contents list: every chapter in the volume, in reading order, in both
 // languages. This is what makes a bound volume legible from the outside —
 // "Animals and Colours" means nothing until it says Black & White, Fifteen
@@ -331,7 +387,10 @@ if (coverSpread) {
     const { page: c } = front;
     // A volume holds several stories, so its cover opens the shelf rather than
     // dropping the reader into whichever one happens to be first.
-    const shelfQr = path.join(qrPath ? path.dirname(qrPath) : path.join('input', 'qr'), 'qr-shelf.svg');
+    // --cover-qr gives a volume its own code: Noah's First Words opens his
+    // card on the shelf, not the shelf's top.
+    const shelfQr = arg('--cover-qr', '')
+        || path.join(qrPath ? path.dirname(qrPath) : path.join('input', 'qr'), 'qr-shelf.svg');
     const qr = (volumeTitle && fs.existsSync(shelfQr))
         ? fs.readFileSync(shelfQr, 'utf8') : front.qr;
     sheets.length = 0;
@@ -621,12 +680,12 @@ ${coverSpread ? `
   }
   .half{
     flex:0 0 ${trim + bleed}mm; min-width:0; display:flex; flex-direction:column;
-    align-items:center; padding:${bleed + safe}mm ${safe}mm;
+    align-items:center; padding:${bleed + pad}mm ${pad}mm;
   }
   /* Too narrow for type at this page count, so it carries nothing but paper. */
   .spine{flex:0 0 ${spineMm}mm; background:var(--paper)}
-  .half.back{padding-left:${bleed + safe}mm; justify-content:flex-start}
-  .half.front{padding-right:${bleed + safe}mm; justify-content:flex-start}
+  .half.back{padding-left:${bleed + pad}mm; justify-content:flex-start}
+  .half.front{padding-right:${bleed + pad}mm; justify-content:flex-start}
   .front .art{width:96mm;height:96mm}
   .front .words{margin-top:5mm}
   .front h1{font-size:34pt}
@@ -648,6 +707,7 @@ ${coverSpread ? `
   .back .back-art{width:80mm;height:80mm;margin:10mm auto 0}
   .back .listen-text b{font-size:11pt}
   .back .listen-text span{font-size:8pt}
+${frameCss}
 ` : ''}
 </style>
 </head>

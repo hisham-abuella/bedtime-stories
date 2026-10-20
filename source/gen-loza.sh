@@ -46,4 +46,12 @@ gen play      "$LOZA batting at a ball of yellow yarn on a soft rug, toy blocks 
 gen pet       "$LOZA sitting on a sofa cushion looking cross and grumpy in a funny cartoon way, ears flat back, eyes narrowed, tail puffed up, one front paw raised to swat, $STYLE" 431
 gen eyes      "close portrait of $LOZA, one eye blue like the sea and one eye green like a leaf, $STYLE" 408
 gen goodnight "$SLEEPING, curled at the end of a bed, a crescent moon and stars in the window, $STYLE" 420
+# The back of Noah's Animals and Colours volume: Loza on a rug at night with
+# the zoo as soft toys. Awake, so her odd eyes show as on every other page.
+gen vol-back  "$LOZA lying contentedly on a soft round rug, awake and looking at the viewer with both eyes open, three small plush toys sitting beside her — a black and white striped zebra, a black and white panda and a black and white penguin — a crescent moon and stars in a window behind, $STYLE" 480
+# Noah's First Words: the three pages that show Yusuf's Susu show Loza instead
+# (tools/build-noah-first-words.py). The First Words style is the same as hers.
+gen fw-bowl   "$LOZA eating happily from a full food bowl on a kitchen floor, a bowl of water beside it, $STYLE" 450
+gen fw-bed    "$LOZA sitting calmly at the foot of a child's bed on a soft blanket, keeping an eye on the room, $STYLE" 460
+gen fw-night  "$LOZA sitting quietly in soft evening light, her eyes wide and round, a few stars in a deep blue window behind her, $STYLE" 470
 echo "LOZA IMAGES DONE"
