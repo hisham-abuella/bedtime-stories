@@ -56,6 +56,15 @@ function build(lang) {
 
 for (const lang of ['en', 'ar', 'eg']) {
     const out = path.join(root, 'source', `${spec.slug}-${lang}.json`);
+    // A script tuned by hand (pauses between lines, a tone per line, as Susu's
+    // and Loza's are) says "polished": true, and a rebuild leaves it alone.
+    // Change the page text, and its line in the script needs the same edit.
+    try {
+        if (JSON.parse(fs.readFileSync(out, 'utf8')).polished) {
+            console.log(`source/${spec.slug}-${lang}.json — polished by hand, kept`);
+            continue;
+        }
+    } catch (e) { /* no script yet: write one */ }
     fs.writeFileSync(out, JSON.stringify(build(lang), null, 1) + '\n');
     const chars = build(lang).slides.reduce((n, s) => n + s.transcript.length, 0);
     console.log(`source/${spec.slug}-${lang}.json — ${spec.pages.length} slides, ${chars} characters`);

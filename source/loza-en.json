@@ -1,61 +1,62 @@
 {
  "title": "Loza the Cat EN",
  "language": "en",
+ "polished": true,
  "slides": [
   {
    "id": "p0",
    "title": "A true story",
-   "transcript": "[warmly] Loza the Cat. A true story, for Noah. <break time=\"0.5s\" /> [gently] A shy little cat, and a family who waited for her."
+   "transcript": "[warmly] Loza the Cat. A true story, for Noah. <break time=\"0.5s\" /> [gently] A shy little cat, <break time=\"0.3s\" /> and a family who waited for her."
   },
   {
    "id": "p1",
    "title": "A Kitten at the Shelter",
-   "transcript": "[warmly] A Kitten at the Shelter. <break time=\"0.4s\" /> Once, at a shelter in San Diego, there was a tiny white kitten with one blue eye and one green eye. Mama and Gedo saw her, and took her home. <break time=\"0.5s\" /> [softly] Welcome home, Loza."
+   "transcript": "[warmly] A kitten at the shelter. <break time=\"0.4s\" /> Once, at a shelter in San Diego, there was a tiny white kitten, <break time=\"0.3s\" /> with one blue eye, and one green eye. <break time=\"0.4s\" /> [gently] Mama and Gedo saw her, and took her home. <break time=\"0.5s\" /> [softly] Welcome home, Loza."
   },
   {
    "id": "p2",
    "title": "Where Did Loza Go?",
-   "transcript": "[warmly] Where Did Loza Go? <break time=\"0.4s\" /> But Loza was shy — very, very shy. She hid under the bed. She hid behind the sofa. She hid in the cupboard. <break time=\"0.5s\" /> [softly] Loza? Where are you?"
+   "transcript": "[curious] Where did Loza go? <break time=\"0.4s\" /> [warmly] But Loza was shy — very, very shy. <break time=\"0.4s\" /> [playfully] She hid under the bed. <break time=\"0.3s\" /> She hid behind the sofa. <break time=\"0.3s\" /> She hid in the cupboard. <break time=\"0.5s\" /> [curious] Loza? <break time=\"0.3s\" /> Where are you?"
   },
   {
    "id": "p3",
    "title": "Mama Said No",
-   "transcript": "[warmly] Mama Said No. <break time=\"0.4s\" /> Loza hid so much that everyone wondered if she would be happier somewhere else. But Mama said, “No. She is ours. She just needs time.” <break time=\"0.5s\" /> [softly] Loza stays."
+   "transcript": "[warmly] Mama said no. <break time=\"0.4s\" /> Loza hid so much that everyone wondered if she would be happier somewhere else. <break time=\"0.4s\" /> [gently] But Mama said, “No. <break time=\"0.3s\" /> She is ours. <break time=\"0.3s\" /> She just needs time.” <break time=\"0.5s\" /> [softly] Loza stays."
   },
   {
    "id": "p4",
    "title": "Little by Little",
-   "transcript": "[warmly] Little by Little. <break time=\"0.4s\" /> Little by little, Loza came out. One paw. Then two. Then one sunny morning she sat in the window, as if she had always lived there. <break time=\"0.5s\" /> [softly] Hello, home."
+   "transcript": "[gently] Little by little. <break time=\"0.4s\" /> Little by little, Loza came out. <break time=\"0.3s\" /> One paw. <break time=\"0.3s\" /> Then two. <break time=\"0.4s\" /> [warmly] Then one sunny morning she sat in the window, as if she had always lived there. <break time=\"0.5s\" /> [softly] Hello, home."
   },
   {
    "id": "p5",
    "title": "Mama Married Baba",
-   "transcript": "[warmly] Mama Married Baba. <break time=\"0.4s\" /> Then one happy day, Mama married Baba Ahmed, and Loza had a bigger family. She sniffed Baba's shoes all over, and decided he could stay. <break time=\"0.5s\" /> [softly] Hello, Baba!"
+   "transcript": "[warmly] Mama married Baba. <break time=\"0.4s\" /> Then one happy day, Mama married Baba Ahmed, and Loza had a bigger family. <break time=\"0.4s\" /> [playfully] She sniffed Baba's shoes all over, <break time=\"0.3s\" /> and decided he could stay. <break time=\"0.5s\" /> [warmly] Hello, Baba!"
   },
   {
    "id": "p6",
    "title": "And Then Noah",
-   "transcript": "[warmly] And Then Noah. <break time=\"0.4s\" /> Then one day a very small baby came home. Loza crept close, sniffed his tiny toes, and lay down beside him to keep watch. <break time=\"0.5s\" /> [softly] Hello, Noah."
+   "transcript": "[warmly] And then Noah. <break time=\"0.4s\" /> Then one day, a very small baby came home. <break time=\"0.4s\" /> [gently] Loza crept close, sniffed his tiny toes, and lay down beside him to keep watch. <break time=\"0.5s\" /> [softly] Hello, Noah."
   },
   {
    "id": "p7",
    "title": "Loza and Noah Play",
-   "transcript": "[warmly] Loza and Noah Play. <break time=\"0.4s\" /> Now Loza and Noah play every day. She chases the yarn. She hides in her cosy cave. Where is Loza? <break time=\"0.5s\" /> [softly] Peekaboo!"
+   "transcript": "[playfully] Loza and Noah play. <break time=\"0.4s\" /> Now Loza and Noah play every day. <break time=\"0.3s\" /> She chases the yarn. <break time=\"0.3s\" /> She hides in her cosy cave. <break time=\"0.4s\" /> [curious] Where is Loza? <break time=\"0.6s\" /> [playfully] Peekaboo!"
   },
   {
    "id": "p8",
    "title": "Just the Right Spot",
-   "transcript": "[warmly] Just the Right Spot. <break time=\"0.4s\" /> Now Loza is the sweetest cat. But pet her one second too long, or one inch away from her favourite spot, and… <break time=\"0.5s\" /> [softly] Chomp! Not there!"
+   "transcript": "[warmly] Just the right spot. <break time=\"0.4s\" /> Now Loza is the sweetest cat. <break time=\"0.4s\" /> [playfully] But pet her one second too long, <break time=\"0.3s\" /> or one inch away from her favourite spot, and… <break time=\"0.6s\" /> Chomp! <break time=\"0.3s\" /> Not there!"
   },
   {
    "id": "p9",
    "title": "Two Different Eyes",
-   "transcript": "[warmly] Two Different Eyes. <break time=\"0.4s\" /> Loza has one blue eye, blue like the sea in San Diego. And one green eye, green like the grass in the park. <break time=\"0.5s\" /> [softly] One blue, one green."
+   "transcript": "[warmly] Two different eyes. <break time=\"0.4s\" /> Loza has one blue eye, <break time=\"0.3s\" /> blue like the sea in San Diego. <break time=\"0.4s\" /> And one green eye, <break time=\"0.3s\" /> green like the grass in the park. <break time=\"0.5s\" /> [softly] One blue, <break time=\"0.3s\" /> one green."
   },
   {
    "id": "p10",
    "title": "Goodnight, Loza",
-   "transcript": "[softly] Goodnight, Loza. <break time=\"0.4s\" /> Goodnight Baba. Goodnight Mama. Goodnight Loza, curled up at the end of the bed. <break time=\"0.5s\" /> [whispers] Goodnight, Noah."
+   "transcript": "[softly] Goodnight, Loza. <break time=\"0.5s\" /> Goodnight, Baba. <break time=\"0.4s\" /> Goodnight, Mama. <break time=\"0.4s\" /> Goodnight, Loza, curled up at the end of the bed. <break time=\"0.6s\" /> [whispers] Goodnight, Noah."
   }
  ]
 }
