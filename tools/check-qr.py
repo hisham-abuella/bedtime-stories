@@ -28,6 +28,8 @@ ALLOWED = {
     'alhamdulillah': {f'{BASE}/books/alhamdulillah.html'},
     'khalaqa':       {f'{BASE}/books/khalaqa.html'},
     'nabina':        {f'{BASE}/books/nabina.html'},
+    'noah-black-white-zoo': {f'{BASE}/books/noah-black-white-zoo.html', f'{BASE}/books/noah-black-white-zoo.html#bw',
+                             f'{BASE}/books/noah-black-white-zoo.html#color'},
 }
 # any other book in books/ may point only at itself
 for page in (REPO / 'books').glob('*.html'):
@@ -38,9 +40,9 @@ for page in (REPO / 'books').glob('*.html'):
 VOLUMES = {
     'vol-first-words': ['bismillah', 'alhamdulillah', 'khalaqa', 'nabina'],
     'vol-animals-colours': ['black-white-zoo', 'susu'],
-    # Noah's copies: the same First Words, and Loza in Susu's place
-    'vol-noah-first-words': ['bismillah', 'alhamdulillah', 'khalaqa', 'nabina'],
-    'vol-noah-animals-colours': ['black-white-zoo', 'loza'],
+    # Noah's copies: his own First Words, and Loza in Susu's place
+    'vol-noah-first-words': ['noah-bismillah', 'noah-alhamdulillah', 'noah-khalaqa', 'noah-nabina'],
+    'vol-noah-animals-colours': ['noah-black-white-zoo', 'loza'],
 }
 def book_of(name):
     for v, books in VOLUMES.items():
@@ -79,7 +81,7 @@ for pdf in pdfs:
     if book in VOLUMES:
         # every chapter cover is inside the volume; the volume's own cover is
         # a separate file and carries one code
-        chapters = {'black-white-zoo': 2}
+        chapters = {'black-white-zoo': 2, 'noah-black-white-zoo': 2}
         inside = sum(chapters.get(b, 1) for b in VOLUMES[book])
         want = 1 if name.endswith('-cover') or name.endswith('-cover-eg') else inside
     elif '-lulu-interior' in name:
@@ -92,6 +94,8 @@ for pdf in pdfs:
         bad.append((name, f'expected {want} QR, found {len(found)}'))
     for page, text in found:
         allowed = {f'{BASE}/'}          # a volume cover opens the shelf
+        if book == 'vol-noah-first-words':
+            allowed = {f'{BASE}/#noah-first-words'}   # Noah's card on it
         for b in VOLUMES.get(book, [book]):
             allowed |= ALLOWED[b]
         if text not in allowed:

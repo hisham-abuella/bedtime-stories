@@ -1,0 +1,21 @@
+{
+ "title": "Noah The Black and White Zoo (EN)",
+ "language": "en",
+ "slides": [
+  {
+   "id": "p0",
+   "title": "Cover",
+   "transcript": "[warmly] The Black and White Zoo. <break time=\"0.4s\" /> A book for Noah. Nine bold animals to look at together. Are you ready, Noah? <break time=\"0.5s\" /> [warmly] Let's turn the page."
+  },
+  {
+   "id": "p9",
+   "title": "Goodnight",
+   "transcript": "[warmly] Goodnight. <break time=\"0.4s\" /> Goodnight zebra, goodnight panda, goodnight owl in the tree. Goodnight, Noah. <break time=\"0.5s\" /> [whispers] Sleep well, little one."
+  },
+  {
+   "id": "c9",
+   "title": "Rainbow",
+   "transcript": "[warmly] All the colours. <break time=\"0.4s\" /> Red, yellow, blue, green, orange, purple, pink, brown, grey, <break time=\"0.3s\" /> white, black, turquoise, gold, sand and light green. All of them together. <break time=\"0.5s\" /> [whispers] Goodnight, Noah."
+  }
+ ]
+}

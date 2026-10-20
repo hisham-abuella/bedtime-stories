@@ -27,6 +27,9 @@ CODES = {
     'qr-nabina':        f'{BASE}/books/nabina.html',
     # the back of Noah's First Words: his card on the shelf, which opens all four
     'qr-noah-first-words': f'{BASE}/#noah-first-words',
+    # Noah's zoo: a code per chapter, as Yusuf's has
+    'qr-noah-black-white-zoo-bw':    f'{BASE}/books/noah-black-white-zoo.html#bw',
+    'qr-noah-black-white-zoo-color': f'{BASE}/books/noah-black-white-zoo.html#color',
 }
 # Every other book in books/ gets qr-<slug> without being listed: a new book
 # has its code the moment it is built.

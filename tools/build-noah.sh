@@ -54,11 +54,11 @@ board() {  # board <suffix> [flags...]
 board "-board"
 board "-board-eg" --dialect eg
 
-# Noah's own copies of the four (tools/build-noah-first-words.py): read to him,
+# Noah's own copies of the four (tools/build-noah-versions.py): read to him,
 # Loza in Susu's place, Egyptian narration re-recorded where the words changed.
-python3 tools/build-noah-first-words.py >/dev/null
+python3 tools/build-noah-versions.py >/dev/null
 FIRST="books/noah-bismillah.html,books/noah-alhamdulillah.html,books/noah-khalaqa.html,books/noah-nabina.html"
-ANIMALS="books/black-white-zoo.html,books/loza.html"
+ANIMALS="books/noah-black-white-zoo.html,books/loza.html"
 
 vol() {    # vol <slug> <books> <title-en> <title-ar> <suffix> [flags...]
   local slug=$1 books=$2 ten=$3 tar=$4 suffix=$5; shift 5

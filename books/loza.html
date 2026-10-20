@@ -149,11 +149,11 @@
     border-top:1px solid var(--rule);padding-top:14px;
   }
   .namer label{font-size:.95rem;color:#3b3a35}
-  .namer input{
+  .namer input,.namer select{
     font:inherit;font-size:1rem;padding:8px 12px;width:11ch;
     border:2px solid var(--ink);border-radius:9px;background:var(--page);color:var(--ink);text-align:center;
   }
-  .namer input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+  .namer input:focus-visible,.namer select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
   /* ---------- listen ---------- */
   .listen{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
@@ -855,6 +855,7 @@ var sfx     = document.getElementById('sfx');
 var fsBtn   = document.getElementById('fsBtn');
 var artBtn  = document.getElementById('artBtn');
 
+var READER = 'loza.html', READERS = [{file:'susu.html', en:'Yusuf', ar:'يوسف'}, {file:'loza.html', en:'Noah', ar:'نوح'}];
 var ch = 'loza', lang = 'en', at = 0, autoplay = true, unlocked = false, babyName = '', big = false, useImages = true;
 // Turn the pages by itself, for when nobody has a free hand. Off until
 // asked for: a book that starts moving on its own is startling.
@@ -916,9 +917,11 @@ function render(){
   html += '</div>';
 
   if (page.cover) {
-    html += '<div class="namer"><label for="babyname">' + ui.readTo + '</label>' +
-      '<input id="babyname" type="text" autocomplete="off" maxlength="18" placeholder="' + ui.placeholder + '" value="' +
-      babyName.replace(/"/g, '&quot;') + '"></div>';
+    html += '<div class="namer"><label for="reader">' + ui.readTo + '</label><select id="reader">' +
+      READERS.map(function (r) {
+        return '<option value="' + r.file + '"' + (r.file === READER ? ' selected' : '') + '>' +
+          (t('dir') === 'rtl' ? r.ar : r.en) + '</option>';
+      }).join('') + '</select></div>';
   }
 
   html += '<p class="note"><b>' + ui.grownups + '</b><span>' + copy.note + '</span></p>';
@@ -944,12 +947,11 @@ function render(){
 
   applyName();
 
-  var input = document.getElementById('babyname');
-  if (input) {
-    input.addEventListener('input', function () {
-      babyName = input.value;
-      applyName();
-      try { localStorage.setItem('loza-name', babyName.trim()); } catch (e) {}
+  var reader = document.getElementById('reader');
+  if (reader) {
+    reader.addEventListener('change', function () {
+      // a book with chapters (the zoo) reopens on the same one
+      location.href = reader.value + '?lang=' + lang + (Object.keys(BOOK).length > 1 ? '#' + ch : '');
     });
   }
   document.getElementById('playBtn').addEventListener('click', togglePlay);
@@ -1152,14 +1154,18 @@ book.addEventListener('touchend', function (e) {
 }, { passive: true });
 
 try {
-  var saved = localStorage.getItem('loza-name');
-  if (saved) babyName = saved;
   var savedArt = localStorage.getItem('loza-art');
   if (savedArt) useImages = savedArt === 'photo';
 } catch (e) {}
 
 buildDots();
 render();
+(function () {
+  var q = (location.search.match(/[?&]lang=(en|ar|eg)/) || [])[1];
+  if (!q || q === 'en') return;
+  if (document.querySelector('#dialects [data-lang="' + q + '"]')) dialect = q;
+  document.querySelector('#langs [data-lang="ar"]').click();
+})();
 </script>
 </body>
 </html>
