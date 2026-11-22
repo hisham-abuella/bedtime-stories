@@ -10,7 +10,7 @@
   {
    "id": "c1",
    "title": "Red",
-   "transcript": "[warmly] أحمر. <break time=\"0.4s\" /> دعسوأة صغيّرة مدوّرة حمرا. نُؤطة! نُؤطة! <break time=\"0.5s\" /> [playfully] نُؤطة، نُؤطة!"
+   "transcript": "[warmly] أحمر. <break time=\"0.4s\" /> خنفسة صغيّرة مدوّرة حمرا. <break time=\"0.3s\" /> نقطة! نقطة! <break time=\"0.5s\" /> [playfully] نقطة، نقطة!"
   },
   {
    "id": "c2",
@@ -25,12 +25,12 @@
   {
    "id": "c4",
    "title": "Green",
-   "transcript": "[warmly] أخضر. <break time=\"0.4s\" /> ضفدعة خضرا صغيّرة، فوء وَرأة خضرا. نقّ! نقّ! <break time=\"0.5s\" /> [playfully] نقّ نقّ!"
+   "transcript": "[warmly] أخضر. <break time=\"0.4s\" /> ضفدعة خضرا صغيّرة، فوق ورقة خضرا. نقّ! نقّ! <break time=\"0.5s\" /> [playfully] نقّ نقّ!"
   },
   {
    "id": "c5",
    "title": "Orange",
-   "transcript": "[warmly] بُرتُآني. <break time=\"0.4s\" /> نمر بُرتُآني، بخطوط سودا. ررررررر! <break time=\"0.5s\" /> [excited] ررررررر!"
+   "transcript": "[warmly] بُرتقاني. <break time=\"0.4s\" /> نمر بُرتقاني، بخطوط سودا. <break time=\"0.3s\" /> ررررررر! <break time=\"0.5s\" /> [playfully] ررررررر!"
   },
   {
    "id": "c6",
@@ -40,7 +40,7 @@
   {
    "id": "c7",
    "title": "Pink",
-   "transcript": "[warmly] بمبي. <break time=\"0.4s\" /> فلامنجو بمبي طويل، وائِف على رِجل واحدة. هونك! هونك! <break time=\"0.5s\" /> [playfully] هونك هونك هونك!"
+   "transcript": "[warmly] بمبي. <break time=\"0.4s\" /> فلامنجو بمبي طويل، واقف على رِجل واحدة. هونك! هونك! <break time=\"0.5s\" /> [playfully] هونك هونك هونك!"
   },
   {
    "id": "c8",
@@ -50,7 +50,7 @@
   {
    "id": "c10",
    "title": "Grey",
-   "transcript": "[warmly] رصاصي. <break time=\"0.4s\" /> أُطّة رصاصي طريّة، متكوّرة ونعسانة. خُرّ… <break time=\"0.5s\" /> [softly] خُرّ…"
+   "transcript": "[warmly] رصاصي. <break time=\"0.4s\" /> قُطّة رصاصي طريّة، <break time=\"0.3s\" /> متكوّرة ونعسانة. <break time=\"0.4s\" /> خُرّ… <break time=\"0.5s\" /> [softly] خُرّ…"
   },
   {
    "id": "c11",
@@ -85,7 +85,7 @@
   {
    "id": "c9",
    "title": "All",
-   "transcript": "[warmly] كل الألوان. <break time=\"0.4s\" /> أحمر، أصفر، أزرأ، أخضر، بُرتُآني، بنفسجي، بمبي، بنّي، رصاصي، <break time=\"0.3s\" /> أبيض، إسود، فيروزي، دهبي، لون الرمل، وأخضر فاتح. كلّهم مع بعض. <break time=\"0.5s\" /> [whispers] تصبح على خير يا يوسف."
+   "transcript": "[warmly] كل الألوان. <break time=\"0.4s\" /> أحمر، أصفر، أزرق، أخضر، برتقاني، بنفسجي، بمبي، بنّي، رصاصي، <break time=\"0.3s\" /> أبيض، إسود، فيروزي، دهبي، لون الرمل، وأخضر فاتح. كلّهم مع بعض. <break time=\"0.5s\" /> [whispers] تصبح على خير يا يوسف."
   }
  ],
  "polished": true
