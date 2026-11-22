@@ -143,6 +143,19 @@ function qrFor(chapter, bk) {
     return '';
 }
 
+// The address printed under a chapter cover's code is that book's own site
+// (tools/siteurls.py), since the books in one volume can live on different
+// sites (a book moved to nostalgia-masry.com can share a volume with one
+// still on GitHub Pages). Falls back to --url if python is missing.
+const shortUrl = (u) => u.replace(/^https?:\/\//, "").split("/").slice(0, 2).join("/");
+function siteFor(bk) {
+    const slug = path.basename((bk && bk.file) || bookPaths[0], '.html');
+    try {
+        return require('child_process').execFileSync('python3',
+            [path.join(__dirname, 'siteurls.py'), 'base', slug], { encoding: 'utf8' }).trim();
+    } catch (e) { return listenUrl; }
+}
+
 // The book stores generated artwork as a path relative to itself; the print
 // file usually lives a directory down, so re-base it. Missing files fall back
 // to the drawing rather than printing a hole.
@@ -251,7 +264,7 @@ for (const bk of volume) {
       <div class="listen-text">
         <b>Scan to listen</b>
         <span>Every page read aloud, in English and Arabic.</span>
-        <span class="url">${esc(listenUrl.replace(/^https?:\/\//, "").split("/").slice(0, 2).join("/"))}</span>
+        <span class="url">${esc(shortUrl(siteFor(bk)))}</span>
       </div>
     </div>` : ''}
   </section>`);
@@ -414,7 +427,7 @@ if (coverSpread) {
         <div class="listen-text">
           <b>Scan to listen</b>
           <span>Every page read aloud, in English and Arabic.</span>
-          <span class="url">${esc(listenUrl.replace(/^https?:\/\//, "").split("/").slice(0, 2).join("/"))}</span>
+          <span class="url">${esc(shortUrl(listenUrl))}</span>
         </div>
       </div>` : ''}
     </div>

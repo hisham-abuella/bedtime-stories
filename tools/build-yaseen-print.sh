@@ -14,7 +14,7 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-URL="https://hisham-abuella.github.io/bedtime-stories/books/yaseen.html"
+URL=$(python3 tools/siteurls.py book yaseen)   # tools/siteurls.py
 QR=input/qr/qr-yaseen.svg
 mkdir -p build print/egyptian input/img/images-yaseen input/img-hi/images-yaseen
 

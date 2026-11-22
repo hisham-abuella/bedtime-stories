@@ -405,7 +405,9 @@ Hand over the link with a note that an old copy may be cached: Cmd+Shift+R on
 a computer, or close and reopen the tab on a phone. The shelf is
 `https://hisham-abuella.github.io/bedtime-stories/`. The QR codes in the
 printed books point at these same URLs, so a printed copy always plays the
-latest narration.
+latest narration — except the six books of Yusuf's two volumes, whose codes
+open `https://nostalgia-masry.com/babystories/<slug>.html` (the game site).
+Which book lives where is `NEW_SITE_BOOKS` in `tools/siteurls.py`.
 
 ## Changing an existing book
 

@@ -43,7 +43,7 @@ while (( $# )); do
 done
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-URL="https://hisham-abuella.github.io/bedtime-stories/books/$slug.html"
+URL=$(python3 tools/siteurls.py book "$slug")   # tools/siteurls.py
 QR=input/qr/qr-$slug.svg
 [[ -f books/$slug.html ]] || { echo "no books/$slug.html — build the book first" >&2; exit 1; }
 [[ -f $QR ]] || uvx --with segno python tools/make-qr.py >/dev/null

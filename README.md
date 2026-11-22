@@ -234,17 +234,30 @@ To render locally instead of through ElevenLabs: `~/Work/AI_server/scripts/voice
 
 ## Where these are published
 
-This repo publishes itself through GitHub Pages:
+The six books in the two bound volumes — Bismillah, Alhamdulillah, Allah Made
+It, Our Prophet ﷺ, the Black and White Zoo (with Fifteen Colours) and Susu —
+and their shelf live on the game site:
+
+**https://nostalgia-masry.com/babystories/** (each book at `…/babystories/<slug>.html`)
+
+That is what the printed QR codes in both volumes, and those books' board
+editions, point at. Those pages are deployed from the game site's repo, not
+from here.
+
+Every other book (Loza, Noah's copies, Yaseen, the alphabet books) is still
+served by this repo's GitHub Pages site, and its printed codes still point there:
 
 **https://hisham-abuella.github.io/bedtime-stories/**
 
-The shelf is `index.html`; the books, their audio and their artwork are served
-from the same place, which is what the printed QR codes point at. Pushing to
-`main` republishes.
+The shelf there is `index.html`; the books, their audio and their artwork are
+served from the same place. Pushing to `main` republishes.
 
-A second set of copies is served at **www.hishamabuella.com/projects/bedtime-stories/**
-from the `home` website repo, alongside the article about how they were made.
-Copy a finished story across when it is ready.
+Which book lives where is one list, `NEW_SITE_BOOKS` in `tools/siteurls.py`;
+every build script, `make-qr.py` and `check-qr.py` read it. Move a book by
+editing that list, then `tools/make-qr.py`, rebuild and `tools/check-qr.py`.
+
+The article about how they were made is on the personal site
+(www.hishamabuella.com/Articles/bedtime-stories.html).
 
 ## Printed editions
 
@@ -304,13 +317,16 @@ whoever is holding the printed book can play the same voice reading it.
 
 | Cover | Opens |
 |---|---|
-| The Black and White Zoo | `.../books/black-white-zoo.html` |
-| Fifteen Bright Colours (chapter two) | `.../books/black-white-zoo.html#color` |
-| Susu the Cat | `.../books/susu.html` |
+| A volume's own cover (both volumes) | `https://nostalgia-masry.com/babystories/` |
+| The Black and White Zoo | `…/babystories/black-white-zoo.html#bw` |
+| Fifteen Bright Colours (chapter two) | `…/babystories/black-white-zoo.html#color` |
+| Susu the Cat | `…/babystories/susu.html` |
+| Bismillah · Alhamdulillah · Allah Made It · Our Prophet ﷺ | `…/babystories/<slug>.html` |
 
-They point at this repo's own GitHub Pages site,
-`https://hisham-abuella.github.io/bedtime-stories/`, which serves the html, the
-audio and the artwork. The chapter codes work because the book now keeps its
+They point at the game site, `https://nostalgia-masry.com/babystories/`, which
+serves the html, the audio and the artwork. Books outside the two volumes keep
+their codes on `https://hisham-abuella.github.io/bedtime-stories/books/<slug>.html`
+(see `tools/siteurls.py`). The chapter codes work because the book now keeps its
 chapter in the address: `#bw` and `#color` open that chapter directly, and
 switching chapters updates the address.
 

@@ -15,25 +15,22 @@ import zxingcpp
 from PIL import Image
 
 REPO = Path(__file__).resolve().parent.parent
-BASE = 'https://hisham-abuella.github.io/bedtime-stories'
+sys.path.insert(0, str(REPO / 'tools'))
+from siteurls import book_url, shelf_url   # tools/siteurls.py
 TMP = Path(tempfile.mkdtemp(prefix='qrpages-'))
+
+def chapters_of(slug):
+    u = book_url(slug)
+    return {u, u + '#bw', u + '#color'}
 
 # what each book's codes are allowed to point at
 ALLOWED = {
-    'black-white-zoo': {f'{BASE}/books/black-white-zoo.html', f'{BASE}/books/black-white-zoo.html#bw',
-                        f'{BASE}/books/black-white-zoo.html#color'},
-    'susu':          {f'{BASE}/books/susu.html'},
-    'loza':          {f'{BASE}/books/loza.html'},
-    'bismillah':     {f'{BASE}/books/bismillah.html'},
-    'alhamdulillah': {f'{BASE}/books/alhamdulillah.html'},
-    'khalaqa':       {f'{BASE}/books/khalaqa.html'},
-    'nabina':        {f'{BASE}/books/nabina.html'},
-    'noah-black-white-zoo': {f'{BASE}/books/noah-black-white-zoo.html', f'{BASE}/books/noah-black-white-zoo.html#bw',
-                             f'{BASE}/books/noah-black-white-zoo.html#color'},
+    'black-white-zoo': chapters_of('black-white-zoo'),
+    'noah-black-white-zoo': chapters_of('noah-black-white-zoo'),
 }
 # any other book in books/ may point only at itself
 for page in (REPO / 'books').glob('*.html'):
-    ALLOWED.setdefault(page.stem, {f'{BASE}/books/{page.name}'})
+    ALLOWED.setdefault(page.stem, {book_url(page.stem)})
 
 # A bound volume carries one code per chapter, so its allowed set is the union
 # of the books inside it.
@@ -93,9 +90,12 @@ for pdf in pdfs:
     if len(found) != want:
         bad.append((name, f'expected {want} QR, found {len(found)}'))
     for page, text in found:
-        allowed = {f'{BASE}/'}          # a volume cover opens the shelf
+        # a volume cover opens the shelf: Yusuf's the new one, Noah's
+        # Animals and Colours the old one it was printed with
+        allowed = {shelf_url()} if book in ('vol-first-words', 'vol-animals-colours') \
+            else {shelf_url('legacy')}
         if book == 'vol-noah-first-words':
-            allowed = {f'{BASE}/#noah-first-words'}   # Noah's card on it
+            allowed = {shelf_url('legacy') + '#noah-first-words'}   # Noah's card on it
         for b in VOLUMES.get(book, [book]):
             allowed |= ALLOWED[b]
         if text not in allowed:
@@ -105,7 +105,7 @@ for pdf in pdfs:
 print(f'{len(pdfs)} PDFs, {total_codes} QR codes decoded\n')
 for name, n, urls in rows:
     mark = ' ' if n else '!'
-    print(f'{mark} {name:52} {n} -> {", ".join(u.replace(BASE, "") or "/" for u in urls)}')
+    print(f'{mark} {name:52} {n} -> {", ".join(urls)}')
 print()
 if bad:
     print(f'{len(bad)} PROBLEM(S):')

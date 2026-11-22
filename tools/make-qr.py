@@ -11,30 +11,35 @@ import re, sys
 from pathlib import Path
 import segno
 
-BASE = 'https://hisham-abuella.github.io/bedtime-stories'
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from siteurls import book_url, shelf_url   # tools/siteurls.py: the one place addresses live
+
 OUT = Path(__file__).resolve().parent.parent / 'input' / 'qr'
 CODES = {
-    'qr-shelf':         f'{BASE}/',
-    'qr-zoo':           f'{BASE}/books/black-white-zoo.html',
-    'qr-zoo-bw':        f'{BASE}/books/black-white-zoo.html#bw',
-    'qr-zoo-color':     f'{BASE}/books/black-white-zoo.html#color',
-    'qr-susu':          f'{BASE}/books/susu.html',
-    'qr-loza':          f'{BASE}/books/loza.html',
-    'qr-yaseen':        f'{BASE}/books/yaseen.html',
-    'qr-bismillah':     f'{BASE}/books/bismillah.html',
-    'qr-alhamdulillah': f'{BASE}/books/alhamdulillah.html',
-    'qr-khalaqa':       f'{BASE}/books/khalaqa.html',
-    'qr-nabina':        f'{BASE}/books/nabina.html',
+    # the volume covers open the shelf (on the new site)
+    'qr-shelf':         shelf_url(),
+    # Noah's Animals and Colours cover keeps the old shelf it was printed with
+    'qr-shelf-legacy':  shelf_url('legacy'),
+    'qr-zoo':           book_url('black-white-zoo'),
+    'qr-zoo-bw':        book_url('black-white-zoo') + '#bw',
+    'qr-zoo-color':     book_url('black-white-zoo') + '#color',
+    'qr-susu':          book_url('susu'),
+    'qr-loza':          book_url('loza'),
+    'qr-yaseen':        book_url('yaseen'),
+    'qr-bismillah':     book_url('bismillah'),
+    'qr-alhamdulillah': book_url('alhamdulillah'),
+    'qr-khalaqa':       book_url('khalaqa'),
+    'qr-nabina':        book_url('nabina'),
     # the back of Noah's First Words: his card on the shelf, which opens all four
-    'qr-noah-first-words': f'{BASE}/#noah-first-words',
+    'qr-noah-first-words': shelf_url('legacy') + '#noah-first-words',
     # Noah's zoo: a code per chapter, as Yusuf's has
-    'qr-noah-black-white-zoo-bw':    f'{BASE}/books/noah-black-white-zoo.html#bw',
-    'qr-noah-black-white-zoo-color': f'{BASE}/books/noah-black-white-zoo.html#color',
+    'qr-noah-black-white-zoo-bw':    book_url('noah-black-white-zoo') + '#bw',
+    'qr-noah-black-white-zoo-color': book_url('noah-black-white-zoo') + '#color',
 }
 # Every other book in books/ gets qr-<slug> without being listed: a new book
 # has its code the moment it is built.
 for page in sorted((OUT.parent.parent / 'books').glob('*.html')):
-    url = f'{BASE}/books/{page.name}'
+    url = book_url(page.stem)
     if url not in CODES.values():
         CODES[f'qr-{page.stem}'] = url
 OUT.mkdir(parents=True, exist_ok=True)
