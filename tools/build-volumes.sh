@@ -4,11 +4,11 @@
 #   tools/build-volumes.sh
 #
 # Six separate 10-page books are below every binding Lulu offers except
-# staples. Bound as two volumes they are 40 and 38 pages, which clears both
+# staples. Bound as two volumes they are 40 pages each, which clears both
 # the 32-page perfect-bound minimum and the 24-page hardcover one — so the
 # books can be a real hardcover rather than a stapled pamphlet.
 #
-#   First Words          Bismillah · Alhamdulillah · Allah Made It · The Prophet Loved
+#   First Words          Bismillah · Alhamdulillah · Allah Made It · Our Prophet ﷺ
 #   Animals and Colours  Black & White · Fifteen Colours · Susu the Cat
 #
 # Each volume gets a cover of its own that lists what is inside; every book

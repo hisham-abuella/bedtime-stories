@@ -213,6 +213,11 @@ const PAPER_HEX = '#FCFBF6';
 const isPale = (hex) => { try { return contrast(hex, PAPER_HEX) < 4.5; } catch (e) { return false; } };
 // the screen version marks the child's name with a span; print it plainly
 const plain = (s) => esc(s).replace(/<span class="babyname">([^<]*)<\/span>/g, '$1');
+// A chapter divider names the chapter in both languages: the Arabic title on
+// one line (its <br> becomes a space), so the Arabic reader sees «نَبيُّنا
+// صلّى اللهُ عليه وسلّم» on that divider too, not only the English.
+const arTitle = (p) => plain(arOf(p).title || p.ar.title || '').replace(/<br\s*\/?>/gi, ' ')
+    .replace(/<(?!\/?em>)[^>]+>/g, '').replace(/\s+/g, ' ').trim();
 
 // Crop marks and the folio live inside the bleed, so the trim knife removes
 // them. They are the only way to cut a stack of card squarely by hand, and the
@@ -256,6 +261,7 @@ for (const bk of volume) {
     <div class="words">
       <p class="eyebrow">${plain(page.en.eyebrow)}</p>
       <h1>${plain(page.en.title).replace(/<em>/g, '<em>')}</h1>
+      <p class="title-ar" dir="rtl" lang="${arLang}">${arTitle(page)}</p>
       <p class="line">${plain(page.en.line)}</p>
       <p class="line ar" dir="rtl" lang="${arLang}">${plain(arOf(page).line)}</p>
     </div>
@@ -415,7 +421,10 @@ if (coverSpread) {
         <p class="eyebrow">${esc(chapters.length)} stories in one book</p>
         <h2 class="back-title">${esc(volumeTitle)}</h2>
         ${volumeTitleAr ? `<p class="line ar" dir="rtl" lang="${arLang}">${esc(volumeTitleAr)}</p>` : ''}
-        <p class="line">Every page in English and Arabic, with a voice reading each one aloud.</p>` : `
+        <p class="line">Every page in English and Arabic, with a voice reading each one aloud.</p>
+        <p class="line ar" dir="rtl" lang="${arLang}">${dialect === 'eg'
+            ? 'كل صفحة بالعربي والإنجليزي، وصوت بيقراها لك.'
+            : 'كلُّ صفحةٍ بالعربيّةِ والإنجليزيّة، وصوتٌ يقرؤها لك.'}</p>` : `
         <p class="eyebrow">${plain(c.en.eyebrow)}</p>
         <h2 class="back-title">${stripTags(c.en.title)}</h2>
         <p class="line">${plain(c.en.line)}</p>
@@ -520,8 +529,10 @@ const geometry = square ? `
   .sheet.long .words{margin-top:3mm;gap:1.2mm}
   /* the cover also carries the title block and the 34mm QR panel: at a full
      stage the panel ran off the bottom of the square page and the QR was
-     clipped to the point where it would not scan */
-  .cover .art{width:66mm;height:66mm}
+     clipped to the point where it would not scan. The stage gave 9mm more to
+     the Arabic title line (.title-ar) when that went in, or Loza's two-line
+     cover pushed the QR off the page again. */
+  .cover .art{width:57mm;height:57mm}
   .cover h1{font-size:34pt}
 
   /* Lulu's 0.5in safety margin takes 9.4mm more off each side than the board
@@ -555,7 +566,7 @@ const geometry = square ? `
   .sheet.long .line{font-size:16pt;line-height:1.32}
   .sheet.long .line.ar{font-size:17pt;line-height:1.48}
   .sheet.long .sound{font-size:16pt}
-  .cover .art{width:76mm;height:76mm}
+  .cover .art{width:67mm;height:67mm}   /* 9mm to the Arabic title line */
   .words{margin-top:5mm}
   .sheet.blank{background:var(--paper)}
   ` : ''}
@@ -598,7 +609,7 @@ const geometry = square ? `
   .line{font-size:13pt;line-height:1.35}
   .line.ar{font-size:13pt;line-height:1.6}
   .sound{font-size:15pt}
-  .cover .art{width:96mm;height:96mm}
+  .cover .art{width:88mm;height:88mm}
   .cover h1{font-size:34pt}
 `;
 
@@ -657,6 +668,8 @@ fs.writeFileSync(outPath, `<!DOCTYPE html>
   .sheet.pale.snug .art{width:68mm;height:68mm}
   .sheet.pale.dense .art{width:63mm;height:63mm}
   .sound.ar{font-family:var(--ar);font-style:normal;font-weight:700}
+  .title-ar{font-family:var(--ar);font-weight:700;font-size:19pt;line-height:1.3;margin:0}
+  .title-ar em{font-style:normal;color:var(--accent)}
   .eyebrow{font-family:var(--display);font-size:8pt;letter-spacing:.2em;text-transform:uppercase;color:var(--quiet);margin:0}
   hr{border:none;border-top:.4mm solid rgba(17,16,16,.14);width:38mm;margin:3mm auto 1mm}
 

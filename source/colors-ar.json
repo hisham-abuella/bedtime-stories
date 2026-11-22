@@ -5,7 +5,7 @@
   {
    "id": "c0",
    "title": "Cover",
-   "transcript": "[warmly] والآن… <break time=\"0.4s\" /> الألوان. تسعةُ حيواناتٍ مُلوَّنة، وتسعةُ ألوانٍ نتعلّمُها معاً. <break time=\"0.5s\" /> [warmly] هيّا بنا."
+   "transcript": "[warmly] والآن… <break time=\"0.4s\" /> الألوان. خمسةَ عشرَ حيواناً مُلوَّناً، وخمسةَ عشرَ لوناً نتعلّمُها معاً. <break time=\"0.5s\" /> [warmly] هيّا بنا."
   },
   {
    "id": "c1",
@@ -15,7 +15,7 @@
   {
    "id": "c2",
    "title": "Yellow",
-   "transcript": "[warmly] أصفر. <break time=\"0.4s\" /> بَطَّةٌ صغيرةٌ صفراءُ ناعمة. كواك! كواك! <break time=\"0.5s\" /> [playfully] كواك!"
+   "transcript": "[warmly] أصفر. <break time=\"0.4s\" /> بَطَّةٌ صغيرةٌ صفراءُ ناعمة. صو! صو! <break time=\"0.5s\" /> [playfully] صو، صو، صو!"
   },
   {
    "id": "c3",
