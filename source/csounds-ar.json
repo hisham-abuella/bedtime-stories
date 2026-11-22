@@ -60,7 +60,7 @@
   {
    "id": "s12",
    "title": "s12",
-   "transcript": "[warmly] الطاووسُ يقول: <break time=\"0.3s\" /> [playfully] كيـاو! كيـاو!"
+   "transcript": "[warmly] الطاووسُ يقول: <break time=\"0.3s\" /> [playfully] كياو! كياو!"
   },
   {
    "id": "s13",
@@ -77,5 +77,6 @@
    "title": "s15",
    "transcript": "[warmly] الببغاءُ يقول: <break time=\"0.3s\" /> [playfully] أهلاً! أهلاً، أهلاً!"
   }
- ]
+ ],
+ "polished": true
 }
