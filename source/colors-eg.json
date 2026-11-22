@@ -15,7 +15,7 @@
   {
    "id": "c2",
    "title": "Yellow",
-   "transcript": "[warmly] أصفر. <break time=\"0.4s\" /> بطّة صغيّرة صفرا وطريّة. صو! صو! <break time=\"0.5s\" /> [playfully] صو، صو، صو!"
+   "transcript": "[warmly] أصفر. <break time=\"0.4s\" /> بطّة صفرا، صغنّنة وطريّة. صو! صو! <break time=\"0.5s\" /> [playfully] صو، صو، صو!"
   },
   {
    "id": "c3",
@@ -35,12 +35,12 @@
   {
    "id": "c6",
    "title": "Purple",
-   "transcript": "[warmly] بنفسجي. <break time=\"0.4s\" /> فراشة بنفسجي، بتطير لِفوء. <break time=\"0.5s\" /> [gently] بترفرف بجناحاتها، وبعدين تطير بعيد!"
+   "transcript": "[warmly] بنفسجي. <break time=\"0.4s\" /> فراشة بنفسجي، بتطير لفوق. <break time=\"0.5s\" /> [gently] بتحرّك جناحاتها، وبعدين تطير بعيد خالص!"
   },
   {
    "id": "c7",
    "title": "Pink",
-   "transcript": "[warmly] بمبي. <break time=\"0.4s\" /> فلامنجو بمبي طويل، واقف على رِجل واحدة. هونك! هونك! <break time=\"0.5s\" /> [playfully] هونك هونك هونك!"
+   "transcript": "[warmly] بمبي. <break time=\"0.4s\" /> فلامنجو بمبي طويل، على رِجل واحدة بس. هونك! هونك! <break time=\"0.5s\" /> [playfully] هونك هونك هونك!"
   },
   {
    "id": "c8",
@@ -50,7 +50,7 @@
   {
    "id": "c10",
    "title": "Grey",
-   "transcript": "[warmly] رصاصي. <break time=\"0.4s\" /> قُطّة رصاصي طريّة، <break time=\"0.3s\" /> متكوّرة ونعسانة. <break time=\"0.4s\" /> خُرّ… <break time=\"0.5s\" /> [softly] خُرّ…"
+   "transcript": "[warmly] رصاصي. <break time=\"0.4s\" /> القطّة الرصاصي الطريّة، متكوّرة ونعسانة. <break time=\"0.4s\" /> خُرّ… <break time=\"0.5s\" /> [softly] خُرّ…"
   },
   {
    "id": "c11",

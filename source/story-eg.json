@@ -5,7 +5,7 @@
   {
    "id": "p0",
    "title": "Cover",
-   "transcript": "[warmly] حديقة الحيوانات بالأبيض والإسود. <break time=\"0.4s\" /> كتاب عشان يوسف. <break time=\"0.3s\" /> تسعة حيوانات كبار وواضحين، نتفرّج عليهم سوا. <break time=\"0.4s\" /> [gently] إنت مستعد يا يوسف؟ <break time=\"0.5s\" /> [warmly] يلّا نقلّب الصفحة."
+   "transcript": "[warmly] يلّا نتفرّج على الحيوانات، بالأبيض والإسود. <break time=\"0.4s\" /> كتاب عشان يوسف. حيوانات كبار وواضحين، هنشوفهم سوا. <break time=\"0.4s\" /> [gently] يلّا يا يوسف، [warmly] نقلّب الصفحة."
   },
   {
    "id": "p1",
@@ -25,7 +25,7 @@
   {
    "id": "p4",
    "title": "Penguin",
-   "transcript": "[warmly] البطريق. <break time=\"0.4s\" /> بالطو إسود صغيّر، <break time=\"0.3s\" /> وبطن بيضا طريّة. <break time=\"0.4s\" /> بيتمايل… ويتمايل… <break time=\"0.5s\" /> [playfully] طشّ!"
+   "transcript": "[warmly] البطريق. <break time=\"0.4s\" /> لابس جاكتة سودا صغنّنة، ومن قدّام أبيض. <break time=\"0.4s\" /> بيتمايل… ويتمايل… <break time=\"0.5s\" /> [playfully] طشّ!"
   },
   {
    "id": "p5",
@@ -35,7 +35,7 @@
   {
    "id": "p6",
    "title": "Orca",
-   "transcript": "[warmly] الحوت الأوركا. <break time=\"0.4s\" /> إسود من فوق، أبيض من تحت، <break time=\"0.3s\" /> بينطّ فوق الموج. <break time=\"0.3s\" /> ووووووش! <break time=\"0.5s\" /> [playfully] طشّ!"
+   "transcript": "[warmly] الحوت الأوركا. <break time=\"0.4s\" /> إسود من فوق، وأبيض من تحت، بينطّ فوق البحر. ووووووش! <break time=\"0.5s\" /> [playfully] طشّ!"
   },
   {
    "id": "p7",
@@ -45,12 +45,12 @@
   {
    "id": "p8",
    "title": "Puppy",
-   "transcript": "[warmly] الكلب الصغنّن. <break time=\"0.4s\" /> نقط على ضهره، <break time=\"0.3s\" /> ونقطة على مناخيره. <break time=\"0.4s\" /> هَو! هَو! <break time=\"0.5s\" /> [playfully] هَو!"
+   "transcript": "[warmly] الكلب الصغنّن. <break time=\"0.4s\" /> نُقَط سودا على ضهره، ونُقطة على مناخيره. <break time=\"0.4s\" /> هَو! هَو! <break time=\"0.5s\" /> [playfully] هَو!"
   },
   {
    "id": "p10",
    "title": "Cat",
-   "transcript": "[warmly] القطّة. <break time=\"0.4s\" /> قطّة سودا، رِجليها الأربعة بيض، وشنبها أبيض وطويل. مياو! <break time=\"0.5s\" /> [playfully] مياو!"
+   "transcript": "[warmly] القطّة. <break time=\"0.4s\" /> قطّة سودا، رِجليها الأربعة لونهم أبيض، وشنبها أبيض وطويل. مياو! <break time=\"0.5s\" /> [playfully] مياو!"
   },
   {
    "id": "p9",
