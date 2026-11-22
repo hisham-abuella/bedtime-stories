@@ -5,12 +5,12 @@
   {
    "id": "c0",
    "title": "Cover",
-   "transcript": "[warmly] ودلوقتي… <break time=\"0.4s\" /> الألوان. خمستاشر حيوان ملوّن، وخمستاشر لون نتعلّمهم سوا. <break time=\"0.5s\" /> [warmly] يلّا بينا."
+   "transcript": "[warmly] ودلوقتي… <break time=\"0.4s\" /> الألوان. خمستاشر حيوان ملوّن، وخمستاشر لون نتعلّمهم سوا. <break time=\"0.5s\" /> [warmly] يَلّا بِينا."
   },
   {
    "id": "c1",
    "title": "Red",
-   "transcript": "[warmly] أحمر. <break time=\"0.4s\" /> دعسوقة صغيّرة مدوّرة حمرا. نقطة! نقطة! <break time=\"0.5s\" /> [playfully] نقطة، نقطة!"
+   "transcript": "[warmly] أحمر. <break time=\"0.4s\" /> دعسوأة صغيّرة مدوّرة حمرا. نُؤطة! نُؤطة! <break time=\"0.5s\" /> [playfully] نُؤطة، نُؤطة!"
   },
   {
    "id": "c2",
@@ -20,27 +20,27 @@
   {
    "id": "c3",
    "title": "Blue",
-   "transcript": "[warmly] أزرق. <break time=\"0.4s\" /> حوت أزرق كبير، في البحر الأزرق الغويط. طشّ! <break time=\"0.5s\" /> [excited] طشّ!"
+   "transcript": "[warmly] أزرأ. <break time=\"0.4s\" /> حوت أزرأ كبير، في البحر الأزرأ الغويط. طشّ! <break time=\"0.5s\" /> [excited] طشّ!"
   },
   {
    "id": "c4",
    "title": "Green",
-   "transcript": "[warmly] أخضر. <break time=\"0.4s\" /> ضفدعة خضرا صغيّرة، فوق ورقة خضرا. نقّ! نقّ! <break time=\"0.5s\" /> [playfully] نقّ نقّ!"
+   "transcript": "[warmly] أخضر. <break time=\"0.4s\" /> ضفدعة خضرا صغيّرة، فوء وَرأة خضرا. نقّ! نقّ! <break time=\"0.5s\" /> [playfully] نقّ نقّ!"
   },
   {
    "id": "c5",
    "title": "Orange",
-   "transcript": "[warmly] برتقاني. <break time=\"0.4s\" /> نمر برتقاني، بخطوط سودا. ررررررر! <break time=\"0.5s\" /> [excited] ررررررر!"
+   "transcript": "[warmly] بُرتُآني. <break time=\"0.4s\" /> نمر بُرتُآني، بخطوط سودا. ررررررر! <break time=\"0.5s\" /> [excited] ررررررر!"
   },
   {
    "id": "c6",
    "title": "Purple",
-   "transcript": "[warmly] بنفسجي. <break time=\"0.4s\" /> فراشة بنفسجي، بتطير لفوق. <break time=\"0.5s\" /> [gently] بترفرف بجناحاتها، وبعدين تطير بعيد!"
+   "transcript": "[warmly] بنفسجي. <break time=\"0.4s\" /> فراشة بنفسجي، بتطير لِفوء. <break time=\"0.5s\" /> [gently] بترفرف بجناحاتها، وبعدين تطير بعيد!"
   },
   {
    "id": "c7",
    "title": "Pink",
-   "transcript": "[warmly] بمبي. <break time=\"0.4s\" /> فلامنجو بمبي طويل، واقف على رِجل واحدة. هونك! هونك! <break time=\"0.5s\" /> [playfully] هونك هونك هونك!"
+   "transcript": "[warmly] بمبي. <break time=\"0.4s\" /> فلامنجو بمبي طويل، وائِف على رِجل واحدة. هونك! هونك! <break time=\"0.5s\" /> [playfully] هونك هونك هونك!"
   },
   {
    "id": "c8",
@@ -50,7 +50,7 @@
   {
    "id": "c10",
    "title": "Grey",
-   "transcript": "[warmly] رصاصي. <break time=\"0.4s\" /> قطّة رصاصي طريّة، متكوّرة ونعسانة. خُرّ… <break time=\"0.5s\" /> [softly] خُرّ…"
+   "transcript": "[warmly] رصاصي. <break time=\"0.4s\" /> أُطّة رصاصي طريّة، متكوّرة ونعسانة. خُرّ… <break time=\"0.5s\" /> [softly] خُرّ…"
   },
   {
    "id": "c11",
@@ -80,12 +80,12 @@
   {
    "id": "c16",
    "title": "أخضر فاتح",
-   "transcript": "[warmly] أخضر فاتح. <break time=\"0.4s\" /> بغبغان أخضر فاتح، بيتعلّم الكلام. أهلاً! أهلاً! <break time=\"0.5s\" /> [playfully] أهلاً، أهلاً!"
+   "transcript": "[warmly] أخضر فاتح. <break time=\"0.4s\" /> بغبغان أخضر فاتح، بِيِتعَلِّم الكلام. أهلاً! أهلاً! <break time=\"0.5s\" /> [playfully] أهلاً، أهلاً!"
   },
   {
    "id": "c9",
    "title": "All",
-   "transcript": "[warmly] كل الألوان. <break time=\"0.4s\" /> أحمر، أصفر، أزرق، أخضر، برتقاني، بنفسجي، بمبي، بنّي، رصاصي، <break time=\"0.3s\" /> أبيض، إسود، فيروزي، دهبي، لون الرمل، وأخضر فاتح. كلّهم مع بعض. <break time=\"0.5s\" /> [whispers] تصبح على خير يا يوسف."
+   "transcript": "[warmly] كل الألوان. <break time=\"0.4s\" /> أحمر، أصفر، أزرأ، أخضر، بُرتُآني، بنفسجي، بمبي، بنّي، رصاصي، <break time=\"0.3s\" /> أبيض، إسود، فيروزي، دهبي، لون الرمل، وأخضر فاتح. كلّهم مع بعض. <break time=\"0.5s\" /> [whispers] تصبح على خير يا يوسف."
   }
  ],
  "polished": true

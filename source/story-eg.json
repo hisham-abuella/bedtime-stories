@@ -5,7 +5,7 @@
   {
    "id": "p0",
    "title": "Cover",
-   "transcript": "[warmly] جنينة الحيوانات بالأبيض والإسود. <break time=\"0.4s\" /> كتاب عشان يوسف. تِسع حيوانات كبار وواضحين، نتفرّج عليهم سوا. إنت جاهز يا يوسف؟ <break time=\"0.5s\" /> [warmly] يلّا نقلّب الصفحة."
+   "transcript": "[warmly] جنينة الحيوانات بالأبيض والإسود. <break time=\"0.4s\" /> كتاب عشان يوسف. تِسع حيوانات كبار وواضحين، نتفرّج عليهم سوا. إنتَ جاهز يا يوسف؟ <break time=\"0.5s\" /> [warmly] يلّا نِئَلِّب الصّفحة."
   },
   {
    "id": "p1",
@@ -20,7 +20,7 @@
   {
    "id": "p3",
    "title": "Cow",
-   "transcript": "[warmly] البقرة. <break time=\"0.4s\" /> بقرة بيضا كبيرة، عليها بقع سودا كبيرة. موووووو! <break time=\"0.5s\" /> [playfully] موووووووو!"
+   "transcript": "[warmly] البأرة. <break time=\"0.4s\" /> بأرة بيضا كبيرة، عليها بُؤَع سودا كبيرة. موووووو! <break time=\"0.5s\" /> [playfully] موووووووو!"
   },
   {
    "id": "p4",
@@ -35,7 +35,7 @@
   {
    "id": "p6",
    "title": "Orca",
-   "transcript": "[warmly] الحوت الأوركا. <break time=\"0.4s\" /> إسود من فوق، أبيض من تحت، بينطّ فوق الموج. ووووووش! <break time=\"0.5s\" /> [excited] طشّ!"
+   "transcript": "[warmly] الحوت الأوركا. <break time=\"0.4s\" /> إسود من فوء، أبيض من تحت، بِيِنُطّ فوء الموج. ووووووش! <break time=\"0.5s\" /> [excited] طشّ!"
   },
   {
    "id": "p7",
@@ -45,12 +45,12 @@
   {
    "id": "p8",
    "title": "Puppy",
-   "transcript": "[warmly] الكلب الصغنّن. <break time=\"0.4s\" /> نقط على ضهره، ونقطة على مناخيره. هَو! هَو! <break time=\"0.5s\" /> [playfully] هَو!"
+   "transcript": "[warmly] الكلب الصغنّن. <break time=\"0.4s\" /> نُؤَط على ضهرُه، ونُؤطة على مناخيره. هَو! هَو! <break time=\"0.5s\" /> [playfully] هَو!"
   },
   {
    "id": "p10",
    "title": "Cat",
-   "transcript": "[warmly] القطّة. <break time=\"0.4s\" /> قطّة سودا، رِجليها الأربعة بيض، وشنبها أبيض وطويل. مياو! <break time=\"0.5s\" /> [playfully] مياو!"
+   "transcript": "[warmly] الأُطّة. <break time=\"0.4s\" /> أُطّة سودا، رِجليها الأربعة بيض، وشنبها أبيض وطويل. مياو! <break time=\"0.5s\" /> [playfully] مياو!"
   },
   {
    "id": "p9",
