@@ -205,6 +205,11 @@ grid of letters, and a letter opens with two pictures, its words and the voice.
   Egyptians say them (تَعلب، أُطّة), while the page shows the written spelling.
 - ث، ذ، ظ words use the written spelling (ثعلب، ذرة، ظرف) with a note on how
   Egyptians say them. Garlic was left out on purpose.
+Print: `python3 tools/build-alphabet-print.py [abc|huroof]` makes, for each book, a
+board PDF (180mm square, home printing), a Lulu interior (8.5in square, 32 pages,
+no QR inside) and a Lulu cover spread (QR on the back). `abc` goes to
+`print/alphabet/`, `huroof` to `print/egyptian/` (`-eg`). It reads the same spec
+and the 1536px masters, then `tools/check-lulu.sh` and `tools/check-qr.py` pass.
 
 ## Two sets of artwork
 
