@@ -4,8 +4,7 @@
 
 Yusuf's two bound volumes -- First Words and Animals and Colours -- and the
 shelf have moved to nostalgia-masry.com: every code in both volumes opens the
-new site. Every other book (Loza, Noah's copies, Yaseen, the alphabet
-books...) keeps its old GitHub Pages address, which copies are already
+new site. Every other book (Loza, Noah's copies, Yaseen...) keeps its old GitHub Pages address, which copies are already
 printed with.
 
   python3 tools/siteurls.py shelf            # the shelf the volume covers open
@@ -32,6 +31,7 @@ LEGACY = {   # GitHub Pages: books are one level down, in books/
 NEW_SITE_BOOKS = {
     'bismillah', 'alhamdulillah', 'khalaqa', 'nabina',   # First Words
     'black-white-zoo', 'susu',                           # Animals and Colours
+    'abc', 'huroof',                                     # the alphabet books
 }
 
 
