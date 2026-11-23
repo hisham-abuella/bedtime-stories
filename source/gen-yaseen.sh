@@ -11,7 +11,7 @@ REPO=$(cd "$(dirname "$0")/.." && pwd)
 DEST=${DEST:-$REPO/images-yaseen}
 SIZE=${SIZE:-1024}
 mkdir -p "$DEST"
-CLI=/opt/homebrew/bin/draw-things-cli
+CLI=$HOME/.local/bin/draw-things-cli
 HAIR="jet-black hair, short and messy, with a soft fringe over his forehead and one little tuft sticking up on top"
 BOY="a cheerful four-year-old cartoon boy with $HAIR, fair skin, round soft face, small thin eyebrows, round rosy cheeks"
 YASEEN="$BOY, big dark brown eyes and a bright smile"
@@ -56,7 +56,8 @@ gen friend     "$YASEEN $TEE, sitting on a classroom floor building a train out 
 gen training   "$YASEEN $KIT, standing proudly on a green soccer field with a ball at his feet, little orange cones behind him, palm trees, $TROLLEY" 614
 gen warmup     "$YASEEN $KIT, doing jumping jacks with his little teammates on a green soccer field, palm trees, $TROLLEY" 615
 gen dribble    "$YASEEN $KIT, dribbling a soccer ball through a zigzag line of small orange cones on a green field, motion lines, $TROLLEY" 616
-gen listen     "$YASEEN $KIT, sitting on the grass with his little teammates listening carefully, a whistle on a cord and a soccer ball on the grass in front of them, $TROLLEY" 917
+# Redrawn: seed 917 put Coach's whistle in his mouth and left out the team.
+gen listen     "$BOY, big dark brown eyes, mouth closed in a small attentive smile, $KIT, sitting cross-legged on the grass in a row with his little teammates, all listening carefully, a soccer ball on the grass in front of them, $TROLLEY" 1019
 gen goal       "$YASEEN $KIT, celebrating with both arms up as the soccer ball hits the net of a small goal, little teammates cheering behind him, $TROLLEY" 618
 gen handshake  "$YASEEN $KIT, shaking hands with a smiling little boy with curly brown hair in a yellow soccer jersey from the other team, a small grass stain on his knee, $TROLLEY" 919
 gen backyard   "$YASEEN $TEE, kicking a soccer ball into a small empty goal in a sunny backyard at golden hour, $TROLLEY" 820

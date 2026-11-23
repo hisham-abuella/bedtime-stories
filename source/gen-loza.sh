@@ -9,7 +9,7 @@ SIZE=${SIZE:-1024}
 mkdir -p "$DEST"
 # Her cover is drawn from her real photograph, kept in the repo.
 REF=${REF:-$REPO/images/loza-photo.jpg}
-CLI=/opt/homebrew/bin/draw-things-cli
+CLI=$HOME/.local/bin/draw-things-cli
 LOZA="a round-faced white cartoon cat with a fluffy white coat, odd eyes — her right eye pale blue and her left eye green — a small dark grey smudge on the very top of her head between the ears, pink inner ears and a small pink nose"
 KITTEN="the same cat as a small young kitten: $LOZA"
 # asleep: the eye colours are left out, or the model paints one open
@@ -39,7 +39,9 @@ gen home      "$LOZA sitting on a sunny window sill, a blue ocean and tall palm 
 # Mama married Baba: he is his shoes by the door, beside the wedding flowers.
 # Feet and legs are in the negative so no person grows out of the shoes.
 NEG="$NEG, legs, feet" gen baba "$LOZA curiously sniffing a pair of big brown men's leather shoes on the floor by a front door, a bouquet of white wedding flowers lying beside them, cosy hallway, $STYLE" 436
-gen noah      "$LOZA sitting calmly beside a baby's wooden crib, keeping watch, only a soft blue blanket and a small teddy bear visible through the rails, nobody visible, $STYLE" 416
+# Redrawn: seed 416 put her inside the crib, not beside it. She sits on the
+# floor outside it now, the rails between her and the blanket.
+gen noah      "$LOZA sitting on the floor next to a baby's wooden crib, outside the crib, keeping watch, full body view, the crib rails between her and a soft blue blanket and a small teddy bear inside, nobody visible, $STYLE" 518
 gen play      "$LOZA batting at a ball of yellow yarn on a soft rug, toy blocks nearby, $STYLE" 407
 # Pet her a second too long and she bites. Asked for a raised paw, the model
 # gave a cross face instead — which says it better for a baby anyway.
