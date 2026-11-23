@@ -157,8 +157,11 @@ def build(slug, mode):
 
     # ---------- cover spread ----------
     spread_w = trim * 2 + spine + 2 * bleed
+    chips = ''.join(f'<span style="background:{TINTS[i % len(TINTS)]}">{E(p["letter"])}</span>'
+                    for i, p in enumerate(pages))
     cover_html = f'''<section class="spread" style="width:{spread_w}mm;height:{sheet}mm">
       <div class="half back"><div class="bk"><p class="sub">{E(b["cover"]["line"])}</p>
+        <div class="chips">{chips}</div>
         <div class="qr small-qr">{qr}</div><p class="url">{E(url)}</p></div></div>
       <div class="spine"></div>
       <div class="half front"><div class="fr"><h1>{E(b["title"])}</h1>
@@ -221,6 +224,10 @@ figcaption{{font:700 {20 if not ar else 24}pt var(--display)}}
 .half.back{{padding-left:{bleed + safe}mm}} .half.front{{padding-right:{bleed + safe}mm}}
 .spine{{flex:0 0 {spine}mm;background:#F3D9C4}}
 .fr,.bk{{display:flex;flex-direction:column;align-items:center;gap:6mm;text-align:center}}
+.chips{{display:flex;flex-wrap:wrap;justify-content:center;gap:3mm;max-width:{trim - 2 * safe - 20}mm;direction:{direction}}}
+.chips span{{width:14mm;height:14mm;border-radius:3.5mm;display:flex;align-items:center;justify-content:center;
+  font:800 {18 if not ar else 22}pt var(--display);color:var(--accent);background:#fff}}
+.spread .half.back{{background:#FCFBF6}}
 .small-qr{{width:{trim * 0.2}mm;height:{trim * 0.2}mm}}
 .bk{{margin-bottom:{32 + 6}mm}}   /* Lulu keeps 92 x 32mm free at the bottom of the back for a barcode */
 '''
