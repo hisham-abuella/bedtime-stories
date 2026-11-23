@@ -5,12 +5,12 @@
   {
    "id": "p0",
    "title": "Cover",
-   "transcript": "[warmly] جنينة الحيوانات بالأبيض والإسود. <break time=\"0.4s\" /> كتاب عشان يوسف. تسع حيوانات كبار وواضحين، نتفرّج عليهم سوا. إنت جاهز يا يوسف؟ <break time=\"0.5s\" /> [warmly] يلّا نقلّب الصفحة."
+   "transcript": "[warmly] يلّا نتفرّج على الحيوانات، بالأبيض والإسود. <break time=\"0.4s\" /> كتاب عشان يوسف. حيوانات كبار وواضحين، هنشوفهم سوا. <break time=\"0.4s\" /> [gently] يلّا يا يوسف، [warmly] نقلّب الصفحة."
   },
   {
    "id": "p1",
    "title": "Zebra",
-   "transcript": "[warmly] الحمار الوحشي. <break time=\"0.4s\" /> خط إسود، وخط أبيض، واحد ورا التاني. طق طق! <break time=\"0.5s\" /> [playfully] طق طق!"
+   "transcript": "[warmly] الحمار الوحشي. <break time=\"0.4s\" /> خط إسود، وخط أبيض، واحد وَرا، التّاني. طق طق! <break time=\"0.5s\" /> [playfully] طق طق!"
   },
   {
    "id": "p2",
@@ -25,7 +25,7 @@
   {
    "id": "p4",
    "title": "Penguin",
-   "transcript": "[warmly] البطريق. <break time=\"0.4s\" /> بالطو إسود صغيّر، وبطن بيضا طريّة. بيتمايل ويتمايل… <break time=\"0.5s\" /> [playfully] طشّ!"
+   "transcript": "[warmly] البطريق. <break time=\"0.4s\" /> لابس جاكتة سودا صغنّنة، ومن قدّام أبيض. <break time=\"0.4s\" /> بيتمايل… ويتمايل… <break time=\"0.5s\" /> [playfully] طشّ!"
   },
   {
    "id": "p5",
@@ -35,27 +35,28 @@
   {
    "id": "p6",
    "title": "Orca",
-   "transcript": "[warmly] الحوت الأوركا. <break time=\"0.4s\" /> إسود من فوق، أبيض من تحت، بينطّ فوق الموج. ووووووش! <break time=\"0.5s\" /> [excited] طشّ!"
+   "transcript": "[warmly] الحوت الأوركا. <break time=\"0.4s\" /> إسود من فوق، وأبيض من تحت، بينطّ فوق البحر. ووووووش! <break time=\"0.5s\" /> [playfully] طشّ!"
   },
   {
    "id": "p7",
    "title": "Sheep",
-   "transcript": "[warmly] الخروف. <break time=\"0.4s\" /> سحابة بيضا صغيّرة، ليها أربع رجلين صغيّرين. مااااااء! <break time=\"0.5s\" /> [softly] مااااااء!"
+   "transcript": "[warmly] الخروف. <break time=\"0.4s\" /> سحابة بيضا صغيّرة، ليها أربع رِجول صغيّرة. مااااااء! <break time=\"0.5s\" /> [softly] مااااااء!"
   },
   {
    "id": "p8",
    "title": "Puppy",
-   "transcript": "[warmly] الكلب الصغنّن. <break time=\"0.4s\" /> نقط على ضهره، ونقطة على مناخيره. هَو! هَو! <break time=\"0.5s\" /> [playfully] هَو!"
+   "transcript": "[warmly] الكلب الصغنّن. <break time=\"0.4s\" /> نُقَط سودا على ضهره، ونُقطة على مناخيره. <break time=\"0.4s\" /> هَو! هَو! <break time=\"0.5s\" /> [playfully] هَو!"
   },
   {
    "id": "p10",
    "title": "Cat",
-   "transcript": "[warmly] القطّة. <break time=\"0.4s\" /> قطّة سودا، رجليها الأربعة بيض، وشنبها أبيض وطويل. مياو! <break time=\"0.5s\" /> [playfully] مياو!"
+   "transcript": "[warmly] القطّة. <break time=\"0.4s\" /> قطّة سودا، رجليها الأربعة لونهم أبيض، وشنبها أبيض وطويل. مياو! <break time=\"0.5s\" /> [playfully] مياو!"
   },
   {
    "id": "p9",
    "title": "Goodnight",
-   "transcript": "[warmly] تصبح على خير. <break time=\"0.4s\" /> تصبح على خير يا حمار وحشي، وتصبحي على خير يا باندا، وتصبحي على خير يا بومة الشجرة. تصبح على خير يا يوسف. <break time=\"0.5s\" /> [whispers] نام وإنت مرتاح يا حبيبي."
+   "transcript": "[warmly] تِصبَح على خير. <break time=\"0.4s\" /> تِصبَح على خير يا حمار وحشي، وتِصبَحي على خير يا باندا، وتِصبَحي على خير يا بومة الشجرة. تِصبَح على خير يا يوسف. <break time=\"0.5s\" /> [whispers] نام وإنت مرتاح يا حبيبي."
   }
- ]
+ ],
+ "polished": true
 }

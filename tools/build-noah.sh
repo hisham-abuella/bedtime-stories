@@ -17,7 +17,9 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BASE="https://hisham-abuella.github.io/bedtime-stories"
+# Noah's set keeps the old GitHub Pages addresses it was printed with
+# (tools/siteurls.py); only Yusuf's two volumes moved to nostalgia-masry.com.
+SHELF=$(python3 tools/siteurls.py shelf legacy)
 NAME=(--name "Noah" --name-ar "نوح")
 
 # Loza's print-weight art. The other books' copies are made by build-print.sh
@@ -48,7 +50,7 @@ dest() { case " $* " in *" --dialect eg "*) echo print/noah/egyptian ;; *) echo 
 board() {  # board <suffix> [flags...]
   local suffix=$1; shift
   node tools/make-print.js books/loza.html "build/loza$suffix.html" \
-       --url "$BASE/books/loza.html" --qr input/qr/qr-loza.svg --board --art images "${NAME[@]}" "$@"
+       --url "$(python3 tools/siteurls.py book loza)" --qr input/qr/qr-loza.svg --board --art images "${NAME[@]}" "$@"
   pdf "build/loza$suffix.html" "$(dest "$@")/loza$suffix.pdf"
 }
 board "-board"
@@ -63,7 +65,7 @@ ANIMALS="books/noah-black-white-zoo.html,books/loza.html"
 vol() {    # vol <slug> <books> <title-en> <title-ar> <suffix> [flags...]
   local slug=$1 books=$2 ten=$3 tar=$4 suffix=$5; shift 5
   node tools/make-print.js "$books" "build/$slug$suffix.html" \
-       --url "$BASE/" --lulu --art images --volume "$ten" --volume-ar "$tar" "${NAME[@]}" "$@" >/dev/null
+       --url "$SHELF" --lulu --art images --volume "$ten" --volume-ar "$tar" "${NAME[@]}" "$@" >/dev/null
   pdf "build/$slug$suffix.html" "$(dest "$@")/$slug$suffix.pdf"
 }
 # Noah's First Words has the same back cover as Yusuf's.
@@ -73,6 +75,8 @@ FIRST_COVER="--back-art input/img-hi/images-bismillah/vol-back.jpg --frame islam
 # Its back-cover code opens Noah's card on the shelf, which links all four.
 FIRST_COVER="$FIRST_COVER --cover-qr input/qr/qr-noah-first-words.svg"
 ANIMALS_COVER="--back-art input/img-hi/images-loza/vol-back.jpg --frame mat:#8FB58A"
+# qr-shelf is the new shelf now; this cover keeps the old one
+ANIMALS_COVER="$ANIMALS_COVER --cover-qr input/qr/qr-shelf-legacy.svg"
 for v in "vol-noah-first-words|$FIRST|First Words|أوّلُ الكلمات|$FIRST_COVER" \
          "vol-noah-animals-colours|$ANIMALS|Animals and Colours|الحيوانات والألوان|$ANIMALS_COVER"; do
   IFS='|' read -r slug books ten tar art <<< "$v"

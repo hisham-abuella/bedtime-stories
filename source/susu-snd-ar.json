@@ -10,12 +10,13 @@
   {
    "id": "s2",
    "title": "Purr",
-   "transcript": "[softly] سوسو تُخَرخِر: خررررر، خررررر."
+   "transcript": "[softly] سوسو تُخَرخِرُ: <break time=\"0.3s\" /> خُرررر، خُرررر."
   },
   {
    "id": "s3",
    "title": "Meow",
    "transcript": "[playfully] سوسو تقول: مياااو! مياو، مياو!"
   }
- ]
+ ],
+ "polished": true
 }

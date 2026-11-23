@@ -21,7 +21,6 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BASE="https://hisham-abuella.github.io/bedtime-stories"
 
 # Print-weight JPEGs from the 1536px re-renders.
 mkdir -p input/img-hi
@@ -57,7 +56,7 @@ one() {           # one <book> <qr> <suffix> [extra flags...]
   local book=$1 qr=$2 suffix=$3; shift 3
   local dest=print/arabic; case " $* " in *" --dialect eg "*) dest=print/egyptian ;; esac
   node tools/make-print.js "books/$book.html" "build/$book$suffix.html" \
-       --url "$BASE/books/$book.html" --qr "input/qr/$qr" --lulu "$@"
+       --url "$(python3 tools/siteurls.py book "$book")" --qr "input/qr/$qr" --lulu "$@"
   "$CHROME" --headless --no-pdf-header-footer \
        --print-to-pdf="$dest/$book$suffix.pdf" "file://$PWD/build/$book$suffix.html" 2>/dev/null
   printf '  %-52s %s\n' "$dest/$book$suffix.pdf" "$(du -h "$dest/$book$suffix.pdf" | cut -f1)"

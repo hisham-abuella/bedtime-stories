@@ -41,7 +41,7 @@ square printed book:
 
 ```sh
 node tools/make-print.js susu.html print/susu-216.html \
-  --url https://hisham-abuella.github.io/bedtime-stories/susu.html \
+  --url https://nostalgia-masry.com/babystories/susu.html \
   --qr print/qr-susu.svg --board --art images --trim 216 --bleed 3.2
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --headless \
   --no-pdf-header-footer --print-to-pdf=print/susu-216.pdf "file://$PWD/print/susu-216.html"

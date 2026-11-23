@@ -9,7 +9,6 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BASE="https://hisham-abuella.github.io/bedtime-stories"
 
 # Print-weight copies of the generated artwork. The books ship 1024px PNGs,
 # which Chrome embeds whole: four illustrated editions came to 52MB. At 1024px
@@ -36,7 +35,7 @@ one() {           # one <book> <qr> <suffix> [extra flags...]
   local book=$1 qr=$2 suffix=$3; shift 3
   local dest=print/arabic; case " $* " in *" --dialect eg "*) dest=print/egyptian ;; esac
   node tools/make-print.js "books/$book.html" "build/$book$suffix.html" \
-       --url "$BASE/books/$book.html" --qr "input/qr/$qr" "$@"
+       --url "$(python3 tools/siteurls.py book "$book")" --qr "input/qr/$qr" "$@"
   "$CHROME" --headless --no-pdf-header-footer \
        --print-to-pdf="$dest/$book$suffix.pdf" "file://$PWD/build/$book$suffix.html" 2>/dev/null
   printf '  %-50s %s\n' "$dest/$book$suffix.pdf" "$(du -h "$dest/$book$suffix.pdf" | cut -f1)"

@@ -4,11 +4,11 @@
 #   tools/build-volumes.sh
 #
 # Six separate 10-page books are below every binding Lulu offers except
-# staples. Bound as two volumes they are 40 and 38 pages, which clears both
+# staples. Bound as two volumes they are 40 pages each, which clears both
 # the 32-page perfect-bound minimum and the 24-page hardcover one — so the
 # books can be a real hardcover rather than a stapled pamphlet.
 #
-#   First Words          Bismillah · Alhamdulillah · Allah Made It · The Prophet Loved
+#   First Words          Bismillah · Alhamdulillah · Allah Made It · Our Prophet ﷺ
 #   Animals and Colours  Black & White · Fifteen Colours · Susu the Cat
 #
 # Each volume gets a cover of its own that lists what is inside; every book
@@ -17,7 +17,8 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-BASE="https://hisham-abuella.github.io/bedtime-stories"
+# the volume covers open the shelf; addresses live in tools/siteurls.py
+SHELF=$(python3 tools/siteurls.py shelf)
 mkdir -p build print/arabic print/egyptian
 
 ISLAMIC="books/bismillah.html,books/alhamdulillah.html,books/khalaqa.html,books/nabina.html"
@@ -27,7 +28,7 @@ one() {   # one <slug> <books> <title-en> <title-ar> <suffix> [flags...]
   local slug=$1 books=$2 ten=$3 tar=$4 suffix=$5; shift 5
   local dest=print/arabic; case " $* " in *" --dialect eg "*) dest=print/egyptian ;; esac
   node tools/make-print.js "$books" "build/$slug$suffix.html" \
-       --url "$BASE/" --lulu --art images --volume "$ten" --volume-ar "$tar" "$@" >/dev/null
+       --url "$SHELF" --lulu --art images --volume "$ten" --volume-ar "$tar" "$@" >/dev/null
   "$CHROME" --headless --no-pdf-header-footer \
        --print-to-pdf="$dest/$slug$suffix.pdf" "file://$PWD/build/$slug$suffix.html" 2>/dev/null
   printf '  %-54s %s\n' "$dest/$slug$suffix.pdf" "$(du -h "$dest/$slug$suffix.pdf" | cut -f1)"

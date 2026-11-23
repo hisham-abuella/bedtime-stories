@@ -14,6 +14,8 @@ no framework, no build step. Open `index.html` for the shelf.
 | Alhamdulillah, Little One | `books/alhamdulillah.html` | Eight plain gifts |
 | Allah Made It | `books/khalaqa.html` | Eight pieces of the world |
 | Our Prophet | `books/nabina.html` | Eight things he loved |
+| My ABC | `books/abc.html` | 26 letters, two pictures each |
+| حروفي | `books/huroof.html` | 28 Arabic letters, in Egyptian |
 
 ## Where things live
 
@@ -187,6 +189,28 @@ node tools/make-transcripts.js stories/bismillah.json # -> source/bismillah-{en,
 Because the page, the print edition and the narration all read the same spec, the
 words cannot drift between the screen, the paper and the audio.
 
+## The alphabet books
+
+*My ABC* (English) and *حروفي* (Egyptian Arabic, not fusha) are two separate
+books, with no child's name, built differently from the stories: each opens on a
+grid of letters, and a letter opens with two pictures, its words and the voice.
+
+- `stories/alphabet.json`: the words for both books (one picture per word).
+- `source/gen-alphabet.sh`: the pictures, one soft-gouache object each, shared by
+  both books by name (the apple is A and ت), drawn at 1536 into
+  `art-hi/images-alphabet/`, then `tools/web-art.sh alphabet`.
+- `tools/build-alphabet.py`: writes `books/abc.html` and `books/huroof.html`.
+- `source/abc-en.json`, `source/huroof-eg.json`: the voice-over, both in Hisham's
+  voice. The Arabic script names each letter (ألِف، با…) and spells words the way
+  Egyptians say them (تَعلب، أُطّة), while the page shows the written spelling.
+- ث، ذ، ظ words use the written spelling (ثعلب، ذرة، ظرف) with a note on how
+  Egyptians say them. Garlic was left out on purpose.
+Print: `python3 tools/build-alphabet-print.py [abc|huroof]` makes, for each book, a
+board PDF (180mm square, home printing), a Lulu interior (8.5in square, 32 pages,
+no QR inside) and a Lulu cover spread (QR on the back). `abc` goes to
+`print/alphabet/`, `huroof` to `print/egyptian/` (`-eg`). It reads the same spec
+and the 1536px masters, then `tools/check-lulu.sh` and `tools/check-qr.py` pass.
+
 ## Two sets of artwork
 
 The top bar has an **Artwork** switch:
@@ -234,17 +258,30 @@ To render locally instead of through ElevenLabs: `~/Work/AI_server/scripts/voice
 
 ## Where these are published
 
-This repo publishes itself through GitHub Pages:
+The six books in the two bound volumes — Bismillah, Alhamdulillah, Allah Made
+It, Our Prophet ﷺ, the Black and White Zoo (with Fifteen Colours) and Susu —
+and their shelf live on the game site:
+
+**https://nostalgia-masry.com/babystories/** (each book at `…/babystories/<slug>.html`)
+
+That is what the printed QR codes in both volumes, and those books' board
+editions, point at. Those pages are deployed from the game site's repo, not
+from here.
+
+Every other book (Loza, Noah's copies, Yaseen, the alphabet books) is still
+served by this repo's GitHub Pages site, and its printed codes still point there:
 
 **https://hisham-abuella.github.io/bedtime-stories/**
 
-The shelf is `index.html`; the books, their audio and their artwork are served
-from the same place, which is what the printed QR codes point at. Pushing to
-`main` republishes.
+The shelf there is `index.html`; the books, their audio and their artwork are
+served from the same place. Pushing to `main` republishes.
 
-A second set of copies is served at **www.hishamabuella.com/projects/bedtime-stories/**
-from the `home` website repo, alongside the article about how they were made.
-Copy a finished story across when it is ready.
+Which book lives where is one list, `NEW_SITE_BOOKS` in `tools/siteurls.py`;
+every build script, `make-qr.py` and `check-qr.py` read it. Move a book by
+editing that list, then `tools/make-qr.py`, rebuild and `tools/check-qr.py`.
+
+The article about how they were made is on the personal site
+(www.hishamabuella.com/Articles/bedtime-stories.html).
 
 ## Printed editions
 
@@ -304,13 +341,16 @@ whoever is holding the printed book can play the same voice reading it.
 
 | Cover | Opens |
 |---|---|
-| The Black and White Zoo | `.../books/black-white-zoo.html` |
-| Fifteen Bright Colours (chapter two) | `.../books/black-white-zoo.html#color` |
-| Susu the Cat | `.../books/susu.html` |
+| A volume's own cover (both volumes) | `https://nostalgia-masry.com/babystories/` |
+| The Black and White Zoo | `…/babystories/black-white-zoo.html#bw` |
+| Fifteen Bright Colours (chapter two) | `…/babystories/black-white-zoo.html#color` |
+| Susu the Cat | `…/babystories/susu.html` |
+| Bismillah · Alhamdulillah · Allah Made It · Our Prophet ﷺ | `…/babystories/<slug>.html` |
 
-They point at this repo's own GitHub Pages site,
-`https://hisham-abuella.github.io/bedtime-stories/`, which serves the html, the
-audio and the artwork. The chapter codes work because the book now keeps its
+They point at the game site, `https://nostalgia-masry.com/babystories/`, which
+serves the html, the audio and the artwork. Books outside the two volumes keep
+their codes on `https://hisham-abuella.github.io/bedtime-stories/books/<slug>.html`
+(see `tools/siteurls.py`). The chapter codes work because the book now keeps its
 chapter in the address: `#bw` and `#color` open that chapter directly, and
 switching chapters updates the address.
 
@@ -469,3 +509,22 @@ The books ship 1024px PNGs. At 180mm that is 232dpi, which is fine for these
 flat illustrations but below the 300dpi a printer will ask for. `build-print.sh`
 writes print-weight JPEGs into `print/img/` first, which takes the illustrated
 editions from 14MB to 2.5MB without a visible change at this size.
+
+## Lullabies
+
+Every book plays a soft instrumental lullaby under its narration, on repeat,
+quieter while the voice speaks. The ♪ button in the corner picks one of eight or
+turns the music off; the choice is remembered across books. It all lives in
+`books/lullaby.js`, which every book loads; the tracks are in `audio-lullaby/`,
+loudness-matched to -20 LUFS. All are from [Openverse](https://openverse.org):
+
+| Track | By | Licence |
+|---|---|---|
+| [Lullaby (Johannes Brahms)](https://www.jamendo.com/track/379363) | BrunoXe | CC BY 3.0 |
+| [Field recording Brahms lullaby music box](https://freesound.org/s/416384/) | Garuda1982 | CC0 |
+| [Lullaby Waltz](https://www.jamendo.com/track/1518616) | FlauschGAU | CC BY 3.0 |
+| [Lullaby](https://www.jamendo.com/track/234275) | Nesmeyana | CC BY 3.0 |
+| [Goodnight Lullaby](https://www.jamendo.com/track/1715278) | Steven Booth | CC BY 3.0 |
+| [Music Box (G, 4/4, 60 BPM)](https://freesound.org/s/613178/) | sonically_sound | CC0 |
+| [Short Sentimental Lullaby Trailer - Celesta](https://freesound.org/s/578725/) | GregorQuendel | CC BY 4.0 |
+| [Music box lullaby](https://freesound.org/s/381973/) | csnmedia | CC0 |

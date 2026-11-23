@@ -366,13 +366,21 @@ node ~/Work/Elevenlabs-voice/lint-transcript.js --pair source/<slug>-en.json sou
 node ~/Work/Elevenlabs-voice/generate.js source/<slug>-en.json audio-<slug>/en \
   --voice pusofH2Ro5Ny4RH6qBEO --model eleven_v4 --stability 0.5 --similarity 0.8
 node ~/Work/Elevenlabs-voice/generate.js source/<slug>-eg.json audio-<slug>/eg \
-  --voice IES4nrmZdUBHByLBde0P --model eleven_v4 --stability 0.5 --similarity 0.8
+  --voice pusofH2Ro5Ny4RH6qBEO --model eleven_v4 --stability 0.5 --similarity 0.8
 python3 ~/Work/Elevenlabs-voice/qa-audio.py source/<slug>-en.json audio-<slug>/en
 ```
 
-- **Voices** (the house ones): English is Hisham's clone `pusofH2Ro5Ny4RH6qBEO`.
-  Egyptian is **Haytham EG narrator** `IES4nrmZdUBHByLBde0P`. Sarah
+- **Voices** (the house ones): English and Egyptian are both Hisham's clone
+  `pusofH2Ro5Ny4RH6qBEO`, for every book from 2026-11-20 on (حروفي was the
+  first). Books made before then keep **Haytham EG narrator**
+  `IES4nrmZdUBHByLBde0P` for their Egyptian: patch or extend them in Haytham's
+  voice, and don't re-record them unless the user asks. Sarah
   (`EXAVITQu4vr4xnSDxMaL`) is fusha.
+- **Local option for English, no quota:** Hisham's Fish S2-Pro clone reads the same
+  `source/<slug>-en.json`, tags included, with Whisper QA:
+  `cd ~/Work/Whisper-audio/bakeoff && uv run narrate.py book ~/Work/bedtime-stories/source/<slug>-en.json`
+  (out: `~/Work/Whisper-audio/site-audio/books/<slug>/p*.mp3`; copy into `audio-<slug>/en`).
+  It reads ~20% slower than v4, so check page timing. Egyptian stays on ElevenLabs.
 - The narration scripts come from the spec, so rebuild before narrating and
   the clips match the words.
 - **Give the cover a `say`** in the spec, or make-transcripts writes "for Yusuf".
@@ -405,7 +413,9 @@ Hand over the link with a note that an old copy may be cached: Cmd+Shift+R on
 a computer, or close and reopen the tab on a phone. The shelf is
 `https://hisham-abuella.github.io/bedtime-stories/`. The QR codes in the
 printed books point at these same URLs, so a printed copy always plays the
-latest narration.
+latest narration — except the six books of Yusuf's two volumes, whose codes
+open `https://nostalgia-masry.com/babystories/<slug>.html` (the game site).
+Which book lives where is `NEW_SITE_BOOKS` in `tools/siteurls.py`.
 
 ## Changing an existing book
 

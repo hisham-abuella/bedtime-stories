@@ -1,0 +1,941 @@
+{
+ "en": {
+  "slug": "abc",
+  "title": "My ABC",
+  "lang": "en",
+  "dir": "ltr",
+  "cover": {
+   "title": "My ABC",
+   "line": "Twenty-six letters, and two things for each one.",
+   "img": "apple",
+   "say": "My ABC. Twenty-six letters, and two things for each one."
+  },
+  "end": {
+   "title": "You know them all!",
+   "line": "From A to Z. Well done!",
+   "img": "star",
+   "say": "You know them all, from A to Z. Well done!"
+  },
+  "pages": [
+   {
+    "key": "a",
+    "letter": "A",
+    "lower": "a",
+    "words": [
+     {
+      "word": "apple",
+      "img": "apple"
+     },
+     {
+      "word": "ant",
+      "img": "ant"
+     }
+    ],
+    "line": "A is for apple. A is for ant.",
+    "say": "A… apple! A… ant!"
+   },
+   {
+    "key": "b",
+    "letter": "B",
+    "lower": "b",
+    "words": [
+     {
+      "word": "banana",
+      "img": "banana"
+     },
+     {
+      "word": "ball",
+      "img": "ball"
+     }
+    ],
+    "line": "B is for banana. B is for ball.",
+    "say": "B… banana! B… ball!"
+   },
+   {
+    "key": "c",
+    "letter": "C",
+    "lower": "c",
+    "words": [
+     {
+      "word": "cat",
+      "img": "cat"
+     },
+     {
+      "word": "car",
+      "img": "car"
+     }
+    ],
+    "line": "C is for cat. C is for car.",
+    "say": "C… cat! C… car!"
+   },
+   {
+    "key": "d",
+    "letter": "D",
+    "lower": "d",
+    "words": [
+     {
+      "word": "duck",
+      "img": "duck"
+     },
+     {
+      "word": "dates",
+      "img": "dates"
+     }
+    ],
+    "line": "D is for duck. D is for dates.",
+    "say": "D… duck! D… dates!"
+   },
+   {
+    "key": "e",
+    "letter": "E",
+    "lower": "e",
+    "words": [
+     {
+      "word": "egg",
+      "img": "egg"
+     },
+     {
+      "word": "elephant",
+      "img": "elephant"
+     }
+    ],
+    "line": "E is for egg. E is for elephant.",
+    "say": "E… egg! E… elephant!"
+   },
+   {
+    "key": "f",
+    "letter": "F",
+    "lower": "f",
+    "words": [
+     {
+      "word": "fish",
+      "img": "fish"
+     },
+     {
+      "word": "flower",
+      "img": "flower"
+     }
+    ],
+    "line": "F is for fish. F is for flower.",
+    "say": "F… fish! F… flower!"
+   },
+   {
+    "key": "g",
+    "letter": "G",
+    "lower": "g",
+    "words": [
+     {
+      "word": "grapes",
+      "img": "grapes"
+     },
+     {
+      "word": "giraffe",
+      "img": "giraffe"
+     }
+    ],
+    "line": "G is for grapes. G is for giraffe.",
+    "say": "G… grapes! G… giraffe!"
+   },
+   {
+    "key": "h",
+    "letter": "H",
+    "lower": "h",
+    "words": [
+     {
+      "word": "hat",
+      "img": "hat"
+     },
+     {
+      "word": "horse",
+      "img": "horse"
+     }
+    ],
+    "line": "H is for hat. H is for horse.",
+    "say": "H… hat! H… horse!"
+   },
+   {
+    "key": "i",
+    "letter": "I",
+    "lower": "i",
+    "words": [
+     {
+      "word": "ice cream",
+      "img": "ice-cream"
+     },
+     {
+      "word": "igloo",
+      "img": "igloo"
+     }
+    ],
+    "line": "I is for ice cream. I is for igloo.",
+    "say": "I… ice cream! I… igloo!"
+   },
+   {
+    "key": "j",
+    "letter": "J",
+    "lower": "j",
+    "words": [
+     {
+      "word": "juice",
+      "img": "juice"
+     },
+     {
+      "word": "jellyfish",
+      "img": "jellyfish"
+     }
+    ],
+    "line": "J is for juice. J is for jellyfish.",
+    "say": "J… juice! J… jellyfish!"
+   },
+   {
+    "key": "k",
+    "letter": "K",
+    "lower": "k",
+    "words": [
+     {
+      "word": "kite",
+      "img": "kite"
+     },
+     {
+      "word": "key",
+      "img": "key"
+     }
+    ],
+    "line": "K is for kite. K is for key.",
+    "say": "K… kite! K… key!"
+   },
+   {
+    "key": "l",
+    "letter": "L",
+    "lower": "l",
+    "words": [
+     {
+      "word": "lion",
+      "img": "lion"
+     },
+     {
+      "word": "lemon",
+      "img": "lemon"
+     }
+    ],
+    "line": "L is for lion. L is for lemon.",
+    "say": "L… lion! L… lemon!"
+   },
+   {
+    "key": "m",
+    "letter": "M",
+    "lower": "m",
+    "words": [
+     {
+      "word": "moon",
+      "img": "moon"
+     },
+     {
+      "word": "milk",
+      "img": "milk"
+     }
+    ],
+    "line": "M is for moon. M is for milk.",
+    "say": "M… moon! M… milk!"
+   },
+   {
+    "key": "n",
+    "letter": "N",
+    "lower": "n",
+    "words": [
+     {
+      "word": "nest",
+      "img": "nest"
+     },
+     {
+      "word": "nuts",
+      "img": "nuts"
+     }
+    ],
+    "line": "N is for nest. N is for nuts.",
+    "say": "N… nest! N… nuts!"
+   },
+   {
+    "key": "o",
+    "letter": "O",
+    "lower": "o",
+    "words": [
+     {
+      "word": "orange",
+      "img": "orange"
+     },
+     {
+      "word": "owl",
+      "img": "owl"
+     }
+    ],
+    "line": "O is for orange. O is for owl.",
+    "say": "O… orange! O… owl!"
+   },
+   {
+    "key": "p",
+    "letter": "P",
+    "lower": "p",
+    "words": [
+     {
+      "word": "penguin",
+      "img": "penguin"
+     },
+     {
+      "word": "pear",
+      "img": "pear"
+     }
+    ],
+    "line": "P is for penguin. P is for pear.",
+    "say": "P… penguin! P… pear!"
+   },
+   {
+    "key": "q",
+    "letter": "Q",
+    "lower": "q",
+    "words": [
+     {
+      "word": "quilt",
+      "img": "quilt"
+     },
+     {
+      "word": "quail",
+      "img": "quail"
+     }
+    ],
+    "line": "Q is for quilt. Q is for quail.",
+    "say": "Q… quilt! Q… quail!"
+   },
+   {
+    "key": "r",
+    "letter": "R",
+    "lower": "r",
+    "words": [
+     {
+      "word": "rabbit",
+      "img": "rabbit"
+     },
+     {
+      "word": "rainbow",
+      "img": "rainbow"
+     }
+    ],
+    "line": "R is for rabbit. R is for rainbow.",
+    "say": "R… rabbit! R… rainbow!"
+   },
+   {
+    "key": "s",
+    "letter": "S",
+    "lower": "s",
+    "words": [
+     {
+      "word": "sun",
+      "img": "sun"
+     },
+     {
+      "word": "star",
+      "img": "star"
+     }
+    ],
+    "line": "S is for sun. S is for star.",
+    "say": "S… sun! S… star!"
+   },
+   {
+    "key": "t",
+    "letter": "T",
+    "lower": "t",
+    "words": [
+     {
+      "word": "tree",
+      "img": "tree"
+     },
+     {
+      "word": "turtle",
+      "img": "turtle"
+     }
+    ],
+    "line": "T is for tree. T is for turtle.",
+    "say": "T… tree! T… turtle!"
+   },
+   {
+    "key": "u",
+    "letter": "U",
+    "lower": "u",
+    "words": [
+     {
+      "word": "umbrella",
+      "img": "umbrella"
+     },
+     {
+      "word": "unicorn",
+      "img": "unicorn"
+     }
+    ],
+    "line": "U is for umbrella. U is for unicorn.",
+    "say": "U… umbrella! U… unicorn!"
+   },
+   {
+    "key": "v",
+    "letter": "V",
+    "lower": "v",
+    "words": [
+     {
+      "word": "van",
+      "img": "van"
+     },
+     {
+      "word": "vase",
+      "img": "vase"
+     }
+    ],
+    "line": "V is for van. V is for vase.",
+    "say": "V… van! V… vase!"
+   },
+   {
+    "key": "w",
+    "letter": "W",
+    "lower": "w",
+    "words": [
+     {
+      "word": "watermelon",
+      "img": "watermelon"
+     },
+     {
+      "word": "whale",
+      "img": "whale"
+     }
+    ],
+    "line": "W is for watermelon. W is for whale.",
+    "say": "W… watermelon! W… whale!"
+   },
+   {
+    "key": "x",
+    "letter": "X",
+    "lower": "x",
+    "words": [
+     {
+      "word": "box",
+      "img": "box"
+     },
+     {
+      "word": "fox",
+      "img": "fox"
+     }
+    ],
+    "line": "X is for box. X is for fox.",
+    "say": "X… box! X… fox!",
+    "note": "X hides at the end of these words: listen for the “ks” sound."
+   },
+   {
+    "key": "y",
+    "letter": "Y",
+    "lower": "y",
+    "words": [
+     {
+      "word": "yo-yo",
+      "img": "yoyo"
+     },
+     {
+      "word": "yogurt",
+      "img": "yogurt"
+     }
+    ],
+    "line": "Y is for yo-yo. Y is for yogurt.",
+    "say": "Y… yo-yo! Y… yogurt!"
+   },
+   {
+    "key": "z",
+    "letter": "Z",
+    "lower": "z",
+    "words": [
+     {
+      "word": "zebra",
+      "img": "zebra"
+     },
+     {
+      "word": "zipper",
+      "img": "zipper"
+     }
+    ],
+    "line": "Z is for zebra. Z is for zipper.",
+    "say": "Z… zebra! Z… zipper!"
+   }
+  ]
+ },
+ "eg": {
+  "slug": "huroof",
+  "title": "حروفي",
+  "lang": "ar-EG",
+  "dir": "rtl",
+  "cover": {
+   "title": "حروفي",
+   "line": "تمانية وعشرين حرف، ولكل حرف حاجتين.",
+   "img": "camel",
+   "say": "حروفي. تمانية وعشرين حرف، ولكل حرف حاجتين."
+  },
+  "end": {
+   "title": "عرفتهم كلهم!",
+   "line": "من الألف للياء. شاطر!",
+   "img": "star",
+   "say": "عرفتهم كلهم، من الألف للياء. برافو عليك، شاطر!"
+  },
+  "notes": {
+   "ث": "في المصري بنقولها ت: تعلب، توم. بس بتتكتب بالثاء.",
+   "ذ": "في المصري بنقولها د: درة، دهب. بس بتتكتب بالذال.",
+   "ظ": "في المصري بنقولها ض: ضرف. بس بتتكتب بالظاء."
+  },
+  "pages": [
+   {
+    "key": "أ",
+    "letter": "أ",
+    "words": [
+     {
+      "word": "أرنب",
+      "img": "rabbit"
+     },
+     {
+      "word": "أسد",
+      "img": "lion"
+     }
+    ],
+    "line": "أ زي أرنب. أ زي أسد.",
+    "say": "أ… أرنب! أ… أسد!"
+   },
+   {
+    "key": "ب",
+    "letter": "ب",
+    "words": [
+     {
+      "word": "بطة",
+      "img": "duck"
+     },
+     {
+      "word": "بلح",
+      "img": "dates"
+     }
+    ],
+    "line": "ب زي بطة. ب زي بلح.",
+    "say": "ب… بطة! ب… بلح!"
+   },
+   {
+    "key": "ت",
+    "letter": "ت",
+    "words": [
+     {
+      "word": "تفاحة",
+      "img": "apple"
+     },
+     {
+      "word": "تمساح",
+      "img": "crocodile"
+     }
+    ],
+    "line": "ت زي تفاحة. ت زي تمساح.",
+    "say": "ت… تفاحة! ت… تمساح!"
+   },
+   {
+    "key": "ث",
+    "letter": "ث",
+    "words": [
+     {
+      "word": "ثعلب",
+      "img": "fox"
+     },
+     {
+      "word": "ثلاجة",
+      "img": "fridge"
+     }
+    ],
+    "line": "ث زي ثعلب. ث زي ثلاجة.",
+    "say": "ث… ثعلب! ث… ثلاجة!",
+    "note": "في المصري بنقولها ت: تعلب، تلاجة. بس بتتكتب بالثاء."
+   },
+   {
+    "key": "ج",
+    "letter": "ج",
+    "words": [
+     {
+      "word": "جمل",
+      "img": "camel"
+     },
+     {
+      "word": "جزر",
+      "img": "carrot"
+     }
+    ],
+    "line": "ج زي جمل. ج زي جزر.",
+    "say": "ج… جمل! ج… جزر!"
+   },
+   {
+    "key": "ح",
+    "letter": "ح",
+    "words": [
+     {
+      "word": "حصان",
+      "img": "horse"
+     },
+     {
+      "word": "حمامة",
+      "img": "pigeon"
+     }
+    ],
+    "line": "ح زي حصان. ح زي حمامة.",
+    "say": "ح… حصان! ح… حمامة!"
+   },
+   {
+    "key": "خ",
+    "letter": "خ",
+    "words": [
+     {
+      "word": "خروف",
+      "img": "sheep"
+     },
+     {
+      "word": "خيار",
+      "img": "cucumber"
+     }
+    ],
+    "line": "خ زي خروف. خ زي خيار.",
+    "say": "خ… خروف! خ… خيار!"
+   },
+   {
+    "key": "د",
+    "letter": "د",
+    "words": [
+     {
+      "word": "ديك",
+      "img": "rooster"
+     },
+     {
+      "word": "دبدوب",
+      "img": "teddy"
+     }
+    ],
+    "line": "د زي ديك. د زي دبدوب.",
+    "say": "د… ديك! د… دبدوب!"
+   },
+   {
+    "key": "ذ",
+    "letter": "ذ",
+    "words": [
+     {
+      "word": "ذرة",
+      "img": "corn"
+     },
+     {
+      "word": "ذهب",
+      "img": "gold"
+     }
+    ],
+    "line": "ذ زي ذرة. ذ زي ذهب.",
+    "say": "ذ… ذرة! ذ… ذهب!",
+    "note": "في المصري بنقولها د: درة، دهب. بس بتتكتب بالذال."
+   },
+   {
+    "key": "ر",
+    "letter": "ر",
+    "words": [
+     {
+      "word": "رمان",
+      "img": "pomegranate"
+     },
+     {
+      "word": "ريشة",
+      "img": "feather"
+     }
+    ],
+    "line": "ر زي رمان. ر زي ريشة.",
+    "say": "ر… رمان! ر… ريشة!"
+   },
+   {
+    "key": "ز",
+    "letter": "ز",
+    "words": [
+     {
+      "word": "زرافة",
+      "img": "giraffe"
+     },
+     {
+      "word": "زيتون",
+      "img": "olives"
+     }
+    ],
+    "line": "ز زي زرافة. ز زي زيتون.",
+    "say": "ز… زرافة! ز… زيتون!"
+   },
+   {
+    "key": "س",
+    "letter": "س",
+    "words": [
+     {
+      "word": "سمكة",
+      "img": "fish"
+     },
+     {
+      "word": "ساعة",
+      "img": "clock"
+     }
+    ],
+    "line": "س زي سمكة. س زي ساعة.",
+    "say": "س… سمكة! س… ساعة!"
+   },
+   {
+    "key": "ش",
+    "letter": "ش",
+    "words": [
+     {
+      "word": "شمس",
+      "img": "sun"
+     },
+     {
+      "word": "شجرة",
+      "img": "tree"
+     }
+    ],
+    "line": "ش زي شمس. ش زي شجرة.",
+    "say": "ش… شمس! ش… شجرة!"
+   },
+   {
+    "key": "ص",
+    "letter": "ص",
+    "words": [
+     {
+      "word": "صاروخ",
+      "img": "rocket"
+     },
+     {
+      "word": "صابونة",
+      "img": "soap"
+     }
+    ],
+    "line": "ص زي صاروخ. ص زي صابونة.",
+    "say": "ص… صاروخ! ص… صابونة!"
+   },
+   {
+    "key": "ض",
+    "letter": "ض",
+    "words": [
+     {
+      "word": "ضفدع",
+      "img": "frog"
+     },
+     {
+      "word": "ضفيرة",
+      "img": "braid"
+     }
+    ],
+    "line": "ض زي ضفدع. ض زي ضفيرة.",
+    "say": "ض… ضفدع! ض… ضفيرة!"
+   },
+   {
+    "key": "ط",
+    "letter": "ط",
+    "words": [
+     {
+      "word": "طيارة",
+      "img": "airplane"
+     },
+     {
+      "word": "طماطم",
+      "img": "tomato"
+     }
+    ],
+    "line": "ط زي طيارة. ط زي طماطم.",
+    "say": "ط… طيارة! ط… طماطم!"
+   },
+   {
+    "key": "ظ",
+    "letter": "ظ",
+    "words": [
+     {
+      "word": "ظرف",
+      "img": "envelope"
+     },
+     {
+      "word": "ظل",
+      "img": "shadow"
+     }
+    ],
+    "line": "ظ زي ظرف. ظ زي ظل.",
+    "say": "ظ… ظرف! ظ… ظل!",
+    "note": "في المصري بنقولها ض: ضرف، ضل. بس بتتكتب بالظاء."
+   },
+   {
+    "key": "ع",
+    "letter": "ع",
+    "words": [
+     {
+      "word": "عصفورة",
+      "img": "sparrow"
+     },
+     {
+      "word": "عنب",
+      "img": "grapes"
+     }
+    ],
+    "line": "ع زي عصفورة. ع زي عنب.",
+    "say": "ع… عصفورة! ع… عنب!"
+   },
+   {
+    "key": "غ",
+    "letter": "غ",
+    "words": [
+     {
+      "word": "غزالة",
+      "img": "gazelle"
+     },
+     {
+      "word": "غسالة",
+      "img": "washing-machine"
+     }
+    ],
+    "line": "غ زي غزالة. غ زي غسالة.",
+    "say": "غ… غزالة! غ… غسالة!"
+   },
+   {
+    "key": "ف",
+    "letter": "ف",
+    "words": [
+     {
+      "word": "فيل",
+      "img": "elephant"
+     },
+     {
+      "word": "فراولة",
+      "img": "strawberry"
+     }
+    ],
+    "line": "ف زي فيل. ف زي فراولة.",
+    "say": "ف… فيل! ف… فراولة!"
+   },
+   {
+    "key": "ق",
+    "letter": "ق",
+    "words": [
+     {
+      "word": "قطة",
+      "img": "cat"
+     },
+     {
+      "word": "قمر",
+      "img": "moon"
+     }
+    ],
+    "line": "ق زي قطة. ق زي قمر.",
+    "say": "ق… قطة! ق… قمر!"
+   },
+   {
+    "key": "ك",
+    "letter": "ك",
+    "words": [
+     {
+      "word": "كورة",
+      "img": "ball"
+     },
+     {
+      "word": "كيكة",
+      "img": "cake"
+     }
+    ],
+    "line": "ك زي كورة. ك زي كيكة.",
+    "say": "ك… كورة! ك… كيكة!"
+   },
+   {
+    "key": "ل",
+    "letter": "ل",
+    "words": [
+     {
+      "word": "لمونة",
+      "img": "lemon"
+     },
+     {
+      "word": "لبن",
+      "img": "milk"
+     }
+    ],
+    "line": "ل زي لمونة. ل زي لبن.",
+    "say": "ل… لمونة! ل… لبن!"
+   },
+   {
+    "key": "م",
+    "letter": "م",
+    "words": [
+     {
+      "word": "موز",
+      "img": "banana"
+     },
+     {
+      "word": "مركب",
+      "img": "boat"
+     }
+    ],
+    "line": "م زي موز. م زي مركب.",
+    "say": "م… موز! م… مركب!"
+   },
+   {
+    "key": "ن",
+    "letter": "ن",
+    "words": [
+     {
+      "word": "نحلة",
+      "img": "bee"
+     },
+     {
+      "word": "نجمة",
+      "img": "star"
+     }
+    ],
+    "line": "ن زي نحلة. ن زي نجمة.",
+    "say": "ن… نحلة! ن… نجمة!"
+   },
+   {
+    "key": "ه",
+    "letter": "ه",
+    "words": [
+     {
+      "word": "هدهد",
+      "img": "hoopoe"
+     },
+     {
+      "word": "هدية",
+      "img": "gift"
+     }
+    ],
+    "line": "ه زي هدهد. ه زي هدية.",
+    "say": "ه… هدهد! ه… هدية!"
+   },
+   {
+    "key": "و",
+    "letter": "و",
+    "words": [
+     {
+      "word": "وردة",
+      "img": "flower"
+     },
+     {
+      "word": "وزة",
+      "img": "goose"
+     }
+    ],
+    "line": "و زي وردة. و زي وزة.",
+    "say": "و… وردة! و… وزة!"
+   },
+   {
+    "key": "ي",
+    "letter": "ي",
+    "words": [
+     {
+      "word": "يمامة",
+      "img": "dove"
+     },
+     {
+      "word": "يوسفي",
+      "img": "mandarin"
+     }
+    ],
+    "line": "ي زي يمامة. ي زي يوسفي.",
+    "say": "ي… يمامة! ي… يوسفي!"
+   }
+  ]
+ }
+}

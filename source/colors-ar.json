@@ -5,7 +5,7 @@
   {
    "id": "c0",
    "title": "Cover",
-   "transcript": "[warmly] والآن… <break time=\"0.4s\" /> الألوان. تسعةُ حيواناتٍ مُلوَّنة، وتسعةُ ألوانٍ نتعلّمُها معاً. <break time=\"0.5s\" /> [warmly] هيّا بنا."
+   "transcript": "[warmly] والآن… <break time=\"0.4s\" /> الألوان. خمسةَ عشرَ حيواناً مُلوَّناً، وخمسةَ عشرَ لوناً نتعلّمُها معاً. <break time=\"0.5s\" /> [warmly] هيّا بنا."
   },
   {
    "id": "c1",
@@ -15,7 +15,7 @@
   {
    "id": "c2",
    "title": "Yellow",
-   "transcript": "[warmly] أصفر. <break time=\"0.4s\" /> بَطَّةٌ صغيرةٌ صفراءُ ناعمة. كواك! كواك! <break time=\"0.5s\" /> [playfully] كواك!"
+   "transcript": "[warmly] أصفر. <break time=\"0.4s\" /> بَطَّةٌ صغيرةٌ صفراءُ ناعمة. صو! صو! <break time=\"0.5s\" /> [playfully] صو، صو، صو!"
   },
   {
    "id": "c3",
@@ -65,7 +65,7 @@
   {
    "id": "c13",
    "title": "فيروزي",
-   "transcript": "[warmly] فيروزي. <break time=\"0.4s\" /> طاووسٌ فيروزيٌّ يفتَحُ ذيلَه. كيـاو! <break time=\"0.5s\" /> [playfully] كيـاو!"
+   "transcript": "[warmly] فيروزي. <break time=\"0.4s\" /> طاووسٌ فيروزيٌّ يفتَحُ ذيلَه. كياو! <break time=\"0.5s\" /> [playfully] كياو!"
   },
   {
    "id": "c14",
@@ -87,5 +87,6 @@
    "title": "Rainbow",
    "transcript": "[warmly] كلُّ الألوان. <break time=\"0.4s\" /> أحمر، أصفر، أزرق، أخضر، بُرتُقاليّ، بَنَفْسَجيّ، وَرْديّ، بُنّيّ، رَماديّ، <break time=\"0.3s\" /> أبيض، أسود، فيروزيّ، ذهبيّ، رَمليّ، وأخضرُ فاتح. كلُّها معاً. <break time=\"0.5s\" /> [whispers] تُصبِحُ على خيرٍ يا يوسف."
   }
- ]
+ ],
+ "polished": true
 }

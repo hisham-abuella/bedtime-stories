@@ -10,7 +10,7 @@
 # Models also cannot write Arabic; any script they produce is nonsense, so text
 # is pushed hard into the negative prompt too.
 
-CLI=/opt/homebrew/bin/draw-things-cli
+CLI=$HOME/.local/bin/draw-things-cli
 REPO=$(cd "$(dirname "$0")/.." && pwd)
 ART_ROOT=${ART_ROOT:-$REPO}
 SIZE=${SIZE:-1024}
@@ -31,7 +31,8 @@ gen () {  # book, name, prompt, seed
 # ---- Bismillah: one ordinary moment of the day ------------------------------
 gen bismillah cover     "sunrise over a small quiet house, one warm lit window" 401
 gen bismillah waking    "morning sunlight coming through a window onto a child's bed" 402
-gen bismillah water     "clear water pouring from a small jug over two small child's hands" 403
+# Redrawn: seed 403 drew a grown-up's arm pouring the jug. A tap needs no one.
+NEG="$NEG, adult, grown-up, adult hands, adult arm, jug, pitcher" gen bismillah water     "close-up of two small child's hands being washed under a gentle stream of clear water from a small brass tap over a white basin, only the small hands visible, no adult" 505
 gen bismillah eating    "a small bowl of dates and a loaf of warm bread on a wooden table" 404
 gen bismillah drinking  "a glass of cool clear water on a wooden table in soft light" 405
 gen bismillah door      "an open wooden door with warm morning light outside, small shoes on the step" 406
@@ -44,7 +45,10 @@ gen bismillah goodnight "a crescent moon and stars over a quiet sleeping house a
 gen alhamdulillah cover      "two small open child's hands held up in soft warm light" 421
 gen alhamdulillah hands      "two small baby hands with open fingers, close up, soft plain background" 422
 gen alhamdulillah eyes       "a baby's wide round eyes looking up, gentle and calm" 423
-gen alhamdulillah voice      "a baby in soft pyjamas lying on a blanket, turning its head towards a warm light, fully clothed" 471
+# Redrawn: seed 471 twisted the baby's body and had it looking away from the
+# light. A simple side view now, eyes open, the baby turned towards soft swirls
+# and hearts (her voice). Without "eyes wide open" the baby came out asleep.
+NEG="$NEG, adult, grown-up, adult hands, twisted body, extra limbs, deformed, closed eyes, sleeping" gen alhamdulillah voice      "a calm baby in soft pyjamas lying on its back on a blanket, simple side view, awake with big round eyes wide open, listening, its head gently turned towards a warm glowing light on the left, soft wavy swirls and tiny hearts drifting from the light to the baby like a gentle voice, fully clothed" 576
 gen alhamdulillah bread      "a warm loaf of bread on a cloth, gentle steam rising" 425
 gen alhamdulillah cool-water "a tall glass of cool clear water, cold and fresh" 426
 gen alhamdulillah rain       "rain falling on a green garden seen through a window" 427

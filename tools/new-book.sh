@@ -57,7 +57,7 @@ REPO=$(cd "$(dirname "$0")/.." && pwd)
 DEST=${DEST:-$REPO/art-hi/images-SLUG}
 SIZE=${SIZE:-1536}
 mkdir -p "$DEST"
-CLI=/opt/homebrew/bin/draw-things-cli
+CLI=$HOME/.local/bin/draw-things-cli
 # The character, in parts (skill section 5). Never retype these in a prompt.
 HAIR="HAIR EXACTLY: colour, length, cut, fringe, one distinguishing detail"
 CHILD="a cheerful AGE-year-old cartoon CHILD with $HAIR, SKIN, round soft face, small thin eyebrows, round rosy cheeks"
