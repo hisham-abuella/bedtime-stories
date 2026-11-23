@@ -1,0 +1,147 @@
+{
+ "title": "My ABC EN",
+ "language": "en",
+ "polished": true,
+ "slides": [
+  {
+   "id": "p0",
+   "title": "My ABC",
+   "transcript": "[warmly] My A B C. <break time=\"0.5s\" /> [gently] Twenty-six letters, <break time=\"0.3s\" /> and two things for each one."
+  },
+  {
+   "id": "p1",
+   "title": "A",
+   "transcript": "[warmly] A. <break time=\"0.5s\" /> A is for apple. <break time=\"0.4s\" /> [playfully] And A is for ant!"
+  },
+  {
+   "id": "p2",
+   "title": "B",
+   "transcript": "[warmly] B. <break time=\"0.5s\" /> B is for banana. <break time=\"0.4s\" /> [playfully] And B is for ball!"
+  },
+  {
+   "id": "p3",
+   "title": "C",
+   "transcript": "[warmly] C. <break time=\"0.5s\" /> C is for cat. <break time=\"0.4s\" /> [playfully] And C is for car!"
+  },
+  {
+   "id": "p4",
+   "title": "D",
+   "transcript": "[warmly] D. <break time=\"0.5s\" /> D is for duck. <break time=\"0.4s\" /> [playfully] And D is for dates!"
+  },
+  {
+   "id": "p5",
+   "title": "E",
+   "transcript": "[warmly] E. <break time=\"0.5s\" /> E is for egg. <break time=\"0.4s\" /> [playfully] And E is for elephant!"
+  },
+  {
+   "id": "p6",
+   "title": "F",
+   "transcript": "[warmly] F. <break time=\"0.5s\" /> F is for fish. <break time=\"0.4s\" /> [playfully] And F is for flower!"
+  },
+  {
+   "id": "p7",
+   "title": "G",
+   "transcript": "[warmly] G. <break time=\"0.5s\" /> G is for grapes. <break time=\"0.4s\" /> [playfully] And G is for giraffe!"
+  },
+  {
+   "id": "p8",
+   "title": "H",
+   "transcript": "[warmly] H. <break time=\"0.5s\" /> H is for hat. <break time=\"0.4s\" /> [playfully] And H is for horse!"
+  },
+  {
+   "id": "p9",
+   "title": "I",
+   "transcript": "[warmly] I. <break time=\"0.5s\" /> I is for ice cream. <break time=\"0.4s\" /> [playfully] And I is for igloo!"
+  },
+  {
+   "id": "p10",
+   "title": "J",
+   "transcript": "[warmly] J. <break time=\"0.5s\" /> J is for juice. <break time=\"0.4s\" /> [playfully] And J is for jellyfish!"
+  },
+  {
+   "id": "p11",
+   "title": "K",
+   "transcript": "[warmly] K. <break time=\"0.5s\" /> K is for kite. <break time=\"0.4s\" /> [playfully] And K is for key!"
+  },
+  {
+   "id": "p12",
+   "title": "L",
+   "transcript": "[warmly] L. <break time=\"0.5s\" /> L is for lion. <break time=\"0.4s\" /> [playfully] And L is for lemon!"
+  },
+  {
+   "id": "p13",
+   "title": "M",
+   "transcript": "[warmly] M. <break time=\"0.5s\" /> M is for moon. <break time=\"0.4s\" /> [playfully] And M is for milk!"
+  },
+  {
+   "id": "p14",
+   "title": "N",
+   "transcript": "[warmly] N. <break time=\"0.5s\" /> N is for nest. <break time=\"0.4s\" /> [playfully] And N is for nuts!"
+  },
+  {
+   "id": "p15",
+   "title": "O",
+   "transcript": "[warmly] O. <break time=\"0.5s\" /> O is for orange. <break time=\"0.4s\" /> [playfully] And O is for owl!"
+  },
+  {
+   "id": "p16",
+   "title": "P",
+   "transcript": "[warmly] P. <break time=\"0.5s\" /> P is for penguin. <break time=\"0.4s\" /> [playfully] And P is for pear!"
+  },
+  {
+   "id": "p17",
+   "title": "Q",
+   "transcript": "[warmly] Q. <break time=\"0.5s\" /> Q is for quilt. <break time=\"0.4s\" /> [playfully] And Q is for quail!"
+  },
+  {
+   "id": "p18",
+   "title": "R",
+   "transcript": "[warmly] R. <break time=\"0.5s\" /> R is for rabbit. <break time=\"0.4s\" /> [playfully] And R is for rainbow!"
+  },
+  {
+   "id": "p19",
+   "title": "S",
+   "transcript": "[warmly] S. <break time=\"0.5s\" /> S is for sun. <break time=\"0.4s\" /> [playfully] And S is for star!"
+  },
+  {
+   "id": "p20",
+   "title": "T",
+   "transcript": "[warmly] T. <break time=\"0.5s\" /> T is for tree. <break time=\"0.4s\" /> [playfully] And T is for turtle!"
+  },
+  {
+   "id": "p21",
+   "title": "U",
+   "transcript": "[warmly] U. <break time=\"0.5s\" /> U is for umbrella. <break time=\"0.4s\" /> [playfully] And U is for unicorn!"
+  },
+  {
+   "id": "p22",
+   "title": "V",
+   "transcript": "[warmly] V. <break time=\"0.5s\" /> V is for van. <break time=\"0.4s\" /> [playfully] And V is for vase!"
+  },
+  {
+   "id": "p23",
+   "title": "W",
+   "transcript": "[warmly] W. <break time=\"0.5s\" /> W is for watermelon. <break time=\"0.4s\" /> [playfully] And W is for whale!"
+  },
+  {
+   "id": "p24",
+   "title": "X",
+   "transcript": "[warmly] X. <break time=\"0.5s\" /> X hides at the end. <break time=\"0.4s\" /> [playfully] Box! <break time=\"0.4s\" /> And fox!"
+  },
+  {
+   "id": "p25",
+   "title": "Y",
+   "transcript": "[warmly] Y. <break time=\"0.5s\" /> Y is for yo-yo. <break time=\"0.4s\" /> [playfully] And Y is for yogurt!"
+  },
+  {
+   "id": "p26",
+   "title": "Z",
+   "transcript": "[warmly] Z. <break time=\"0.5s\" /> Z is for zebra. <break time=\"0.4s\" /> [playfully] And Z is for zipper!"
+  },
+  {
+   "id": "p27",
+   "title": "The end",
+   "transcript": "[excited] You know them all, <break time=\"0.3s\" /> from A to Z! <break time=\"0.4s\" /> [warmly] Well done!"
+  }
+ ]
+}

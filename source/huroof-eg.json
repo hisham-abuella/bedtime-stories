@@ -1,0 +1,157 @@
+{
+ "title": "حروفي — مصري",
+ "language": "eg",
+ "polished": true,
+ "slides": [
+  {
+   "id": "p0",
+   "title": "حروفي",
+   "transcript": "[warmly] حروفي. <break time=\"0.5s\" /> [gently] تمانية وعشرين حرف، <break time=\"0.3s\" /> ولكل حرف حاجتين."
+  },
+  {
+   "id": "p1",
+   "title": "أ",
+   "transcript": "[warmly] ألِف. <break time=\"0.5s\" /> ألِف زي أرنب. <break time=\"0.4s\" /> [playfully] وألِف زي أسد!"
+  },
+  {
+   "id": "p2",
+   "title": "ب",
+   "transcript": "[warmly] با. <break time=\"0.5s\" /> با زي بَطّة. <break time=\"0.4s\" /> [playfully] وبا زي بلح!"
+  },
+  {
+   "id": "p3",
+   "title": "ت",
+   "transcript": "[warmly] تا. <break time=\"0.5s\" /> تا زي تفاحة. <break time=\"0.4s\" /> [playfully] وتا زي تمساح!"
+  },
+  {
+   "id": "p4",
+   "title": "ث",
+   "transcript": "[warmly] ثا. <break time=\"0.5s\" /> ثا زي تَعلب. <break time=\"0.4s\" /> [playfully] وثا زي تلّاجة!"
+  },
+  {
+   "id": "p5",
+   "title": "ج",
+   "transcript": "[warmly] جيم. <break time=\"0.5s\" /> جيم زي جَمَل. <break time=\"0.4s\" /> [playfully] وجيم زي جزر!"
+  },
+  {
+   "id": "p6",
+   "title": "ح",
+   "transcript": "[warmly] حا. <break time=\"0.5s\" /> حا زي حصان. <break time=\"0.4s\" /> [playfully] وحا زي حَمامة!"
+  },
+  {
+   "id": "p7",
+   "title": "خ",
+   "transcript": "[warmly] خا. <break time=\"0.5s\" /> خا زي خروف. <break time=\"0.4s\" /> [playfully] وخا زي خيار!"
+  },
+  {
+   "id": "p8",
+   "title": "د",
+   "transcript": "[warmly] دال. <break time=\"0.5s\" /> دال زي ديك. <break time=\"0.4s\" /> [playfully] ودال زي دبدوب!"
+  },
+  {
+   "id": "p9",
+   "title": "ذ",
+   "transcript": "[warmly] ذال. <break time=\"0.5s\" /> ذال زي دُرة. <break time=\"0.4s\" /> [playfully] وذال زي دَهب!"
+  },
+  {
+   "id": "p10",
+   "title": "ر",
+   "transcript": "[warmly] را. <break time=\"0.5s\" /> را زي رمان. <break time=\"0.4s\" /> [playfully] ورا زي ريشة!"
+  },
+  {
+   "id": "p11",
+   "title": "ز",
+   "transcript": "[warmly] زاي. <break time=\"0.5s\" /> زاي زي زرافة. <break time=\"0.4s\" /> [playfully] وزاي زي زيتون!"
+  },
+  {
+   "id": "p12",
+   "title": "س",
+   "transcript": "[warmly] سين. <break time=\"0.5s\" /> سين زي سمكة. <break time=\"0.4s\" /> [playfully] وسين زي ساعة!"
+  },
+  {
+   "id": "p13",
+   "title": "ش",
+   "transcript": "[warmly] شين. <break time=\"0.5s\" /> شين زي شمس. <break time=\"0.4s\" /> [playfully] وشين زي شجرة!"
+  },
+  {
+   "id": "p14",
+   "title": "ص",
+   "transcript": "[warmly] صاد. <break time=\"0.5s\" /> صاد زي صاروخ. <break time=\"0.4s\" /> [playfully] وصاد زي صابونة!"
+  },
+  {
+   "id": "p15",
+   "title": "ض",
+   "transcript": "[warmly] ضاد. <break time=\"0.5s\" /> ضاد زي ضفدع. <break time=\"0.4s\" /> [playfully] وضاد زي ضفيرة!"
+  },
+  {
+   "id": "p16",
+   "title": "ط",
+   "transcript": "[warmly] طا. <break time=\"0.5s\" /> طا زي طيارة. <break time=\"0.4s\" /> [playfully] وطا زي طماطم!"
+  },
+  {
+   "id": "p17",
+   "title": "ظ",
+   "transcript": "[warmly] ظا. <break time=\"0.5s\" /> ظا زي ضَرف. <break time=\"0.4s\" /> [playfully] وظا زي ضِل!"
+  },
+  {
+   "id": "p18",
+   "title": "ع",
+   "transcript": "[warmly] عين. <break time=\"0.5s\" /> عين زي عصفورة. <break time=\"0.4s\" /> [playfully] وعين زي عنب!"
+  },
+  {
+   "id": "p19",
+   "title": "غ",
+   "transcript": "[warmly] غين. <break time=\"0.5s\" /> غين زي غزالة. <break time=\"0.4s\" /> [playfully] وغين زي غسالة!"
+  },
+  {
+   "id": "p20",
+   "title": "ف",
+   "transcript": "[warmly] فا. <break time=\"0.5s\" /> فا زي فيل. <break time=\"0.4s\" /> [playfully] وفا زي فراولة!"
+  },
+  {
+   "id": "p21",
+   "title": "ق",
+   "transcript": "[warmly] قاف. <break time=\"0.5s\" /> قاف زي أُطّة. <break time=\"0.4s\" /> [playfully] وقاف زي أَمَر!"
+  },
+  {
+   "id": "p22",
+   "title": "ك",
+   "transcript": "[warmly] كاف. <break time=\"0.5s\" /> كاف زي كورة. <break time=\"0.4s\" /> [playfully] وكاف زي كيكة!"
+  },
+  {
+   "id": "p23",
+   "title": "ل",
+   "transcript": "[warmly] لام. <break time=\"0.5s\" /> لام زي لَمونة. <break time=\"0.4s\" /> [playfully] ولام زي لبن!"
+  },
+  {
+   "id": "p24",
+   "title": "م",
+   "transcript": "[warmly] ميم. <break time=\"0.5s\" /> ميم زي موز. <break time=\"0.4s\" /> [playfully] وميم زي مركب!"
+  },
+  {
+   "id": "p25",
+   "title": "ن",
+   "transcript": "[warmly] نون. <break time=\"0.5s\" /> نون زي نحلة. <break time=\"0.4s\" /> [playfully] ونون زي نجمة!"
+  },
+  {
+   "id": "p26",
+   "title": "ه",
+   "transcript": "[warmly] ها. <break time=\"0.5s\" /> ها زي هدهد. <break time=\"0.4s\" /> [playfully] وها زي هدية!"
+  },
+  {
+   "id": "p27",
+   "title": "و",
+   "transcript": "[warmly] واو. <break time=\"0.5s\" /> واو زي وردة. <break time=\"0.4s\" /> [playfully] وواو زي وِزّة!"
+  },
+  {
+   "id": "p28",
+   "title": "ي",
+   "transcript": "[warmly] يا. <break time=\"0.5s\" /> يا زي يمامة. <break time=\"0.4s\" /> [playfully] ويا زي يوسفي!"
+  },
+  {
+   "id": "p29",
+   "title": "خلاص",
+   "transcript": "[excited] عرفتهم كلهم، <break time=\"0.3s\" /> من الألف للياء! <break time=\"0.4s\" /> [warmly] برافو عليك، شاطر!"
+  }
+ ]
+}

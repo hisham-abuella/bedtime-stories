@@ -14,6 +14,8 @@ no framework, no build step. Open `index.html` for the shelf.
 | Alhamdulillah, Little One | `books/alhamdulillah.html` | Eight plain gifts |
 | Allah Made It | `books/khalaqa.html` | Eight pieces of the world |
 | Our Prophet | `books/nabina.html` | Eight things he loved |
+| My ABC | `books/abc.html` | 26 letters, two pictures each |
+| حروفي | `books/huroof.html` | 28 Arabic letters, in Egyptian |
 
 ## Where things live
 
@@ -186,6 +188,23 @@ node tools/make-transcripts.js stories/bismillah.json # -> source/bismillah-{en,
 
 Because the page, the print edition and the narration all read the same spec, the
 words cannot drift between the screen, the paper and the audio.
+
+## The alphabet books
+
+*My ABC* (English) and *حروفي* (Egyptian Arabic, not fusha) are two separate
+books, with no child's name, built differently from the stories: each opens on a
+grid of letters, and a letter opens with two pictures, its words and the voice.
+
+- `stories/alphabet.json`: the words for both books (one picture per word).
+- `source/gen-alphabet.sh`: the pictures, one soft-gouache object each, shared by
+  both books by name (the apple is A and ت), drawn at 1536 into
+  `art-hi/images-alphabet/`, then `tools/web-art.sh alphabet`.
+- `tools/build-alphabet.py`: writes `books/abc.html` and `books/huroof.html`.
+- `source/abc-en.json`, `source/huroof-eg.json`: the voice-over, both in Hisham's
+  voice. The Arabic script names each letter (ألِف، با…) and spells words the way
+  Egyptians say them (تَعلب، أُطّة), while the page shows the written spelling.
+- ث، ذ، ظ words use the written spelling (ثعلب، ذرة، ظرف) with a note on how
+  Egyptians say them. Garlic was left out on purpose.
 
 ## Two sets of artwork
 
@@ -485,3 +504,22 @@ The books ship 1024px PNGs. At 180mm that is 232dpi, which is fine for these
 flat illustrations but below the 300dpi a printer will ask for. `build-print.sh`
 writes print-weight JPEGs into `print/img/` first, which takes the illustrated
 editions from 14MB to 2.5MB without a visible change at this size.
+
+## Lullabies
+
+Every book plays a soft instrumental lullaby under its narration, on repeat,
+quieter while the voice speaks. The ♪ button in the corner picks one of eight or
+turns the music off; the choice is remembered across books. It all lives in
+`books/lullaby.js`, which every book loads; the tracks are in `audio-lullaby/`,
+loudness-matched to -20 LUFS. All are from [Openverse](https://openverse.org):
+
+| Track | By | Licence |
+|---|---|---|
+| [Lullaby (Johannes Brahms)](https://www.jamendo.com/track/379363) | BrunoXe | CC BY 3.0 |
+| [Field recording Brahms lullaby music box](https://freesound.org/s/416384/) | Garuda1982 | CC0 |
+| [Lullaby Waltz](https://www.jamendo.com/track/1518616) | FlauschGAU | CC BY 3.0 |
+| [Lullaby](https://www.jamendo.com/track/234275) | Nesmeyana | CC BY 3.0 |
+| [Goodnight Lullaby](https://www.jamendo.com/track/1715278) | Steven Booth | CC BY 3.0 |
+| [Music Box (G, 4/4, 60 BPM)](https://freesound.org/s/613178/) | sonically_sound | CC0 |
+| [Short Sentimental Lullaby Trailer - Celesta](https://freesound.org/s/578725/) | GregorQuendel | CC BY 4.0 |
+| [Music box lullaby](https://freesound.org/s/381973/) | csnmedia | CC0 |
